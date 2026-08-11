@@ -20,3 +20,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local planning docs (not for the repo)
+docs/

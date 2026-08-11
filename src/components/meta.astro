@@ -75,6 +75,12 @@ const jsonLdString = JSON.stringify(jsonLd).replace(/</g, "\\u003c")
 <link rel="icon" type="image/png" href={iconHref} />
 <link rel="apple-touch-icon" href={iconHref} />
 <link rel="sitemap" href={withBase("sitemap-index.xml")} />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={siteMeta.siteTitle}
+  href={withBase("rss.xml")}
+/>
 
 <meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={description} />
