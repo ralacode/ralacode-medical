@@ -17,12 +17,14 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { siteMeta } from "@/lib/constants"
+import { withBase } from "@/lib/paths"
 
 const navItems = [
-  { title: "ホーム", href: "/", icon: HomeIcon },
-  { title: "テスト", href: "/test/", icon: UsersIcon },
-  { title: "予約", href: "/appointments", icon: CalendarDaysIcon },
-  { title: "設定", href: "/settings", icon: SettingsIcon },
+  { title: "ホーム", href: withBase(), icon: HomeIcon },
+  { title: "テスト", href: withBase("test/"), icon: UsersIcon },
+  { title: "予約", href: withBase("appointments/"), icon: CalendarDaysIcon },
+  { title: "設定", href: withBase("settings/"), icon: SettingsIcon },
 ]
 
 export function AppSidebar() {
@@ -31,16 +33,15 @@ export function AppSidebar() {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" tooltip="RalaCode Medical">
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                <span className="text-sm font-semibold">R</span>
-              </div>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">RalaCode Medical</span>
-                <span className="truncate text-xs text-muted-foreground">
-                  Clinic Console
-                </span>
-              </div>
+            <SidebarMenuButton size="lg" tooltip={siteMeta.siteTitle}>
+              <img
+                src={withBase(siteMeta.siteIcon)}
+                alt={siteMeta.siteTitle}
+                width={32}
+                height={32}
+                className="size-8 rounded-lg"
+              />
+              <span className="truncate font-medium">{siteMeta.siteTitle}</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

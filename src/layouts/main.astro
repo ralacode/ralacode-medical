@@ -1,16 +1,28 @@
 ---
 import "@/styles/global.css"
 import { AppShell } from "@/components/app-shell"
+import Meta from "@/components/meta.astro"
 import { ClientRouter } from "astro:transitions"
 import { PanelLeftIcon } from "lucide-react"
+
+interface Props {
+  title?: string
+  description?: string
+  image?: string
+  noindex?: boolean
+}
+
+const { title, description, image, noindex } = Astro.props
 ---
 
 <html lang="ja" transition:animate="none">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Astro App</title>
+    <Meta
+      title={title}
+      description={description}
+      image={image}
+      noindex={noindex}
+    />
     <ClientRouter fallback="swap" />
   </head>
   <body>
