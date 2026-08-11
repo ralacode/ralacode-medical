@@ -10,4 +10,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [react()],
+  prefetch: true,
+  devToolbar: {
+    enabled: false,
+  },
 })
