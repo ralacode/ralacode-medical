@@ -4,3 +4,4 @@ allowBuilds:
   esbuild: true
   sharp: true
   msw: false
+  ffmpeg-static: set this to true or false

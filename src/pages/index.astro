@@ -1,15 +1,568 @@
 ---
 import Layout from "@/layouts/main.astro"
-import { Button } from "@/components/ui/button"
+import { siteMeta } from "@/lib/constants"
+import { withBase } from "@/lib/paths"
+import {
+  ArrowRightIcon,
+  BookOpenIcon,
+  CalculatorIcon,
+  GraduationCapIcon,
+} from "lucide-react"
 ---
 
-<Layout>
-  <div class="flex max-w-md min-w-0 flex-col gap-4 leading-loose">
-    <div>
-      <h1 class="font-medium">Project ready!</h1>
-      <p>You may now add components and start building.</p>
-      <p>We've already added the button component for you.</p>
-      <Button client:load className="mt-2">Button</Button>
-    </div>
+<Layout flush headerLabel="ホーム">
+  <div class="home">
+    <section class="hero" aria-labelledby="home-brand">
+      <div class="hero-copy">
+        <p id="home-brand" class="brand reveal" style="--d: 0ms">
+          {siteMeta.siteTitle}
+        </p>
+        <h1 class="headline reveal" style="--d: 80ms">
+          用語と国試を、<br class="sm:hidden" />まっすぐ学べる場所。
+        </h1>
+        <p class="lede reveal" style="--d: 160ms">
+          診療放射線技師を目指す人のための、<br
+          />用語解説・国家試験対策メディア。
+        </p>
+        <div class="cta reveal" style="--d: 240ms">
+          <a class="btn btn-primary" href="#pillars">
+            学習コンテンツを見る
+            <ArrowRightIcon className="size-4" aria-hidden="true" />
+          </a>
+          <a
+            class="btn btn-ghost"
+            href={siteMeta.authorUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            制作過程をフォロー
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" style="--d: 120ms" aria-hidden="true">
+        <div class="gantry">
+          <div class="ring-outer ring"></div>
+          <div class="ring-mid ring"></div>
+          <div class="ring-inner ring"></div>
+          <div class="beam"></div>
+          <div class="slice"></div>
+          <div class="crosshair"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pillars" class="pillars" aria-labelledby="pillars-heading">
+      <div class="section-head">
+        <h2 id="pillars-heading">いま伸ばしている柱</h2>
+        <p>
+          検索で届く教育コンテンツを軸に、実務で使える道具も少しずつ足していきます。
+        </p>
+      </div>
+
+      <ul class="pillar-list">
+        <li id="glossary">
+          <div class="pillar">
+            <div class="pillar-heading">
+              <span class="pillar-icon">
+                <BookOpenIcon className="size-5" aria-hidden="true" />
+              </span>
+              <span class="pillar-title">用語解説</span>
+            </div>
+            <p class="pillar-desc">
+              CT・MRI・核医学まわりの用語を、試験でも現場でも使える粒度で整理します。記事公開後、ここから一覧へつなぎます。
+            </p>
+          </div>
+        </li>
+        <li id="exam">
+          <div class="pillar">
+            <div class="pillar-heading">
+              <span class="pillar-icon">
+                <GraduationCapIcon className="size-5" aria-hidden="true" />
+              </span>
+              <span class="pillar-title">国家試験対策</span>
+            </div>
+            <p class="pillar-desc">
+              出題の要点とつまずきどころを、季節性も見据えてストック型で積み上げます。
+            </p>
+          </div>
+        </li>
+        <li id="tools">
+          <div class="pillar">
+            <div class="pillar-heading">
+              <span class="pillar-icon">
+                <CalculatorIcon className="size-5" aria-hidden="true" />
+              </span>
+              <span class="pillar-title">計算ツール</span>
+            </div>
+            <p class="pillar-desc">
+              減衰や造影剤まわりなど、実務で再訪される計算をこれから公開します。
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="mission" aria-labelledby="mission-heading">
+      <div class="mission-panel">
+        <h2 id="mission-heading">医療情報を、Web らしく。</h2>
+        <p>
+          紙や PDF に閉じた情報を、探しやすく・読みやすく・すぐ使える形へ。
+          RalaCode Medical は、その入口として教育から始めています。
+        </p>
+      </div>
+    </section>
   </div>
 </Layout>
+
+<style>
+  .home {
+    --home-ink: oklch(0.22 0.03 230);
+    --home-muted: oklch(0.45 0.03 230);
+    --home-accent: oklch(0.52 0.1 210);
+    --home-accent-soft: oklch(0.94 0.03 210);
+    --home-line: oklch(0.88 0.02 220);
+    position: relative;
+    color: var(--home-ink);
+    padding: 0 0 4rem;
+    overflow: clip;
+    background:
+      radial-gradient(
+        ellipse 80% 55% at 85% 10%,
+        oklch(0.93 0.04 210 / 0.9),
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 10% 0%,
+        oklch(0.96 0.02 180 / 0.8),
+        transparent 50%
+      ),
+      linear-gradient(
+        180deg,
+        oklch(0.995 0.005 220),
+        oklch(0.975 0.015 215) 40%,
+        oklch(0.99 0.005 220)
+      );
+  }
+
+  :global(.dark) .home {
+    --home-ink: oklch(0.96 0.01 220);
+    --home-muted: oklch(0.75 0.02 220);
+    --home-accent: oklch(0.78 0.08 210);
+    --home-accent-soft: oklch(0.28 0.04 210);
+    --home-line: oklch(1 0 0 / 12%);
+    background:
+      radial-gradient(
+        ellipse 80% 55% at 85% 10%,
+        oklch(0.28 0.05 210 / 0.55),
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 10% 0%,
+        oklch(0.24 0.03 180 / 0.45),
+        transparent 50%
+      ),
+      linear-gradient(180deg, oklch(0.16 0.02 230), oklch(0.145 0.015 220));
+  }
+
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: calc(100svh - 3.5rem);
+    padding: clamp(1.25rem, 3.5vw, 2.75rem) clamp(1.25rem, 4vw, 3rem);
+    overflow: hidden;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 34rem;
+  }
+
+  .brand {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 650;
+    letter-spacing: -0.045em;
+    line-height: 1.05;
+    color: var(--home-ink);
+  }
+
+  .headline {
+    margin: 0;
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.4;
+  }
+
+  .lede {
+    margin: 0.85rem 0 0;
+    max-width: 28rem;
+    color: var(--home-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.4rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 2.5rem;
+    padding: 0 1rem;
+    border-radius: 0.65rem;
+    font-size: 0.9rem;
+    font-weight: 550;
+    text-decoration: none;
+    transition:
+      background-color 160ms ease,
+      color 160ms ease,
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn-primary {
+    background: var(--home-ink);
+    color: oklch(0.99 0.005 220);
+  }
+
+  .btn-primary:hover {
+    background: color-mix(in oklch, var(--home-ink) 88%, var(--home-accent));
+  }
+
+  .btn-ghost {
+    border: 1px solid var(--home-line);
+    background: color-mix(in oklch, white 55%, transparent);
+    color: var(--home-ink);
+  }
+
+  :global(.dark) .btn-ghost {
+    background: color-mix(in oklch, black 20%, transparent);
+  }
+
+  .btn-ghost:hover {
+    background: var(--home-accent-soft);
+    border-color: color-mix(in oklch, var(--home-accent) 35%, var(--home-line));
+  }
+
+  .hero-visual {
+    position: absolute;
+    inset: auto 0 0 auto;
+    width: min(72vw, 28rem);
+    height: min(72vw, 28rem);
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    opacity: 0.55;
+    translate: 18% 12%;
+  }
+
+  @media (min-width: 900px) {
+    .hero-visual {
+      inset: 50% 2% auto auto;
+      width: min(42vw, 26rem);
+      height: min(42vw, 26rem);
+      opacity: 0.95;
+      translate: 0 -50%;
+    }
+
+    .hero-copy {
+      max-width: min(34rem, 52%);
+    }
+  }
+
+  .gantry {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+  }
+
+  .ring {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    border-radius: 50%;
+    border: 1px solid color-mix(in oklch, var(--home-accent) 55%, transparent);
+  }
+
+  .ring-outer {
+    inset: 4%;
+    animation: spin 28s linear infinite;
+    background: conic-gradient(
+      from 180deg,
+      transparent 0deg,
+      color-mix(in oklch, var(--home-accent) 25%, transparent) 40deg,
+      transparent 90deg,
+      transparent 220deg,
+      color-mix(in oklch, var(--home-accent) 18%, transparent) 260deg,
+      transparent 320deg
+    );
+    mask: radial-gradient(circle, transparent 62%, #000 63%);
+  }
+
+  .ring-mid {
+    inset: 18%;
+    border-color: color-mix(in oklch, var(--home-accent) 40%, transparent);
+    animation: spin 18s linear infinite reverse;
+  }
+
+  .ring-inner {
+    inset: 34%;
+    border-width: 2px;
+    border-color: color-mix(in oklch, var(--home-accent) 70%, transparent);
+    box-shadow: inset 0 0 0 1px
+      color-mix(in oklch, var(--home-accent) 15%, transparent);
+  }
+
+  .beam {
+    position: absolute;
+    left: 50%;
+    top: 12%;
+    bottom: 12%;
+    width: 2px;
+    translate: -50% 0;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      color-mix(in oklch, var(--home-accent) 70%, transparent),
+      transparent
+    );
+    animation: pulse-beam 2.8s ease-in-out infinite;
+  }
+
+  .slice {
+    position: absolute;
+    inset: 38%;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 35%, oklch(0.98 0.01 210), transparent 45%),
+      radial-gradient(
+        circle at 60% 65%,
+        color-mix(in oklch, var(--home-accent) 35%, transparent),
+        transparent 55%
+      ),
+      color-mix(in oklch, var(--home-accent-soft) 80%, white);
+    animation: breathe 4.5s ease-in-out infinite;
+  }
+
+  :global(.dark) .slice {
+    background:
+      radial-gradient(circle at 35% 35%, oklch(0.55 0.05 210), transparent 45%),
+      radial-gradient(
+        circle at 60% 65%,
+        color-mix(in oklch, var(--home-accent) 40%, transparent),
+        transparent 55%
+      ),
+      oklch(0.24 0.03 220);
+  }
+
+  .crosshair::before,
+  .crosshair::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: color-mix(in oklch, var(--home-accent) 55%, transparent);
+  }
+
+  .crosshair::before {
+    width: 18%;
+    height: 1px;
+    translate: -50% -50%;
+  }
+
+  .crosshair::after {
+    width: 1px;
+    height: 18%;
+    translate: -50% -50%;
+  }
+
+  .pillars,
+  .mission {
+    padding: 0 clamp(1.25rem, 4vw, 3rem);
+    margin-top: 2.5rem;
+  }
+
+  .mission {
+    margin-bottom: 0.5rem;
+  }
+
+  .section-head {
+    margin-bottom: 1.25rem;
+  }
+
+  .section-head h2,
+  .mission h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .section-head p,
+  .mission p {
+    margin: 0.6rem 0 0;
+    color: var(--home-muted);
+    line-height: 1.75;
+    text-wrap: pretty;
+  }
+
+  .pillar-list {
+    list-style: none;
+    margin: 0;
+    padding: 1.25rem 0 0;
+    display: grid;
+    gap: 1.5rem;
+    border-top: 1px solid var(--home-line);
+  }
+
+  @media (min-width: 800px) {
+    .pillar-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2rem;
+    }
+  }
+
+  .pillar-list > li {
+    scroll-margin-top: 1.25rem;
+  }
+
+  .pillar {
+    display: grid;
+    gap: 0.5rem;
+    color: inherit;
+  }
+
+  .pillar-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .pillar-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--home-accent);
+  }
+
+  .pillar-title {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .pillar-desc {
+    margin: 0;
+    color: var(--home-muted);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  .mission-panel {
+    padding: 1.5rem clamp(1rem, 3vw, 1.75rem);
+    border-radius: 1rem;
+    border: 1px solid var(--home-line);
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in oklch, var(--home-accent-soft) 80%, transparent),
+        transparent 60%
+      ),
+      color-mix(in oklch, white 55%, transparent);
+  }
+
+  :global(.dark) .mission-panel {
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in oklch, var(--home-accent-soft) 70%, transparent),
+        transparent 60%
+      ),
+      color-mix(in oklch, black 20%, transparent);
+  }
+
+  .mission-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 1rem;
+    color: var(--home-accent);
+    font-weight: 550;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .mission-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: rise 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--d, 0ms);
+  }
+
+  @keyframes rise {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes spin {
+    to {
+      rotate: 360deg;
+    }
+  }
+
+  @keyframes pulse-beam {
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes breathe {
+    0%,
+    100% {
+      transform: scale(0.96);
+      opacity: 0.85;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .ring-outer,
+    .ring-mid,
+    .beam,
+    .slice {
+      animation: none !important;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

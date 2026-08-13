@@ -10,9 +10,20 @@ interface Props {
   description?: string
   image?: string
   noindex?: boolean
+  /** ヘッダー右のページラベル */
+  headerLabel?: string
+  /** コンテンツ領域の余白を外す（トップなど） */
+  flush?: boolean
 }
 
-const { title, description, image, noindex } = Astro.props
+const {
+  title,
+  description,
+  image,
+  noindex,
+  headerLabel = "ホーム",
+  flush = false,
+} = Astro.props
 ---
 
 <html lang="ja" transition:animate="none">
@@ -41,7 +52,6 @@ const { title, description, image, noindex } = Astro.props
       >
         <header
           class="grid h-14 shrink-0 grid-flow-col items-center justify-start gap-2 border-b px-4"
-          transition:persist="app-header"
         >
           <button
             type="button"
@@ -52,9 +62,9 @@ const { title, description, image, noindex } = Astro.props
             <PanelLeftIcon className="size-4" />
           </button>
           <div class="bg-border mr-2 h-4 w-px self-center"></div>
-          <span class="text-sm text-muted-foreground">Dashboard</span>
+          <span class="text-sm text-muted-foreground">{headerLabel}</span>
         </header>
-        <div class="overflow-auto p-4">
+        <div class:list={["overflow-auto", flush ? "p-0" : "p-4"]}>
           <slot />
         </div>
       </main>

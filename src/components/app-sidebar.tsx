@@ -1,8 +1,8 @@
 import {
-  CalendarDaysIcon,
+  BookOpenIcon,
+  CalculatorIcon,
+  GraduationCapIcon,
   HomeIcon,
-  SettingsIcon,
-  UsersIcon,
 } from "lucide-react"
 
 import {
@@ -22,9 +22,13 @@ import { withBase } from "@/lib/paths"
 
 const navItems = [
   { title: "ホーム", href: withBase(), icon: HomeIcon },
-  { title: "テスト", href: withBase("test/"), icon: UsersIcon },
-  { title: "予約", href: withBase("appointments/"), icon: CalendarDaysIcon },
-  { title: "設定", href: withBase("settings/"), icon: SettingsIcon },
+  { title: "用語解説", href: withBase("#glossary"), icon: BookOpenIcon },
+  {
+    title: "国家試験対策",
+    href: withBase("#exam"),
+    icon: GraduationCapIcon,
+  },
+  { title: "計算ツール", href: withBase("#tools"), icon: CalculatorIcon },
 ]
 
 export function AppSidebar() {

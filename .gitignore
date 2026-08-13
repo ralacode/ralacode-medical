@@ -23,3 +23,6 @@ pnpm-debug.log*
 
 # local planning docs (not for the repo)
 docs/
+
+# local promo / capture videos
+movies/

@@ -1,6 +1,7 @@
 export const siteMeta = {
   siteTitle: "RalaCode Medical",
-  siteDesc: "診療放射線技師のための教育サイト",
+  siteDesc:
+    "診療放射線技師を目指す人のための、用語解説・国家試験対策メディア",
   siteType: "website",
   siteLocale: "ja_JP",
   /** `public/` 配下のパス（先頭スラッシュなし） */
