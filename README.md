@@ -1,36 +1,11 @@
-# Astro + React + TypeScript + shadcn/ui
+# RalaCode Medical
 
-This is a template for a new Astro project with React, TypeScript, and shadcn/ui.
+診療放射線技師を目指す人のための、用語解説・国家試験対策メディアです。
 
-## Adding components
+紙や PDF に閉じた医療情報を、探しやすく・読みやすく・すぐ使える形へ。RalaCode Medical はその入口として、まず教育コンテンツから始めています。
 
-To add components to your app, run the following command:
+## いま伸ばしている柱
 
-```bash
-npx shadcn@latest add button
-```
-
-This will place the ui components in the `src/components` directory.
-
-## Using components
-
-To use the components in your app, import them in an `.astro` file:
-
-```astro
----
-import { Button } from "@/components/ui/button"
----
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Astro App</title>
-  </head>
-  <body>
-    <div class="grid h-screen place-items-center content-center">
-      <Button>Button</Button>
-    </div>
-  </body>
-</html>
-```
+- **用語解説** — CT・MRI・核医学まわりの用語を、試験でも現場でも使える粒度で整理します。
+- **国家試験対策** — 出題の要点とつまずきどころを、季節性も見据えてストック型で積み上げます。
+- **計算ツール** — 減衰や造影剤まわりなど、実務で再訪される計算をこれから公開します。
