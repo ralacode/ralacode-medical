@@ -1,0 +1,62 @@
+---
+import {
+  examsHref,
+  sessionLabel,
+  yearHref,
+  type ExamSession,
+} from "@/lib/questions"
+
+interface Props {
+  year?: number
+  session?: ExamSession
+  number?: number
+}
+
+const { year, session, number } = Astro.props
+const currentClass = "text-foreground"
+const linkClass = "hover:text-foreground"
+---
+
+<nav aria-label="パンくずリスト">
+  <ol
+    class="flex min-w-0 items-center gap-1.5 overflow-hidden text-sm text-muted-foreground"
+  >
+    <li>
+      {
+        year ? (
+          <a class={linkClass} href={examsHref()}>
+            国家試験対策
+          </a>
+        ) : (
+          <span class={currentClass}>国家試験対策</span>
+        )
+      }
+    </li>
+    {
+      year ? (
+        <>
+          <li aria-hidden="true">/</li>
+          <li>
+            {session ? (
+              <a class={linkClass} href={yearHref(year)}>
+                {year}年
+              </a>
+            ) : (
+              <span class={currentClass}>{year}年</span>
+            )}
+          </li>
+        </>
+      ) : null
+    }
+    {
+      session && number ? (
+        <>
+          <li aria-hidden="true">/</li>
+          <li class:list={[currentClass, "truncate"]}>
+            {sessionLabel(session)} 問{number}
+          </li>
+        </>
+      ) : null
+    }
+  </ol>
+</nav>

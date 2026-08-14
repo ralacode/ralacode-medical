@@ -1,0 +1,83 @@
+---
+import type { CollectionEntry } from "astro:content"
+
+import ExamBreadcrumb from "@/components/exam-breadcrumb.astro"
+import Layout from "@/layouts/main.astro"
+import { getPublishedQuestions } from "@/lib/exam-content"
+import {
+  groupQuestions,
+  questionHeading,
+  questionHref,
+  sessionLabel,
+} from "@/lib/questions"
+
+interface Props {
+  year: number
+  questions: CollectionEntry<"questions">[]
+}
+
+export async function getStaticPaths() {
+  const questions = await getPublishedQuestions()
+  const years = [...new Set(questions.map((question) => question.data.year))]
+
+  return years.map((year) => ({
+    params: { year: String(year) },
+    props: {
+      year,
+      questions: questions.filter((question) => question.data.year === year),
+    },
+  }))
+}
+
+const { year, questions } = Astro.props
+const [group] = groupQuestions(questions.map((question) => question.data))
+const exam = group?.exam
+const title = exam ? `${year}年 第${exam}回` : `${year}年`
+const description = exam
+  ? `第${exam}回診療放射線技師国家試験の出題意図に沿った類似問題です。公式問題の転載ではありません。`
+  : `${year}年の類似問題です。`
+---
+
+<Layout title={title} description={description} headerLabel="国家試験対策">
+  <ExamBreadcrumb slot="header" year={year} />
+  <div class="mx-auto grid max-w-2xl gap-8">
+    <header class="grid gap-3">
+      <h1 class="text-2xl font-semibold tracking-tight">{title}</h1>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        公式の問題文・選択肢は掲載していません。類似問題を選んで演習できます。
+      </p>
+    </header>
+
+    {
+      group ? (
+        <div class="grid gap-8">
+          {group.sessions.map((session) => (
+            <section class="grid gap-3">
+              <h2 class="text-sm font-medium text-muted-foreground">
+                {sessionLabel(session.session)}
+              </h2>
+              <ul class="grid gap-3">
+                {session.items.map((item) => (
+                  <li>
+                    <a
+                      class="grid gap-1 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50"
+                      href={questionHref(item.year, item.session, item.number)}
+                    >
+                      <p class="text-sm text-muted-foreground">
+                        {questionHeading(item.exam, item.session, item.number)}
+                        {item.origin === "analog" ? " · 類似問題" : ""}
+                      </p>
+                      <p class="font-medium leading-snug">{item.stem}</p>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      ) : (
+        <p class="text-sm text-muted-foreground">この年の問題はまだありません。</p>
+      )
+    }
+  </div>
+</Layout>

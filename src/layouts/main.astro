@@ -62,9 +62,16 @@ const {
             <PanelLeftIcon className="size-4" />
           </button>
           <div class="bg-border mr-2 h-4 w-px self-center"></div>
-          <span class="text-sm text-muted-foreground">{headerLabel}</span>
+          <div class="min-w-0">
+            <slot name="header">
+              <span class="text-sm text-muted-foreground">{headerLabel}</span>
+            </slot>
+          </div>
         </header>
-        <div class:list={["overflow-auto", flush ? "p-0" : "p-4"]}>
+        <div
+          data-slot="page-scroll"
+          class:list={["overflow-auto", flush ? "p-0" : "p-4"]}
+        >
           <slot />
         </div>
       </main>

@@ -85,6 +85,10 @@ import {
             <p class="pillar-desc">
               出題の要点とつまずきどころを、季節性も見据えてストック型で積み上げます。
             </p>
+            <a class="pillar-cta" href={withBase("exams/")}>
+              国家試験対策を見る
+              <ArrowRightIcon className="size-4" aria-hidden="true" />
+            </a>
           </div>
         </li>
         <li id="tools">
@@ -471,6 +475,21 @@ import {
     font-size: 0.9rem;
     line-height: 1.65;
     text-wrap: pretty;
+  }
+
+  .pillar-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.25rem;
+    color: var(--home-accent);
+    font-size: 0.85rem;
+    font-weight: 550;
+    text-decoration: none;
+  }
+
+  .pillar-cta:hover {
+    text-decoration: underline;
   }
 
   .mission-panel {

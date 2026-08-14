@@ -26,3 +26,6 @@ docs/
 
 # local promo / capture videos
 movies/
+
+# local national exam PDFs (not for the repo)
+/exams/

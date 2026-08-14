@@ -1,0 +1,72 @@
+---
+import type { CollectionEntry } from "astro:content"
+
+import ExamBreadcrumb from "@/components/exam-breadcrumb.astro"
+import { QuestionQuiz } from "@/components/question-quiz"
+import Layout from "@/layouts/main.astro"
+import { getPublishedQuestions } from "@/lib/exam-content"
+import { renderMarkdown } from "@/lib/markdown"
+import { questionHeading, sessionLabel, singleAnswer } from "@/lib/questions"
+
+interface Props {
+  question: CollectionEntry<"questions">
+}
+
+export async function getStaticPaths() {
+  const questions = await getPublishedQuestions()
+
+  return questions.map((question) => ({
+    params: {
+      year: String(question.data.year),
+      session: question.data.session,
+      number: String(question.data.number),
+    },
+    props: { question },
+  }))
+}
+
+const { question } = Astro.props
+const { year, exam, session, number, stem, choices, origin, sourceExplanation, mapsTo } =
+  question.data
+const answer = singleAnswer(question.data.answer)
+const heading = questionHeading(exam, session, number)
+const title = `${heading}（類似問題）`
+const description = `第${exam}回 ${sessionLabel(session)} 問${number}の出題意図に沿った類似問題です。公式問題の転載ではありません。`
+const quizChoices = choices.map((choice) => ({
+  text: choice.text,
+  explanationHtml: renderMarkdown(choice.explanation),
+}))
+const sourceExplanationHtml = sourceExplanation?.trim()
+  ? renderMarkdown(sourceExplanation)
+  : undefined
+const sourceExplanationTitle = `${mapsTo.year}年 ${sessionLabel(mapsTo.session)} 問${mapsTo.number}の解説`
+---
+
+<Layout title={title} description={description} headerLabel="国家試験対策">
+  <ExamBreadcrumb slot="header" year={year} session={session} number={number} />
+  <article class="mx-auto grid max-w-2xl gap-6">
+    <header class="grid gap-3">
+      <p class="text-sm text-muted-foreground">
+        {year}年 · {heading}
+        {origin === "analog" ? " · 類似問題" : ""}
+      </p>
+      <h1
+        id="question-stem"
+        class="text-xl leading-snug font-semibold tracking-tight"
+      >
+        {stem}
+      </h1>
+      <p class="text-xs text-muted-foreground">
+        公式の問題文・選択肢は掲載していません。出題の要点に沿って作り直したオリジナル問題です。
+      </p>
+    </header>
+    <QuestionQuiz
+      client:load
+      labelledBy="question-stem"
+      choices={quizChoices}
+      answer={answer}
+      sourceExplanationHtml={sourceExplanationHtml}
+      sourceExplanationTitle={sourceExplanationTitle}
+    />
+  </article>
+</Layout>

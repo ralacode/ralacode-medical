@@ -1,0 +1,59 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getPublishedQuestions } from "@/lib/exam-content"
+import { groupQuestions, sessionLabel, yearHref } from "@/lib/questions"
+
+const questions = (await getPublishedQuestions()).map((question) => question.data)
+const years = groupQuestions(questions)
+---
+
+<Layout
+  title="国家試験対策"
+  description="診療放射線技師国家試験の出題意図に沿った類似問題です。公式問題の転載ではありません。"
+  headerLabel="国家試験対策"
+>
+  <div class="mx-auto grid max-w-2xl gap-8">
+    <header class="grid gap-3">
+      <h1 class="text-2xl font-semibold tracking-tight">類似問題</h1>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        公式の問題文は掲載していません。年を選んで、出題の要点に沿った類似問題を解けます。
+      </p>
+    </header>
+
+    {
+      years.length === 0 ? (
+        <p class="text-sm text-muted-foreground">公開中の問題はまだありません。</p>
+      ) : (
+        <ul class="grid gap-3">
+          {years.map((group) => {
+            const count = group.sessions.reduce(
+              (sum, session) => sum + session.items.length,
+              0
+            )
+            return (
+              <li>
+                <a
+                  class="grid gap-1 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50"
+                  href={yearHref(group.year)}
+                >
+                  <p class="font-medium">
+                    {group.year}年 第{group.exam}回
+                  </p>
+                  <p class="text-sm text-muted-foreground">
+                    類似問題 {count}問
+                    {group.sessions
+                      .map(
+                        (session) =>
+                          ` · ${sessionLabel(session.session)} ${session.items.length}問`
+                      )
+                      .join("")}
+                  </p>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+      )
+    }
+  </div>
+</Layout>
