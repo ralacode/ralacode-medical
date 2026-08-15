@@ -2,6 +2,7 @@
 import Layout from "@/layouts/main.astro"
 import { siteMeta } from "@/lib/constants"
 import { withBase } from "@/lib/paths"
+import { examsHref } from "@/lib/questions"
 import {
   ArrowRightIcon,
   BookOpenIcon,
@@ -25,7 +26,7 @@ import {
           />用語解説・国家試験対策メディア。
         </p>
         <div class="cta reveal" style="--d: 240ms">
-          <a class="btn btn-primary" href="#pillars">
+          <a class="btn btn-primary" href={examsHref()}>
             学習コンテンツを見る
             <ArrowRightIcon className="size-4" aria-hidden="true" />
           </a>
@@ -244,6 +245,15 @@ import {
 
   .btn-primary:hover {
     background: color-mix(in oklch, var(--home-ink) 88%, var(--home-accent));
+  }
+
+  :global(.dark) .btn-primary {
+    background: var(--home-accent);
+    color: oklch(0.16 0.02 230);
+  }
+
+  :global(.dark) .btn-primary:hover {
+    background: color-mix(in oklch, var(--home-accent) 82%, white);
   }
 
   .btn-ghost {

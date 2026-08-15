@@ -2,6 +2,7 @@
 import "@/styles/global.css"
 import { AppShell } from "@/components/app-shell"
 import Meta from "@/components/meta.astro"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { ClientRouter } from "astro:transitions"
 import { PanelLeftIcon } from "lucide-react"
 
@@ -75,7 +76,7 @@ const {
         class="relative grid h-full min-h-0 w-full flex-1 grid-rows-[auto_minmax(0,1fr)] overflow-hidden bg-background"
       >
         <header
-          class="grid h-14 shrink-0 grid-flow-col items-center justify-start gap-2 border-b px-4"
+          class="flex h-14 shrink-0 items-center gap-2 border-b px-4"
         >
           <button
             type="button"
@@ -86,11 +87,12 @@ const {
             <PanelLeftIcon className="size-4" />
           </button>
           <div class="bg-border mr-2 h-4 w-px self-center"></div>
-          <div class="min-w-0">
+          <div class="min-w-0 flex-1">
             <slot name="header">
               <span class="text-sm text-muted-foreground">{headerLabel}</span>
             </slot>
           </div>
+          <ThemeToggle client:load />
         </header>
         <div
           data-slot="page-scroll"
