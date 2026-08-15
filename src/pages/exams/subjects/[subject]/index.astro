@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from "astro:content"
+
+import ExamBreadcrumb from "@/components/exam-breadcrumb.astro"
+import ExamQuestionList from "@/components/exam-question-list.astro"
+import Layout from "@/layouts/main.astro"
+import { getPublishedQuestions } from "@/lib/exam-content"
+import {
+  subjectLabel,
+  type ExamSubjectId,
+} from "@/lib/exam-subjects"
+import { groupQuestions } from "@/lib/questions"
+
+interface Props {
+  subject: ExamSubjectId
+  questions: CollectionEntry<"questions">[]
+}
+
+export async function getStaticPaths() {
+  const questions = await getPublishedQuestions()
+  const subjects = [...new Set(questions.map((question) => question.data.subject))]
+
+  return subjects.map((subject) => ({
+    params: { subject },
+    props: {
+      subject,
+      questions: questions.filter((question) => question.data.subject === subject),
+    },
+  }))
+}
+
+const { subject, questions } = Astro.props
+const label = subjectLabel(subject)
+const years = groupQuestions(questions.map((question) => question.data))
+const title = label
+const description = `${label}の出題意図に沿った類似問題です。公式問題の転載ではありません。`
+---
+
+<Layout title={title} description={description} headerLabel="国家試験対策">
+  <ExamBreadcrumb slot="header" subject={subject} />
+  <div class="mx-auto grid max-w-2xl gap-8">
+    <header class="grid gap-3">
+      <h1 class="text-2xl font-semibold tracking-tight">{label}</h1>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        公式の問題文・選択肢は掲載していません。この科目の類似問題を選んで演習できます。
+      </p>
+    </header>
+
+    {
+      years.length === 0 ? (
+        <p class="text-sm text-muted-foreground">この科目の問題はまだありません。</p>
+      ) : (
+        <div class="grid gap-8">
+          {years.map((group) => (
+            <section class="grid gap-3">
+              <h2 class="text-sm font-medium text-muted-foreground">
+                {group.year}年 第{group.exam}回
+              </h2>
+              <ExamQuestionList
+                fromSubject
+                questions={questions.filter(
+                  (question) => question.data.year === group.year
+                )}
+              />
+            </section>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</Layout>

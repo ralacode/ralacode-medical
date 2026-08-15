@@ -2,31 +2,67 @@
 import type { CollectionEntry } from "astro:content"
 
 import ExamBreadcrumb from "@/components/exam-breadcrumb.astro"
+import { NextQuestionNav } from "@/components/next-question-nav"
 import { QuestionQuiz } from "@/components/question-quiz"
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
 import { renderMarkdown } from "@/lib/markdown"
-import { questionHeading, sessionLabel, singleAnswer } from "@/lib/questions"
+import { subjectLabel } from "@/lib/exam-subjects"
+import {
+  compareQuestions,
+  questionHeading,
+  questionNavTarget,
+  sessionLabel,
+  singleAnswer,
+  subjectHref,
+  yearHref,
+} from "@/lib/questions"
 
 interface Props {
   question: CollectionEntry<"questions">
+  examNext?: { href: string; heading: string; stem: string }
+  subjectNext?: { href: string; heading: string; stem: string }
 }
 
 export async function getStaticPaths() {
-  const questions = await getPublishedQuestions()
+  const questions = [...(await getPublishedQuestions())].sort((left, right) =>
+    compareQuestions(left.data, right.data)
+  )
 
-  return questions.map((question) => ({
-    params: {
-      year: String(question.data.year),
-      session: question.data.session,
-      number: String(question.data.number),
-    },
-    props: { question },
-  }))
+  return questions.map((question, index) => {
+    const inSubject = questions.filter(
+      (entry) => entry.data.subject === question.data.subject
+    )
+    const subjectIndex = inSubject.findIndex(
+      (entry) =>
+        entry.data.year === question.data.year &&
+        entry.data.session === question.data.session &&
+        entry.data.number === question.data.number
+    )
+    const examNextEntry = questions[index + 1]
+    const subjectNextEntry = inSubject[subjectIndex + 1]
+
+    return {
+      params: {
+        year: String(question.data.year),
+        session: question.data.session,
+        number: String(question.data.number),
+      },
+      props: {
+        question,
+        examNext: examNextEntry
+          ? questionNavTarget(examNextEntry.data)
+          : undefined,
+        subjectNext: subjectNextEntry
+          ? questionNavTarget(subjectNextEntry.data, { from: "subject" })
+          : undefined,
+      },
+    }
+  })
 }
 
-const { question } = Astro.props
-const { year, exam, session, number, stem, choices, origin, sourceExplanation, mapsTo } =
+const { question, examNext, subjectNext } = Astro.props
+const { year, exam, session, number, stem, choices, origin, subject, sourceExplanation, mapsTo } =
   question.data
 const answer = singleAnswer(question.data.answer)
 const heading = questionHeading(exam, session, number)
@@ -34,7 +70,9 @@ const title = `${heading}（類似問題）`
 const description = `第${exam}回 ${sessionLabel(session)} 問${number}の出題意図に沿った類似問題です。公式問題の転載ではありません。`
 const quizChoices = choices.map((choice) => ({
   text: choice.text,
-  explanationHtml: renderMarkdown(choice.explanation),
+  explanationHtml: choice.explanation.trim()
+    ? renderMarkdown(choice.explanation)
+    : "",
 }))
 const sourceExplanationHtml = sourceExplanation?.trim()
   ? renderMarkdown(sourceExplanation)
@@ -56,6 +94,12 @@ const sourceExplanationTitle = `${mapsTo.year}年 ${sessionLabel(mapsTo.session)
       >
         {stem}
       </h1>
+      <a
+        class="inline-flex min-h-11 w-fit items-center justify-center rounded-lg border border-border bg-background px-3 text-sm font-medium transition-colors hover:bg-muted active:bg-muted"
+        href={subjectHref(subject)}
+      >
+        {subjectLabel(subject)}
+      </a>
       <p class="text-xs text-muted-foreground">
         公式の問題文・選択肢は掲載していません。出題の要点に沿って作り直したオリジナル問題です。
       </p>
@@ -67,6 +111,15 @@ const sourceExplanationTitle = `${mapsTo.year}年 ${sessionLabel(mapsTo.session)
       answer={answer}
       sourceExplanationHtml={sourceExplanationHtml}
       sourceExplanationTitle={sourceExplanationTitle}
+    />
+    <NextQuestionNav
+      client:load
+      examNext={examNext}
+      subjectNext={subjectNext}
+      examBackHref={yearHref(year)}
+      subjectBackHref={subjectHref(subject)}
+      subjectLabel={subjectLabel(subject)}
+      year={year}
     />
   </article>
 </Layout>

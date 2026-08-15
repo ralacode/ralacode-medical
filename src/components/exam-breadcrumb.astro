@@ -1,4 +1,5 @@
 ---
+import { subjectLabel, type ExamSubjectId } from "@/lib/exam-subjects"
 import {
   examsHref,
   sessionLabel,
@@ -10,9 +11,11 @@ interface Props {
   year?: number
   session?: ExamSession
   number?: number
+  subject?: ExamSubjectId
 }
 
-const { year, session, number } = Astro.props
+const { year, session, number, subject } = Astro.props
+const atRoot = year == null && subject == null
 const currentClass = "text-foreground"
 const linkClass = "hover:text-foreground"
 ---
@@ -23,12 +26,12 @@ const linkClass = "hover:text-foreground"
   >
     <li>
       {
-        year ? (
+        atRoot ? (
+          <span class={currentClass}>国家試験対策</span>
+        ) : (
           <a class={linkClass} href={examsHref()}>
             国家試験対策
           </a>
-        ) : (
-          <span class={currentClass}>国家試験対策</span>
         )
       }
     </li>
@@ -54,6 +57,16 @@ const linkClass = "hover:text-foreground"
           <li aria-hidden="true">/</li>
           <li class:list={[currentClass, "truncate"]}>
             {sessionLabel(session)} 問{number}
+          </li>
+        </>
+      ) : null
+    }
+    {
+      subject && !year ? (
+        <>
+          <li aria-hidden="true">/</li>
+          <li class:list={[currentClass, "truncate"]}>
+            {subjectLabel(subject)}
           </li>
         </>
       ) : null

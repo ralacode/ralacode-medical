@@ -1,10 +1,20 @@
 ---
+import { ArrowRightIcon } from "lucide-react"
+
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
-import { groupQuestions, sessionLabel, yearHref } from "@/lib/questions"
+import { subjectLabel } from "@/lib/exam-subjects"
+import {
+  groupQuestions,
+  groupQuestionsBySubject,
+  sessionLabel,
+  subjectHref,
+  yearHref,
+} from "@/lib/questions"
 
 const questions = (await getPublishedQuestions()).map((question) => question.data)
 const years = groupQuestions(questions)
+const subjects = groupQuestionsBySubject(questions)
 ---
 
 <Layout
@@ -14,9 +24,9 @@ const years = groupQuestions(questions)
 >
   <div class="mx-auto grid max-w-2xl gap-8">
     <header class="grid gap-3">
-      <h1 class="text-2xl font-semibold tracking-tight">類似問題</h1>
+      <h1 class="text-2xl font-semibold tracking-tight">国試対策オリジナル問題</h1>
       <p class="text-sm leading-relaxed text-muted-foreground">
-        公式の問題文は掲載していません。年を選んで、出題の要点に沿った類似問題を解けます。
+        年次または科目から探せます。
       </p>
     </header>
 
@@ -24,36 +34,110 @@ const years = groupQuestions(questions)
       years.length === 0 ? (
         <p class="text-sm text-muted-foreground">公開中の問題はまだありません。</p>
       ) : (
-        <ul class="grid gap-3">
-          {years.map((group) => {
-            const count = group.sessions.reduce(
-              (sum, session) => sum + session.items.length,
-              0
-            )
-            return (
-              <li>
-                <a
-                  class="grid gap-1 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50"
-                  href={yearHref(group.year)}
-                >
-                  <p class="font-medium">
-                    {group.year}年 第{group.exam}回
-                  </p>
-                  <p class="text-sm text-muted-foreground">
-                    類似問題 {count}問
-                    {group.sessions
-                      .map(
-                        (session) =>
-                          ` · ${sessionLabel(session.session)} ${session.items.length}問`
-                      )
-                      .join("")}
-                  </p>
-                </a>
-              </li>
-            )
-          })}
-        </ul>
+        <div class="browse grid gap-6">
+          <div
+            class="grid grid-cols-2 gap-1 rounded-xl bg-muted p-1"
+            role="radiogroup"
+            aria-label="類似問題の探し方"
+          >
+            <label class="flex min-h-11 cursor-pointer items-center justify-center rounded-lg text-sm font-medium text-muted-foreground has-checked:bg-background has-checked:text-foreground has-checked:shadow-sm">
+              <input
+                class="sr-only"
+                type="radio"
+                name="exam-browse"
+                value="years"
+                checked
+              />
+              年次から探す
+            </label>
+            <label class="flex min-h-11 cursor-pointer items-center justify-center rounded-lg text-sm font-medium text-muted-foreground has-checked:bg-background has-checked:text-foreground has-checked:shadow-sm">
+              <input
+                class="subject-tab sr-only"
+                type="radio"
+                name="exam-browse"
+                value="subjects"
+              />
+              科目から探す
+            </label>
+          </div>
+
+          <section class="browse-years grid gap-3" aria-label="年次">
+            <ul class="grid gap-3">
+              {years.map((group) => {
+                const count = group.sessions.reduce(
+                  (sum, session) => sum + session.items.length,
+                  0
+                )
+                return (
+                  <li>
+                    <a
+                      class="flex min-h-16 items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50 active:bg-muted"
+                      href={yearHref(group.year)}
+                    >
+                      <span class="grid min-w-0 flex-1 gap-1">
+                        <span class="font-medium">
+                          {group.year}年 第{group.exam}回
+                        </span>
+                        <span class="text-sm text-muted-foreground">
+                          類似問題 {count}問
+                          {group.sessions
+                            .map(
+                              (session) =>
+                                ` · ${sessionLabel(session.session)} ${session.items.length}問`
+                            )
+                            .join("")}
+                        </span>
+                      </span>
+                      <ArrowRightIcon
+                        className="size-4 shrink-0 text-muted-foreground"
+                        aria-hidden="true"
+                      />
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          </section>
+
+          <section class="browse-subjects grid gap-3" aria-label="科目">
+            <ul class="grid gap-3">
+              {subjects.map((group) => (
+                <li>
+                  <a
+                    class="flex min-h-16 items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50 active:bg-muted"
+                    href={subjectHref(group.subject)}
+                  >
+                    <span class="grid min-w-0 flex-1 gap-1">
+                      <span class="font-medium">{subjectLabel(group.subject)}</span>
+                      <span class="text-sm text-muted-foreground">
+                        類似問題 {group.items.length}問
+                      </span>
+                    </span>
+                    <ArrowRightIcon
+                      className="size-4 shrink-0 text-muted-foreground"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
       )
     }
   </div>
 </Layout>
+
+<style>
+  .browse-subjects {
+    display: none;
+  }
+
+  .browse:has(.subject-tab:checked) .browse-years {
+    display: none;
+  }
+
+  .browse:has(.subject-tab:checked) .browse-subjects {
+    display: grid;
+  }
+</style>

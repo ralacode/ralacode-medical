@@ -2,6 +2,8 @@ import { defineCollection } from "astro:content"
 import { z } from "astro/zod"
 import { glob } from "astro/loaders"
 
+import { examSubjectIds } from "./lib/exam-subjects"
+
 const articles = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/articles" }),
   schema: z.object({
@@ -28,7 +30,8 @@ const questions = defineCollection({
       session: z.enum(["am", "pm"]),
       number: z.number().int().positive(),
     }),
-    subject: z.string().optional(),
+    /** 令和6年4月施行の試験科目 */
+    subject: z.enum(examSubjectIds),
     stem: z.string(),
     /** 選択肢。text が本文、explanation が回答後に直下へ出す Markdown */
     choices: z

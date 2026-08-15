@@ -2,14 +2,10 @@
 import type { CollectionEntry } from "astro:content"
 
 import ExamBreadcrumb from "@/components/exam-breadcrumb.astro"
+import ExamQuestionList from "@/components/exam-question-list.astro"
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
-import {
-  groupQuestions,
-  questionHeading,
-  questionHref,
-  sessionLabel,
-} from "@/lib/questions"
+import { groupQuestions, sessionLabel } from "@/lib/questions"
 
 interface Props {
   year: number
@@ -56,22 +52,12 @@ const description = exam
               <h2 class="text-sm font-medium text-muted-foreground">
                 {sessionLabel(session.session)}
               </h2>
-              <ul class="grid gap-3">
-                {session.items.map((item) => (
-                  <li>
-                    <a
-                      class="grid gap-1 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50"
-                      href={questionHref(item.year, item.session, item.number)}
-                    >
-                      <p class="text-sm text-muted-foreground">
-                        {questionHeading(item.exam, item.session, item.number)}
-                        {item.origin === "analog" ? " · 類似問題" : ""}
-                      </p>
-                      <p class="font-medium leading-snug">{item.stem}</p>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <ExamQuestionList
+                showSubject
+                questions={questions.filter(
+                  (question) => question.data.session === session.session
+                )}
+              />
             </section>
           ))}
         </div>

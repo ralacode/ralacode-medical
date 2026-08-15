@@ -66,6 +66,7 @@ export function QuestionQuiz({
 
   const selected = value ? Number(value) : undefined
   const correct = submitted && selected === answer
+  const explainedCount = choices.filter((choice) => choice.explanationHtml).length
 
   useEffect(() => {
     if (!submitted) return
@@ -99,9 +100,13 @@ export function QuestionQuiz({
               やり直す
             </Button>
           </div>
-          <p className="text-sm text-muted-foreground">
-            各選択肢に解説を表示しています
-          </p>
+          {explainedCount > 0 ? (
+            <p className="text-sm text-muted-foreground">
+              {explainedCount === choices.length
+                ? "各選択肢に解説を表示しています"
+                : "正解の選択肢に解説を表示しています"}
+            </p>
+          ) : null}
         </div>
       ) : null}
 

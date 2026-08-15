@@ -24,6 +24,7 @@ export function AppShell() {
       attribute="class"
       defaultTheme="system"
       enableSystem
+      storageKey="theme"
       disableTransitionOnChange
     >
       <TooltipProvider>
