@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content"
 import ExamBreadcrumb from "@/components/exam-breadcrumb.astro"
 import { NextQuestionNav } from "@/components/next-question-nav"
 import { QuestionQuiz } from "@/components/question-quiz"
+import { buttonVariants } from "@/components/ui/button"
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
 import { renderMarkdown } from "@/lib/markdown"
@@ -81,9 +82,24 @@ const sourceExplanationTitle = `${mapsTo.year}年 ${sessionLabel(mapsTo.session)
 ---
 
 <Layout title={title} description={description} headerLabel="国家試験対策">
-  <ExamBreadcrumb slot="header" year={year} session={session} number={number} />
+  <span slot="header" class="text-sm text-muted-foreground md:hidden">
+    国家試験対策
+  </span>
+  <ExamBreadcrumb
+    slot="header"
+    class="hidden min-w-0 md:block"
+    year={year}
+    session={session}
+    number={number}
+  />
   <article class="mx-auto grid max-w-2xl gap-6">
     <header class="grid gap-3">
+      <ExamBreadcrumb
+        class="md:hidden"
+        year={year}
+        session={session}
+        number={number}
+      />
       <p class="text-sm text-muted-foreground">
         {year}年 · {heading}
         {origin === "analog" ? " · 類似問題" : ""}
@@ -95,7 +111,7 @@ const sourceExplanationTitle = `${mapsTo.year}年 ${sessionLabel(mapsTo.session)
         {stem}
       </h1>
       <a
-        class="inline-flex min-h-11 w-fit items-center justify-center rounded-lg border border-border bg-background px-3 text-sm font-medium transition-colors hover:bg-muted active:bg-muted"
+        class:list={[buttonVariants({ variant: "default" }), "min-h-11 w-fit"]}
         href={subjectHref(subject)}
       >
         {subjectLabel(subject)}
@@ -109,6 +125,7 @@ const sourceExplanationTitle = `${mapsTo.year}年 ${sessionLabel(mapsTo.session)
       labelledBy="question-stem"
       choices={quizChoices}
       answer={answer}
+      shuffleChoices={question.data.shuffleChoices}
       sourceExplanationHtml={sourceExplanationHtml}
       sourceExplanationTitle={sourceExplanationTitle}
     />

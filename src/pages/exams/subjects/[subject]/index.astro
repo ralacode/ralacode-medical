@@ -37,9 +37,17 @@ const description = `${label}の出題意図に沿った類似問題です。公
 ---
 
 <Layout title={title} description={description} headerLabel="国家試験対策">
-  <ExamBreadcrumb slot="header" subject={subject} />
+  <span slot="header" class="text-sm text-muted-foreground md:hidden">
+    国家試験対策
+  </span>
+  <ExamBreadcrumb
+    slot="header"
+    class="hidden min-w-0 md:block"
+    subject={subject}
+  />
   <div class="mx-auto grid max-w-2xl gap-8">
     <header class="grid gap-3">
+      <ExamBreadcrumb class="md:hidden" subject={subject} />
       <h1 class="text-2xl font-semibold tracking-tight">{label}</h1>
       <p class="text-sm leading-relaxed text-muted-foreground">
         公式の問題文・選択肢は掲載していません。この科目の類似問題を選んで演習できます。

@@ -42,6 +42,8 @@ const questions = defineCollection({
         })
       )
       .length(5),
+    /** false のとき、肢番号に意味があるのでランダムにしない */
+    shuffleChoices: z.boolean().default(true),
     /** 1-indexed。複数正解の問は配列 */
     answer: z.union([
       z.number().int().min(1).max(5),

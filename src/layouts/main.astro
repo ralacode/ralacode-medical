@@ -39,19 +39,22 @@ const {
     <script is:inline>
       (() => {
         const storageKey = "theme"
+        const media = matchMedia("(prefers-color-scheme: dark)")
 
-        const applyTheme = (root) => {
-          const stored = localStorage.getItem(storageKey)
+        const applyTheme = (root, stored = localStorage.getItem(storageKey)) => {
           const dark =
             stored === "dark" ||
-            ((stored == null || stored === "system") &&
-              matchMedia("(prefers-color-scheme: dark)").matches)
+            ((stored == null || stored === "system") && media.matches)
           root.classList.toggle("dark", dark)
           root.classList.toggle("light", !dark)
           root.style.colorScheme = dark ? "dark" : "light"
         }
 
         applyTheme(document.documentElement)
+        media.addEventListener("change", () => {
+          localStorage.setItem(storageKey, "system")
+          applyTheme(document.documentElement, "system")
+        })
         document.addEventListener("astro:before-swap", (event) => {
           applyTheme(event.newDocument.documentElement)
         })

@@ -1,17 +1,30 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { CheckIcon, RotateCcwIcon, XIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import {
+  readChoiceOrderMode,
+  shuffleItems,
+  writeChoiceOrderMode,
+  type ChoiceOrderMode,
+} from "@/lib/choice-order"
 import { cn } from "@/lib/utils"
+
+type Choice = {
+  text: string
+  explanationHtml: string
+}
+
+type OrderedChoice = Choice & {
+  originalNumber: number
+}
 
 type QuestionQuizProps = {
   labelledBy: string
-  choices: {
-    text: string
-    explanationHtml: string
-  }[]
+  choices: Choice[]
   answer: number
+  shuffleChoices?: boolean
   sourceExplanationHtml?: string
   sourceExplanationTitle?: string
 }
@@ -45,6 +58,65 @@ function ResultStatus({
   )
 }
 
+function ChoiceOrderToggle({
+  mode,
+  shuffleable,
+  onChange,
+}: {
+  mode: ChoiceOrderMode
+  shuffleable: boolean
+  onChange: (mode: ChoiceOrderMode) => void
+}) {
+  const labelId = "choice-order-label"
+
+  return (
+    <div className="grid justify-end gap-1">
+      <p id={labelId} className="text-xs text-muted-foreground">
+        選択肢の順番
+      </p>
+      <div
+        className="grid grid-cols-2 gap-1 rounded-lg bg-muted p-0.5"
+        role="radiogroup"
+        aria-labelledby={labelId}
+      >
+        <button
+          type="button"
+          role="radio"
+          aria-checked={mode === "original"}
+          className={cn(
+            "inline-flex min-h-9 items-center justify-center rounded-md px-2.5 text-xs font-medium text-muted-foreground transition-colors",
+            mode === "original" && "bg-background text-foreground shadow-sm"
+          )}
+          onClick={() => onChange("original")}
+        >
+          デフォルト
+        </button>
+        <button
+          type="button"
+          role="radio"
+          aria-checked={mode === "random"}
+          aria-disabled={!shuffleable}
+          disabled={!shuffleable}
+          className={cn(
+            "inline-flex min-h-9 items-center justify-center rounded-md px-2.5 text-xs font-medium text-muted-foreground transition-colors disabled:cursor-not-allowed disabled:opacity-50",
+            mode === "random" &&
+              shuffleable &&
+              "bg-background text-foreground shadow-sm"
+          )}
+          onClick={() => onChange("random")}
+        >
+          ランダム
+        </button>
+      </div>
+      {!shuffleable ? (
+        <p className="text-xs text-muted-foreground">
+          この問題は選択肢の順を固定しています
+        </p>
+      ) : null}
+    </div>
+  )
+}
+
 function scrollPageToTop() {
   const scroller = document.querySelector("[data-slot='page-scroll']")
   if (scroller instanceof HTMLElement) {
@@ -54,24 +126,70 @@ function scrollPageToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" })
 }
 
+function orderChoices(
+  choices: OrderedChoice[],
+  mode: ChoiceOrderMode,
+  shuffleable: boolean
+) {
+  if (mode === "random" && shuffleable) return shuffleItems(choices)
+  return choices
+}
+
 export function QuestionQuiz({
   labelledBy,
   choices,
   answer,
+  shuffleChoices = true,
   sourceExplanationHtml,
   sourceExplanationTitle = "対応する過去問の解説",
 }: QuestionQuizProps) {
+  const indexed = useMemo(
+    () =>
+      choices.map((choice, index) => ({
+        ...choice,
+        originalNumber: index + 1,
+      })),
+    [choices]
+  )
+
+  const [mounted, setMounted] = useState(false)
+  const [mode, setMode] = useState<ChoiceOrderMode>("original")
+  const [ordered, setOrdered] = useState<OrderedChoice[]>(indexed)
   const [value, setValue] = useState<string | null>(null)
   const [submitted, setSubmitted] = useState(false)
 
+  useEffect(() => {
+    const nextMode = readChoiceOrderMode()
+    setMode(nextMode)
+    setOrdered(orderChoices(indexed, nextMode, shuffleChoices))
+    setValue(null)
+    setSubmitted(false)
+    setMounted(true)
+  }, [indexed, shuffleChoices])
+
+  const displayAnswer =
+    ordered.findIndex((choice) => choice.originalNumber === answer) + 1
   const selected = value ? Number(value) : undefined
-  const correct = submitted && selected === answer
-  const explainedCount = choices.filter((choice) => choice.explanationHtml).length
+  const correct = submitted && selected === displayAnswer
+  const explainedCount = choices.filter((choice) => choice.explanationHtml)
+    .length
 
   useEffect(() => {
     if (!submitted) return
     scrollPageToTop()
   }, [submitted])
+
+  function startAttempt(nextMode: ChoiceOrderMode) {
+    setValue(null)
+    setSubmitted(false)
+    setOrdered(orderChoices(indexed, nextMode, shuffleChoices))
+  }
+
+  function handleModeChange(nextMode: ChoiceOrderMode) {
+    writeChoiceOrderMode(nextMode)
+    setMode(nextMode)
+    startAttempt(nextMode)
+  }
 
   function handleSubmit(event: { preventDefault(): void }) {
     event.preventDefault()
@@ -80,16 +198,38 @@ export function QuestionQuiz({
   }
 
   function handleRetry() {
-    setValue(null)
-    setSubmitted(false)
+    startAttempt(mode)
+  }
+
+  if (!mounted) {
+    return (
+      <div className="grid gap-6" aria-hidden="true">
+        <div className="ml-auto h-10 w-40 rounded-lg bg-muted" />
+        <div className="grid gap-2">
+          {choices.map((_, index) => (
+            <div
+              key={index}
+              className="min-h-16 rounded-xl border border-border bg-card"
+            />
+          ))}
+        </div>
+        <div className="h-9 w-20 rounded-lg bg-muted" />
+      </div>
+    )
   }
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-6">
+      <ChoiceOrderToggle
+        mode={shuffleChoices ? mode : "original"}
+        shuffleable={shuffleChoices}
+        onChange={handleModeChange}
+      />
+
       {submitted ? (
         <div className="grid gap-1">
           <div className="flex flex-wrap items-center gap-3">
-            <ResultStatus correct={correct} answer={answer} live />
+            <ResultStatus correct={correct} answer={displayAnswer} live />
             <Button
               type="button"
               variant="outline"
@@ -120,15 +260,15 @@ export function QuestionQuiz({
         aria-labelledby={labelledBy}
         className="gap-2"
       >
-        {choices.map((choice, index) => {
+        {ordered.map((choice, index) => {
           const number = index + 1
-          const showCorrect = submitted && number === answer
+          const showCorrect = submitted && number === displayAnswer
           const showWrong =
-            submitted && selected === number && number !== answer
+            submitted && selected === number && number !== displayAnswer
 
           return (
             <div
-              key={number}
+              key={choice.originalNumber}
               className={cn(
                 "grid gap-2 rounded-xl border border-border bg-card p-3 text-base leading-relaxed transition-colors",
                 submitted
@@ -168,7 +308,7 @@ export function QuestionQuiz({
       <div className="flex flex-wrap items-center gap-3">
         {submitted ? (
           <>
-            <ResultStatus correct={correct} answer={answer} />
+            <ResultStatus correct={correct} answer={displayAnswer} />
             <Button
               type="button"
               variant="outline"

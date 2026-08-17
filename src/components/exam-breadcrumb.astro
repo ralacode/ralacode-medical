@@ -1,4 +1,5 @@
 ---
+import { buttonVariants } from "@/components/ui/button"
 import { subjectLabel, type ExamSubjectId } from "@/lib/exam-subjects"
 import {
   examsHref,
@@ -12,18 +13,17 @@ interface Props {
   session?: ExamSession
   number?: number
   subject?: ExamSubjectId
+  class?: string
 }
 
-const { year, session, number, subject } = Astro.props
+const { year, session, number, subject, class: className } = Astro.props
 const atRoot = year == null && subject == null
-const currentClass = "text-foreground"
-const linkClass = "hover:text-foreground"
+const currentClass = "px-1 text-foreground"
+const linkClass = buttonVariants({ variant: "default", size: "sm" })
 ---
 
-<nav aria-label="パンくずリスト">
-  <ol
-    class="flex min-w-0 items-center gap-1.5 overflow-hidden text-sm text-muted-foreground"
-  >
+<nav aria-label="パンくずリスト" class={className}>
+  <ol class="flex min-w-0 items-center gap-2 overflow-hidden text-sm">
     <li>
       {
         atRoot ? (
@@ -38,7 +38,7 @@ const linkClass = "hover:text-foreground"
     {
       year ? (
         <>
-          <li aria-hidden="true">/</li>
+          <li aria-hidden="true" class="text-muted-foreground">/</li>
           <li>
             {session ? (
               <a class={linkClass} href={yearHref(year)}>
@@ -54,7 +54,7 @@ const linkClass = "hover:text-foreground"
     {
       session && number ? (
         <>
-          <li aria-hidden="true">/</li>
+          <li aria-hidden="true" class="text-muted-foreground">/</li>
           <li class:list={[currentClass, "truncate"]}>
             {sessionLabel(session)} 問{number}
           </li>
@@ -64,7 +64,7 @@ const linkClass = "hover:text-foreground"
     {
       subject && !year ? (
         <>
-          <li aria-hidden="true">/</li>
+          <li aria-hidden="true" class="text-muted-foreground">/</li>
           <li class:list={[currentClass, "truncate"]}>
             {subjectLabel(subject)}
           </li>
