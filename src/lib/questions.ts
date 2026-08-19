@@ -18,6 +18,11 @@ export function sessionLabel(session: ExamSession) {
   return session === "am" ? "午前" : "午後"
 }
 
+export function answerLabel(answer: number | number[]) {
+  const values = Array.isArray(answer) ? answer : [answer]
+  return `正解は${values.join("と")}です`
+}
+
 export function examsHref() {
   return withBase("exams/")
 }

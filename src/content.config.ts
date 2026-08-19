@@ -4,6 +4,9 @@ import { glob } from "astro/loaders"
 
 import { examSubjectIds } from "./lib/exam-subjects"
 
+const choiceNumber = z.number().int().min(1).max(5)
+const examAnswer = z.union([choiceNumber, z.array(choiceNumber).min(1)])
+
 const articles = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/articles" }),
   schema: z.object({
@@ -29,6 +32,8 @@ const questions = defineCollection({
       exam: z.number().int(),
       session: z.enum(["am", "pm"]),
       number: z.number().int().positive(),
+      /** 公式の正答。1-indexed。複数正解の問は配列 */
+      answer: examAnswer,
     }),
     /** 令和6年4月施行の試験科目 */
     subject: z.enum(examSubjectIds),
@@ -45,10 +50,7 @@ const questions = defineCollection({
     /** false のとき、肢番号に意味があるのでランダムにしない */
     shuffleChoices: z.boolean().default(true),
     /** 1-indexed。複数正解の問は配列 */
-    answer: z.union([
-      z.number().int().min(1).max(5),
-      z.array(z.number().int().min(1).max(5)).min(1),
-    ]),
+    answer: examAnswer,
     terms: z.array(z.string()).default([]),
     /** 対応する過去問の出題要点。公式の問題文・選択肢は含めない */
     sourceExplanation: z.string().optional(),

@@ -8,7 +8,8 @@
     "year": 2026,
     "exam": 78,
     "session": "am",
-    "number": 2
+    "number": 2,
+    "answer": 2
   },
   "subject": "shinryo-gazo-kensa",
   "stem": "3.0 T MRI 装置で、スライス選択に用いる RF パルスの最小バンド幅が 639 Hz、スライス選択傾斜磁場の最大強度が 15 mT·m⁻¹ のとき、設定できる最小スライス厚［mm］はどれか。",

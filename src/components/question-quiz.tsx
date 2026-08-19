@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from "react"
-import { CheckIcon, RotateCcwIcon, XIcon } from "lucide-react"
+import { useEffect, useMemo, useRef, useState } from "react"
+import { CheckIcon, ExternalLinkIcon, RotateCcwIcon, XIcon } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import {
   readChoiceOrderMode,
@@ -27,6 +27,11 @@ type QuestionQuizProps = {
   shuffleChoices?: boolean
   sourceExplanationHtml?: string
   sourceExplanationTitle?: string
+  sourceAnswerLabel?: string
+  sourcePdfHref?: string
+  sourcePdfPage?: number
+  sourceBookletPdfHref?: string
+  sourceBookletPdfPage?: number
 }
 
 function ResultStatus({
@@ -38,10 +43,22 @@ function ResultStatus({
   answer: number
   live?: boolean
 }) {
+  const [celebrate, setCelebrate] = useState(false)
+
+  useEffect(() => {
+    if (!live || !correct) {
+      setCelebrate(false)
+      return
+    }
+
+    const id = window.setTimeout(() => setCelebrate(true), 550)
+    return () => window.clearTimeout(id)
+  }, [live, correct])
+
   return (
     <p
       className={cn(
-        "flex items-center gap-2 text-sm font-medium",
+        "flex items-center gap-2 text-lg font-bold",
         correct
           ? "text-emerald-700 dark:text-emerald-400"
           : "text-destructive"
@@ -49,11 +66,27 @@ function ResultStatus({
       aria-live={live ? "polite" : undefined}
     >
       {correct ? (
-        <CheckIcon className="size-4" aria-hidden="true" />
+        <span className="relative inline-flex size-5 items-center justify-center">
+          <CheckIcon
+            className={cn("size-5", celebrate && "quiz-correct-icon")}
+            aria-hidden="true"
+          />
+          {celebrate
+            ? [1, 2, 3, 4, 5, 6].map((spark) => (
+                <span
+                  key={spark}
+                  className={`quiz-spark quiz-spark-${spark}`}
+                  aria-hidden="true"
+                />
+              ))
+            : null}
+        </span>
       ) : (
-        <XIcon className="size-4" aria-hidden="true" />
+        <XIcon className="size-5" aria-hidden="true" />
       )}
-      {correct ? "正解です" : `不正解です。正解は ${answer} です。`}
+      <span className={celebrate ? "quiz-correct-label" : undefined}>
+        {correct ? "正解です" : `不正解です。正解は ${answer} です。`}
+      </span>
     </p>
   )
 }
@@ -117,13 +150,19 @@ function ChoiceOrderToggle({
   )
 }
 
-function scrollPageToTop() {
+function scrollIntoPage(el: HTMLElement | null) {
+  if (!el) return
+
   const scroller = document.querySelector("[data-slot='page-scroll']")
   if (scroller instanceof HTMLElement) {
-    scroller.scrollTo({ top: 0, behavior: "smooth" })
+    const scrollerRect = scroller.getBoundingClientRect()
+    const elRect = el.getBoundingClientRect()
+    const top = scroller.scrollTop + elRect.top - scrollerRect.top
+    scroller.scrollTo({ top: Math.max(0, top), behavior: "smooth" })
     return
   }
-  window.scrollTo({ top: 0, behavior: "smooth" })
+
+  el.scrollIntoView({ behavior: "smooth", block: "start" })
 }
 
 function orderChoices(
@@ -142,6 +181,11 @@ export function QuestionQuiz({
   shuffleChoices = true,
   sourceExplanationHtml,
   sourceExplanationTitle = "対応する過去問の解説",
+  sourceAnswerLabel,
+  sourcePdfHref,
+  sourcePdfPage,
+  sourceBookletPdfHref,
+  sourceBookletPdfPage,
 }: QuestionQuizProps) {
   const indexed = useMemo(
     () =>
@@ -157,6 +201,7 @@ export function QuestionQuiz({
   const [ordered, setOrdered] = useState<OrderedChoice[]>(indexed)
   const [value, setValue] = useState<string | null>(null)
   const [submitted, setSubmitted] = useState(false)
+  const resultRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const nextMode = readChoiceOrderMode()
@@ -176,7 +221,10 @@ export function QuestionQuiz({
 
   useEffect(() => {
     if (!submitted) return
-    scrollPageToTop()
+    const frame = requestAnimationFrame(() => {
+      scrollIntoPage(resultRef.current)
+    })
+    return () => cancelAnimationFrame(frame)
   }, [submitted])
 
   function startAttempt(nextMode: ChoiceOrderMode) {
@@ -227,7 +275,7 @@ export function QuestionQuiz({
       />
 
       {submitted ? (
-        <div className="grid gap-1">
+        <div ref={resultRef} className="grid gap-1">
           <div className="flex flex-wrap items-center gap-3">
             <ResultStatus correct={correct} answer={displayAnswer} live />
             <Button
@@ -327,15 +375,56 @@ export function QuestionQuiz({
       </div>
 
       {submitted && sourceExplanationHtml ? (
-        <section className="grid gap-2 rounded-xl border border-border bg-muted/40 p-4">
-          <h2 className="text-base font-medium text-foreground">
-            {sourceExplanationTitle}
+        <div className="grid gap-3">
+          <h2 className="text-2xl font-semibold tracking-tight">
+            実際の過去問を解説します↓
+          </h2>
+          <section className="grid gap-2 rounded-xl border border-border bg-muted/40 p-4">
+          {sourcePdfHref || sourceBookletPdfHref ? (
+            <div className="grid gap-2">
+              <div className="flex flex-wrap gap-2">
+                {sourcePdfHref ? (
+                  <a
+                    className={cn(buttonVariants({ variant: "default" }), "w-fit")}
+                    href={sourcePdfHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    公式の問題PDF
+                    {sourcePdfPage ? `（${sourcePdfPage}ページ）` : ""}
+                    <ExternalLinkIcon data-icon="inline-end" />
+                  </a>
+                ) : null}
+                {sourceBookletPdfHref ? (
+                  <a
+                    className={cn(buttonVariants({ variant: "default" }), "w-fit")}
+                    href={sourceBookletPdfHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    公式の別冊PDF
+                    {sourceBookletPdfPage ? `（${sourceBookletPdfPage}ページ）` : ""}
+                    <ExternalLinkIcon data-icon="inline-end" />
+                  </a>
+                ) : null}
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Adobe の拡張機能などでは先頭から開くことがあります。そのときはボタンに書いたページへ進んでください。
+              </p>
+            </div>
+          ) : null}
+          <h2 className="grid gap-1 text-base font-medium text-foreground">
+            <span>{sourceExplanationTitle}</span>
+            {sourceAnswerLabel ? (
+              <span className="text-lg font-bold">{sourceAnswerLabel}</span>
+            ) : null}
           </h2>
           <div
             className="explanation-md text-base"
             dangerouslySetInnerHTML={{ __html: sourceExplanationHtml }}
           />
-        </section>
+          </section>
+        </div>
       ) : null}
     </form>
   )

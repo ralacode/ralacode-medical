@@ -7,9 +7,14 @@ import { QuestionQuiz } from "@/components/question-quiz"
 import { buttonVariants } from "@/components/ui/button"
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
+import {
+  officialExamBookletPdfLink,
+  officialExamPdfLink,
+} from "@/lib/exam-pdfs"
 import { renderMarkdown } from "@/lib/markdown"
 import { subjectLabel } from "@/lib/exam-subjects"
 import {
+  answerLabel,
   compareQuestions,
   questionHeading,
   questionNavTarget,
@@ -79,6 +84,17 @@ const sourceExplanationHtml = sourceExplanation?.trim()
   ? renderMarkdown(sourceExplanation)
   : undefined
 const sourceExplanationTitle = `${mapsTo.year}年 ${sessionLabel(mapsTo.session)} 問${mapsTo.number}の解説`
+const sourceAnswerLabel = answerLabel(mapsTo.answer)
+const sourcePdf = officialExamPdfLink(
+  mapsTo.year,
+  mapsTo.session,
+  mapsTo.number
+)
+const sourceBookletPdf = officialExamBookletPdfLink(
+  mapsTo.year,
+  mapsTo.session,
+  mapsTo.number
+)
 ---
 
 <Layout title={title} description={description} headerLabel="国家試験対策">
@@ -128,6 +144,11 @@ const sourceExplanationTitle = `${mapsTo.year}年 ${sessionLabel(mapsTo.session)
       shuffleChoices={question.data.shuffleChoices}
       sourceExplanationHtml={sourceExplanationHtml}
       sourceExplanationTitle={sourceExplanationTitle}
+      sourceAnswerLabel={sourceAnswerLabel}
+      sourcePdfHref={sourcePdf?.href}
+      sourcePdfPage={sourcePdf?.page}
+      sourceBookletPdfHref={sourceBookletPdf?.href}
+      sourceBookletPdfPage={sourceBookletPdf?.page}
     />
     <NextQuestionNav
       client:load

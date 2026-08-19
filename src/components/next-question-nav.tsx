@@ -57,7 +57,8 @@ export function NextQuestionNav({
           <span className="font-medium leading-snug">{next.stem}</span>
         </span>
         <ArrowRightIcon
-          className="size-4 shrink-0 text-muted-foreground"
+          className="size-6 shrink-0 text-foreground"
+          strokeWidth={2.5}
           aria-hidden="true"
         />
       </a>
@@ -78,7 +79,8 @@ export function NextQuestionNav({
         <span className="font-medium leading-snug">問題一覧に戻る</span>
       </span>
       <ArrowRightIcon
-        className="size-4 shrink-0 text-muted-foreground"
+        className="size-6 shrink-0 text-foreground"
+        strokeWidth={2.5}
         aria-hidden="true"
       />
     </a>
