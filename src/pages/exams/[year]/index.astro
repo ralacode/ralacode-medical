@@ -2,10 +2,17 @@
 import type { CollectionEntry } from "astro:content"
 
 import ExamBreadcrumb from "@/components/exam-breadcrumb.astro"
-import ExamQuestionList from "@/components/exam-question-list.astro"
+import { ExamQuestionBrowser } from "@/components/exam-question-browser"
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
-import { groupQuestions, sessionLabel } from "@/lib/questions"
+import { subjectLabel } from "@/lib/exam-subjects"
+import {
+  groupQuestions,
+  questionHeading,
+  questionHref,
+  sessionLabel,
+  subjectHref,
+} from "@/lib/questions"
 
 interface Props {
   year: number
@@ -50,21 +57,26 @@ const description = exam
 
     {
       group ? (
-        <div class="grid gap-8">
-          {group.sessions.map((session) => (
-            <section class="grid gap-3">
-              <h2 class="text-sm font-medium text-muted-foreground">
-                {sessionLabel(session.session)}
-              </h2>
-              <ExamQuestionList
-                showSubject
-                questions={questions.filter(
-                  (question) => question.data.session === session.session
-                )}
-              />
-            </section>
-          ))}
-        </div>
+        <ExamQuestionBrowser
+          client:load
+          sections={group.sessions.map((session) => ({
+            title: sessionLabel(session.session),
+            items: questions
+              .filter((question) => question.data.session === session.session)
+              .sort((left, right) => left.data.number - right.data.number)
+              .map((question) => {
+                const item = question.data
+                return {
+                  href: questionHref(item.year, item.session, item.number),
+                  heading: questionHeading(item.exam, item.session, item.number),
+                  stem: item.stem,
+                  analog: item.origin === "analog",
+                  subjectHref: subjectHref(item.subject),
+                  subjectLabel: subjectLabel(item.subject),
+                }
+              }),
+          }))}
+        />
       ) : (
         <p class="text-sm text-muted-foreground">この年の問題はまだありません。</p>
       )

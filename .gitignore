@@ -22,7 +22,8 @@ pnpm-debug.log*
 .idea/
 
 # local planning docs (not for the repo)
-docs/
+docs/*
+!docs/exam-question-authoring.md
 
 # local promo / capture videos
 movies/
