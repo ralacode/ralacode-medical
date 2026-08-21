@@ -1,0 +1,55 @@
+---
+import { ArrowRightIcon } from "lucide-react"
+
+import Layout from "@/layouts/main.astro"
+import { articleHref, articleDisplayTitle } from "@/lib/article-paths"
+import { getPublishedArticles } from "@/lib/articles"
+
+const articles = [...(await getPublishedArticles())].sort(
+  (left, right) => right.data.pubDate.valueOf() - left.data.pubDate.valueOf()
+)
+---
+
+<Layout
+  title="用語解説"
+  description="診療放射線技師国家試験や現場で使う、CT・MRI・核医学まわりの用語を整理します。"
+  headerLabel="用語解説"
+>
+  <div class="mx-auto grid max-w-2xl gap-8">
+    <header class="grid gap-3">
+      <h1 class="text-2xl font-semibold tracking-tight">用語解説</h1>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        試験でも現場でも使える粒度で、用語をまとめています。
+      </p>
+    </header>
+
+    {
+      articles.length === 0 ? (
+        <p class="text-sm text-muted-foreground">公開中の記事はまだありません。</p>
+      ) : (
+        <ul class="grid gap-3">
+          {articles.map((article) => (
+            <li>
+              <a
+                class="flex min-h-16 items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50 active:bg-muted"
+                href={articleHref(article.id)}
+              >
+                <span class="grid min-w-0 flex-1 gap-1">
+                  <span class="font-medium">{articleDisplayTitle(article.data.title)}</span>
+                  <span class="text-sm text-muted-foreground">
+                    {article.data.description}
+                  </span>
+                </span>
+                <ArrowRightIcon
+                  className="size-6 shrink-0 text-foreground"
+                  strokeWidth={2.5}
+                  aria-hidden="true"
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</Layout>

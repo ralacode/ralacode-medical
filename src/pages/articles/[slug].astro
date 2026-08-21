@@ -1,0 +1,146 @@
+---
+import type { CollectionEntry } from "astro:content"
+import { render } from "astro:content"
+import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
+
+import { buttonVariants } from "@/components/ui/button"
+import Layout from "@/layouts/main.astro"
+import { articlesHref } from "@/lib/article-paths"
+import { buildArticleJsonLd } from "@/lib/article-seo"
+import { getPublishedArticles } from "@/lib/articles"
+import { getQuestionsByTermId } from "@/lib/exam-content"
+import { renderMarkdown } from "@/lib/markdown"
+import { cn } from "@/lib/utils"
+
+interface Props {
+  article: CollectionEntry<"articles">
+}
+
+export async function getStaticPaths() {
+  const articles = await getPublishedArticles()
+
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }))
+}
+
+const { article } = Astro.props
+const { title, description, pubDate, updatedDate, faq } = article.data
+const { Content } = await render(article)
+const relatedQuestions = await getQuestionsByTermId(article.id)
+const modifiedDate = updatedDate ?? pubDate
+
+if (!Astro.site) {
+  throw new Error("Set `site` in astro.config.mjs.")
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href
+const jsonLdGraph = buildArticleJsonLd({
+  site: Astro.site,
+  canonicalURL,
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  faq,
+})
+
+const formattedDate = pubDate.toLocaleDateString("ja-JP", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+})
+const formattedUpdated =
+  updatedDate &&
+  updatedDate.toLocaleDateString("ja-JP", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
+---
+
+<Layout
+  title={title}
+  description={description}
+  ogType="article"
+  articlePublishedTime={pubDate}
+  articleModifiedTime={modifiedDate}
+  jsonLdGraph={jsonLdGraph}
+  headerLabel="用語解説"
+>
+  <article class="mx-auto grid max-w-2xl gap-6">
+    <header class="grid gap-3">
+      <a
+        class={cn(buttonVariants({ variant: "default" }), "w-fit px-2")}
+        href={articlesHref()}
+      >
+        <ArrowLeftIcon data-icon="inline-start" />
+        用語解説一覧
+      </a>
+      <p class="text-sm text-muted-foreground">
+        公開 {formattedDate}
+        {formattedUpdated ? ` · 更新 ${formattedUpdated}` : ""}
+      </p>
+      <h1 class="text-2xl font-semibold tracking-tight">{title}</h1>
+      <p class="text-sm leading-relaxed text-muted-foreground">{description}</p>
+    </header>
+    <div class="article-md">
+      <Content />
+    </div>
+
+    {
+      faq.length > 0 ? (
+        <section class="article-md grid gap-4" aria-labelledby="article-faq">
+          <h2 id="article-faq" class="text-xl font-semibold tracking-tight">
+            よくある質問
+          </h2>
+          {faq.map((item) => (
+            <div class="grid gap-2">
+              <h3 class="text-lg font-medium">{item.question}</h3>
+              <div
+                class="text-base leading-relaxed text-muted-foreground"
+                set:html={renderMarkdown(item.answer)}
+              />
+            </div>
+          ))}
+        </section>
+      ) : null
+    }
+
+    {
+      relatedQuestions.length > 0 ? (
+        <section class="grid gap-3" aria-labelledby="related-questions">
+          <h2
+            id="related-questions"
+            class="text-xl font-semibold tracking-tight"
+          >
+            関連する問題
+          </h2>
+          <ul class="grid gap-3">
+            {relatedQuestions.map((question) => (
+              <li>
+                <a
+                  class="flex min-h-16 items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50 active:bg-muted"
+                  href={question.href}
+                >
+                  <span class="grid min-w-0 flex-1 gap-1">
+                    <span class="text-sm text-muted-foreground">
+                      {question.year}年 · {question.heading} · 類似問題
+                    </span>
+                    <span class="font-medium leading-snug">{question.stem}</span>
+                  </span>
+                  <ArrowRightIcon
+                    className="size-6 shrink-0 text-foreground"
+                    strokeWidth={2.5}
+                    aria-hidden="true"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null
+    }
+  </article>
+</Layout>

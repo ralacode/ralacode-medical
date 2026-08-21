@@ -1,0 +1,17 @@
+---
+description: 用語解説記事を作成・編集するときは、docs の手順書と SEO ルールに従う
+alwaysApply: true
+---
+
+# 用語解説記事の作成
+
+ユーザーが用語解説記事の作成・編集を頼んだら、作業の**最初に** `docs/glossary-article-authoring.md` を Read し、その手順と SEO ルールに従う。
+
+要点:
+
+- 保存先は `src/content/articles/{term-id}.mdx`。ファイル名は問題 JSON の `terms` と同じ ID（例: `k-space`）。
+- **title / description / FAQ / 冒頭の「とは」** まで SEO 対策を徹底する。完成例は `src/content/articles/k-space.mdx`。
+- FAQ は **frontmatter の `faq` のみ**。本文に同内容を重複しない。
+- 問題とのリンクは `terms` で自動。記事追加だけなら MDX（と必要時のみ `terms` の追記）で足りる。
+- **基本的なレイアウトと CSS は変更しない。** 記事ページの SEO 実装は触らない。
+- コミットは依頼されたときだけ。

@@ -11,6 +11,10 @@ interface Props {
   description?: string
   image?: string
   noindex?: boolean
+  ogType?: string
+  articlePublishedTime?: Date
+  articleModifiedTime?: Date
+  jsonLdGraph?: Record<string, unknown>[]
   /** ヘッダー右のページラベル */
   headerLabel?: string
   /** コンテンツ領域の余白を外す（トップなど） */
@@ -22,6 +26,10 @@ const {
   description,
   image,
   noindex,
+  ogType,
+  articlePublishedTime,
+  articleModifiedTime,
+  jsonLdGraph,
   headerLabel = "ホーム",
   flush = false,
 } = Astro.props
@@ -34,6 +42,10 @@ const {
       description={description}
       image={image}
       noindex={noindex}
+      ogType={ogType}
+      articlePublishedTime={articlePublishedTime}
+      articleModifiedTime={articleModifiedTime}
+      jsonLdGraph={jsonLdGraph}
     />
     <ClientRouter fallback="swap" />
     <script is:inline>

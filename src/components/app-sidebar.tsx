@@ -19,11 +19,12 @@ import {
 } from "@/components/ui/sidebar"
 import { siteMeta } from "@/lib/constants"
 import { withBase } from "@/lib/paths"
+import { articlesHref } from "@/lib/article-paths"
 import { examsHref } from "@/lib/questions"
 
 const navItems = [
   { title: "ホーム", href: withBase(), icon: HomeIcon },
-  { title: "用語解説", href: withBase("#glossary"), icon: BookOpenIcon },
+  { title: "用語解説", href: articlesHref(), icon: BookOpenIcon },
   {
     title: "国家試験対策",
     href: examsHref(),

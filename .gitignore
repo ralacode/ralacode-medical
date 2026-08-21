@@ -24,6 +24,8 @@ pnpm-debug.log*
 # local planning docs (not for the repo)
 docs/*
 !docs/exam-question-authoring.md
+!docs/exam-subjects-amendment-2023.md
+!docs/glossary-article-authoring.md
 
 # local promo / capture videos
 movies/

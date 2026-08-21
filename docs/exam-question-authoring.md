@@ -11,9 +11,10 @@
 1. **公式の問題文・選択肢・別冊画像を、リポジトリに転載しない。** 類似問題はオリジナルの文言にする。過去問の転載と捉えられるほど近い言い回しは不可（問6以降は特に、公式の5肢セットをほぼそのまま言い換えるだけ、は避ける）。
 2. **基本的なレイアウトと CSS は変更しない。** 問題追加の作業では、見た目・余白・コンポーネント構造・`global.css`・既存の React/Astro のマークアップを触らない。必要なのは JSON（と、PDF 対応表の追記だけ）である。
 3. **公式 PDF を git に入れない。** ローカル原本は `exams/`（gitignore）。解説カードからのリンクは厚生労働省の公式 URL を使う。
-4. **コミット・push は、ユーザーが依頼したときだけ。**
+4. **試験科目について考えるときは `docs/exam-subjects-amendment-2023.md` を参考にする。** 改正前後の科目名と、削られた科目・新設科目の判断に使う。画面に出す ID は `src/lib/exam-subjects.ts`。
+5. **コミット・push は、ユーザーが依頼したときだけ。**
 
-`docs/` と `exams/` は gitignore。この手順書と公式 PDF はローカル専用。公開されるのは類似問題 JSON と、公式 PDF へのリンク情報だけ。
+`exams/` は gitignore。`docs/` も原則 gitignore で、手順書と科目改正の通知メモだけリポジトリに含める。公式 PDF は入れない。
 
 ---
 
@@ -32,6 +33,7 @@
 | ファイル | 用途 |
 | --- | --- |
 | `src/content.config.ts` | JSON スキーマ。必須フィールドの定義 |
+| `docs/exam-subjects-amendment-2023.md` | 試験科目を考えるときの根拠（令和5年改正通知） |
 | `src/lib/exam-subjects.ts` | 令和6年4月施行の11科目 ID |
 | `src/lib/exam-pdfs.ts` | 公式 PDF URL とページ対応。別冊の有無 |
 | 直近の `src/content/questions/*.json` | 文体・解説の厚さ・`mapsTo` の書き方 |
@@ -71,7 +73,9 @@ C:\Users\stsud\AppData\Local\Temp\pdf-page-render\mupdf-extract.mjs
 
 ### 2. 科目を決める
 
-`src/lib/exam-subjects.ts` の ID だけ使う。令和6年改正後の11科目。
+試験科目について考えるときは、先に `docs/exam-subjects-amendment-2023.md` を読む。令和5年6月の施行規則改正（令和6年4月施行）で、科目の新設・名称変更・統合・削除が決まっている。
+
+実装では `src/lib/exam-subjects.ts` の ID だけ使う。改正後の11科目。削られた科目（診療画像機器学、放射線計測学など）には置かない。
 
 2026年午前の目安（内容で判断。公式の科目ラベルは PDF に無いことが多い）:
 

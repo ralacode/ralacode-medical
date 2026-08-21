@@ -174,6 +174,58 @@
   @apply mt-3 mb-2 font-medium text-foreground;
 }
 
+.article-md {
+  @apply text-base leading-relaxed text-foreground;
+}
+
+.article-md :where(p, ul, ol) {
+  @apply mb-4 last:mb-0;
+}
+
+.article-md :where(h2) {
+  @apply mt-8 mb-3 text-xl font-semibold tracking-tight first:mt-0;
+}
+
+.article-md :where(h3) {
+  @apply mt-6 mb-2 text-lg font-medium;
+}
+
+.article-md :where(ul) {
+  @apply list-disc pl-5;
+}
+
+.article-md :where(ol) {
+  @apply list-decimal pl-5;
+}
+
+.article-md :where(li) {
+  @apply my-1;
+}
+
+.article-md :where(strong) {
+  @apply font-medium;
+}
+
+.article-md :where(code) {
+  @apply rounded bg-muted px-1 py-0.5 text-[0.9em];
+}
+
+.article-md :where(a) {
+  @apply text-foreground underline;
+}
+
+.article-md :where(table) {
+  @apply my-4 w-full border-collapse text-sm;
+}
+
+.article-md :where(th, td) {
+  @apply border border-border px-3 py-2 text-left align-top;
+}
+
+.article-md :where(th) {
+  @apply bg-muted font-medium;
+}
+
 @keyframes quiz-pop {
   0% {
     transform: scale(0.35) rotate(-18deg);

@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/main.astro"
 import { siteMeta } from "@/lib/constants"
+import { articlesHref } from "@/lib/article-paths"
 import { withBase } from "@/lib/paths"
 import { examsHref } from "@/lib/questions"
 import {
@@ -71,8 +72,12 @@ import {
               <span class="pillar-title">用語解説</span>
             </div>
             <p class="pillar-desc">
-              CT・MRI・核医学まわりの用語を、試験でも現場でも使える粒度で整理します。記事公開後、ここから一覧へつなぎます。
+              CT・MRI・核医学まわりの用語を、試験でも現場でも使える粒度で整理します。
             </p>
+            <a class="pillar-cta" href={articlesHref()}>
+              用語解説を見る
+              <ArrowRightIcon className="size-4" aria-hidden="true" />
+            </a>
           </div>
         </li>
         <li id="exam">

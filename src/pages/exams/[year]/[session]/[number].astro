@@ -6,6 +6,7 @@ import { NextQuestionNav } from "@/components/next-question-nav"
 import { QuestionQuiz } from "@/components/question-quiz"
 import { buttonVariants } from "@/components/ui/button"
 import Layout from "@/layouts/main.astro"
+import { getArticlesByTermIds } from "@/lib/articles"
 import { getPublishedQuestions } from "@/lib/exam-content"
 import {
   officialExamBookletPdfLink,
@@ -68,8 +69,9 @@ export async function getStaticPaths() {
 }
 
 const { question, examNext, subjectNext } = Astro.props
-const { year, exam, session, number, stem, choices, origin, subject, sourceExplanation, mapsTo } =
+const { year, exam, session, number, stem, choices, origin, subject, sourceExplanation, mapsTo, terms } =
   question.data
+const termLinks = await getArticlesByTermIds(terms)
 const answer = singleAnswer(question.data.answer)
 const heading = questionHeading(exam, session, number)
 const title = `${heading}（類似問題）`
@@ -135,6 +137,28 @@ const sourceBookletPdf = officialExamBookletPdfLink(
       <p class="text-xs text-muted-foreground">
         公式の問題文・選択肢は掲載していません。出題の要点に沿って作り直したオリジナル問題です。
       </p>
+      {
+        termLinks.length > 0 ? (
+          <section class="grid gap-2" aria-label="関連する用語">
+            <h2 class="text-sm font-medium">関連する用語</h2>
+            <ul class="flex flex-wrap gap-2">
+              {termLinks.map((term) => (
+                <li>
+                  <a
+                    class:list={[
+                      buttonVariants({ variant: "outline" }),
+                      "min-h-9",
+                    ]}
+                    href={term.href}
+                  >
+                    {term.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null
+      }
     </header>
     <QuestionQuiz
       client:load
