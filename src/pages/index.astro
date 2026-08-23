@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/main.astro"
+import { buttonVariants } from "@/components/ui/button"
 import { siteMeta } from "@/lib/constants"
 import { articlesHref } from "@/lib/article-paths"
 import { withBase } from "@/lib/paths"
@@ -74,9 +75,9 @@ import {
             <p class="pillar-desc">
               CT・MRI・核医学まわりの用語を、試験でも現場でも使える粒度で整理します。
             </p>
-            <a class="pillar-cta" href={articlesHref()}>
+            <a class:list={[buttonVariants({ variant: "default" }), "w-fit"]} href={articlesHref()}>
               用語解説を見る
-              <ArrowRightIcon className="size-4" aria-hidden="true" />
+              <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
             </a>
           </div>
         </li>
@@ -91,9 +92,9 @@ import {
             <p class="pillar-desc">
               出題の要点とつまずきどころを、季節性も見据えてストック型で積み上げます。
             </p>
-            <a class="pillar-cta" href={withBase("exams/")}>
+            <a class:list={[buttonVariants({ variant: "default" }), "w-fit"]} href={examsHref()}>
               国家試験対策を見る
-              <ArrowRightIcon className="size-4" aria-hidden="true" />
+              <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
             </a>
           </div>
         </li>
@@ -490,21 +491,6 @@ import {
     font-size: 0.9rem;
     line-height: 1.65;
     text-wrap: pretty;
-  }
-
-  .pillar-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    margin-top: 0.25rem;
-    color: var(--home-accent);
-    font-size: 0.85rem;
-    font-weight: 550;
-    text-decoration: none;
-  }
-
-  .pillar-cta:hover {
-    text-decoration: underline;
   }
 
   .mission-panel {

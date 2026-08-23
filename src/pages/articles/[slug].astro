@@ -4,6 +4,7 @@ import { render } from "astro:content"
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 
 import { buttonVariants } from "@/components/ui/button"
+import KeyPoint from "@/components/key-point.astro"
 import Layout from "@/layouts/main.astro"
 import { articlesHref } from "@/lib/article-paths"
 import { buildArticleJsonLd } from "@/lib/article-seo"
@@ -86,12 +87,12 @@ const formattedUpdated =
       <p class="text-sm leading-relaxed text-muted-foreground">{description}</p>
     </header>
     <div class="article-md">
-      <Content />
+      <Content components={{ KeyPoint }} />
     </div>
 
     {
       faq.length > 0 ? (
-        <section class="article-md grid gap-4" aria-labelledby="article-faq">
+        <section class="grid gap-3" aria-labelledby="article-faq">
           <h2 id="article-faq" class="text-xl font-semibold tracking-tight">
             よくある質問
           </h2>

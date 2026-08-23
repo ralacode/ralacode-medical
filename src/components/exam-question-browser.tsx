@@ -5,6 +5,8 @@ import { buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 
+import { matchesSearchText } from "@/lib/search-text"
+
 export type ExamQuestionBrowserItem = {
   href: string
   heading: string
@@ -20,9 +22,7 @@ export type ExamQuestionBrowserSection = {
 }
 
 function matchesStem(stem: string, query: string) {
-  const needle = query.trim().normalize("NFKC").toLowerCase()
-  if (!needle) return true
-  return stem.normalize("NFKC").toLowerCase().includes(needle)
+  return matchesSearchText(stem, query)
 }
 
 export function ExamQuestionBrowser({

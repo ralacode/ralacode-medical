@@ -159,7 +159,8 @@
 }
 
 .explanation-md :where(strong) {
-  @apply font-medium text-foreground;
+  font-family: var(--font-sans);
+  @apply font-bold text-foreground;
 }
 
 .explanation-md :where(code) {
@@ -176,6 +177,16 @@
 
 .article-md {
   @apply text-base leading-relaxed text-foreground;
+  font-family:
+    "Yu Gothic UI", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif;
+  font-weight: 400;
+}
+
+.article-md :where(strong) {
+  font-family: inherit;
+  @apply font-bold;
 }
 
 .article-md :where(p, ul, ol) {
@@ -202,12 +213,16 @@
   @apply my-1;
 }
 
-.article-md :where(strong) {
-  @apply font-medium;
-}
-
 .article-md :where(code) {
   @apply rounded bg-muted px-1 py-0.5 text-[0.9em];
+}
+
+.article-md :where(pre) {
+  @apply my-4 overflow-x-auto rounded-xl border border-border bg-muted p-4 text-sm leading-relaxed;
+}
+
+.article-md :where(pre code) {
+  @apply bg-transparent p-0 text-[0.95em];
 }
 
 .article-md :where(a) {

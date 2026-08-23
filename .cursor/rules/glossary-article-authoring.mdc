@@ -13,5 +13,6 @@ alwaysApply: true
 - **title / description / FAQ / 冒頭の「とは」** まで SEO 対策を徹底する。完成例は `src/content/articles/k-space.mdx`。
 - FAQ は **frontmatter の `faq` のみ**。本文に同内容を重複しない。
 - 問題とのリンクは `terms` で自動。記事追加だけなら MDX（と必要時のみ `terms` の追記）で足りる。
+- **フロー・数式・要点**など強調したい記述は `<KeyPoint>` を使う（import 不要。記事ページでグローバル登録済み）。コードフェンス ``` はプログラムコード用。
 - **基本的なレイアウトと CSS は変更しない。** 記事ページの SEO 実装は触らない。
 - コミットは依頼されたときだけ。

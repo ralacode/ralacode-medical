@@ -1,6 +1,5 @@
 ---
-import { ArrowRightIcon } from "lucide-react"
-
+import { ArticleBrowser } from "@/components/article-browser"
 import Layout from "@/layouts/main.astro"
 import { articleHref, articleDisplayTitle } from "@/lib/article-paths"
 import { getPublishedArticles } from "@/lib/articles"
@@ -8,6 +7,13 @@ import { getPublishedArticles } from "@/lib/articles"
 const articles = [...(await getPublishedArticles())].sort(
   (left, right) => right.data.pubDate.valueOf() - left.data.pubDate.valueOf()
 )
+
+const browserItems = articles.map((article) => ({
+  href: articleHref(article.id),
+  title: articleDisplayTitle(article.data.title),
+  description: article.data.description,
+  keywords: article.id,
+}))
 ---
 
 <Layout
@@ -24,31 +30,10 @@ const articles = [...(await getPublishedArticles())].sort(
     </header>
 
     {
-      articles.length === 0 ? (
+      browserItems.length === 0 ? (
         <p class="text-sm text-muted-foreground">公開中の記事はまだありません。</p>
       ) : (
-        <ul class="grid gap-3">
-          {articles.map((article) => (
-            <li>
-              <a
-                class="flex min-h-16 items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50 active:bg-muted"
-                href={articleHref(article.id)}
-              >
-                <span class="grid min-w-0 flex-1 gap-1">
-                  <span class="font-medium">{articleDisplayTitle(article.data.title)}</span>
-                  <span class="text-sm text-muted-foreground">
-                    {article.data.description}
-                  </span>
-                </span>
-                <ArrowRightIcon
-                  className="size-6 shrink-0 text-foreground"
-                  strokeWidth={2.5}
-                  aria-hidden="true"
-                />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <ArticleBrowser client:load items={browserItems} />
       )
     }
   </div>
