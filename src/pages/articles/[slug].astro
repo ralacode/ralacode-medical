@@ -1,8 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content"
 import { render } from "astro:content"
-import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
+import { ArrowLeftIcon } from "lucide-react"
 
+import { LinkCard } from "@/components/link-card"
 import { buttonVariants } from "@/components/ui/button"
 import KeyPoint from "@/components/key-point.astro"
 import Layout from "@/layouts/main.astro"
@@ -121,22 +122,11 @@ const formattedUpdated =
           <ul class="grid gap-3">
             {relatedQuestions.map((question) => (
               <li>
-                <a
-                  class="flex min-h-16 items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50 active:bg-muted"
+                <LinkCard
                   href={question.href}
-                >
-                  <span class="grid min-w-0 flex-1 gap-1">
-                    <span class="text-sm text-muted-foreground">
-                      {question.year}年 · {question.heading} · 類似問題
-                    </span>
-                    <span class="font-medium leading-snug">{question.stem}</span>
-                  </span>
-                  <ArrowRightIcon
-                    className="size-6 shrink-0 text-foreground"
-                    strokeWidth={2.5}
-                    aria-hidden="true"
-                  />
-                </a>
+                  label={`${question.heading} · 類似問題`}
+                  title={question.stem}
+                />
               </li>
             ))}
           </ul>

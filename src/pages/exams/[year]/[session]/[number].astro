@@ -23,12 +23,13 @@ import {
   singleAnswer,
   subjectHref,
   yearHref,
+  type QuestionNavTarget,
 } from "@/lib/questions"
 
 interface Props {
   question: CollectionEntry<"questions">
-  examNext?: { href: string; heading: string; stem: string }
-  subjectNext?: { href: string; heading: string; stem: string }
+  examNext?: QuestionNavTarget
+  subjectNext?: QuestionNavTarget
 }
 
 export async function getStaticPaths() {

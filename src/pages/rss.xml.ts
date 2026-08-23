@@ -1,18 +1,10 @@
 import rss from "@astrojs/rss"
 import type { APIRoute } from "astro"
-import { getCollection, type CollectionEntry } from "astro:content"
 
+import { articleHref } from "@/lib/article-paths"
+import { getPublishedArticles } from "@/lib/articles"
 import { siteMeta } from "@/lib/constants"
 import { withBase } from "@/lib/paths"
-
-async function getPublishedArticles(): Promise<CollectionEntry<"articles">[]> {
-  try {
-    return await getCollection("articles", ({ data }) => !data.draft)
-  } catch {
-    // 記事がまだ無いときは空フィードを返す
-    return []
-  }
-}
 
 export const GET: APIRoute = async (context) => {
   if (!context.site) {
@@ -32,7 +24,7 @@ export const GET: APIRoute = async (context) => {
         title: article.data.title,
         description: article.data.description,
         pubDate: article.data.pubDate,
-        link: withBase(`articles/${article.id}/`),
+        link: articleHref(article.id),
       })),
   })
 }

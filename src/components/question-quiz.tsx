@@ -9,6 +9,7 @@ import {
   writeChoiceOrderMode,
   type ChoiceOrderMode,
 } from "@/lib/choice-order"
+import { PAGE_SCROLL_SLOT } from "@/lib/ui-contracts"
 import { cn } from "@/lib/utils"
 
 type Choice = {
@@ -153,7 +154,7 @@ function ChoiceOrderToggle({
 function scrollIntoPage(el: HTMLElement | null) {
   if (!el) return
 
-  const scroller = document.querySelector("[data-slot='page-scroll']")
+  const scroller = document.querySelector(`[data-slot='${PAGE_SCROLL_SLOT}']`)
   if (scroller instanceof HTMLElement) {
     const scrollerRect = scroller.getBoundingClientRect()
     const elRect = el.getBoundingClientRect()

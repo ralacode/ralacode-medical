@@ -1,6 +1,5 @@
 ---
-import { ArrowRightIcon } from "lucide-react"
-
+import { LinkCard } from "@/components/link-card"
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
 import { subjectLabel } from "@/lib/exam-subjects"
@@ -68,32 +67,19 @@ const subjects = groupQuestionsBySubject(questions)
                   (sum, session) => sum + session.items.length,
                   0
                 )
+                const sessionCounts = group.sessions
+                  .map(
+                    (session) =>
+                      ` · ${sessionLabel(session.session)} ${session.items.length}問`
+                  )
+                  .join("")
                 return (
                   <li>
-                    <a
-                      class="flex min-h-16 items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50 active:bg-muted"
+                    <LinkCard
                       href={yearHref(group.year)}
-                    >
-                      <span class="grid min-w-0 flex-1 gap-1">
-                        <span class="font-medium">
-                          {group.year}年 第{group.exam}回
-                        </span>
-                        <span class="text-sm text-muted-foreground">
-                          類似問題 {count}問
-                          {group.sessions
-                            .map(
-                              (session) =>
-                                ` · ${sessionLabel(session.session)} ${session.items.length}問`
-                            )
-                            .join("")}
-                        </span>
-                      </span>
-                      <ArrowRightIcon
-                        className="size-6 shrink-0 text-foreground"
-                        strokeWidth={2.5}
-                        aria-hidden="true"
-                      />
-                    </a>
+                      title={`${group.year}年 第${group.exam}回`}
+                      description={`類似問題 ${count}問${sessionCounts}`}
+                    />
                   </li>
                 )
               })}
@@ -104,22 +90,11 @@ const subjects = groupQuestionsBySubject(questions)
             <ul class="grid gap-3">
               {subjects.map((group) => (
                 <li>
-                  <a
-                    class="flex min-h-16 items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50 active:bg-muted"
+                  <LinkCard
                     href={subjectHref(group.subject)}
-                  >
-                    <span class="grid min-w-0 flex-1 gap-1">
-                      <span class="font-medium">{subjectLabel(group.subject)}</span>
-                      <span class="text-sm text-muted-foreground">
-                        類似問題 {group.items.length}問
-                      </span>
-                    </span>
-                    <ArrowRightIcon
-                      className="size-6 shrink-0 text-foreground"
-                      strokeWidth={2.5}
-                      aria-hidden="true"
-                    />
-                  </a>
+                    title={subjectLabel(group.subject)}
+                    description={`類似問題 ${group.items.length}問`}
+                  />
                 </li>
               ))}
             </ul>

@@ -35,6 +35,10 @@ export function subjectHref(subject: ExamSubjectId) {
   return withBase(`exams/subjects/${subject}/`)
 }
 
+/** 「科目ページ経由で来た」ことを表すクエリパラメータ。questionHref が付与し、isFromSubjectNavigation が判定する */
+const FROM_QUERY_KEY = "from"
+const FROM_SUBJECT_VALUE = "subject"
+
 export function questionHref(
   year: number,
   session: ExamSession,
@@ -42,13 +46,27 @@ export function questionHref(
   options?: { from?: "subject" }
 ) {
   const path = withBase(`exams/${year}/${session}/${number}/`)
-  return options?.from === "subject" ? `${path}?from=subject` : path
+  return options?.from === "subject"
+    ? `${path}?${FROM_QUERY_KEY}=${FROM_SUBJECT_VALUE}`
+    : path
+}
+
+/** location.search を渡して、科目ページ経由の遷移かどうかを判定する */
+export function isFromSubjectNavigation(search: string) {
+  return new URLSearchParams(search).get(FROM_QUERY_KEY) === FROM_SUBJECT_VALUE
+}
+
+/** 問題への遷移リンク（一覧カード・次の問題ナビ）で使う共通形 */
+export type QuestionNavTarget = {
+  href: string
+  heading: string
+  stem: string
 }
 
 export function questionNavTarget(
   item: Pick<QuestionListItem, "year" | "exam" | "session" | "number" | "stem">,
   options?: { from?: "subject" }
-) {
+): QuestionNavTarget {
   return {
     href: questionHref(item.year, item.session, item.number, options),
     heading: `${item.year}年 · ${questionHeading(item.exam, item.session, item.number)}`,
@@ -118,12 +136,6 @@ export function compareQuestions(
     return left.session === "am" ? -1 : 1
   }
   return left.number - right.number
-}
-
-export function sortQuestions<T extends Pick<QuestionListItem, "year" | "session" | "number">>(
-  questions: T[]
-) {
-  return [...questions].sort(compareQuestions)
 }
 
 export function singleAnswer(answer: number | number[]) {

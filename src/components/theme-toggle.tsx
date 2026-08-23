@@ -3,6 +3,7 @@ import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 
 import { ThemeProvider } from "@/components/theme-provider"
+import { THEME_STORAGE_KEY } from "@/lib/ui-contracts"
 import { cn } from "@/lib/utils"
 
 function ThemeSwitch() {
@@ -67,7 +68,7 @@ export function ThemeToggle() {
       attribute="class"
       defaultTheme="system"
       enableSystem
-      storageKey="theme"
+      storageKey={THEME_STORAGE_KEY}
       disableTransitionOnChange
     >
       <ThemeSwitch />

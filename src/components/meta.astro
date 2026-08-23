@@ -2,7 +2,7 @@
 import { siteMeta } from "@/lib/constants"
 import { withBase } from "@/lib/paths"
 
-interface Props {
+export interface Props {
   title?: string
   description?: string
   /** `public/` 配下のパス（先頭スラッシュなし） */
@@ -37,7 +37,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href
 const socialImageURL = new URL(withBase(image), Astro.site).href
 const iconHref = withBase(siteMeta.siteIcon)
 const siteURL = new URL(withBase(), Astro.site).href
-const logoURL = new URL(withBase(siteMeta.siteIcon), Astro.site).href
+const logoURL = new URL(iconHref, Astro.site).href
 
 const baseGraph = [
   {
@@ -122,4 +122,4 @@ const isArticle = ogType === "article"
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={socialImageURL} />
 
-<script type="application/ld+json" set:html={jsonLdString} />
+<script is:inline type="application/ld+json" set:html={jsonLdString} />

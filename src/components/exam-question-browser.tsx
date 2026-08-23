@@ -1,11 +1,10 @@
 import { useMemo, useState } from "react"
-import { ArrowRightIcon } from "lucide-react"
 
+import { LinkCard } from "@/components/link-card"
+import { SearchField } from "@/components/search-field"
 import { buttonVariants } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { cn } from "@/lib/utils"
-
 import { matchesSearchText } from "@/lib/search-text"
+import { cn } from "@/lib/utils"
 
 export type ExamQuestionBrowserItem = {
   href: string
@@ -21,10 +20,6 @@ export type ExamQuestionBrowserSection = {
   items: ExamQuestionBrowserItem[]
 }
 
-function matchesStem(stem: string, query: string) {
-  return matchesSearchText(stem, query)
-}
-
 export function ExamQuestionBrowser({
   sections,
 }: {
@@ -37,7 +32,9 @@ export function ExamQuestionBrowser({
       sections
         .map((section) => ({
           ...section,
-          items: section.items.filter((item) => matchesStem(item.stem, query)),
+          items: section.items.filter((item) =>
+            matchesSearchText(item.stem, query)
+          ),
         }))
         .filter((section) => section.items.length > 0),
     [query, sections]
@@ -45,20 +42,7 @@ export function ExamQuestionBrowser({
 
   return (
     <div className="grid gap-8">
-      <label className="grid gap-2">
-        <span className="text-sm font-medium text-foreground">
-          キーワードで探す
-        </span>
-        <Input
-          type="search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="例: 脂肪"
-          className="h-11"
-          autoComplete="off"
-          spellCheck={false}
-        />
-      </label>
+      <SearchField value={query} onChange={setQuery} placeholder="例: 脂肪" />
 
       {filtered.length === 0 ? (
         <p className="text-sm text-muted-foreground">
@@ -76,25 +60,12 @@ export function ExamQuestionBrowser({
                   key={item.href}
                   className="overflow-hidden rounded-xl border border-border bg-card"
                 >
-                  <a
-                    className="flex min-h-16 items-center gap-3 p-4 transition-colors hover:bg-muted/50 active:bg-muted"
+                  <LinkCard
+                    bare
                     href={item.href}
-                  >
-                    <span className="grid min-w-0 flex-1 gap-1">
-                      <span className="text-sm text-muted-foreground">
-                        {item.heading}
-                        {item.analog ? " · 類似問題" : ""}
-                      </span>
-                      <span className="leading-snug font-medium">
-                        {item.stem}
-                      </span>
-                    </span>
-                    <ArrowRightIcon
-                      className="size-6 shrink-0 text-foreground"
-                      strokeWidth={2.5}
-                      aria-hidden="true"
-                    />
-                  </a>
+                    label={`${item.heading}${item.analog ? " · 類似問題" : ""}`}
+                    title={item.stem}
+                  />
                   {item.subjectHref && item.subjectLabel ? (
                     <div className="border-t border-border p-3">
                       <a

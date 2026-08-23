@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react"
-import { ArrowRightIcon } from "lucide-react"
 
-import { Input } from "@/components/ui/input"
+import { LinkCard } from "@/components/link-card"
+import { SearchField } from "@/components/search-field"
 import { matchesSearchText } from "@/lib/search-text"
 
 export type ArticleBrowserItem = {
@@ -30,20 +30,7 @@ export function ArticleBrowser({ items }: { items: ArticleBrowserItem[] }) {
   return (
     <div className="grid gap-8">
       <div className="grid gap-3">
-        <label className="grid gap-2">
-          <span className="text-sm font-medium text-foreground">
-            キーワードで探す
-          </span>
-          <Input
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="例: k空間"
-            className="h-11"
-            autoComplete="off"
-            spellCheck={false}
-          />
-        </label>
+        <SearchField value={query} onChange={setQuery} placeholder="例: k空間" />
 
         {trimmedQuery && filtered.length > 0 ? (
           <p
@@ -64,22 +51,11 @@ export function ArticleBrowser({ items }: { items: ArticleBrowserItem[] }) {
         <ul className="grid gap-3">
           {filtered.map((item) => (
             <li key={item.href}>
-              <a
-                className="flex min-h-16 items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50 active:bg-muted"
+              <LinkCard
                 href={item.href}
-              >
-                <span className="grid min-w-0 flex-1 gap-1">
-                  <span className="font-medium">{item.title}</span>
-                  <span className="text-sm text-muted-foreground">
-                    {item.description}
-                  </span>
-                </span>
-                <ArrowRightIcon
-                  className="size-6 shrink-0 text-foreground"
-                  strokeWidth={2.5}
-                  aria-hidden="true"
-                />
-              </a>
+                title={item.title}
+                description={item.description}
+              />
             </li>
           ))}
         </ul>

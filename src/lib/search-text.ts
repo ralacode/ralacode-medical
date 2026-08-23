@@ -1,8 +1,8 @@
-export function normalizeSearchText(value: string) {
+function normalizeSearchText(value: string) {
   return value.normalize("NFKC").toLowerCase()
 }
 
-export function splitSearchQuery(query: string) {
+function splitSearchQuery(query: string) {
   return query
     .trim()
     .split(/\s+/u)

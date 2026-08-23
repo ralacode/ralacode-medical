@@ -4,14 +4,15 @@ import { AppSidebar } from "@/components/app-sidebar"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SidebarProvider, useSidebar } from "@/components/ui/sidebar"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { SIDEBAR_TOGGLE_EVENT, THEME_STORAGE_KEY } from "@/lib/ui-contracts"
 
 function SidebarEventBridge() {
   const { toggleSidebar } = useSidebar()
 
   useEffect(() => {
     const onToggle = () => toggleSidebar()
-    window.addEventListener("sidebar:toggle", onToggle)
-    return () => window.removeEventListener("sidebar:toggle", onToggle)
+    window.addEventListener(SIDEBAR_TOGGLE_EVENT, onToggle)
+    return () => window.removeEventListener(SIDEBAR_TOGGLE_EVENT, onToggle)
   }, [toggleSidebar])
 
   return null
@@ -24,7 +25,7 @@ export function AppShell() {
       attribute="class"
       defaultTheme="system"
       enableSystem
-      storageKey="theme"
+      storageKey={THEME_STORAGE_KEY}
       disableTransitionOnChange
     >
       <TooltipProvider>

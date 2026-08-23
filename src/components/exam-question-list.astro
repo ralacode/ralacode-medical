@@ -1,30 +1,24 @@
 ---
 import type { CollectionEntry } from "astro:content"
-import { ArrowRightIcon } from "lucide-react"
 
-import { buttonVariants } from "@/components/ui/button"
-import { subjectLabel } from "@/lib/exam-subjects"
+import { LinkCard } from "@/components/link-card"
 import {
+  compareQuestions,
   questionHeading,
   questionHref,
-  subjectHref,
 } from "@/lib/questions"
-import { cn } from "@/lib/utils"
 
 interface Props {
   questions: CollectionEntry<"questions">[]
-  showSubject?: boolean
   fromSubject?: boolean
 }
 
-const { questions, showSubject = false, fromSubject = false } = Astro.props
-const items = [...questions].sort((left, right) => {
-  if (left.data.year !== right.data.year) return right.data.year - left.data.year
-  if (left.data.session !== right.data.session) {
-    return left.data.session.localeCompare(right.data.session)
-  }
-  return left.data.number - right.data.number
-})
+const { questions, fromSubject = false } = Astro.props
+// 年は降順、同年内は compareQuestions（午前→午後、問番号昇順）
+const items = [...questions].sort(
+  (left, right) =>
+    right.data.year - left.data.year || compareQuestions(left.data, right.data)
+)
 ---
 
 <ul class="grid gap-3">
@@ -35,39 +29,14 @@ const items = [...questions].sort((left, right) => {
         from: fromSubject ? "subject" : undefined,
       })
       return (
-        <li class="overflow-hidden rounded-xl border border-border bg-card">
-          <a
-            class="flex min-h-16 items-center gap-3 p-4 transition-colors hover:bg-muted/50 active:bg-muted"
+        <li>
+          <LinkCard
             href={href}
-          >
-            <span class="grid min-w-0 flex-1 gap-1">
-              <span class="text-sm text-muted-foreground">
-                {questionHeading(item.exam, item.session, item.number)}
-                {item.origin === "analog" ? " · 類似問題" : ""}
-              </span>
-              <span class="font-medium leading-snug">{item.stem}</span>
-            </span>
-            <ArrowRightIcon
-              className="size-6 shrink-0 text-foreground"
-              strokeWidth={2.5}
-              aria-hidden="true"
-            />
-          </a>
-          {
-            showSubject ? (
-              <div class="border-t border-border p-3">
-                <a
-                  class={cn(
-                    buttonVariants({ variant: "default" }),
-                    "min-h-11 w-full sm:w-auto"
-                  )}
-                  href={subjectHref(item.subject)}
-                >
-                  {subjectLabel(item.subject)}
-                </a>
-              </div>
-            ) : null
-          }
+            label={`${questionHeading(item.exam, item.session, item.number)}${
+              item.origin === "analog" ? " · 類似問題" : ""
+            }`}
+            title={item.stem}
+          />
         </li>
       )
     })

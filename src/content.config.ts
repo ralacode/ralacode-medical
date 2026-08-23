@@ -2,10 +2,17 @@ import { defineCollection } from "astro:content"
 import { z } from "astro/zod"
 import { glob } from "astro/loaders"
 
+import type { FaqItem } from "./lib/article-seo"
 import { examSubjectIds } from "./lib/exam-subjects"
 
 const choiceNumber = z.number().int().min(1).max(5)
 const examAnswer = z.union([choiceNumber, z.array(choiceNumber).min(1)])
+
+// article-seo.ts の FaqItem と形がずれないように satisfies で固定する
+const faqItem = z.object({
+  question: z.string(),
+  answer: z.string(),
+}) satisfies z.ZodType<FaqItem>
 
 const articles = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/articles" }),
@@ -15,14 +22,7 @@ const articles = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     draft: z.boolean().default(false),
-    faq: z
-      .array(
-        z.object({
-          question: z.string(),
-          answer: z.string(),
-        })
-      )
-      .default([]),
+    faq: z.array(faqItem).default([]),
   }),
 })
 

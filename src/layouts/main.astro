@@ -1,20 +1,17 @@
 ---
 import "@/styles/global.css"
 import { AppShell } from "@/components/app-shell"
-import Meta from "@/components/meta.astro"
+import Meta, { type Props as MetaProps } from "@/components/meta.astro"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { ClientRouter } from "astro:transitions"
 import { PanelLeftIcon } from "lucide-react"
 
-interface Props {
-  title?: string
-  description?: string
-  image?: string
-  noindex?: boolean
-  ogType?: string
-  articlePublishedTime?: Date
-  articleModifiedTime?: Date
-  jsonLdGraph?: Record<string, unknown>[]
+import {
+  PAGE_SCROLL_SLOT,
+  SIDEBAR_TOGGLE_EVENT,
+} from "@/lib/ui-contracts"
+
+interface Props extends MetaProps {
   /** ヘッダー右のページラベル */
   headerLabel?: string
   /** コンテンツ領域の余白を外す（トップなど） */
@@ -50,6 +47,7 @@ const {
     <ClientRouter fallback="swap" />
     <script is:inline>
       (() => {
+        // src/lib/ui-contracts.ts の THEME_STORAGE_KEY と一致させること
         const storageKey = "theme"
         const media = matchMedia("(prefers-color-scheme: dark)")
 
@@ -97,7 +95,7 @@ const {
             type="button"
             class="inline-flex size-7 items-center justify-center rounded-lg hover:bg-muted"
             aria-label="Toggle Sidebar"
-            onclick="window.dispatchEvent(new CustomEvent('sidebar:toggle'))"
+            onclick={`window.dispatchEvent(new CustomEvent('${SIDEBAR_TOGGLE_EVENT}'))`}
           >
             <PanelLeftIcon className="size-4" />
           </button>
@@ -110,7 +108,7 @@ const {
           <ThemeToggle client:load />
         </header>
         <div
-          data-slot="page-scroll"
+          data-slot={PAGE_SCROLL_SLOT}
           class:list={["min-h-0 overflow-x-hidden overflow-y-auto", flush ? "p-0" : "p-4"]}
         >
           <slot />

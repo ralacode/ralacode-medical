@@ -1,15 +1,14 @@
-import { ArrowRightIcon } from "lucide-react"
 import { useEffect, useState } from "react"
 
-type NavTarget = {
-  href: string
-  heading: string
-  stem: string
-}
+import { LinkCard } from "@/components/link-card"
+import {
+  isFromSubjectNavigation,
+  type QuestionNavTarget,
+} from "@/lib/questions"
 
 type NextQuestionNavProps = {
-  examNext?: NavTarget
-  subjectNext?: NavTarget
+  examNext?: QuestionNavTarget
+  subjectNext?: QuestionNavTarget
   examBackHref: string
   subjectBackHref: string
   subjectLabel: string
@@ -28,8 +27,7 @@ export function NextQuestionNav({
 
   useEffect(() => {
     const sync = () => {
-      const params = new URLSearchParams(window.location.search)
-      setFromSubject(params.get("from") === "subject")
+      setFromSubject(isFromSubjectNavigation(window.location.search))
     }
 
     sync()
@@ -42,47 +40,26 @@ export function NextQuestionNav({
   }
 
   const next = fromSubject ? subjectNext : examNext
-  const backHref = fromSubject ? subjectBackHref : examBackHref
 
   if (next) {
     return (
-      <a
-        className="flex min-h-16 items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50 active:bg-muted"
+      <LinkCard
         href={next.href}
-      >
-        <span className="grid min-w-0 flex-1 gap-1">
-          <span className="text-sm text-muted-foreground">
-            次の問題 · {next.heading}
-          </span>
-          <span className="font-medium leading-snug">{next.stem}</span>
-        </span>
-        <ArrowRightIcon
-          className="size-6 shrink-0 text-foreground"
-          strokeWidth={2.5}
-          aria-hidden="true"
-        />
-      </a>
+        label={`次の問題 · ${next.heading}`}
+        title={next.stem}
+      />
     )
   }
 
   return (
-    <a
-      className="flex min-h-16 items-center gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50 active:bg-muted"
-      href={backHref}
-    >
-      <span className="grid min-w-0 flex-1 gap-1">
-        <span className="text-sm text-muted-foreground">
-          {fromSubject
-            ? `${subjectLabel}の最後の問題です`
-            : `${year}年最後の問題です`}
-        </span>
-        <span className="font-medium leading-snug">問題一覧に戻る</span>
-      </span>
-      <ArrowRightIcon
-        className="size-6 shrink-0 text-foreground"
-        strokeWidth={2.5}
-        aria-hidden="true"
-      />
-    </a>
+    <LinkCard
+      href={fromSubject ? subjectBackHref : examBackHref}
+      label={
+        fromSubject
+          ? `${subjectLabel}の最後の問題です`
+          : `${year}年最後の問題です`
+      }
+      title="問題一覧に戻る"
+    />
   )
 }

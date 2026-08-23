@@ -1,4 +1,4 @@
-export const CHOICE_ORDER_STORAGE_KEY = "exam-choice-order"
+const CHOICE_ORDER_STORAGE_KEY = "exam-choice-order"
 
 export type ChoiceOrderMode = "original" | "random"
 
