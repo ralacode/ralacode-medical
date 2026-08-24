@@ -1,0 +1,5 @@
+# Astro `base: /medical/` — dist はルート直下だが公開 URL は /medical/ 配下。
+# Cloudflare Pages が /medical/* を dist 内の対応パスへ内部リライトする。
+/medical/  /  200
+/medical/*  /:splat  200
+/medical  /medical/  301

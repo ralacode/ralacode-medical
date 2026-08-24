@@ -1,0 +1,37 @@
+---
+import Layout from "@/layouts/main.astro"
+import { buttonVariants } from "@/components/ui/button"
+import { withBase } from "@/lib/paths"
+import { ArrowLeftIcon } from "lucide-react"
+---
+
+<Layout
+  title="ページが見つかりません"
+  description="お探しのページは存在しないか、移動した可能性があります。"
+  headerLabel="404"
+  noindex
+>
+  <div class="mx-auto grid max-w-lg gap-6 py-12 text-center">
+    <div class="grid gap-2">
+      <p
+        class="text-6xl font-semibold tracking-tighter text-muted-foreground/40"
+      >
+        404
+      </p>
+      <h1 class="text-xl font-semibold tracking-tight">
+        ページが見つかりません
+      </h1>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        URL が間違っているか、ページが移動・削除された可能性があります。
+      </p>
+    </div>
+
+    <a
+      class:list={[buttonVariants({ variant: "default" }), "mx-auto w-fit"]}
+      href={withBase()}
+    >
+      <ArrowLeftIcon data-icon="inline-start" aria-hidden="true" />
+      ホームへ戻る
+    </a>
+  </div>
+</Layout>
