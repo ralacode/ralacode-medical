@@ -1,0 +1,12 @@
+{
+	"$schema": "https://unpkg.com/wrangler/config-schema.json",
+	"name": "ralacode-medical",
+	"compatibility_date": "2026-08-25",
+	"assets": {
+		// Astro の build 出力。_redirects / _headers はこのディレクトリ直下にあると
+		// デプロイ時に Wrangler が解析してルールとして適用する（アセットとしては配信されない）。
+		"directory": "./dist",
+		// 未ヒット時に dist/404.html（src/pages/404.astro）を返す
+		"not_found_handling": "404-page"
+	}
+}

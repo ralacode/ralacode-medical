@@ -1,5 +1,6 @@
 # Astro `base: /medical/` — dist はルート直下だが公開 URL は /medical/ 配下。
-# Cloudflare Pages が /medical/* を dist 内の対応パスへ内部リライトする。
+# Cloudflare (Workers 静的アセット) が /medical/* を dist 内の対応パスへ内部リライトする。
+# 最初にマッチした 1 ルールだけが適用されるため、末尾スラッシュなしの 301 を先頭に置く。
+/medical  /medical/  301
 /medical/  /  200
 /medical/*  /:splat  200
-/medical  /medical/  301
