@@ -1,0 +1,38 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 13,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 13,
+    "answer": 3
+  },
+  "subject": "kakui-gaku",
+  "stem": "SPECT の TEW（triple energy window）法で、メインエネルギーウィンドウに混入した散乱線カウントを推定する式はどれか。メインウインドウ幅を Wm、低エネルギー側サブウインドウのカウントと幅を Cl、Wl、高エネルギー側サブウインドウのカウントと幅を Ch、Wh とする。",
+  "choices": [
+    {
+      "text": "（Cl ＋ Ch）× Wm / 2"
+    },
+    {
+      "text": "（Cl / Wl ＋ Ch / Wh）× Wm"
+    },
+    {
+      "text": "（Wl / Cl ＋ Wh / Ch）× Wm / 2"
+    },
+    {
+      "text": "（Cl / Wl ＋ Ch / Wh）× Wm / 2",
+      "explanation": "TEW 法は、メインの**上下2つのサブウインドウ**から散乱線の「濃さ」を読み取り、メイン幅 Wm に換算します。各サブウインドウでは **カウント÷幅（= 1 幅あたりのカウント）** を使い、その和に **Wm/2** をかけます。式：**（Cl/Wl ＋ Ch/Wh）× Wm / 2**。"
+    },
+    {
+      "text": "（Cl / Wl ＋ Ch / Wh）× Wm × 2"
+    }
+  ],
+  "answer": 4,
+  "terms": ["tew-scatter-correction"],
+  "sourceExplanation": "この問は、SPECT の**散乱線補正（TEW 法）**の式を扱います。\n\n- TEW 法 … メインウィンドウの**上下**にサブウィンドウを置き、そこから散乱成分を推定する。\n- サブウインドウごとに **カウント÷ウィンドウ幅**（面積当たりのカウント）を求め、足してからメイン幅の半分をかける。\n- 正しい形：**（Clow/Wlow ＋ Chigh/Whigh）× Wmain / 2**。\n- ひっかけ：カウントをそのまま足す、**/2 を忘れる**、**幅で割らない**、分子と分母を逆にする。",
+  "draft": false
+}

@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content"
 
 import ExamBreadcrumb from "@/components/exam-breadcrumb.astro"
-import { NextQuestionNav } from "@/components/next-question-nav"
+import { QuestionNav } from "@/components/question-nav"
 import { QuestionQuiz } from "@/components/question-quiz"
 import { buttonVariants } from "@/components/ui/button"
 import Layout from "@/layouts/main.astro"
@@ -12,7 +12,7 @@ import {
   officialExamBookletPdfLink,
   officialExamPdfLink,
 } from "@/lib/exam-pdfs"
-import { renderMarkdown } from "@/lib/markdown"
+import { renderEmphasisHtml, renderMarkdown } from "@/lib/markdown"
 import { subjectLabel } from "@/lib/exam-subjects"
 import {
   answerLabel,
@@ -28,7 +28,9 @@ import {
 
 interface Props {
   question: CollectionEntry<"questions">
+  examPrev?: QuestionNavTarget
   examNext?: QuestionNavTarget
+  subjectPrev?: QuestionNavTarget
   subjectNext?: QuestionNavTarget
 }
 
@@ -47,7 +49,9 @@ export async function getStaticPaths() {
         entry.data.session === question.data.session &&
         entry.data.number === question.data.number
     )
+    const examPrevEntry = questions[index - 1]
     const examNextEntry = questions[index + 1]
+    const subjectPrevEntry = inSubject[subjectIndex - 1]
     const subjectNextEntry = inSubject[subjectIndex + 1]
 
     return {
@@ -58,8 +62,14 @@ export async function getStaticPaths() {
       },
       props: {
         question,
+        examPrev: examPrevEntry
+          ? questionNavTarget(examPrevEntry.data)
+          : undefined,
         examNext: examNextEntry
           ? questionNavTarget(examNextEntry.data)
+          : undefined,
+        subjectPrev: subjectPrevEntry
+          ? questionNavTarget(subjectPrevEntry.data, { from: "subject" })
           : undefined,
         subjectNext: subjectNextEntry
           ? questionNavTarget(subjectNextEntry.data, { from: "subject" })
@@ -69,7 +79,7 @@ export async function getStaticPaths() {
   })
 }
 
-const { question, examNext, subjectNext } = Astro.props
+const { question, examPrev, examNext, subjectPrev, subjectNext } = Astro.props
 const { year, exam, session, number, stem, choices, origin, subject, sourceExplanation, mapsTo, terms } =
   question.data
 const termLinks = await getArticlesByTermIds(terms)
@@ -126,9 +136,8 @@ const sourceBookletPdf = officialExamBookletPdfLink(
       <h1
         id="question-stem"
         class="text-xl leading-snug font-semibold tracking-tight"
-      >
-        {stem}
-      </h1>
+        set:html={renderEmphasisHtml(stem)}
+      />
       <a
         class:list={[buttonVariants({ variant: "default" }), "min-h-11 w-fit"]}
         href={subjectHref(subject)}
@@ -175,9 +184,20 @@ const sourceBookletPdf = officialExamBookletPdfLink(
       sourceBookletPdfHref={sourceBookletPdf?.href}
       sourceBookletPdfPage={sourceBookletPdf?.page}
     />
-    <NextQuestionNav
+    <script is:inline>
+      (function () {
+        var fromSubject =
+          new URLSearchParams(location.search).get("from") === "subject"
+        document.documentElement.dataset.questionNavFrom = fromSubject
+          ? "subject"
+          : "exam"
+      })()
+    </script>
+    <QuestionNav
       client:load
+      examPrev={examPrev}
       examNext={examNext}
+      subjectPrev={subjectPrev}
       subjectNext={subjectNext}
       examBackHref={yearHref(year)}
       subjectBackHref={subjectHref(subject)}

@@ -26,27 +26,43 @@ export function ExamQuestionBrowser({
   sections: ExamQuestionBrowserSection[]
 }) {
   const [query, setQuery] = useState("")
+  const trimmedQuery = query.trim()
 
-  const filtered = useMemo(
-    () =>
-      sections
-        .map((section) => ({
-          ...section,
-          items: section.items.filter((item) =>
-            matchesSearchText(item.stem, query)
-          ),
-        }))
-        .filter((section) => section.items.length > 0),
-    [query, sections]
-  )
+  const { filtered, resultCount } = useMemo(() => {
+    const next = sections
+      .map((section) => ({
+        ...section,
+        items: section.items.filter((item) =>
+          matchesSearchText(item.stem, query)
+        ),
+      }))
+      .filter((section) => section.items.length > 0)
+
+    return {
+      filtered: next,
+      resultCount: next.reduce((sum, section) => sum + section.items.length, 0),
+    }
+  }, [query, sections])
 
   return (
     <div className="grid gap-8">
-      <SearchField value={query} onChange={setQuery} placeholder="例: 脂肪" />
+      <div className="grid gap-3">
+        <SearchField value={query} onChange={setQuery} placeholder="例: 脂肪" />
 
-      {filtered.length === 0 ? (
-        <p className="text-sm text-muted-foreground">
-          該当する問題はありません。
+        {trimmedQuery && resultCount > 0 ? (
+          <p
+            className="text-sm text-muted-foreground"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {resultCount}件見つかりました
+          </p>
+        ) : null}
+      </div>
+
+      {trimmedQuery && resultCount === 0 ? (
+        <p className="text-sm text-muted-foreground" aria-live="polite">
+          該当する問はありません。
         </p>
       ) : (
         filtered.map((section) => (

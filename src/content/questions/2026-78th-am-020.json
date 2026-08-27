@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 20,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 20,
+    "answer": [3, 4]
+  },
+  "subject": "kakui-gaku",
+  "stem": "⁹⁹ᵐTc-MDP 骨シンチグラフィで、**集積欠損（cold defect）**を生じるのはどれか。",
+  "choices": [
+    {
+      "text": "授乳期の乳房",
+      "explanation": "授乳期の乳房は、骨より**集積が高い hot** になりやすい所見です。金属のような **cold defect** ではありません。"
+    },
+    {
+      "text": "被検者の衣服への尿漏れ",
+      "explanation": "尿中の薬剤は**骨以外に hot spot** として出ます。骨の下が欠けて見える cold defect とは別の現象です。"
+    },
+    {
+      "text": "胸部に植込まれたペースメーカ",
+      "explanation": "金属は γ 線を**遮る（減弱する）**ため、その下の骨が**集積欠損**して見えます。スマホの金属で画面が暗く見えるのと同じイメージ。**正解**です。"
+    },
+    {
+      "text": "多発性骨転移",
+      "explanation": "骨転移は血流・代謝が増える部位で、通常 **hot spot（高集積）** として出ます。cold defect ではありません。"
+    },
+    {
+      "text": "静脈ラインからの薬剤漏れ（extravasation）",
+      "explanation": "漏れ部位の軟部組織に薬剤が溜まり **hot spot** になります。cold defect ではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["bone-scintigraphy"],
+  "sourceExplanation": "この問は、骨シンチの**集積欠損（cold defect）**の原因です。\n\n- **cold defect** … γ 線が**減弱・遮蔽**され、下の骨が「集積していないように」見える。典型：**ペースメーカ**、**硫酸バリウム**（消化管造影剤）。\n- **hot spot** … 授乳期乳房、**尿漏れ**、**投与部位漏れ**、骨転移など、薬剤が集まる／代謝が高い部位。\n- 公式は 2 つ選べ（ペースメーカ＋硫酸バリウム）。類似では cold の典型として**ペースメーカ**に絞った。",
+  "draft": false
+}

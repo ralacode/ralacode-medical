@@ -1,5 +1,6 @@
 import { ArrowRightIcon } from "lucide-react"
 
+import { renderEmphasisHtml } from "@/lib/markdown"
 import { cn } from "@/lib/utils"
 
 type LinkCardProps = {
@@ -27,11 +28,17 @@ export function LinkCard({ href, label, title, description, bare = false }: Link
         {label != null ? (
           <>
             <span className="text-sm text-muted-foreground">{label}</span>
-            <span className="font-medium leading-snug">{title}</span>
+            <span
+              className="font-medium leading-snug"
+              dangerouslySetInnerHTML={{ __html: renderEmphasisHtml(title) }}
+            />
           </>
         ) : (
           <>
-            <span className="font-medium">{title}</span>
+            <span
+              className="font-medium"
+              dangerouslySetInnerHTML={{ __html: renderEmphasisHtml(title) }}
+            />
             {description != null ? (
               <span className="text-sm text-muted-foreground">{description}</span>
             ) : null}

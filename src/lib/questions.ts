@@ -56,7 +56,7 @@ export function isFromSubjectNavigation(search: string) {
   return new URLSearchParams(search).get(FROM_QUERY_KEY) === FROM_SUBJECT_VALUE
 }
 
-/** 問題への遷移リンク（一覧カード・次の問題ナビ）で使う共通形 */
+/** 問題への遷移リンク（一覧カード・前後ナビ）で使う共通形 */
 export type QuestionNavTarget = {
   href: string
   heading: string

@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 12,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 12,
+    "answer": 5
+  },
+  "subject": "kakui-gaku",
+  "stem": "体内で放射性核種の物理的崩壊と生体からの排泄が同時に起きるとき、生物学的半減期を Tbio、物理的半減期を Tphys とすると、有効半減期 Teff を表す式はどれか。",
+  "choices": [
+    {
+      "text": "Tbio ＋ Tphys"
+    },
+    {
+      "text": "（Tbio ＋ Tphys）/（Tbio × Tphys）"
+    },
+    {
+      "text": "1/Tbio ＋ 1/Tphys"
+    },
+    {
+      "text": "（Tbio ＋ Tphys）/ 2"
+    },
+    {
+      "text": "Tbio × Tphys /（Tbio ＋ Tphys）",
+      "explanation": "浴槽に**排水口が2つ**あるイメージです。物理崩壊（底の穴）と排泄（もう1つの穴）が同時に働くので、実際に半分になる時間 Teff は、どちらか一方より**短く**なります。式は **Teff = Tbio × Tphys /（Tbio ＋ Tphys）** です。例：Tbio = 6 h、Tphys = 12 h なら Teff = 4 h（6時間でも12時間でもない、より短い値）。"
+    }
+  ],
+  "answer": 5,
+  "terms": [
+    "effective-half-life",
+    "biological-half-life",
+    "physical-half-life"
+  ],
+  "sourceExplanation": "この問は、**有効半減期**の式を扱います。\n\n- 物理半減期 Tp … 核種が自然に崩壊して減る速さ（浴槽の底の穴）。\n- 生物半減期 Tb … 尿・便などで体外に出て減る速さ（もう1つの排水口）。\n- 両方が同時だと、どちらかだけより早く減る → **有効半減期 Te は Tb でも Tp より短い**。\n- 正しい式：**Te = Tb × Tp /（Tb ＋ Tp）**（2つの出口が并联して働く形）。\n- ひっかけ：Tb + Tp（足し算）、(Tb + Tp)/2（算術平均）、1/Tb + 1/Tp（式の途中形で Te そのものではない）、**(Tb + Tp)/(Tb × Tp)**（正解式の分子と分母が逆）。",
+  "draft": false
+}
