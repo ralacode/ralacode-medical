@@ -104,11 +104,11 @@ const {
         >
           <button
             type="button"
-            class="inline-flex size-7 items-center justify-center rounded-lg hover:bg-muted"
+            class="inline-flex size-11 items-center justify-center rounded-lg hover:bg-muted md:size-7"
             aria-label="Toggle Sidebar"
             onclick={`window.dispatchEvent(new CustomEvent('${SIDEBAR_TOGGLE_EVENT}'))`}
           >
-            <PanelLeftIcon className="size-4" />
+            <PanelLeftIcon className="size-5 md:size-4" />
           </button>
           <div class="bg-border mr-2 h-4 w-px self-center"></div>
           <div class="min-w-0 flex-1">

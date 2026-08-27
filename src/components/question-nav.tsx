@@ -56,6 +56,7 @@ export function QuestionNav({
     <nav className="grid gap-3" aria-label="問題ナビゲーション">
       {prev ? (
         <LinkCard
+          direction="back"
           href={prev.href}
           label={`前の問題 · ${prev.heading}`}
           title={prev.stem}
