@@ -36,7 +36,7 @@
     }
   ],
   "answer": 3,
-  "terms": ["k-space", "phase-frequency-encoding", "fourier-transform"],
+  "terms": ["k-space", "phase-frequency-encoding", "fourier-transform", "proton-density"],
   "sourceExplanation": "この問は、MRI の**生データ（k 空間）**と**再構成後の画像信号**の関係を扱います。\n\n- k 空間に収まるのは虚数成分だけではなく、**実部と虚部の複素データ**です。\n- フーリエ変換後の画像信号は**画像空間**にあり、k 空間へ戻して保管するわけではありません。\n- 画像の信号強度（振幅）は、変換後の実部と虚部の**両方**から求めます。\n- 空気が 0、水が 1000 近傍、というのは **CT 値**のスケールで、MRI の画素値ではありません。\n- 水の存在比が大きいからといって、画像の中で常に最高信号になるわけではありません。コントラストはシーケンスに依存します。",
   "draft": false
 }
