@@ -100,17 +100,19 @@ function ResultStatus({
   visible?: boolean
   celebrate?: boolean
 }) {
-  const [showCelebrate, setShowCelebrate] = useState(false)
+  const [delayedOn, setDelayedOn] = useState(false)
 
   useEffect(() => {
-    if (!celebrate) {
-      setShowCelebrate(false)
-      return
-    }
+    if (!celebrate) return
 
-    const id = window.setTimeout(() => setShowCelebrate(true), 150)
-    return () => window.clearTimeout(id)
+    const id = window.setTimeout(() => setDelayedOn(true), 150)
+    return () => {
+      window.clearTimeout(id)
+      setDelayedOn(false)
+    }
   }, [celebrate])
+
+  const showCelebrate = celebrate && delayedOn
 
   return (
     <p
@@ -263,6 +265,8 @@ export function QuestionQuiz({
   const resultRef = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = usePrefersReducedMotion()
 
+  /* eslint-disable react-hooks/set-state-in-effect --
+     localStorage とシャッフルは SSR ではできない。スケルトンのあと一度だけ載せる。 */
   useEffect(() => {
     const nextMode = readChoiceOrderMode()
     setMode(nextMode)
@@ -272,6 +276,7 @@ export function QuestionQuiz({
     setResultPhase("idle")
     setMounted(true)
   }, [indexed, shuffleChoices])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const displayAnswer =
     ordered.findIndex((choice) => choice.originalNumber === answer) + 1
@@ -291,6 +296,8 @@ export function QuestionQuiz({
   const celebrateResult =
     submitted && correct && (prefersReducedMotion || resultPhase === "settled")
 
+  /* eslint-disable react-hooks/set-state-in-effect --
+     回答後の flash → reveal → settled はタイマー連動。導出にすると演出が変わる。 */
   useEffect(() => {
     if (!submitted) {
       setResultPhase("idle")
@@ -317,6 +324,7 @@ export function QuestionQuiz({
       window.clearTimeout(settledId)
     }
   }, [submitted, prefersReducedMotion])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   useEffect(() => {
     if (!submitted) return
