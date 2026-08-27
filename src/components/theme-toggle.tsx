@@ -56,6 +56,8 @@ function ThemeSwitch() {
 }
 
 export function ThemeToggle() {
+  // ここだけが next-themes の書き手。別 island にも置くと、明示の dark/light が
+  // prefers-color-scheme の誤通知で system 側に上書きされる。
   return (
     <ThemeProvider
       attribute="class"

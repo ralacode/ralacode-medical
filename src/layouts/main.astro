@@ -61,12 +61,20 @@ const {
         }
 
         applyTheme(document.documentElement)
+
+        // 明示の light/dark は OS や Chrome の誤通知に追従しない。
+        // system（未設定含む）のときだけ prefers-color-scheme に合わせる。
+        // 非表示中の change は、PDF 別タブなどで Chrome が誤って light を
+        // 通知することがあるため無視し、復帰時に storage から再適用する。
         media.addEventListener("change", () => {
-          const stored = localStorage.getItem(storageKey)
-          // ライト/ダークの明示選択は維持。system（未設定含む）のときだけ OS に追従する。
-          if (stored == null || stored === "system") {
-            applyTheme(document.documentElement, stored ?? "system")
-          }
+          if (document.hidden) return
+          applyTheme(document.documentElement)
+        })
+        document.addEventListener("visibilitychange", () => {
+          if (!document.hidden) applyTheme(document.documentElement)
+        })
+        window.addEventListener("pageshow", () => {
+          applyTheme(document.documentElement)
         })
         document.addEventListener("astro:before-swap", (event) => {
           applyTheme(event.newDocument.documentElement)

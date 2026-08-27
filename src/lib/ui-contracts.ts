@@ -12,7 +12,7 @@ export const PAGE_SCROLL_SLOT = "page-scroll"
 export const SIDEBAR_TOGGLE_EVENT = "sidebar:toggle"
 
 /**
- * テーマの localStorage キー（app-shell.tsx ↔ theme-toggle.tsx）。
+ * テーマの localStorage キー（theme-toggle.tsx）。
  * main.astro の is:inline スクリプトにも同じ値を直書きしている。
  */
 export const THEME_STORAGE_KEY = "theme"
