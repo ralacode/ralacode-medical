@@ -14,13 +14,6 @@ function ThemeSwitch() {
     setMounted(true)
   }, [])
 
-  useEffect(() => {
-    const media = window.matchMedia("(prefers-color-scheme: dark)")
-    const followSystem = () => setTheme("system")
-    media.addEventListener("change", followSystem)
-    return () => media.removeEventListener("change", followSystem)
-  }, [setTheme])
-
   const isDark = mounted && resolvedTheme === "dark"
 
   return (
