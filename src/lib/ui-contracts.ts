@@ -8,6 +8,9 @@
 /** ページ本文のスクロールコンテナを示す data-slot 値（main.astro ↔ question-quiz.tsx） */
 export const PAGE_SCROLL_SLOT = "page-scroll"
 
+/** ページ内スクロールで要素を見せるとき、スクロールビューポート上端から空ける余白（px）。固定ヘッダー直下との間隔。 */
+export const PAGE_SCROLL_TOP_OFFSET = 20
+
 /** ヘッダーのボタンからサイドバー開閉を伝える CustomEvent 名（main.astro ↔ app-shell.tsx） */
 export const SIDEBAR_TOGGLE_EVENT = "sidebar:toggle"
 

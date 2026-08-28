@@ -10,7 +10,7 @@ import {
   writeChoiceOrderMode,
   type ChoiceOrderMode,
 } from "@/lib/choice-order"
-import { PAGE_SCROLL_SLOT } from "@/lib/ui-contracts"
+import { PAGE_SCROLL_SLOT, PAGE_SCROLL_TOP_OFFSET } from "@/lib/ui-contracts"
 import { cn } from "@/lib/utils"
 
 type Choice = {
@@ -210,19 +210,26 @@ function ChoiceOrderToggle({
   )
 }
 
-function scrollIntoPage(el: HTMLElement | null) {
+function scrollIntoPage(
+  el: HTMLElement | null,
+  behavior: ScrollBehavior = "smooth"
+) {
   if (!el) return
 
   const scroller = document.querySelector(`[data-slot='${PAGE_SCROLL_SLOT}']`)
   if (scroller instanceof HTMLElement) {
     const scrollerRect = scroller.getBoundingClientRect()
     const elRect = el.getBoundingClientRect()
-    const top = scroller.scrollTop + elRect.top - scrollerRect.top
-    scroller.scrollTo({ top: Math.max(0, top), behavior: "smooth" })
+    const top =
+      scroller.scrollTop +
+      elRect.top -
+      scrollerRect.top -
+      PAGE_SCROLL_TOP_OFFSET
+    scroller.scrollTo({ top: Math.max(0, top), behavior })
     return
   }
 
-  el.scrollIntoView({ behavior: "smooth", block: "start" })
+  el.scrollIntoView({ behavior, block: "start" })
 }
 
 function orderChoices(
@@ -263,6 +270,8 @@ export function QuestionQuiz({
   const [submitted, setSubmitted] = useState(false)
   const [resultPhase, setResultPhase] = useState<ResultPhase>("idle")
   const resultRef = useRef<HTMLDivElement>(null)
+  const choicesRef = useRef<HTMLDivElement>(null)
+  const scrollToChoicesAfterRetry = useRef(false)
   const prefersReducedMotion = usePrefersReducedMotion()
 
   /* eslint-disable react-hooks/set-state-in-effect --
@@ -328,11 +337,23 @@ export function QuestionQuiz({
 
   useEffect(() => {
     if (!submitted) return
+    const behavior = prefersReducedMotion ? "auto" : "smooth"
     const frame = requestAnimationFrame(() => {
-      scrollIntoPage(resultRef.current)
+      scrollIntoPage(resultRef.current, behavior)
     })
     return () => cancelAnimationFrame(frame)
-  }, [submitted])
+  }, [submitted, prefersReducedMotion])
+
+  useEffect(() => {
+    if (submitted || !scrollToChoicesAfterRetry.current) return
+
+    scrollToChoicesAfterRetry.current = false
+    const behavior = prefersReducedMotion ? "auto" : "smooth"
+    const frame = requestAnimationFrame(() => {
+      scrollIntoPage(choicesRef.current, behavior)
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [submitted, ordered, prefersReducedMotion])
 
   function startAttempt(nextMode: ChoiceOrderMode) {
     setValue(null)
@@ -354,6 +375,7 @@ export function QuestionQuiz({
   }
 
   function handleRetry() {
+    scrollToChoicesAfterRetry.current = true
     startAttempt(mode)
   }
 
@@ -419,16 +441,17 @@ export function QuestionQuiz({
         </div>
       ) : null}
 
-      <RadioGroup
-        name="choice"
-        value={value}
-        onValueChange={(next) => {
-          if (!submitted) setValue(next)
-        }}
-        readOnly={submitted}
-        aria-labelledby={labelledBy}
-        className="gap-2"
-      >
+      <div ref={choicesRef} className="scroll-mt-5">
+        <RadioGroup
+          name="choice"
+          value={value}
+          onValueChange={(next) => {
+            if (!submitted) setValue(next)
+          }}
+          readOnly={submitted}
+          aria-labelledby={labelledBy}
+          className="gap-2"
+        >
         {ordered.map((choice, index) => {
           const number = index + 1
           const showCorrect = submitted && number === displayAnswer
@@ -473,7 +496,8 @@ export function QuestionQuiz({
             </div>
           )
         })}
-      </RadioGroup>
+        </RadioGroup>
+      </div>
 
       <div className="flex flex-wrap items-center gap-3">
         {submitted ? (
