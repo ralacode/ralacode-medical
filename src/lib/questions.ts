@@ -23,6 +23,35 @@ export function answerLabel(answer: number | number[]) {
   return `正解は${values.join("と")}です`
 }
 
+export const scoringExcludedAnswerLabel = "採点除外（公式正答なし）"
+
+export type QuestionMapsTo =
+  | {
+      year: number
+      exam: number
+      session: ExamSession
+      number: number
+      answer: number | number[]
+    }
+  | {
+      year: number
+      exam: number
+      session: ExamSession
+      number: number
+      scoringExcluded: true
+    }
+
+export function isScoringExcluded(
+  mapsTo: QuestionMapsTo
+): mapsTo is Extract<QuestionMapsTo, { scoringExcluded: true }> {
+  return "scoringExcluded" in mapsTo && mapsTo.scoringExcluded === true
+}
+
+export function sourceOfficialAnswerLabel(mapsTo: QuestionMapsTo) {
+  if (isScoringExcluded(mapsTo)) return scoringExcludedAnswerLabel
+  return answerLabel(mapsTo.answer)
+}
+
 export function examsHref() {
   return withBase("exams/")
 }

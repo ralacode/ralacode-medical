@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 29,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 29,
+    "answer": 4
+  },
+  "subject": "hoshasen-chiryo",
+  "stem": "マルチリーフコリメータ（MLC）において、**隣接するリーフとリーフのすき間**から漏れる透過線量を示す用語はどれか。",
+  "choices": [
+    {
+      "text": "intra-leaf transmission",
+      "explanation": "**リーフ材料そのもの**を X 線が通過して漏れる透過です。すき間ではなく、**板の中を抜ける**線量を指します。"
+    },
+    {
+      "text": "leaf-end transmission",
+      "explanation": "**リーフの端（leaf end）**付近、舌溝（tongue-and-groove）の形状で漏れやすい領域の透過です。**リーフ同士のすき間**そのものとは別の概念です。"
+    },
+    {
+      "text": "inter-leaf transmission",
+      "explanation": "隣接する 2 枚のリーフの**すき間（ギャップ）**から漏れる透過線量です。遮光が完全でない境界からの漏れを指します。**正解**です。"
+    },
+    {
+      "text": "カッターバック",
+      "explanation": "MLC やブロックで**意図的に遮蔽**し、照射野の端を整えることです。透過線量の種類を表す用語ではありません。"
+    },
+    {
+      "text": "出力係数",
+      "explanation": "照射野サイズごとの**出力（線量）の違い**を表す係数です。MLC の透過の分類とは別の概念です。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["linac-qa"],
+  "sourceExplanation": "公式問題では、**マルチリーフコリメータ（MLC）**の模式図上の **A・B** 2 点と、透過線量の用語の**組合せ**を選ぶ形式でした。本サイトの類似問題は図を載せられないため、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_02.pdf#page=12\" target=\"_blank\" rel=\"noopener noreferrer\">公式の別冊 PDF （12 ページ）</a> の図をあわせて確認しておくとよいです。\n\n- **公式正答（4 番）** … **A ＝ リーフ内透過（intra-leaf transmission）**、**B ＝ リーフ間透過（inter-leaf transmission）**。\n- **intra-leaf** … リーフ**本体**を通過する透過。\n- **inter-leaf** … リーフ**とリーフのすき間**からの透過。\n- **leaf-end** … **リーフ端**付近（舌溝など）からの透過。A・B とは別位置の漏れとして区別される。",
+  "draft": false
+}

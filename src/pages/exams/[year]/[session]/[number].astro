@@ -15,12 +15,12 @@ import {
 import { renderEmphasisHtml, renderMarkdown } from "@/lib/markdown"
 import { subjectLabel } from "@/lib/exam-subjects"
 import {
-  answerLabel,
   compareQuestions,
   questionHeading,
   questionNavTarget,
   sessionLabel,
   singleAnswer,
+  sourceOfficialAnswerLabel,
   subjectHref,
   yearHref,
   type QuestionNavTarget,
@@ -97,7 +97,7 @@ const sourceExplanationHtml = sourceExplanation?.trim()
   ? renderMarkdown(sourceExplanation)
   : undefined
 const sourceExplanationTitle = `${mapsTo.year}年 ${sessionLabel(mapsTo.session)} 問${mapsTo.number}の解説`
-const sourceAnswerLabel = answerLabel(mapsTo.answer)
+const sourceAnswerLabel = sourceOfficialAnswerLabel(mapsTo)
 const sourcePdf = officialExamPdfLink(
   mapsTo.year,
   mapsTo.session,

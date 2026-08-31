@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 26,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 26,
+    "answer": 5
+  },
+  "subject": "hoshasen-chiryo",
+  "stem": "水中の深さ方向の相対線量分布について、**最も急峻なブラッグピーク**を示すのはどれか。",
+  "choices": [
+    {
+      "text": "10 MV X 線",
+      "explanation": "X 線（光子）は、浅い**ビルドアップ**のあと、深部に向かって**なだらかに**線量が減ります。山型のブラッグピークは出ません。"
+    },
+    {
+      "text": "15 MeV 電子線",
+      "explanation": "電子線は**表面付近**で線量が高く、数 cm で**急に**落ちます。浅い病変向けですが、深部の鋭いピーク（ブラッグピーク）とは形が異なります。"
+    },
+    {
+      "text": "250 MeV 陽子線",
+      "explanation": "陽子線は深部で**ブラッグピーク**を示します。ただし炭素イオン線と比べると、ピークは**やや緩やか**で、ピーク後方にも線量 tail が残りやすいです。"
+    },
+    {
+      "text": "250 MeV 炭素イオン線",
+      "explanation": "炭素イオン線は、停止直前に**非常に急峻なブラッグピーク**を作ります。陽子線よりピークが鋭く、線量集中性が高いのが特徴です。**正解**です。"
+    },
+    {
+      "text": "60Co γ 線",
+      "explanation": "60Co γ 線も**光子**です。X 線と同様、深部に向かって単調に近い形で減少し、ブラッグピークはありません。"
+    }
+  ],
+  "answer": 4,
+  "terms": ["bragg-peak", "carbon-ion-therapy"],
+  "sourceExplanation": "公式問題では、深部線量分布の **5 本の曲線（a〜e）** を見比べる形式でした。本サイトの類似問題は図を載せられないため、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=15\" target=\"_blank\" rel=\"noopener noreferrer\">公式の問題 PDF （15 ページ）</a> の図をあわせて確認しておくと、曲線の読み取り練習になります。\n\n- **公式正答** … 曲線 **e** ＝ **炭素線**の物理線量分布。\n- **X 線・γ 線** … ビルドアップ後、緩やかに減少（単調減少に近い）。\n- **電子線** … 表面付近で高く、浅い深さで急降下。\n- **陽子線** … ブラッグピークあり。炭素よりピークが緩く、tail が残りやすい。\n- **炭素線** … **最も急峻なブラッグピーク**。重い粒子ほどピークが鋭いイメージ。\n- <a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp200414-06a_01.pdf#page=20\" target=\"_blank\" rel=\"noopener noreferrer\">72 回午前 44 問</a> など、類似の識別問題が過去にも出題されています。",
+  "draft": false
+}

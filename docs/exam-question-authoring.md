@@ -26,6 +26,8 @@
 
 演習画面は **単一正解だけ**対応している。公式が「2つ選べ」でも、類似問題は一文択一にする（`src/lib/questions.ts` の `singleAnswer`）。
 
+**採点除外（公式正答なし）** の past question スロットでは、`mapsTo.scoringExcluded: true` を付け、`mapsTo.answer` は書かない。過去問解説の見出しは `sourceOfficialAnswerLabel` により「採点除外（公式正答なし）」になる。`sourceExplanation` の**冒頭**で除外であること・[厚生労働省の除外通知 PDF](https://www.mhlw.go.jp/general/sikaku/successlist/2026/siken06/dl/AM23.pdf) へのリンク・除外理由（公式に詳述がなければ「〜と予想されます」）を書く。具体例は `2026-78th-am-023.json`。
+
 ---
 
 ## 作業前に読むファイル
@@ -155,7 +157,8 @@ src/content/questions/{year}-{exam}th-{session}-{NNN}.json
 | `number` | 類似問題の問番号（公式スロットと同じ番号にする） |
 | `origin` | 必ず `"analog"` |
 | `mapsTo.year` / `exam` / `session` / `number` | 対応する公式スロット |
-| `mapsTo.answer` | **公式の正答**（1始まり。複数は配列 `[4, 5]`） |
+| `mapsTo.answer` | **公式の正答**（1始まり。複数は配列 `[4, 5]`）。**採点除外で公式正答がない問では省略** |
+| `mapsTo.scoringExcluded` | `true` のとき採点除外（公式正答なし）。UI では「採点除外（公式正答なし）」と表示 |
 | `subject` | `exam-subjects.ts` の ID |
 | `stem` | 類似問題の問題文（オリジナル） |
 | `choices` | 長さ 5。`text` 必須。`explanation` は Markdown、省略時は空文字 |
@@ -266,7 +269,7 @@ src/content/questions/{year}-{exam}th-{session}-{NNN}.json
 
 - [ ] 公式文・公式の5肢を JSON に書いていない
 - [ ] 類似はオリジナルで、転載に見えない
-- [ ] `mapsTo.answer` は公式正答、`answer` は類似の単一正答
+- [ ] `mapsTo.answer` は公式正答（採点除外の問は `scoringExcluded: true` で answer 省略）、`answer` は類似の単一正答
 - [ ] `choices` は5つ。科目 ID は11科目のいずれか
 - [ ] 画像問題は文章化。別冊なら `exam-pdfs.ts` の別冊表を確認
 - [ ] レイアウト・CSS・既存コンポーネントを変更していない

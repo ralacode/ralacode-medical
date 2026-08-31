@@ -8,6 +8,25 @@ import { examSubjectIds } from "./lib/exam-subjects"
 const choiceNumber = z.number().int().min(1).max(5)
 const examAnswer = z.union([choiceNumber, z.array(choiceNumber).min(1)])
 
+const mapsToSlot = {
+  year: z.number().int(),
+  exam: z.number().int(),
+  session: z.enum(["am", "pm"]),
+  number: z.number().int().positive(),
+} as const
+
+/** 採点除外（公式正答なし）の past question slot */
+const mapsToExcluded = z.object({
+  ...mapsToSlot,
+  scoringExcluded: z.literal(true),
+})
+
+/** 通常の past question slot（公式正答あり） */
+const mapsToScored = z.object({
+  ...mapsToSlot,
+  answer: examAnswer,
+})
+
 // article-seo.ts の FaqItem と形がずれないように satisfies で固定する
 const faqItem = z.object({
   question: z.string(),
@@ -35,14 +54,7 @@ const questions = defineCollection({
     number: z.number().int().positive(),
     /** 公式文の転載ではなく、出題意図に沿ったオリジナル問題 */
     origin: z.literal("analog"),
-    mapsTo: z.object({
-      year: z.number().int(),
-      exam: z.number().int(),
-      session: z.enum(["am", "pm"]),
-      number: z.number().int().positive(),
-      /** 公式の正答。1-indexed。複数正解の問は配列 */
-      answer: examAnswer,
-    }),
+    mapsTo: z.union([mapsToScored, mapsToExcluded]),
     /** 令和6年4月施行の試験科目 */
     subject: z.enum(examSubjectIds),
     stem: z.string(),
