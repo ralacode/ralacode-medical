@@ -1,0 +1,41 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 66,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 66,
+    "answer": 3
+  },
+  "subject": "rikogaku-hoshasen",
+  "stem": "交流回路で、電圧の**実効値 20 V**、電流の**実効値 1 A**、**力率 0.8** のとき、消費電力［W］に最も近いのはどれか。",
+  "choices": [
+    {
+      "text": "0"
+    },
+    {
+      "text": "4"
+    },
+    {
+      "text": "8"
+    },
+    {
+      "text": "16",
+      "explanation": "消費電力 **P ［W］＝ V × I × cos θ**（V・I は実効値、cos θ は力率）。**P ＝ 20 × 1 × 0.8 ＝ 16 W**。**正解**です。"
+    },
+    {
+      "text": "32"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "公式問題は**電圧・電流の正弦波波形（図）**から実効値と位相差を読み取り、消費電力を求める形式でした。波形の読み取りは <a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=34\" target=\"_blank\" rel=\"noopener noreferrer\">公式の問題 PDF（34 ページ）</a> で確認してください。\n\n- **公式正答** … **3 番**（**10 W**）。\n- **公式の流れ** … グラフから **V・I の実効値**（最大値 ÷ √2）と **位相差 θ** を読む → **P ＝ VI cos θ**。\n- **類似問題** … 数値が与えられたので **P ＝ 20 × 1 × 0.8 ＝ 16 W**。\n- **覚え方** … **P ＝ VI cos θ** だけ暗記。sin θ は無効電力側。\n- **ひっかけ** … 最大値のまま掛け算する（必ず**実効値**）、cos を sin と取り違える。",
+  "draft": false,
+  "studyTopics": [
+    "iyo-kogaku"
+  ]
+}

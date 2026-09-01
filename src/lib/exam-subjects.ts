@@ -33,7 +33,7 @@ export const examSubjectLabels: Record<ExamSubjectId, string> = {
 export const studyTopicIds = [
   "hoshasen-seibutsugaku",
   "hoshasen-butsurigaku",
-  "iryo-kogaku",
+  "iyo-kogaku",
   "hoshasen-keisoku",
 ] as const
 
@@ -42,7 +42,7 @@ export type StudyTopicId = (typeof studyTopicIds)[number]
 export const studyTopicLabels: Record<StudyTopicId, string> = {
   "hoshasen-seibutsugaku": "放射線生物学",
   "hoshasen-butsurigaku": "放射線物理学",
-  "iryo-kogaku": "医用工学",
+  "iyo-kogaku": "医用工学",
   "hoshasen-keisoku": "放射線計測学",
 }
 

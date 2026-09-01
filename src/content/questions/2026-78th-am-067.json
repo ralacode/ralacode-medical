@@ -1,0 +1,41 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 67,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 67,
+    "answer": 2
+  },
+  "subject": "rikogaku-hoshasen",
+  "stem": "理想的な**反転積分**回路で **R ＝ 10 kΩ**、**C ＝ 2 μF** とする。t ＝ 0 から入力 vi に **10 mV** の直流を印加した。t ＝ **2 s** の出力 vo［V］に最も近いのはどれか。",
+  "choices": [
+    {
+      "text": "－5"
+    },
+    {
+      "text": "－3"
+    },
+    {
+      "text": "－1",
+      "explanation": "**RC ＝ 10 × 10³ × 2 × 10⁻⁶ ＝ 0.02 s**。反転積分器で vi が一定のとき **vo ＝ −vi × t / (RC)**。**vi ＝ 10 mV ＝ 0.01 V**、**t ＝ 2 s** なので **vo ＝ −0.01 × 2 / 0.02 ＝ −1 V**。**正解**です。"
+    },
+    {
+      "text": "0"
+    },
+    {
+      "text": "1"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "公式問題は**演算増幅器の反転微分回路（図）**で、t ＝ 0 に **20 mV** の直流を印加し、t ＝ **3 s** の vo を問う形式でした。回路図は <a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=35\" target=\"_blank\" rel=\"noopener noreferrer\">公式の問題 PDF（35 ページ）</a> を参照してください。\n\n- **公式正答** … **2 番**（**−3 V**）。\n- **反転微分器** … **vo ＝ −RC × dvi/dt**（入力が**一定直流**なら dvi/dt ＝ 0 で vo → 0 が理想形）。78 回は久しぶりの**反転微分**出題。\n- **類似問題** … 計算練習のため**反転積分**に置き換え。**vo ＝ −vi × t / (RC)** で **−1 V**。\n- **反転積分** … **vo ＝ −(1/RC) ∫ vi dt**。vi が一定なら **vo ∝ t**。\n- **ひっかけ** … 微分と積分の式を混同、mV を V に直し忘れる、RC の単位（kΩ・μF）の換算ミス。",
+  "draft": false,
+  "studyTopics": [
+    "iyo-kogaku"
+  ]
+}

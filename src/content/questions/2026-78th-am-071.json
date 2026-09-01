@@ -1,0 +1,41 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 71,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 71,
+    "answer": 4
+  },
+  "subject": "rikogaku-hoshasen",
+  "stem": "照射線量が **1.0 × 10⁻⁴ C/kg** のとき、**空気カーマ**［Gy］に最も近いのはどれか。ただし、空気の **W 値を 34 eV**、**電気素量を 1.6 × 10⁻¹⁹ C**、**1 eV ＝ 1.6 × 10⁻¹⁹ J** とする。",
+  "choices": [
+    {
+      "text": "1.7 × 10⁻⁴⁰"
+    },
+    {
+      "text": "3.4 × 10⁻⁶"
+    },
+    {
+      "text": "3.4 × 10⁻³",
+      "explanation": "問題文の定数が与えられるとき **K ［Gy］＝ X ［C/kg］ × W ［eV］**（単位換算が相殺）。**K ＝ 1.0 × 10⁻⁴ × 34 ＝ 3.4 × 10⁻³ Gy**。**正解**です。"
+    },
+    {
+      "text": "6.8 × 10⁻³"
+    },
+    {
+      "text": "4.3 × 10¹⁶"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**照射線量 → 空気カーマ** の換算です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=36\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 36 ページ</a>）。\n\n- **公式正答** … **4 番**（**6.8 × 10⁻³ Gy**）。**X ＝ 2.0 × 10⁻⁴ C/kg**。\n- **公式** … **K ＝ X × W ＝ 2.0 × 10⁻⁴ × 34 ＝ 6.8 × 10⁻³ Gy**。\n- **類似問題** … **X ＝ 1.0 × 10⁻⁴** → **3.4 × 10⁻³ Gy**。\n- **覚え方** … 定数が全部出る問題は **X と W を掛ける**だけ。\n- **ひっかけ** … W を掛け忘れ、10 の指数ミス。",
+  "draft": false,
+  "studyTopics": [
+    "hoshasen-keisoku"
+  ]
+}

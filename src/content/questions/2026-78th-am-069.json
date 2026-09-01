@@ -1,0 +1,45 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 69,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 69,
+    "answer": 5
+  },
+  "subject": "rikogaku-hoshasen",
+  "stem": "Bragg-Gray（ブラッグ・グレイ）の空洞理論について、**誤っている**のはどれか。",
+  "choices": [
+    {
+      "text": "荷電粒子線の線量測定に適用できる。",
+      "explanation": "Bragg-Gray 理論は、**荷電粒子**が壁材料と空洞内気体に与える線量の関係を扱う基本式です。正しい記述です。"
+    },
+    {
+      "text": "電子平衡（CPE）のもとで成立する。",
+      "explanation": "壁内で**電荷粒子平衡**が成立していることが前提です。正しい記述です。"
+    },
+    {
+      "text": "空洞内の二次電子フルエンスは一様である。",
+      "explanation": "空洞内の**二次電子の空間分布が一様**であるとみなすのが前提のひとつです。正しい記述です。"
+    },
+    {
+      "text": "空洞のサイズは、二次電子の最大飛程より小さい。",
+      "explanation": "空洞は**二次電子の飛程に比べて十分小さい**とみなす（擾乱が小さい）条件です。正しい記述です。"
+    },
+    {
+      "text": "空洞壁材料と空洞内気体の吸収線量は、補正なしに常に等しい。",
+      "explanation": "Bragg-Gray では **D_w / D_g ＝ s_w / s_g**（**質量阻止能**の比）で結ばれます。壁と気体の線量が**そのまま等しい**わけではありません。**誤り**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**Bragg-Gray 空洞理論**の前提と式です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=36\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 36 ページ</a>）。\n\n- **公式正答** … **5 番**（「空気と物質の吸収線量の比 ＝ **質量エネルギー吸収係数**の比」→ **誤り**）。正しくは**阻止能**（ stopping power ）の比。\n- **類似問題** … 「補正なしに壁と気体の線量が等しい」も同型の誤り。\n- **覚え方** … CPE ＋ 小さな空洞 ＋ **D_w/D_g ＝ s_w/s_g**。\n- **ひっかけ** … 吸収係数と阻止能の取り違え、空洞サイズ条件の逆。",
+  "draft": false,
+  "studyTopics": [
+    "hoshasen-keisoku"
+  ]
+}

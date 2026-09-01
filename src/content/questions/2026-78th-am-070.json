@@ -1,0 +1,41 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 70,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 70,
+    "answer": 4
+  },
+  "subject": "rikogaku-hoshasen",
+  "stem": "空洞電離箱線量計で、大気条件 **20.0 ℃**、**101.3 kPa** のもとで照射線量を測定した。**温度・気圧補正係数 kTP** に最も近いのはどれか。ただし、線量計は基準大気条件 **22.0 ℃**、**100.0 kPa** のもとで校正されたものとする。",
+  "choices": [
+    {
+      "text": "0.95"
+    },
+    {
+      "text": "0.98",
+      "explanation": "**kTP ＝ (273＋T) / (273＋T₀) × P₀ / P**。**T ＝ 20.0 ℃**、**T₀ ＝ 22.0 ℃**、**P ＝ 101.3 kPa**、**P₀ ＝ 100.0 kPa** なので **kTP ＝ (293/295) × (100/101.3) ≈ 0.98**。**正解**です。"
+    },
+    {
+      "text": "1.00"
+    },
+    {
+      "text": "1.02"
+    },
+    {
+      "text": "1.05"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、**温度・気圧補正**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=36\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 36 ページ</a>）。\n\n- **公式正答** … **4 番**（**kTP ≈ 1.02**）。測定 **25 ℃・100 kPa**、校正 **22 ℃・101.3 kPa**。\n- **公式** … **kTP ＝ (298/295) × (101.3/100) ≈ 1.02**。\n- **類似問題** … **20 ℃・101.3 kPa** → **≈ 0.98**。\n- **覚え方** … **気温↑・気圧↓** → 同じ線量でもイオン数↑ → **kTP↑**（校正条件より測定側が「イオンを取りやすい」方向を式で確認）。\n- **ひっかけ** … T と T₀ の入れ替え、P と P₀ の逆。",
+  "draft": false,
+  "studyTopics": [
+    "hoshasen-keisoku"
+  ]
+}
