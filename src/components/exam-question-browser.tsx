@@ -11,8 +11,9 @@ export type ExamQuestionBrowserItem = {
   heading: string
   stem: string
   analog?: boolean
-  subjectHref?: string
-  subjectLabel?: string
+  /** 科目名検索用（試験科目＋学習タグ） */
+  searchLabels?: string[]
+  categoryLinks?: { href: string; label: string }[]
 }
 
 export type ExamQuestionBrowserSection = {
@@ -22,7 +23,9 @@ export type ExamQuestionBrowserSection = {
 
 function matchesExamQuestion(item: ExamQuestionBrowserItem, query: string) {
   return matchesSearchText(
-    [item.stem, item.subjectLabel, item.heading].filter(Boolean).join("\n"),
+    [item.stem, item.heading, ...(item.searchLabels ?? [])]
+      .filter(Boolean)
+      .join("\n"),
     query
   )
 }
@@ -55,7 +58,7 @@ export function ExamQuestionBrowser({
         <SearchField
           value={query}
           onChange={setQuery}
-          placeholder="例: 脂肪、医療画像"
+          placeholder="例: 脂肪、放射線生物学"
         />
 
         {trimmedQuery && resultCount > 0 ? (
@@ -91,17 +94,20 @@ export function ExamQuestionBrowser({
                     label={`${item.heading}${item.analog ? " · 類似問題" : ""}`}
                     title={item.stem}
                   />
-                  {item.subjectHref && item.subjectLabel ? (
-                    <div className="border-t border-border p-3">
-                      <a
-                        className={cn(
-                          buttonVariants({ variant: "default" }),
-                          "min-h-11 w-full sm:w-auto"
-                        )}
-                        href={item.subjectHref}
-                      >
-                        {item.subjectLabel}
-                      </a>
+                  {item.categoryLinks && item.categoryLinks.length > 0 ? (
+                    <div className="flex flex-wrap gap-2 border-t border-border p-3">
+                      {item.categoryLinks.map((link) => (
+                        <a
+                          key={link.href}
+                          className={cn(
+                            buttonVariants({ variant: "default" }),
+                            "min-h-11"
+                          )}
+                          href={link.href}
+                        >
+                          {link.label}
+                        </a>
+                      ))}
                     </div>
                   ) : null}
                 </li>

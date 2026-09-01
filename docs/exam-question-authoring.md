@@ -160,7 +160,8 @@ src/content/questions/{year}-{exam}th-{session}-{NNN}.json
 | `mapsTo.year` / `exam` / `session` / `number` | 対応する公式スロット |
 | `mapsTo.answer` | **公式の正答**（1始まり。複数は配列 `[4, 5]`）。**採点除外で公式正答がない問では省略** |
 | `mapsTo.scoringExcluded` | `true` のとき採点除外（公式正答なし）。UI では「採点除外（公式正答なし）」と表示 |
-| `subject` | `exam-subjects.ts` の ID |
+| `subject` | `exam-subjects.ts` の ID（令和6年施行の11科目） |
+| `studyTopics` | 省略可（省略時 `[]`）。`exam-subjects.ts` の学習タグ ID 配列。理工学・放射線科学を細分化するとき使う（例：問55–59 → `["hoshasen-seibutsugaku"]`、問60–64 → `["hoshasen-butsurigaku"]`、問65以降は `iryo-kogaku` / `hoshasen-keisoku`） |
 | `stem` | 類似問題の問題文（オリジナル） |
 | `stemGrid` | 省略可。画素値などの **2 次元整数配列**（各行の長さは同一）。問題文直下に表表示 |
 | `choices` | 長さ 5。`text` 必須。`explanation` は Markdown、省略時は空文字 |

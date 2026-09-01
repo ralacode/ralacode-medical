@@ -1,0 +1,21 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 53,
+  "origin": "analog",
+  "mapsTo": { "year": 2026, "exam": 78, "session": "am", "number": 53, "answer": 5 },
+  "subject": "kiso-igaku",
+  "stem": "**内分泌腺**に分類されるのはどれか。",
+  "choices": [
+    { "text": "汗腺", "explanation": "**外分泌腺**です。導管を通じて分泌物を体外・管腔へ出します。" },
+    { "text": "乳腺", "explanation": "**外分泌腺**（乳汁分泌）です。" },
+    { "text": "涙腺", "explanation": "**外分泌腺**です。" },
+    { "text": "顎下腺", "explanation": "**唾液腺**（外分泌）です。" },
+    { "text": "副甲状腺", "explanation": "ホルモン（**パラトルモン**）を**直接血流へ分泌**する**内分泌腺**です。**正解**です。" }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**内分泌腺と外分泌腺**の区別です。\n\n- **内分泌腺** … **副甲状腺・甲状腺・副腎**など。血液へホルモン分泌。\n- **汗腺・唾液腺・乳腺** … **外分泌**（導管あり）。\n- カルシウム代謝（副甲状腺）など画像・核医学でも関連する。",
+  "draft": false
+}

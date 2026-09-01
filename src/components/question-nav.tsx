@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react"
 
 import { LinkCard } from "@/components/link-card"
+import { studyTopicLabel, type StudyTopicId } from "@/lib/exam-subjects"
 import {
+  browseCategoryHref,
   isFromSubjectNavigation,
+  navigationTopic,
   type QuestionNavTarget,
 } from "@/lib/questions"
 
@@ -11,18 +14,31 @@ type QuestionNavProps = {
   examNext?: QuestionNavTarget
   subjectPrev?: QuestionNavTarget
   subjectNext?: QuestionNavTarget
+  topicNav?: Partial<
+    Record<StudyTopicId, { prev?: QuestionNavTarget; next?: QuestionNavTarget }>
+  >
   examBackHref: string
   subjectBackHref: string
   subjectLabel: string
   year: number
 }
 
-function readFromSubjectNavigation() {
-  if (typeof window === "undefined") return false
+function readNavigationState() {
+  if (typeof window === "undefined") {
+    return { fromSubject: false, topic: undefined as StudyTopicId | undefined }
+  }
   const mode = document.documentElement.dataset.questionNavFrom
-  if (mode === "subject") return true
-  if (mode === "exam") return false
-  return isFromSubjectNavigation(window.location.search)
+  const search = window.location.search
+  if (mode === "subject") {
+    return { fromSubject: true, topic: navigationTopic(search) }
+  }
+  if (mode === "exam") {
+    return { fromSubject: false, topic: undefined }
+  }
+  return {
+    fromSubject: isFromSubjectNavigation(search),
+    topic: navigationTopic(search),
+  }
 }
 
 export function QuestionNav({
@@ -30,18 +46,27 @@ export function QuestionNav({
   examNext,
   subjectPrev,
   subjectNext,
+  topicNav,
   examBackHref,
   subjectBackHref,
   subjectLabel,
   year,
 }: QuestionNavProps) {
-  const [fromSubject, setFromSubject] = useState(readFromSubjectNavigation)
+  const [navState, setNavState] = useState(readNavigationState)
 
   useEffect(() => {
     const sync = () => {
-      const from = isFromSubjectNavigation(window.location.search)
-      document.documentElement.dataset.questionNavFrom = from ? "subject" : "exam"
-      setFromSubject(from)
+      const fromSubject = isFromSubjectNavigation(window.location.search)
+      const topic = navigationTopic(window.location.search)
+      document.documentElement.dataset.questionNavFrom = fromSubject
+        ? "subject"
+        : "exam"
+      if (topic) {
+        document.documentElement.dataset.questionNavTopic = topic
+      } else {
+        delete document.documentElement.dataset.questionNavTopic
+      }
+      setNavState({ fromSubject, topic })
     }
 
     sync()
@@ -49,8 +74,30 @@ export function QuestionNav({
     return () => document.removeEventListener("astro:page-load", sync)
   }, [])
 
-  const prev = fromSubject ? subjectPrev : examPrev
-  const next = fromSubject ? subjectNext : examNext
+  const topicSequence = navState.topic ? topicNav?.[navState.topic] : undefined
+  const fromTopic = navState.fromSubject && navState.topic != null
+
+  const prev = fromTopic
+    ? topicSequence?.prev
+    : navState.fromSubject
+      ? subjectPrev
+      : examPrev
+  const next = fromTopic
+    ? topicSequence?.next
+    : navState.fromSubject
+      ? subjectNext
+      : examNext
+
+  const backHref = fromTopic
+    ? browseCategoryHref(navState.topic!)
+    : navState.fromSubject
+      ? subjectBackHref
+      : examBackHref
+  const backLabel = fromTopic
+    ? `${studyTopicLabel(navState.topic!)}の最後の問題です`
+    : navState.fromSubject
+      ? `${subjectLabel}の最後の問題です`
+      : `${year}年最後の問題です`
 
   return (
     <nav className="grid gap-3" aria-label="問題ナビゲーション">
@@ -69,15 +116,7 @@ export function QuestionNav({
           title={next.stem}
         />
       ) : (
-        <LinkCard
-          href={fromSubject ? subjectBackHref : examBackHref}
-          label={
-            fromSubject
-              ? `${subjectLabel}の最後の問題です`
-              : `${year}年最後の問題です`
-          }
-          title="問題一覧に戻る"
-        />
+        <LinkCard href={backHref} label={backLabel} title="問題一覧に戻る" />
       )}
     </nav>
   )

@@ -2,18 +2,20 @@
 import { LinkCard } from "@/components/link-card"
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
-import { subjectLabel } from "@/lib/exam-subjects"
+import { subjectLabel, studyTopicLabel } from "@/lib/exam-subjects"
 import {
+  browseCategoryHref,
   groupQuestions,
+  groupQuestionsByStudyTopic,
   groupQuestionsBySubject,
   sessionLabel,
-  subjectHref,
   yearHref,
 } from "@/lib/questions"
 
 const questions = (await getPublishedQuestions()).map((question) => question.data)
 const years = groupQuestions(questions)
 const subjects = groupQuestionsBySubject(questions)
+const studyTopics = groupQuestionsByStudyTopic(questions)
 ---
 
 <Layout
@@ -86,18 +88,41 @@ const subjects = groupQuestionsBySubject(questions)
             </ul>
           </section>
 
-          <section class="browse-subjects grid gap-3" aria-label="科目">
-            <ul class="grid gap-3">
-              {subjects.map((group) => (
-                <li>
-                  <LinkCard
-                    href={subjectHref(group.subject)}
-                    title={subjectLabel(group.subject)}
-                    description={`類似問題 ${group.items.length}問`}
-                  />
-                </li>
-              ))}
-            </ul>
+          <section class="browse-subjects grid gap-6" aria-label="科目">
+            <div class="grid gap-3">
+              <h2 class="text-sm font-medium text-muted-foreground">試験科目</h2>
+              <ul class="grid gap-3">
+                {subjects.map((group) => (
+                  <li>
+                    <LinkCard
+                      href={browseCategoryHref(group.subject)}
+                      title={subjectLabel(group.subject)}
+                      description={`類似問題 ${group.items.length}問`}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {
+              studyTopics.length > 0 ? (
+                <div class="grid gap-3">
+                  <h2 class="text-sm font-medium text-muted-foreground">
+                    理工学・放射線科学（細分）
+                  </h2>
+                  <ul class="grid gap-3">
+                    {studyTopics.map((group) => (
+                      <li>
+                        <LinkCard
+                          href={browseCategoryHref(group.topic)}
+                          title={studyTopicLabel(group.topic)}
+                          description={`類似問題 ${group.items.length}問`}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null
+            }
           </section>
         </div>
       )

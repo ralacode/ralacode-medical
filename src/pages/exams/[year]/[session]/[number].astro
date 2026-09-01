@@ -16,13 +16,15 @@ import {
 import { renderEmphasisHtml, renderMarkdown } from "@/lib/markdown"
 import { subjectLabel } from "@/lib/exam-subjects"
 import {
+  browseCategoryHref,
   compareQuestions,
+  questionCategoryLinks,
   questionHeading,
   questionNavTarget,
   sessionLabel,
   singleAnswer,
   sourceOfficialAnswerLabel,
-  subjectHref,
+  topicNavigationForQuestion,
   yearHref,
   type QuestionNavTarget,
 } from "@/lib/questions"
@@ -33,12 +35,14 @@ interface Props {
   examNext?: QuestionNavTarget
   subjectPrev?: QuestionNavTarget
   subjectNext?: QuestionNavTarget
+  topicNav: ReturnType<typeof topicNavigationForQuestion>
 }
 
 export async function getStaticPaths() {
   const questions = [...(await getPublishedQuestions())].sort((left, right) =>
     compareQuestions(left.data, right.data)
   )
+  const allData = questions.map((entry) => entry.data)
 
   return questions.map((question, index) => {
     const inSubject = questions.filter(
@@ -75,12 +79,14 @@ export async function getStaticPaths() {
         subjectNext: subjectNextEntry
           ? questionNavTarget(subjectNextEntry.data, { from: "subject" })
           : undefined,
+        topicNav: topicNavigationForQuestion(allData, question.data),
       },
     }
   })
 }
 
-const { question, examPrev, examNext, subjectPrev, subjectNext } = Astro.props
+const { question, examPrev, examNext, subjectPrev, subjectNext, topicNav } =
+  Astro.props
 const {
   year,
   exam,
@@ -124,6 +130,7 @@ const sourceBookletPdf = officialExamBookletPdfLink(
   mapsTo.session,
   mapsTo.number
 )
+const categoryLinks = questionCategoryLinks(question.data)
 ---
 
 <Layout title={title} description={description} headerLabel="国家試験対策">
@@ -155,12 +162,18 @@ const sourceBookletPdf = officialExamBookletPdfLink(
         set:html={renderEmphasisHtml(stem)}
       />
       {stemGrid ? <QuestionStemGrid grid={stemGrid} /> : null}
-      <a
-        class:list={[buttonVariants({ variant: "default" }), "min-h-11 w-fit"]}
-        href={subjectHref(subject)}
-      >
-        {subjectLabel(subject)}
-      </a>
+      <div class="flex flex-wrap gap-2">
+        {
+          categoryLinks.map((link) => (
+            <a
+              class:list={[buttonVariants({ variant: "default" }), "min-h-11"]}
+              href={link.href}
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
       <p class="text-xs text-muted-foreground">
         公式の問題文・選択肢は掲載していません。出題の要点に沿って作り直したオリジナル問題です。
       </p>
@@ -203,11 +216,17 @@ const sourceBookletPdf = officialExamBookletPdfLink(
     />
     <script is:inline>
       (function () {
-        var fromSubject =
-          new URLSearchParams(location.search).get("from") === "subject"
+        var params = new URLSearchParams(location.search)
+        var fromSubject = params.get("from") === "subject"
+        var topic = params.get("topic")
         document.documentElement.dataset.questionNavFrom = fromSubject
           ? "subject"
           : "exam"
+        if (topic) {
+          document.documentElement.dataset.questionNavTopic = topic
+        } else {
+          delete document.documentElement.dataset.questionNavTopic
+        }
       })()
     </script>
     <QuestionNav
@@ -216,8 +235,9 @@ const sourceBookletPdf = officialExamBookletPdfLink(
       examNext={examNext}
       subjectPrev={subjectPrev}
       subjectNext={subjectNext}
+      topicNav={topicNav}
       examBackHref={yearHref(year)}
-      subjectBackHref={subjectHref(subject)}
+      subjectBackHref={browseCategoryHref(subject)}
       subjectLabel={subjectLabel(subject)}
       year={year}
     />

@@ -29,6 +29,47 @@ export const examSubjectLabels: Record<ExamSubjectId, string> = {
   "iryo-anzen": "医療安全管理学",
 }
 
+/** 理工学・放射線科学などを細分化する学習タグ（旧科目名ベース） */
+export const studyTopicIds = [
+  "hoshasen-seibutsugaku",
+  "hoshasen-butsurigaku",
+  "iryo-kogaku",
+  "hoshasen-keisoku",
+] as const
+
+export type StudyTopicId = (typeof studyTopicIds)[number]
+
+export const studyTopicLabels: Record<StudyTopicId, string> = {
+  "hoshasen-seibutsugaku": "放射線生物学",
+  "hoshasen-butsurigaku": "放射線物理学",
+  "iryo-kogaku": "医用工学",
+  "hoshasen-keisoku": "放射線計測学",
+}
+
+/** 科目ページ・パンくず用（試験科目または学習タグ） */
+export type BrowseCategoryId = ExamSubjectId | StudyTopicId
+
+export function isExamSubjectId(id: string): id is ExamSubjectId {
+  return (examSubjectIds as readonly string[]).includes(id)
+}
+
+export function isStudyTopicId(id: string): id is StudyTopicId {
+  return (studyTopicIds as readonly string[]).includes(id)
+}
+
+export function isBrowseCategoryId(id: string): id is BrowseCategoryId {
+  return isExamSubjectId(id) || isStudyTopicId(id)
+}
+
 export function subjectLabel(id: ExamSubjectId) {
   return examSubjectLabels[id]
+}
+
+export function studyTopicLabel(id: StudyTopicId) {
+  return studyTopicLabels[id]
+}
+
+export function browseCategoryLabel(id: BrowseCategoryId) {
+  if (isExamSubjectId(id)) return examSubjectLabels[id]
+  return studyTopicLabels[id]
 }

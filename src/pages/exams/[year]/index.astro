@@ -5,13 +5,13 @@ import ExamBreadcrumb from "@/components/exam-breadcrumb.astro"
 import { ExamQuestionBrowser } from "@/components/exam-question-browser"
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
-import { subjectLabel } from "@/lib/exam-subjects"
 import {
   groupQuestions,
+  questionCategoryLinks,
   questionHeading,
   questionHref,
+  questionSearchLabels,
   sessionLabel,
-  subjectHref,
 } from "@/lib/questions"
 
 interface Props {
@@ -71,8 +71,8 @@ const description = exam
                   heading: questionHeading(item.exam, item.session, item.number),
                   stem: item.stem,
                   analog: item.origin === "analog",
-                  subjectHref: subjectHref(item.subject),
-                  subjectLabel: subjectLabel(item.subject),
+                  searchLabels: questionSearchLabels(item),
+                  categoryLinks: questionCategoryLinks(item),
                 }
               }),
           }))}

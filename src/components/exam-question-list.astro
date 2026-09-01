@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content"
 
 import { LinkCard } from "@/components/link-card"
+import type { StudyTopicId } from "@/lib/exam-subjects"
 import {
   compareQuestions,
   questionHeading,
@@ -11,10 +12,10 @@ import {
 interface Props {
   questions: CollectionEntry<"questions">[]
   fromSubject?: boolean
+  browseTopic?: StudyTopicId
 }
 
-const { questions, fromSubject = false } = Astro.props
-// 年は降順、同年内は compareQuestions（午前→午後、問番号昇順）
+const { questions, fromSubject = false, browseTopic } = Astro.props
 const items = [...questions].sort(
   (left, right) =>
     right.data.year - left.data.year || compareQuestions(left.data, right.data)
@@ -27,6 +28,7 @@ const items = [...questions].sort(
       const item = question.data
       const href = questionHref(item.year, item.session, item.number, {
         from: fromSubject ? "subject" : undefined,
+        topic: fromSubject ? browseTopic : undefined,
       })
       return (
         <li>

@@ -6,31 +6,46 @@ import ExamQuestionList from "@/components/exam-question-list.astro"
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
 import {
-  subjectLabel,
-  type ExamSubjectId,
+  browseCategoryLabel,
+  isStudyTopicId,
+  type BrowseCategoryId,
 } from "@/lib/exam-subjects"
 import { groupQuestions } from "@/lib/questions"
 
 interface Props {
-  subject: ExamSubjectId
+  category: BrowseCategoryId
   questions: CollectionEntry<"questions">[]
 }
 
 export async function getStaticPaths() {
   const questions = await getPublishedQuestions()
-  const subjects = [...new Set(questions.map((question) => question.data.subject))]
+  const data = questions.map((question) => question.data)
+  const categories = new Set<BrowseCategoryId>()
 
-  return subjects.map((subject) => ({
-    params: { subject },
+  for (const question of data) {
+    categories.add(question.subject)
+    for (const topic of question.studyTopics ?? []) {
+      categories.add(topic)
+    }
+  }
+
+  return [...categories].map((category) => ({
+    params: { subject: category },
     props: {
-      subject,
-      questions: questions.filter((question) => question.data.subject === subject),
+      category,
+      questions: questions.filter((question) => {
+        if (isStudyTopicId(category)) {
+          return question.data.studyTopics?.includes(category) ?? false
+        }
+        return question.data.subject === category
+      }),
     },
   }))
 }
 
-const { subject, questions } = Astro.props
-const label = subjectLabel(subject)
+const { category, questions } = Astro.props
+const label = browseCategoryLabel(category)
+const browseTopic = isStudyTopicId(category) ? category : undefined
 const years = groupQuestions(questions.map((question) => question.data))
 const title = label
 const description = `${label}の出題意図に沿った類似問題です。公式問題の転載ではありません。`
@@ -43,11 +58,11 @@ const description = `${label}の出題意図に沿った類似問題です。公
   <ExamBreadcrumb
     slot="header"
     class="hidden min-w-0 md:block"
-    subject={subject}
+    category={category}
   />
   <div class="mx-auto grid max-w-2xl gap-8">
     <header class="grid gap-3">
-      <ExamBreadcrumb class="md:hidden" subject={subject} />
+      <ExamBreadcrumb class="md:hidden" category={category} />
       <h1 class="text-2xl font-semibold tracking-tight">{label}</h1>
       <p class="text-sm leading-relaxed text-muted-foreground">
         公式の問題文・選択肢は掲載していません。この科目の類似問題を選んで演習できます。
@@ -66,6 +81,7 @@ const description = `${label}の出題意図に沿った類似問題です。公
               </h2>
               <ExamQuestionList
                 fromSubject
+                browseTopic={browseTopic}
                 questions={questions.filter(
                   (question) => question.data.year === group.year
                 )}

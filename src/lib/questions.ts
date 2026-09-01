@@ -1,5 +1,15 @@
-import type { ExamSubjectId } from "@/lib/exam-subjects"
-import { examSubjectIds } from "@/lib/exam-subjects"
+import type {
+  BrowseCategoryId,
+  ExamSubjectId,
+  StudyTopicId,
+} from "@/lib/exam-subjects"
+import {
+  examSubjectIds,
+  isStudyTopicId,
+  studyTopicIds,
+  studyTopicLabel,
+  subjectLabel,
+} from "@/lib/exam-subjects"
 import { withBase } from "@/lib/paths"
 
 export type ExamSession = "am" | "pm"
@@ -12,6 +22,7 @@ export type QuestionListItem = {
   stem: string
   origin: "analog"
   subject: ExamSubjectId
+  studyTopics?: StudyTopicId[]
 }
 
 export function sessionLabel(session: ExamSession) {
@@ -60,32 +71,80 @@ export function yearHref(year: number) {
   return withBase(`exams/${year}/`)
 }
 
-export function subjectHref(subject: ExamSubjectId) {
-  return withBase(`exams/subjects/${subject}/`)
+export function browseCategoryHref(category: BrowseCategoryId) {
+  return withBase(`exams/subjects/${category}/`)
 }
 
-/** 「科目ページ経由で来た」ことを表すクエリパラメータ。questionHref が付与し、isFromSubjectNavigation が判定する */
+/** @deprecated browseCategoryHref を使う */
+export function subjectHref(subject: ExamSubjectId) {
+  return browseCategoryHref(subject)
+}
+
 const FROM_QUERY_KEY = "from"
 const FROM_SUBJECT_VALUE = "subject"
+const TOPIC_QUERY_KEY = "topic"
+
+export type QuestionBrowseOptions = {
+  from?: "subject"
+  topic?: StudyTopicId
+}
 
 export function questionHref(
   year: number,
   session: ExamSession,
   number: number,
-  options?: { from?: "subject" }
+  options?: QuestionBrowseOptions
 ) {
   const path = withBase(`exams/${year}/${session}/${number}/`)
-  return options?.from === "subject"
-    ? `${path}?${FROM_QUERY_KEY}=${FROM_SUBJECT_VALUE}`
-    : path
+  if (options?.from !== "subject") return path
+
+  const params = new URLSearchParams()
+  params.set(FROM_QUERY_KEY, FROM_SUBJECT_VALUE)
+  if (options.topic) params.set(TOPIC_QUERY_KEY, options.topic)
+  return `${path}?${params.toString()}`
 }
 
-/** location.search を渡して、科目ページ経由の遷移かどうかを判定する */
 export function isFromSubjectNavigation(search: string) {
   return new URLSearchParams(search).get(FROM_QUERY_KEY) === FROM_SUBJECT_VALUE
 }
 
-/** 問題への遷移リンク（一覧カード・前後ナビ）で使う共通形 */
+export function navigationTopic(search: string): StudyTopicId | undefined {
+  const value = new URLSearchParams(search).get(TOPIC_QUERY_KEY)
+  return value && isStudyTopicId(value) ? value : undefined
+}
+
+/** 科目名検索用（試験科目＋学習タグ） */
+export function questionSearchLabels(
+  item: Pick<QuestionListItem, "subject" | "studyTopics">
+) {
+  const labels = [subjectLabel(item.subject)]
+  for (const topic of item.studyTopics ?? []) {
+    labels.push(studyTopicLabel(topic))
+  }
+  return labels
+}
+
+export type CategoryLink = {
+  href: string
+  label: string
+}
+
+/** 問題ページの科目・学習タグリンク */
+export function questionCategoryLinks(
+  item: Pick<QuestionListItem, "subject" | "studyTopics">
+): CategoryLink[] {
+  const links: CategoryLink[] = [
+    { href: browseCategoryHref(item.subject), label: subjectLabel(item.subject) },
+  ]
+  for (const topic of item.studyTopics ?? []) {
+    links.push({
+      href: browseCategoryHref(topic),
+      label: studyTopicLabel(topic),
+    })
+  }
+  return links
+}
+
 export type QuestionNavTarget = {
   href: string
   heading: string
@@ -94,7 +153,7 @@ export type QuestionNavTarget = {
 
 export function questionNavTarget(
   item: Pick<QuestionListItem, "year" | "exam" | "session" | "number" | "stem">,
-  options?: { from?: "subject" }
+  options?: QuestionBrowseOptions
 ): QuestionNavTarget {
   return {
     href: questionHref(item.year, item.session, item.number, options),
@@ -146,6 +205,83 @@ export function groupQuestionsBySubject(questions: QuestionListItem[]) {
       subject,
       items: bySubject.get(subject)!,
     }))
+}
+
+export function groupQuestionsByStudyTopic(questions: QuestionListItem[]) {
+  const byTopic = new Map<StudyTopicId, QuestionListItem[]>()
+
+  for (const question of questions) {
+    for (const topic of question.studyTopics ?? []) {
+      const list = byTopic.get(topic) ?? []
+      list.push(question)
+      byTopic.set(topic, list)
+    }
+  }
+
+  return studyTopicIds
+    .filter((id) => byTopic.has(id))
+    .map((topic) => ({
+      topic,
+      items: byTopic.get(topic)!,
+    }))
+}
+
+export function questionsInBrowseCategory(
+  questions: QuestionListItem[],
+  category: BrowseCategoryId
+) {
+  if (isStudyTopicId(category)) {
+    return questions.filter((question) =>
+      question.studyTopics?.includes(category)
+    )
+  }
+  return questions.filter((question) => question.subject === category)
+}
+
+export function sortedQuestions(items: QuestionListItem[]) {
+  return [...items].sort(compareQuestions)
+}
+
+export function topicNavigationForQuestion(
+  allQuestions: QuestionListItem[],
+  question: QuestionListItem
+) {
+  const navigation: Partial<
+    Record<
+      StudyTopicId,
+      { prev?: QuestionNavTarget; next?: QuestionNavTarget }
+    >
+  > = {}
+
+  for (const topic of question.studyTopics ?? []) {
+    const inTopic = sortedQuestions(
+      allQuestions.filter((entry) => entry.studyTopics?.includes(topic))
+    )
+    const index = inTopic.findIndex(
+      (entry) =>
+        entry.year === question.year &&
+        entry.session === question.session &&
+        entry.number === question.number
+    )
+    navigation[topic] = {
+      prev:
+        index > 0
+          ? questionNavTarget(inTopic[index - 1]!, {
+              from: "subject",
+              topic,
+            })
+          : undefined,
+      next:
+        index >= 0 && index < inTopic.length - 1
+          ? questionNavTarget(inTopic[index + 1]!, {
+              from: "subject",
+              topic,
+            })
+          : undefined,
+    }
+  }
+
+  return navigation
 }
 
 export function questionHeading(

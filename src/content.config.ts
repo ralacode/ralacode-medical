@@ -3,7 +3,7 @@ import { z } from "astro/zod"
 import { glob } from "astro/loaders"
 
 import type { FaqItem } from "./lib/article-seo"
-import { examSubjectIds } from "./lib/exam-subjects"
+import { examSubjectIds, studyTopicIds } from "./lib/exam-subjects"
 
 const choiceNumber = z.number().int().min(1).max(5)
 const examAnswer = z.union([choiceNumber, z.array(choiceNumber).min(1)])
@@ -68,6 +68,8 @@ const questions = defineCollection({
     mapsTo: z.union([mapsToScored, mapsToExcluded]),
     /** 令和6年4月施行の試験科目 */
     subject: z.enum(examSubjectIds),
+    /** 学習タグ（放射線生物学など。subject に加えて科目ページに載せる） */
+    studyTopics: z.array(z.enum(studyTopicIds)).default([]),
     stem: z.string(),
     /** 問題文直下の画素値表。stem は行列を含まない短文にする */
     stemGrid: stemGrid.optional(),

@@ -1,6 +1,9 @@
 ---
 import { buttonVariants } from "@/components/ui/button"
-import { subjectLabel, type ExamSubjectId } from "@/lib/exam-subjects"
+import {
+  browseCategoryLabel,
+  type BrowseCategoryId,
+} from "@/lib/exam-subjects"
 import {
   examsHref,
   sessionLabel,
@@ -12,12 +15,12 @@ interface Props {
   year?: number
   session?: ExamSession
   number?: number
-  subject?: ExamSubjectId
+  category?: BrowseCategoryId
   class?: string
 }
 
-const { year, session, number, subject, class: className } = Astro.props
-const atRoot = year == null && subject == null
+const { year, session, number, category, class: className } = Astro.props
+const atRoot = year == null && category == null
 const currentClass = "px-1 text-foreground"
 const linkClass = buttonVariants({ variant: "default", size: "sm" })
 ---
@@ -62,11 +65,11 @@ const linkClass = buttonVariants({ variant: "default", size: "sm" })
       ) : null
     }
     {
-      subject && !year ? (
+      category && !year ? (
         <>
           <li aria-hidden="true" class="text-muted-foreground">/</li>
           <li class:list={[currentClass, "truncate"]}>
-            {subjectLabel(subject)}
+            {browseCategoryLabel(category)}
           </li>
         </>
       ) : null

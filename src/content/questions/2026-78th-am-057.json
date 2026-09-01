@@ -1,0 +1,41 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 57,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 57,
+    "answer": 4
+  },
+  "subject": "rikogaku-hoshasen",
+  "stem": "体重 **70 kg** の成人が、γ 線による**全身急性被ばく**を **LD50/60（約 4 Gy）** 受けたとき、体内の**吸収エネルギー**［J］に最も近いのはどれか。",
+  "choices": [
+    {
+      "text": "140"
+    },
+    {
+      "text": "210"
+    },
+    {
+      "text": "280",
+      "explanation": "吸収エネルギー E ［J］≈ 体重［kg］× 線量［Gy］（1 Gy ＝ 1 J/kg）です。**70 kg × 4 Gy ＝ 280 J**。**正解**です。"
+    },
+    {
+      "text": "350"
+    },
+    {
+      "text": "420"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**LD50/60** と **吸収エネルギー**の換算です。\n\n- **LD50/60** … 全身急性被ばくで **60 日以内に半数が死亡**する線量。**γ 線では約 4 Gy** と覚える。\n- **吸収エネルギー** … E ［J］＝ 体重［kg］× D ［Gy］（1 Gy ＝ 1 J/kg）。\n- **公式** … 体重 **60 kg** → 60 × 4 ＝ **240 J**（正答 **4 番**）。\n- **類似問題** … 体重 **70 kg** → **280 J**。\n- ひっかけ：体重だけ変えて線量を掛け忘れる、Gy と J/kg の関係を混同する。",
+  "draft": false,
+  "studyTopics": [
+    "hoshasen-seibutsugaku"
+  ]
+}
