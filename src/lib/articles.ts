@@ -21,7 +21,15 @@ export async function getArticlesByTermIds(termIds: string[]) {
   return termIds.flatMap((termId) => {
     const article = byId.get(termId)
     return article
-      ? [{ termId, title: articleDisplayTitle(article.data.title), href: articleHref(article.id) }]
+      ? [
+          {
+            termId,
+            title:
+              article.data.termLabel?.trim() ||
+              articleDisplayTitle(article.data.title),
+            href: articleHref(article.id),
+          },
+        ]
       : []
   })
 }

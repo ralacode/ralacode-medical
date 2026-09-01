@@ -41,6 +41,8 @@ const articles = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     draft: z.boolean().default(false),
+    /** 問題ページ「関連する用語」の短い表示名。省略時は title の「｜」より前 */
+    termLabel: z.string().optional(),
     faq: z.array(faqItem).default([]),
   }),
 })

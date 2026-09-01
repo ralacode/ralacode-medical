@@ -11,6 +11,7 @@ alwaysApply: true
 
 - 保存先は `src/content/articles/{term-id}.mdx`。ファイル名は問題 JSON の `terms` と同じ ID（例: `k-space`）。
 - **title / description / FAQ / 冒頭の「とは」** まで SEO 対策を徹底する。完成例は `src/content/articles/k-space.mdx`。
+- **国試向け**であることは差別化として残す。特定の回次・問番号（「2026年午前問9の要点」など）を title / description / 冒頭に書かない。記事は用語解説であり、1問の解説ページではない。
 - FAQ は **frontmatter の `faq` のみ**。本文に同内容を重複しない。
 - 問題とのリンクは `terms` で自動。記事追加だけなら MDX（と必要時のみ `terms` の追記）で足りる。
 - **フロー・数式・要点**など強調したい記述は `<KeyPoint>` を使う（import 不要。記事ページでグローバル登録済み）。コードフェンス ``` はプログラムコード用。
