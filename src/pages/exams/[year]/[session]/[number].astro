@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content"
 
 import ExamBreadcrumb from "@/components/exam-breadcrumb.astro"
+import QuestionStemGrid from "@/components/question-stem-grid.astro"
 import { QuestionNav } from "@/components/question-nav"
 import { QuestionQuiz } from "@/components/question-quiz"
 import { buttonVariants } from "@/components/ui/button"
@@ -80,8 +81,23 @@ export async function getStaticPaths() {
 }
 
 const { question, examPrev, examNext, subjectPrev, subjectNext } = Astro.props
-const { year, exam, session, number, stem, choices, origin, subject, sourceExplanation, mapsTo, terms } =
-  question.data
+const {
+  year,
+  exam,
+  session,
+  number,
+  stem,
+  stemGrid,
+  choices,
+  origin,
+  subject,
+  sourceExplanation,
+  mapsTo,
+  terms,
+} = question.data
+const stemLabelIds = stemGrid
+  ? "question-stem question-stem-grid"
+  : "question-stem"
 const termLinks = await getArticlesByTermIds(terms)
 const answer = singleAnswer(question.data.answer)
 const heading = questionHeading(exam, session, number)
@@ -138,6 +154,7 @@ const sourceBookletPdf = officialExamBookletPdfLink(
         class="text-xl leading-snug font-semibold tracking-tight"
         set:html={renderEmphasisHtml(stem)}
       />
+      {stemGrid ? <QuestionStemGrid grid={stemGrid} /> : null}
       <a
         class:list={[buttonVariants({ variant: "default" }), "min-h-11 w-fit"]}
         href={subjectHref(subject)}
@@ -172,7 +189,7 @@ const sourceBookletPdf = officialExamBookletPdfLink(
     </header>
     <QuestionQuiz
       client:load
-      labelledBy="question-stem"
+      labelledBy={stemLabelIds}
       choices={quizChoices}
       answer={answer}
       shuffleChoices={question.data.shuffleChoices}

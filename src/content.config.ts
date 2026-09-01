@@ -27,6 +27,15 @@ const mapsToScored = z.object({
   answer: examAnswer,
 })
 
+/** 問題文直下に表示する画素値行列（行×列）。各行の長さは同一 */
+const stemGrid = z
+  .array(z.array(z.number().int()).min(1))
+  .min(1)
+  .refine(
+    (rows) => rows.every((row) => row.length === rows[0]!.length),
+    { message: "stemGrid rows must have equal length" }
+  )
+
 // article-seo.ts の FaqItem と形がずれないように satisfies で固定する
 const faqItem = z.object({
   question: z.string(),
@@ -60,6 +69,8 @@ const questions = defineCollection({
     /** 令和6年4月施行の試験科目 */
     subject: z.enum(examSubjectIds),
     stem: z.string(),
+    /** 問題文直下の画素値表。stem は行列を含まない短文にする */
+    stemGrid: stemGrid.optional(),
     /** 選択肢。text が本文、explanation が回答後に直下へ出す Markdown */
     choices: z
       .array(

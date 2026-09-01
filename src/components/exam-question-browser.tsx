@@ -20,6 +20,13 @@ export type ExamQuestionBrowserSection = {
   items: ExamQuestionBrowserItem[]
 }
 
+function matchesExamQuestion(item: ExamQuestionBrowserItem, query: string) {
+  return matchesSearchText(
+    [item.stem, item.subjectLabel, item.heading].filter(Boolean).join("\n"),
+    query
+  )
+}
+
 export function ExamQuestionBrowser({
   sections,
 }: {
@@ -32,9 +39,7 @@ export function ExamQuestionBrowser({
     const next = sections
       .map((section) => ({
         ...section,
-        items: section.items.filter((item) =>
-          matchesSearchText(item.stem, query)
-        ),
+        items: section.items.filter((item) => matchesExamQuestion(item, query)),
       }))
       .filter((section) => section.items.length > 0)
 
@@ -47,7 +52,11 @@ export function ExamQuestionBrowser({
   return (
     <div className="grid gap-8">
       <div className="grid gap-3">
-        <SearchField value={query} onChange={setQuery} placeholder="例: 脂肪" />
+        <SearchField
+          value={query}
+          onChange={setQuery}
+          placeholder="例: 脂肪、医療画像"
+        />
 
         {trimmedQuery && resultCount > 0 ? (
           <p

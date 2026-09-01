@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 34,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 34,
+    "answer": 4
+  },
+  "subject": "iryo-gazo-joho",
+  "stem": "放射線情報システム（RIS）などから、CT や MRI などの**撮影装置へ検査オーダ・患者情報を配信**するために用いる DICOM のサービスクラスはどれか。",
+  "choices": [
+    {
+      "text": "Storage（画像保存）",
+      "explanation": "撮影済みの**画像データをサーバへ送る・保存する**ための機能です。**撮影前のオーダ配信**とは役割が異なります。"
+    },
+    {
+      "text": "Modality Worklist Management（MWM）",
+      "explanation": "情報システム側が**ワークリスト**として患者名・検査内容・Accession Number などをモダリティへ**配信**します。撮影室の装置が「今日の検査一覧」を受け取るイメージです。**正解**です。"
+    },
+    {
+      "text": "Modality Performed Procedure Step（MPPS）",
+      "explanation": "撮影装置から**「検査を開始・完了した」**という**実施情報を報告**するための機能です。オーダの**受け取り**方向とは逆です。"
+    },
+    {
+      "text": "Query/Retrieve（Q/R）",
+      "explanation": "PACS などから**過去画像を検索・取得**する機能です。**撮影前のオーダ配信**ではありません。"
+    },
+    {
+      "text": "Verification（疎通確認）",
+      "explanation": "DICOM 通信相手との**接続確認（C-ECHO）** 用です。**患者・検査情報の配信**機能ではありません。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、**DICOM のサービスクラス**の役割分担です。\n\n- **MWM** … RIS/電子カルテ側からモダリティへ**検査ワークリスト**（患者・オーダ情報）を**プッシュ**する。\n- **Storage** … モダリティ→PACS 等への**画像転送・保存**。\n- **MPPS** … モダリティ→情報系への**検査実施ステータス**の報告（開始・完了など）。\n- **Q/R** … **画像の検索・取得**。\n- **Verification** … **疎通確認**のみ。\n- 流れの典型 … **MWM でオーダ受信** → 撮影 → **Storage で画像送信** → **MPPS で実施報告**。",
+  "draft": false
+}
