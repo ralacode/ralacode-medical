@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content"
 
-import ExamBreadcrumb from "@/components/exam-breadcrumb.astro"
+import { ExamBreadcrumb } from "@/components/exam-breadcrumb"
 import ExamQuestionList from "@/components/exam-question-list.astro"
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
@@ -57,12 +57,12 @@ const description = `${label}の出題意図に沿った類似問題です。公
   </span>
   <ExamBreadcrumb
     slot="header"
-    class="hidden min-w-0 md:block"
+    className="hidden min-w-0 md:block"
     category={category}
   />
   <div class="mx-auto grid max-w-2xl gap-8">
     <header class="grid gap-3">
-      <ExamBreadcrumb class="md:hidden" category={category} />
+      <ExamBreadcrumb className="md:hidden" category={category} />
       <h1 class="text-2xl font-semibold tracking-tight">{label}</h1>
       <p class="text-sm leading-relaxed text-muted-foreground">
         公式の問題文・選択肢は掲載していません。この科目の類似問題を選んで演習できます。

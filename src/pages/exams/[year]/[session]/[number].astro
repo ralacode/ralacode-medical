@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content"
 
-import ExamBreadcrumb from "@/components/exam-breadcrumb.astro"
+import { ExamBreadcrumb } from "@/components/exam-breadcrumb"
 import QuestionStemGrid from "@/components/question-stem-grid.astro"
 import { QuestionNav } from "@/components/question-nav"
 import { QuestionQuiz } from "@/components/question-quiz"
@@ -139,18 +139,22 @@ const categoryLinks = questionCategoryLinks(question.data)
   </span>
   <ExamBreadcrumb
     slot="header"
-    class="hidden min-w-0 md:block"
+    client:load
+    className="hidden min-w-0 md:block"
     year={year}
     session={session}
     number={number}
+    subject={subject}
   />
   <article class="mx-auto grid max-w-2xl gap-6">
     <header class="grid gap-3">
       <ExamBreadcrumb
-        class="md:hidden"
+        client:load
+        className="md:hidden"
         year={year}
         session={session}
         number={number}
+        subject={subject}
       />
       <p class="text-sm text-muted-foreground">
         {year}年 · {heading}
@@ -214,21 +218,6 @@ const categoryLinks = questionCategoryLinks(question.data)
       sourceBookletPdfHref={sourceBookletPdf?.href}
       sourceBookletPdfPage={sourceBookletPdf?.page}
     />
-    <script is:inline>
-      (function () {
-        var params = new URLSearchParams(location.search)
-        var fromSubject = params.get("from") === "subject"
-        var topic = params.get("topic")
-        document.documentElement.dataset.questionNavFrom = fromSubject
-          ? "subject"
-          : "exam"
-        if (topic) {
-          document.documentElement.dataset.questionNavTopic = topic
-        } else {
-          delete document.documentElement.dataset.questionNavTopic
-        }
-      })()
-    </script>
     <QuestionNav
       client:load
       examPrev={examPrev}

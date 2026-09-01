@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react"
-
 import { LinkCard } from "@/components/link-card"
+import { useQuestionBrowseState } from "@/hooks/use-question-browse-state"
 import { studyTopicLabel, type StudyTopicId } from "@/lib/exam-subjects"
 import {
   browseCategoryHref,
-  isFromSubjectNavigation,
-  navigationTopic,
   type QuestionNavTarget,
 } from "@/lib/questions"
 
@@ -23,24 +20,6 @@ type QuestionNavProps = {
   year: number
 }
 
-function readNavigationState() {
-  if (typeof window === "undefined") {
-    return { fromSubject: false, topic: undefined as StudyTopicId | undefined }
-  }
-  const mode = document.documentElement.dataset.questionNavFrom
-  const search = window.location.search
-  if (mode === "subject") {
-    return { fromSubject: true, topic: navigationTopic(search) }
-  }
-  if (mode === "exam") {
-    return { fromSubject: false, topic: undefined }
-  }
-  return {
-    fromSubject: isFromSubjectNavigation(search),
-    topic: navigationTopic(search),
-  }
-}
-
 export function QuestionNav({
   examPrev,
   examNext,
@@ -52,50 +31,29 @@ export function QuestionNav({
   subjectLabel,
   year,
 }: QuestionNavProps) {
-  const [navState, setNavState] = useState(readNavigationState)
-
-  useEffect(() => {
-    const sync = () => {
-      const fromSubject = isFromSubjectNavigation(window.location.search)
-      const topic = navigationTopic(window.location.search)
-      document.documentElement.dataset.questionNavFrom = fromSubject
-        ? "subject"
-        : "exam"
-      if (topic) {
-        document.documentElement.dataset.questionNavTopic = topic
-      } else {
-        delete document.documentElement.dataset.questionNavTopic
-      }
-      setNavState({ fromSubject, topic })
-    }
-
-    sync()
-    document.addEventListener("astro:page-load", sync)
-    return () => document.removeEventListener("astro:page-load", sync)
-  }, [])
-
-  const topicSequence = navState.topic ? topicNav?.[navState.topic] : undefined
-  const fromTopic = navState.fromSubject && navState.topic != null
+  const { fromSubject, topic } = useQuestionBrowseState()
+  const topicSequence = topic ? topicNav?.[topic] : undefined
+  const fromTopic = fromSubject && topic != null
 
   const prev = fromTopic
     ? topicSequence?.prev
-    : navState.fromSubject
+    : fromSubject
       ? subjectPrev
       : examPrev
   const next = fromTopic
     ? topicSequence?.next
-    : navState.fromSubject
+    : fromSubject
       ? subjectNext
       : examNext
 
   const backHref = fromTopic
-    ? browseCategoryHref(navState.topic!)
-    : navState.fromSubject
+    ? browseCategoryHref(topic)
+    : fromSubject
       ? subjectBackHref
       : examBackHref
   const backLabel = fromTopic
-    ? `${studyTopicLabel(navState.topic!)}の最後の問題です`
-    : navState.fromSubject
+    ? `${studyTopicLabel(topic)}の最後の問題です`
+    : fromSubject
       ? `${subjectLabel}の最後の問題です`
       : `${year}年最後の問題です`
 
@@ -103,6 +61,7 @@ export function QuestionNav({
     <nav className="grid gap-3" aria-label="問題ナビゲーション">
       {prev ? (
         <LinkCard
+          key={prev.href}
           direction="back"
           href={prev.href}
           label={`前の問題 · ${prev.heading}`}
@@ -111,12 +70,18 @@ export function QuestionNav({
       ) : null}
       {next ? (
         <LinkCard
+          key={next.href}
           href={next.href}
           label={`次の問題 · ${next.heading}`}
           title={next.stem}
         />
       ) : (
-        <LinkCard href={backHref} label={backLabel} title="問題一覧に戻る" />
+        <LinkCard
+          key={backHref}
+          href={backHref}
+          label={backLabel}
+          title="問題一覧に戻る"
+        />
       )}
     </nav>
   )
