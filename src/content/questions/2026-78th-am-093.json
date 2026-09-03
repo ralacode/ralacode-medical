@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 93,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 93,
+    "answer": 2
+  },
+  "subject": "gazo-kogaku",
+  "stem": "信号検出理論で、**真陽性率（感度）**を表す式はどれか。ただし、TP は真陽性、FP は偽陽性、FN は偽陰性、TN は真陰性とする。",
+  "choices": [
+    {
+      "text": "FN / (FN ＋ TP)",
+      "explanation": "これは**偽陰性率**（見逃し率）です。**感度**ではありません。"
+    },
+    {
+      "text": "FP / (FP ＋ TN)",
+      "explanation": "これは**偽陽性率**です。ROC 曲線の**横軸**に使われます。"
+    },
+    {
+      "text": "TN / (TN ＋ FP)",
+      "explanation": "これは**特異度**（真陰性率）です。健常者を正しく陰性と判定する割合です。"
+    },
+    {
+      "text": "TP / (TP ＋ FN)",
+      "explanation": "病変がある人のうち、**正しく陽性**と判定できた割合＝**感度**です。**正解**です。"
+    },
+    {
+      "text": "TP / (TP ＋ FP)",
+      "explanation": "これは**適中率（精度）**です。「陽性と判定したうち、本当に陽性だった割合」です。"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、**ROC 解析の混同行列**から各率を求める問題です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=45\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 45 ページ</a>）。公式は**偽陽性率**の式を選ばせる形式でした。\n\n- **1 番** … **FN / (FN＋TP)** → **偽陰性率**（見逃し率）。\n- **2 番** … **FP / (FP＋TN)** → **偽陽性率** → **正解**（ROC の横軸）。\n- **3 番** … **TN / (FP＋TN)** → **特異度**（真陰性率）。\n- **4 番** … **TP / (FN＋TP)** → **真陽性率（感度）**（ROC の縦軸）。\n- **5 番** … **TP / (FP＋TP)** → **適中率（精度）**。\n- **覚え方** … **感度＝TP/(TP+FN)**、**特異度＝TN/(TN+FP)**、**偽陽性率＝FP/(FP+TN)**。ROC は縦軸＝感度、横軸＝偽陽性率。",
+  "draft": false
+}

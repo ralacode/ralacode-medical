@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 78,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 78,
+    "answer": 5
+  },
+  "subject": "xray-kiki",
+  "stem": "**トモシンセシス（Tomosynthesis）**について正しいのはどれか。",
+  "choices": [
+    {
+      "text": "振り角は、通常 120 度以上である。",
+      "explanation": "乳房トモシンセシスでは振り角は**おおよそ 15〜50 度**程度が一般的です。120 度以上は誤りです。"
+    },
+    {
+      "text": "断層厚は、振り角の大きさに依存しない。",
+      "explanation": "振り角が**大きい**ほど、一般に**断層厚は薄く**なり分解能が向上する方向です。依存しない、は誤りです。"
+    },
+    {
+      "text": "主に循環器用 X 線撮影装置で用いられる。",
+      "explanation": "臨床では主に**マンモグラフィ**（乳腺）で用いられます。循環器専用ではありません。"
+    },
+    {
+      "text": "回転中心から離れた位置ほど、空間分解能が高くなる。",
+      "explanation": "一般に**回転中心付近**の方が再構成上有利で、離れるほど分解能が落ちる方向です。誤りです。"
+    },
+    {
+      "text": "step and shoot 方式では、一定角度ごとに X 線管を止めて露光する。",
+      "explanation": "**step and shoot** は、管球を**段階的に停止**しながら各角度で撮影する方式です。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**トモシンセシス**の撮影方式です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=39\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 39 ページ</a>）。\n\n- **1 番** … 「振り角 120 度以上」→ **誤り**。\n- **2 番** … 「断層厚は振り角に依存しない」→ **誤り**。\n- **3 番** … 「循環器用で用いる」→ **誤り**（**乳腺**が中心）。\n- **4 番** … 「回転中心から離れるほど分解能同等」→ **誤り**。\n- **5 番** … 「**step and shoot** で一定角度ごとに停止撮影」→ **正解**。\n- **覚え方** … FPD ＋ 低線量多角度投影 → **再構成**で断層像。",
+  "draft": false
+}

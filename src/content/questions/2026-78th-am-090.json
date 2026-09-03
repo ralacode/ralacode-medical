@@ -1,0 +1,38 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 90,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 90,
+    "answer": 1
+  },
+  "subject": "xray-gijutsu",
+  "stem": "胸部正面 X 線像で、右心縁—正中線 **8.2 cm**、左心縁—正中線 **7.8 cm**、胸郭最大横径 **32.0 cm** と測定した。**心胸郭比（CTR）**に最も近いのはどれか。",
+  "choices": [
+    {
+      "text": "0.42"
+    },
+    {
+      "text": "0.46"
+    },
+    {
+      "text": "0.50",
+      "explanation": "**CTR ＝（右心径＋左心径）／ 胸郭横径**。**（8.2 ＋ 7.8）／ 32.0 ＝ 16.0 ／ 32.0 ＝ 0.50**。**正解**です。"
+    },
+    {
+      "text": "0.55"
+    },
+    {
+      "text": "0.62"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "公式問題は、胸部正面像（別冊 No.10）上の **A・B・C** から **CTR の算式**を選ぶ形式でした。本サイトの類似問題は**数値計算**です。<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=43\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 43 ページ</a>・<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_02.pdf#page=16\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 16 ページ</a> の測定線とあわせて確認してください。\n\n- **公式正答** … **1 番**（**CTR ＝（A ＋ B）／ C**）。\n- **A・B** … 正中線から**右・左心縁**までの距離。\n- **C** … **胸郭最大横径**（肋骨内側）。\n- **類似問題** … **（8.2 ＋ 7.8）／ 32.0 ＝ 0.50**。\n- **目安** … 成人の CTR **0.50 未満**が正常域とされることが多い。",
+  "draft": false
+}

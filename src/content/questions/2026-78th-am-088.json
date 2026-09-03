@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 88,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 88,
+    "answer": 5
+  },
+  "subject": "xray-gijutsu",
+  "stem": "**経静脈性尿路造影（IVU）**において、**最も早い時相**に見える所見として正しいのはどれか。",
+  "choices": [
+    {
+      "text": "両側腎盂・腎杯が拡張し、造影剤で満たされている。",
+      "explanation": "腎盂・腎杯の描出は**腎実質濃染の後**（**腎盂相**）です。最も早い時相ではありません。"
+    },
+    {
+      "text": "腎実質のみが濃染し、腎盂内に造影剤はほとんど見えない。",
+      "explanation": "造影剤投与直後は**腎実質（ネフログラム相）**だけが濃染します。腎盂・尿管はまだ描出されません。**正解**です。"
+    },
+    {
+      "text": "両側尿管全体と膀胱が造影剤で一続きに描出されている。",
+      "explanation": "尿管・膀胱の描出は**排泄相**で、IVU の**最終段階**に近い所見です。"
+    },
+    {
+      "text": "腎盂が部分的に描出され始めたが、膀胱は未描出である。",
+      "explanation": "腎盂の部分描出は**ネフログラム相と排泄相の中間**です。最も早い時相ではありません。"
+    },
+    {
+      "text": "大動脈のみが濃染され、腎実質は未濃染である。",
+      "explanation": "IVU では腎実質濃染が早い段階で始まります。**腎未濃染で大動脈のみ**、は IVU の典型所見ではありません。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "公式問題は、IVU **4 枚の時系列**（別冊 No.9）から**正しい順序**を選ぶ形式でした。本サイトの類似問題は図を載せられないため、**最も早い時相の所見**に絞っています。<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=42\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 42 ページ</a>・<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_02.pdf#page=14\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 14 ページ</a> の画像とあわせて確認してください。\n\n- **公式正答** … **5 番**（**エ → ウ → イ → ア**）。\n- **時系列の流れ** … **腎実質濃染（ネフログラム）** → **腎盂・腎杯** → **尿管** → **膀胱**。\n- **最も早い時相** … **腎実質のみ濃染**（腎盂未描出）。\n- **覚え方** … IVU は「**実質 → 腎盂 → 尿管 → 膀胱**」の順に描出が進む。",
+  "draft": false
+}

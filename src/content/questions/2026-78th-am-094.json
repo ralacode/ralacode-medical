@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 94,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 94,
+    "answer": 3
+  },
+  "subject": "gazo-kogaku",
+  "stem": "**FPD 画像の量子モルト（量子雑音）**に最も影響するのはどれか。",
+  "choices": [
+    {
+      "text": "構造雑音",
+      "explanation": "**構造雑音**は検出器や読み出し系の**固定成分**です。量子モルトの主因ではありません。"
+    },
+    {
+      "text": "焦点寸法",
+      "explanation": "**焦点寸法**は**幾何学的 unsharpness（半影）**に関係します。量子モルトとは別の要因です。"
+    },
+    {
+      "text": "入射 X 線光子数（管電流・時間）",
+      "explanation": "入射光子数が**多いほど**統計的ゆらぎ（量子モルト）は**小さく**なります。**検出量子数**と同じ発想で、**正解**です。"
+    },
+    {
+      "text": "量子化雑音",
+      "explanation": "**量子化雑音**は A/D 変換の段数が少ないときに目立ちますが、DR/FPD では一般に**量子モルト**の方が支配的です。"
+    },
+    {
+      "text": "ディテクター素子（dexel）寸法",
+      "explanation": "素子サイズは**サンプリング**や **NPS** に関係しますが、粒状性の**最大要因**は入射光子数です。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**FPD（DR）の粒状性・雑音**の支配因子です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=45\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 45 ページ</a>）。\n\n- **1 番** … **構造雑音** → 固定系雑音。量子モルトより小さいことが多い。\n- **2 番** … **焦点寸法** → 幾何学的 unsharpness。雑音量の主因ではない。\n- **3 番** … **検出量子数** → **正解**。入射 X 線量（mAs）↑ → 検出光子数 ↑ → **量子モルト ↓**。\n- **4 番** … **量子化雑音** → A/D 段数が十分なら通常は二次的。\n- **5 番** … **dexel 寸法** → サンプリング・NPS に関係。主因は検出量子数。\n- **覚え方** … DR/FPD の粒状性は **X 線量子モルト**が最大。**mAs を上げる**と改善する方向。",
+  "draft": false
+}

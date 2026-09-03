@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 85,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 85,
+    "answer": 5
+  },
+  "subject": "xray-gijutsu",
+  "stem": "**頭部 X 線撮影法**と主な観察目的の組合せで正しいのはどれか。",
+  "choices": [
+    {
+      "text": "Caldwell 法 … 後頭孔",
+      "explanation": "Caldwell（コールドウェル）法は**副鼻腔・前頭洞**など向きです。**後頭孔**は Towne 法の領域です。"
+    },
+    {
+      "text": "Towne 法 … 後頭孔",
+      "explanation": "Towne（トウン）法は**軸位**から**後頭孔・後頭骨**を観察する代表的手法です。**正解**です。"
+    },
+    {
+      "text": "Waters 法 … 視神経管",
+      "explanation": "Waters（ウォータース）法は**上顎洞・頰骨**など。**視神経管**は Rhese 法などです。"
+    },
+    {
+      "text": "Stenvers 法 … 上顎洞",
+      "explanation": "Stenvers（ステンバース）法は**乳突・内耳・岩骨**向きです。"
+    },
+    {
+      "text": "Rhese 法 … 外耳道",
+      "explanation": "Rhese（レーゼ）法は**視神経管・optic canal** 方向です。外耳道は別体位です。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、**頭部単純撮影の体位と観察部位**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=41\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 41 ページ</a>）。\n\n- **1 番** … Caldwell … 大後頭孔 → **誤り**（副鼻腔系）。\n- **2 番** … Rhese … 三半規管 → **誤り**（**視神経管**）。\n- **3 番** … Schüller … 視神経管 → **誤り**（**外耳道・乳突**）。\n- **4 番** … Stenvers … トルコ鞍 → **誤り**（**内耳・乳突**）。\n- **5 番** … **Waters … 頰骨（上顎洞）** → **正解**。\n- **覚え方** … **Waters＝頰骨・上顎洞**、**Towne＝後頭孔**、**Caldwell＝副鼻腔**。",
+  "draft": false
+}

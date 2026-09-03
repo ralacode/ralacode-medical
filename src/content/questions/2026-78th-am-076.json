@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 76,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 76,
+    "answer": 2
+  },
+  "subject": "xray-kiki",
+  "stem": "**FPD（フラットパネルディテクタ）**について正しいのはどれか。",
+  "choices": [
+    {
+      "text": "量子検出効率（DQE）は、CR より低い。",
+      "explanation": "FPD は一般に **CR より DQE が高い**（量子効率・読み取り効率が良い）とされます。誤りです。"
+    },
+    {
+      "text": "間接変換方式では、シンチレータで X 線を可視光に変換する。",
+      "explanation": "**間接変換**は X 線 → **シンチレータ（CsI 等）** → 光 → フォトダイオード → 電荷です。**正解**です。"
+    },
+    {
+      "text": "直接変換方式では、輝尽性蛍光体が検出層に用いられる。",
+      "explanation": "直接変換は **a-Se などの光導電体**が X 線を直接電荷に変換します。輝尽性蛍光体は **CR** の IP 向きです。"
+    },
+    {
+      "text": "CR より、撮影から画像表示までの時間が長い。",
+      "explanation": "FPD は**リアルタイム**に読み出せ、CR のような**読取り工程**がありません。誤りです。"
+    },
+    {
+      "text": "直接変換方式は、間接変換より常時温度管理が不要である。",
+      "explanation": "**直接変換（a-Se）**の方が**温度の影響を受けやすく**、冷却などの管理が必要になることがあります。誤りです。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、**FPD の方式と特徴**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=38\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 38 ページ</a>）。\n\n- **1 番** … 「DQE は CR より低い」→ **誤り**（FPD の方が高い）。\n- **2 番** … 「**TFT スイッチング**で信号を読み取る」→ **正解**。\n- **3 番** … 「直接変換で輝尽性蛍光体」→ **誤り**（a-Se 光導電体）。\n- **4 番** … 「CR より表示まで長い」→ **誤り**（FPD は速い）。\n- **5 番** … 「間接変換の方が常時温度管理が必要」→ **誤り**（直接変換の方が温度依存）。\n- **覚え方** … **間接**＝シンチ＋TFT／**直接**＝a-Se＋TFT。",
+  "draft": false
+}

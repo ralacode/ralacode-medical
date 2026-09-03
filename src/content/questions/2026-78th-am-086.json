@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 86,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 86,
+    "answer": 4
+  },
+  "subject": "xray-gijutsu",
+  "stem": "**CTDIvol**について正しいのはどれか。",
+  "choices": [
+    {
+      "text": "1 回の CT 検査全体の線量積算値（DLP）である。",
+      "explanation": "検査全体の積算は **DLP**（mGy·cm）です。**CTDIvol** とは別物です。"
+    },
+    {
+      "text": "CT 画像の空間分解能を表す指標である。",
+      "explanation": "空間分解能は **MTF** などで評価します。線量指標ではありません。"
+    },
+    {
+      "text": "スライス厚（または phantom 位置）あたりの平均吸収線量である。",
+      "explanation": "**CTDIvol** は、Helical などを**体積平均**した **mGy** 単位の線量指標です。**正解**です。"
+    },
+    {
+      "text": "低コントラスト分解能を表す指標である。",
+      "explanation": "低コントラスト分解能は**画質評価**の項目で、CTDIvol とは別です。"
+    },
+    {
+      "text": "患者の実効線量（mSv）を直接表す値である。",
+      "explanation": "**CTDIvol** は **Gy** 系の**吸収線量**指標。実効線量 **mSv** へは**換算係数**が必要です。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**CT 線量指標**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=42\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 42 ページ</a>）。\n\n- **1 番** … 1 回あたりの実効線量 → **誤り**（DLP・mSv 換算の話）。\n- **2 番** … 空間分解能 → **誤り**。\n- **3 番** … CTDI（スライス厚あたり線量）→ **CTDIvol** と混同しやすいが、公式は **DLP** を問う。\n- **4 番** … **DLP ＝ ∫ CTDIvol dl**（全撮影範囲の CTDIvol 積算）→ **正解**。\n- **5 番** … コントラスト分解能 → **誤り**。\n- **覚え方** … **CTDIvol**＝**mGy**（線量強度）／**DLP**＝**mGy·cm**（積算）→ **mSv** へ換算。",
+  "draft": false
+}

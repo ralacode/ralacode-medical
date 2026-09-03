@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 84,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 84,
+    "answer": 5
+  },
+  "subject": "xray-gijutsu",
+  "stem": "**剣状突起**より**尾側（足側）**に位置するのはどれか。",
+  "choices": [
+    {
+      "text": "胸骨角（Louis 角）",
+      "explanation": "第 **2** 肋軟骨の高さで、**剣状突起より頭側**（上）です。"
+    },
+    {
+      "text": "甲状軟骨結節",
+      "explanation": "**喉頭**付近で、胸骨より**頭側**です。"
+    },
+    {
+      "text": "乳様突起",
+      "explanation": "第 **4** 胸椎高さ付近で、**剣状突起より頭側**です。"
+    },
+    {
+      "text": "第 10 胸椎棘",
+      "explanation": "剣状突起は第 **7** 〜 **9** 肋軟骨付近。**第 10 胸椎**はその**尾側**に相当します。**正解**です。"
+    },
+    {
+      "text": "肩甲骨上角",
+      "explanation": "第 **2** 胸椎高さ付近で、**頭側**です。"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、**体表解剖**の上下関係です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=41\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 41 ページ</a>）。\n\n- **1 番** … 胸骨上窩 → **頭側**。\n- **2 番** … 喉頭隆起 → **頭側**。\n- **3 番** … 乳様突起 → **頭側**。\n- **4 番** … 肩甲骨下縁 → 剣状突起付近〜やや尾側（問題により紛らわしいが、**5 番**より尾側判定が明確）。\n- **5 番** … **肋骨弓下縁** → **正解**（明らかに**尾側**）。\n- **類似問題** … **第 10 胸椎棘**も尾側の代表。\n- **覚え方** … 剣状突起＝前胸壁下端 → その下が**上腹部・肋弓**。",
+  "draft": false
+}

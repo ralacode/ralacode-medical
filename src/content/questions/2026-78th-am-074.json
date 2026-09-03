@@ -1,0 +1,38 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 74,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 74,
+    "answer": 2
+  },
+  "subject": "xray-kiki",
+  "stem": "管電圧 **120 kV**、管電流 **500 mA**、管電圧リプル百分率 **8%** の**インバータ式** X 線装置の**公称最大電力**［kW］に最も近いのはどれか。",
+  "choices": [
+    {
+      "text": "50"
+    },
+    {
+      "text": "57"
+    },
+    {
+      "text": "60",
+      "explanation": "**P ［kW］＝ U ［kV］× I ［mA］× f × 10⁻³**。リプル **8%**（≦ 10%）なので **f ＝ 1.0**。**P ＝ 120 × 500 × 1.0 × 10⁻³ ＝ 60 kW**。**正解**です。"
+    },
+    {
+      "text": "76"
+    },
+    {
+      "text": "96"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**公称最大電力**の計算です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=38\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 38 ページ</a>）。\n\n- **公式正答** … **2 番**（**76.0 kW**）。**100 kV・800 mA・リプル 12%**。\n- **公式** … リプル 12%（10% 超〜25% 以下）→ **f ＝ 0.95**。**P ＝ 100 × 800 × 0.95 × 10⁻³ ＝ 76 kW**。\n- **類似問題** … **120 kV・500 mA・リプル 8%** → **f ＝ 1.0** → **60 kW**。\n- **f の決め方** … ≦ 10% → **1.0**／10% 超〜25% 以下 → **0.95**／25% 超 → **0.74**。\n- **ひっかけ** … **撮影時間は式に入らない**、f の段階取り違え、**10⁻³** 忘れ。",
+  "draft": false
+}

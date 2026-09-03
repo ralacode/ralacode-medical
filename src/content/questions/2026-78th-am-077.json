@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 77,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 77,
+    "answer": 3
+  },
+  "subject": "xray-kiki",
+  "stem": "散乱線除去グリッドの**特性と式**の組合せで正しいのはどれか。ただし、**h**：吸収はくの高さ、**D**：吸収はくの間隔、**Tp**：一次放射線透過率、**Tt**：全放射線透過率とする。",
+  "choices": [
+    {
+      "text": "グリッド比 … h / D",
+      "explanation": "**グリッド比 r ＝ h / D**（高さ ÷ 間隔）です。**正解**です。"
+    },
+    {
+      "text": "グリッド比 … (D ＋ d) / h",
+      "explanation": "分子と分母が逆で、**d**（はく厚）の扱いも誤りです。"
+    },
+    {
+      "text": "グリッド密度 … D",
+      "explanation": "グリッド密度は**単位長さあたりのはく本数**で、**1 / (D ＋ d)** などの形です。**D そのもの**ではありません。"
+    },
+    {
+      "text": "グリッド露出係数 … Tp",
+      "explanation": "**B ＝ 1 / Tt**（全放射線透過率の逆数）です。"
+    },
+    {
+      "text": "コントラスト改善比 … Ts / Tt",
+      "explanation": "**K ＝ Tp / Tt**（一次透過率 ÷ 全透過率）がコントラスト改善比です。"
+    }
+  ],
+  "answer": 1,
+  "terms": [],
+  "sourceExplanation": "この問は、**グリッドの物理量**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=39\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 39 ページ</a>）。\n\n- **1 番** … グリッド比 **(D＋d)/h** → **誤り**（正しくは **h/D**）。\n- **2 番** … グリッド密度 **1/D** → 定義により近いが、厳密には **1/(D+d)** など。\n- **3 番** … イメージ改善係数 **Tp²/Tt** → **正解**（JIS Z 4910）。\n- **4 番** … グリッド露出係数 **1/Tp** → **誤り**（**1/Tt**）。\n- **5 番** … コントラスト改善比 **Ts/Tt** → **誤り**（**Tp/Tt**）。\n- **覚え方** … **r＝h/D**、**B＝1/Tt**、**K＝Tp/Tt**、**Q＝Tp²/Tt**。",
+  "draft": false
+}

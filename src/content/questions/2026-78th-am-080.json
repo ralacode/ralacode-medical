@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "am",
+  "number": 80,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "am",
+    "number": 80,
+    "answer": 4
+  },
+  "subject": "xray-kiki",
+  "stem": "**X 線 CT**のアーチファクト（画像かぶり）について、**誤っている**のはどれか。",
+  "choices": [
+    {
+      "text": "メタルアーチファクト",
+      "explanation": "金属（インプラント等）付近で**強いストリーク**や**陰影**が出る、CT でよく知られるアーチファクトです。正しい名称です。"
+    },
+    {
+      "text": "ビームハードニングアーチファクト",
+      "explanation": "低エネルギー X 線が先に減衰し、**スペクトルが硬くなる**ことで生じるアーチファクトです。正しい名称です。"
+    },
+    {
+      "text": "リングアーチファクト",
+      "explanation": "検出器の**感度ムラ**などにより、同心円状のリングが出るアーチファクトです。正しい名称です。"
+    },
+    {
+      "text": "ケミカルシフトアーチファクト",
+      "explanation": "**ケミカルシフト**は **MRI** のアーチファクト用語です。**X 線 CT** では用いません。**誤り**です。"
+    },
+    {
+      "text": "ストリークアーチファクト",
+      "explanation": "高密度物や金属周囲に**放射状のすじ**が出るアーチファクトです。正しい名称です。"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、**CT アーチファクト**の名称です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf#page=40\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 40 ページ</a>）。\n\n- **1 番** … メタル → **CT に存在**。\n- **2 番** … リング → **CT に存在**。\n- **3 番** … ストリーク → **CT に存在**。\n- **4 番** … **ケミカルシフト** → **誤り**（**MRI** の用語）。\n- **5 番** … ビームハードニング → **CT に存在**。\n- **ひっかけ** … MRI の用語を CT の選択肢に混ぜる。",
+  "draft": false
+}
