@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 7,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 7,
+    "answer": 3
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "**乳房 MRI** の **ダイナミック contrast enhancement** において、**悪性腫瘍**に最も典型的な**時間信号曲線**はどれか。",
+  "choices": [
+    {
+      "text": "造影後も緩やかに信号が上昇し続ける（持続型）。",
+      "explanation": "**持続型（type I）**は良性病変に多いパターンです。早期 peak 後の**信号低下**が典型ではありません。"
+    },
+    {
+      "text": "早期に上昇し、その後信号はほぼ一定のレベルを保つ（プラトー型）。",
+      "explanation": "**プラトー型（type II）**は中間的所見です。悪性に**最も典型**とされる washout とは異なります。"
+    },
+    {
+      "text": "早期に信号が上昇し、その後信号が低下する（washout 型）。",
+      "explanation": "**washout 型（type III）**は、造影早期の**急速な上昇**のあと**信号が低下**します。**悪性腫瘍**に典型的です。**正解**です。"
+    },
+    {
+      "text": "造影前後で信号変化がほとんどない。",
+      "explanation": "有意な造影効果がないパターンです。悪性の典型曲線ではありません。"
+    },
+    {
+      "text": "造影直後から信号が単調に低下する。",
+      "explanation": "早期 peak を伴わない**単調低下**は、悪性 DCE の定番パターン（washout）ではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["gadolinium"],
+  "sourceExplanation": "この問は、**乳房 MR ダイナミック**撮影の**時間信号曲線**（図中 A〜E）から、**悪性**に特徴的な曲線を選ぶ問題です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=8\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 8 ページ</a>）。本サイトの類似問題は図を載せられないため、曲線の形を文章で問う形式にしています。\n\n- **1 番** … 曲線 **A** → **持続上昇型**（type I・良性傾向）。\n- **2 番** … 曲線 **B** → **プラトー型**（type II・中間）。\n- **3 番** … 曲線 **C** → **正解**。**早期 peak 後に washout**（type III・**悪性典型**）。\n- **4 番** … 曲線 **D** → 上昇が弱い／平坦に近いパターン。\n- **5 番** … 曲線 **E** → 早期から低信号が続く／造影効果が小さいパターン。\n- **覚え方** … **悪性＝早期上昇＋washout（C）**／**良性＝持続上昇（A）**／**プラトー（B）は中間**。Ktrans や血管透過性の高い病変ほど washout が目立ちます。",
+  "draft": false
+}

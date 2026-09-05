@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 10,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 10,
+    "answer": 2
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "**心窩部横断超音波像**で、**腹大動脈の前方**、**上腸管動脈・静脈の背側**に横長に見える実質はどれか。",
+  "choices": [
+    {
+      "text": "胃",
+      "explanation": "**胃**は前方〜左側の**管腔構造**（内容物でエコー性が変わる）です。大動脈背側の実性臓器ではありません。"
+    },
+    {
+      "text": "膵臓",
+      "explanation": "心窩部横断では **AO・SMV の前**を**横長**に走る実質が**膵**です。**正解**です。"
+    },
+    {
+      "text": "脾臓",
+      "explanation": "**脾**は**左側**後方の実質です。心窩部中央〜右の大動脈前方の横長実質ではありません。"
+    },
+    {
+      "text": "肝左葉",
+      "explanation": "**肝左葉**は**右前〜右側**の大きな実質です。大動脈と SMV に挟まれた細長い構造ではありません。"
+    },
+    {
+      "text": "左腎臓",
+      "explanation": "**左腎**は**後方・外側**に位置し、心窩部横断の大動脈直上の横長実質ではありません。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、**心窩部横断超音波**（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_02.pdf#page=8\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.4・8 ページ</a>）で、**矢印**の構造を同定する問題です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=10\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF（10 ページ）</a>）。本サイトの類似問題は図を載せられないため、**血管ランドマーク**から同定する形式にしています。\n\n- **別冊所見** … 横断像で **AO・SMV/SMA 背側**に**横長の膵実質**。矢印は**膵**を指す。\n- **1 番** … **胃** → 前方管腔、矢印部位ではない。\n- **2 番** … **膵臓** → **正解**。\n- **3 番** … **脾臓** → 左後方。\n- **4 番** … **肝左葉** → 右前〜右側。\n- **5 番** … **左腎臓** → 後方外側。\n- **覚え方** … 心窩部横断＝**「AO の前、SMV の背」＝膵**／胃は前、脾は左、肝は右。",
+  "draft": false
+}

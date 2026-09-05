@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 8,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 8,
+    "answer": 3
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "**めまい**を訴える患者の頭部 MRI（**FLAIR 像**と**拡散強調像**）について、**医師に報告すべき病変がある部位**として最も適切なのはどれか。",
+  "choices": [
+    {
+      "text": "延髄 — FLAIR・拡散強調像ともに異常なし",
+      "explanation": "**延髄**には DWI 高信号も FLAIR 異常もみられません。報告すべき病変はありません。"
+    },
+    {
+      "text": "眼窩 — FLAIR・拡散強調像ともに異常なし",
+      "explanation": "**眼窩**内容も両序列とも異常なしです。めまいの原因となる後方循環病変ではありません。"
+    },
+    {
+      "text": "小脳 — 拡散強調像に限局性高信号、FLAIR では同部位に明瞭な異常なし",
+      "explanation": "**超急性期**の梗塞では**拡散強調像が先に高信号**になり、FLAIR は未出のことがあります。めまい＋この所見パターンで**小脳**梗塞を報告します。**正解**です。"
+    },
+    {
+      "text": "後頭葉 — FLAIR・拡散強調像ともに異常なし",
+      "explanation": "**大脳後頭葉**皮質に異常はありません。後方循環の小脳病変とは別部位です。"
+    },
+    {
+      "text": "側頭葉 — FLAIR に旧梗塞疑いの高信号、拡散強調像では異常なし",
+      "explanation": "FLAIR のみ高信号で DWI が陰性なら**陳旧性**を疑います。**超急性期**の報告対象としてはこのパターンではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["dwi", "flair"],
+  "sourceExplanation": "この問は、**めまい**患者の頭部 MRI（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_02.pdf#page=6\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.2・6 ページ</a>：**2A＝FLAIR**、**2B＝拡散強調像**）で、報告すべき病変部位を選ぶ問題です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=9\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 9 ページ</a>）。本サイトの類似問題は図を載せられないため、**部位ごとの所見**を各肢に記載しています。\n\n- **別冊所見** … **小脳半球**に **DWI 高信号**。**FLAIR** では同部位に明瞭な異常なし（超急性期像）。\n- **1 番** … **延髄** → 異常なし。\n- **2 番** … **眼窩** → 異常なし。\n- **3 番** … **小脳** → **正解**（報告すべき DWI 高信号あり）。\n- **4 番** … **後頭葉** → 異常なし。\n- **5 番** … **側頭葉** → 異常なし（本問の別冊では）。\n- **覚え方** … めまい＋**DWI 先行・FLAIR 未出**＝超急性梗塞／後方循環＝**小脳・脳幹**を疑う。",
+  "draft": false
+}

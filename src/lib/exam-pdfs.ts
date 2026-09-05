@@ -11,6 +11,7 @@ const officialExamPdfs: Record<
 > = {
   2026: {
     am: "https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf",
+    pm: "https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf",
   },
 }
 
@@ -20,6 +21,7 @@ const officialExamBookletPdfs: Record<
 > = {
   2026: {
     am: "https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_02.pdf",
+    pm: "https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_02.pdf",
   },
 }
 
@@ -70,15 +72,33 @@ const am2026PageRanges: [from: number, to: number, page: number][] = [
   [100, 100, 48],
 ]
 
+/** 2026年午後 PDF の 1-indexed ページ。表紙・注意のあと、問1は 5 ページ目（随時追記） */
+const pm2026PageRanges: [from: number, to: number, page: number][] = [
+  [1, 2, 5],
+  [3, 4, 6],
+  [5, 6, 7],
+  [7, 7, 8],
+  [8, 9, 9],
+  [10, 10, 10],
+]
+
+function examPdfPage(
+  ranges: [from: number, to: number, page: number][],
+  number: number
+) {
+  return ranges.find(([from, to]) => number >= from && number <= to)?.[2]
+}
+
 function officialExamPdfPage(
   year: number,
   session: ExamSession,
   number: number
 ) {
   if (year === 2026 && session === "am") {
-    return am2026PageRanges.find(
-      ([from, to]) => number >= from && number <= to
-    )?.[2]
+    return examPdfPage(am2026PageRanges, number)
+  }
+  if (year === 2026 && session === "pm") {
+    return examPdfPage(pm2026PageRanges, number)
   }
   return undefined
 }
@@ -113,6 +133,14 @@ const am2026BookletPages: Record<number, number> = {
   92: 18,
 }
 
+/** 2026年午後 別冊（随時追記）。表紙のあと No.1（問5）は 5 ページ目 */
+const pm2026BookletPages: Record<number, number> = {
+  5: 5,
+  8: 6,
+  9: 7,
+  10: 8,
+}
+
 export function officialExamBookletPdfLink(
   year: number,
   session: ExamSession,
@@ -122,7 +150,11 @@ export function officialExamBookletPdfLink(
   if (!href) return undefined
 
   const page =
-    year === 2026 && session === "am" ? am2026BookletPages[number] : undefined
+    year === 2026 && session === "am"
+      ? am2026BookletPages[number]
+      : year === 2026 && session === "pm"
+        ? pm2026BookletPages[number]
+        : undefined
   if (!page) return undefined
 
   return withPdfPage(href, page)

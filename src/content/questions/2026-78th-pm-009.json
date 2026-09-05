@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 9,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 9,
+    "answer": 3
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "**頸椎椎間板ヘルニア**患者の頸椎 MRI **T2 強調矢状断像**について、**脊髄の圧迫変形が最も強い**レベルとして正しいのはどれか。",
+  "choices": [
+    {
+      "text": "C 1/2 — 硬膜前後の CSF 腔が保たれ、脊髄径は正常",
+      "explanation": "C 1/2 では**CSF 帯**が保たれ、脊髄の**扁平化**はみられません。最大圧迫レベルではありません。"
+    },
+    {
+      "text": "C 2/3 — 軽度の disc 後方突出あり、脊髄に軽い陥凹",
+      "explanation": "突出はありますが、**C 3/4** に比べると脊髄**変形は軽度**です。"
+    },
+    {
+      "text": "C 3/4 — disc 後方突出が著しく、脊髄は扁平化・変形",
+      "explanation": "T2 矢状断で **CSF 帯が著しく狭小化**し、脊髄が**押し潰される**ように変形しているレベルです。**正解**です。"
+    },
+    {
+      "text": "C 4/5 — 中等度の狭窄あり、C 3/4 より圧迫は軽い",
+      "explanation": "狭窄はありますが、別冊では **C 3/4** の方が**圧迫・変形が強い**です。"
+    },
+    {
+      "text": "C 5/6 — disc 変性のみで、有意な脊髄圧迫所見なし",
+      "explanation": "disc 変性はあっても、**脊髄径の著明な変形**はみられません。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**頸椎 T2 強調矢状断**（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_02.pdf#page=7\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.3・7 ページ</a>）で、**脊髄圧迫が最も強い**椎間レベルを選ぶ問題です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=9\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 9 ページ</a>）。本サイトの類似問題は図を載せられないため、**レベルごとの所見**を各肢に記載しています。\n\n- **別冊所見** … **複数レベル**に後方ヘルニアがあるが、** C 3/4** で脊髄の**扁平化・変形が最も著しい**。\n- **1 番** … **C 1/2** → 圧迫なし。\n- **2 番** … **C 2/3** → 軽度陥凹。\n- **3 番** … **C 3/4** → **正解**（**最大圧迫**）。\n- **4 番** … **C 4/5** → 中等度（C 3/4 より軽い）。\n- **5 番** … **C 5/6** → 有意圧迫なし。\n- **覚え方** … T2 矢状断では **CSF（白）の狭小化**と**脊髄の潰れ**を比較し、**最も潰れている disc レベル**を選ぶ。",
+  "draft": false
+}
