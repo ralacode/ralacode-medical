@@ -36,7 +36,7 @@
     }
   ],
   "answer": 1,
-  "terms": ["lso-scintillator"],
+  "terms": ["scintillator"],
   "sourceExplanation": "この問は、PET 用**シンチレータ（LSO）**の特性比較です。\n\n- LSO … **発光量が大きい**、**減衰時間が短い**、**密度が高い**。\n- BGO … LSO より光量が小さく、減衰時間が長め。\n- NaI（Tl） … エネルギー分解能は良いが、密度・減衰時間は PET 用 LSO に劣る面がある。\n- 「光る量」と「ピークの鋭さ（分解能）」は別物、と覚えると混同しにくい。",
   "draft": false
 }
