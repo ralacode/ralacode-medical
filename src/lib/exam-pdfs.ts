@@ -5,10 +5,7 @@ export type OfficialPdfLink = {
   page?: number
 }
 
-const officialExamPdfs: Record<
-  number,
-  Partial<Record<ExamSession, string>>
-> = {
+const officialExamPdfs: Record<number, Partial<Record<ExamSession, string>>> = {
   2026: {
     am: "https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06a_01.pdf",
     pm: "https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf",
@@ -80,6 +77,10 @@ const pm2026PageRanges: [from: number, to: number, page: number][] = [
   [7, 7, 8],
   [8, 9, 9],
   [10, 10, 10],
+  [11, 12, 10],
+  [13, 15, 11],
+  [16, 18, 12],
+  [19, 20, 13],
 ]
 
 function examPdfPage(
@@ -139,6 +140,7 @@ const pm2026BookletPages: Record<number, number> = {
   8: 6,
   9: 7,
   10: 8,
+  19: 9,
 }
 
 export function officialExamBookletPdfLink(
