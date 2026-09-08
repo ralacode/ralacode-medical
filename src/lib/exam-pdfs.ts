@@ -1,4 +1,5 @@
 import type { ExamSession } from "@/lib/questions"
+import { officialExamPdfPage as lookupOfficialExamPdfPage } from "@/lib/exam-pdf-page-ranges"
 
 export type OfficialPdfLink = {
   href: string
@@ -22,88 +23,6 @@ const officialExamBookletPdfs: Record<
   },
 }
 
-/** 2026年午前 PDF の 1-indexed ページ。表紙・注意のあと、問1は 5 ページ目 */
-const am2026PageRanges: [from: number, to: number, page: number][] = [
-  [1, 3, 5],
-  [4, 5, 6],
-  [6, 7, 7],
-  [8, 9, 8],
-  [10, 12, 9],
-  [13, 14, 10],
-  [15, 17, 11],
-  [18, 20, 12],
-  [21, 23, 13],
-  [24, 25, 14],
-  [26, 26, 15],
-  [27, 28, 16],
-  [29, 31, 17],
-  [32, 33, 18],
-  [34, 36, 19],
-  [37, 39, 20],
-  [40, 42, 21],
-  [43, 45, 22],
-  [46, 47, 23],
-  [48, 49, 24],
-  [50, 51, 25],
-  [52, 53, 26],
-  [54, 55, 27],
-  [56, 56, 28],
-  [57, 59, 30],
-  [60, 62, 31],
-  [63, 64, 32],
-  [65, 65, 33],
-  [66, 66, 34],
-  [67, 68, 35],
-  [69, 71, 36],
-  [72, 73, 37],
-  [74, 76, 38],
-  [77, 79, 39],
-  [80, 82, 40],
-  [83, 85, 41],
-  [86, 88, 42],
-  [89, 90, 43],
-  [91, 92, 44],
-  [93, 94, 45],
-  [95, 96, 46],
-  [97, 99, 47],
-  [100, 100, 48],
-]
-
-/** 2026年午後 PDF の 1-indexed ページ。表紙・注意のあと、問1は 5 ページ目（随時追記） */
-const pm2026PageRanges: [from: number, to: number, page: number][] = [
-  [1, 2, 5],
-  [3, 4, 6],
-  [5, 6, 7],
-  [7, 7, 8],
-  [8, 9, 9],
-  [10, 10, 10],
-  [11, 12, 10],
-  [13, 15, 11],
-  [16, 18, 12],
-  [19, 20, 13],
-]
-
-function examPdfPage(
-  ranges: [from: number, to: number, page: number][],
-  number: number
-) {
-  return ranges.find(([from, to]) => number >= from && number <= to)?.[2]
-}
-
-function officialExamPdfPage(
-  year: number,
-  session: ExamSession,
-  number: number
-) {
-  if (year === 2026 && session === "am") {
-    return examPdfPage(am2026PageRanges, number)
-  }
-  if (year === 2026 && session === "pm") {
-    return examPdfPage(pm2026PageRanges, number)
-  }
-  return undefined
-}
-
 function withPdfPage(href: string, page?: number): OfficialPdfLink {
   return page ? { href: `${href}#page=${page}`, page } : { href }
 }
@@ -115,7 +34,7 @@ export function officialExamPdfLink(
 ) {
   const href = officialExamPdfs[year]?.[session]
   if (!href) return undefined
-  return withPdfPage(href, officialExamPdfPage(year, session, number))
+  return withPdfPage(href, lookupOfficialExamPdfPage(year, session, number))
 }
 
 /** 2026年午前 別冊。表紙のあと、No.1（問4）は 5 ページ目 */

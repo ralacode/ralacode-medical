@@ -36,6 +36,19 @@ const stemGrid = z
     { message: "stemGrid rows must have equal length" }
   )
 
+/** 問題文直下に表示する見出し付き表（線量計測表など） */
+const stemTable = z
+  .object({
+    caption: z.string().optional(),
+    columns: z.array(z.string()).min(1),
+    rows: z.array(z.array(z.string()).min(1)).min(1),
+  })
+  .refine(
+    (table) =>
+      table.rows.every((row) => row.length === table.columns.length),
+    { message: "stemTable rows must match column count" }
+  )
+
 // article-seo.ts の FaqItem と形がずれないように satisfies で固定する
 const faqItem = z.object({
   question: z.string(),
@@ -73,6 +86,8 @@ const questions = defineCollection({
     stem: z.string(),
     /** 問題文直下の画素値表。stem は行列を含まない短文にする */
     stemGrid: stemGrid.optional(),
+    /** 問題文直下の見出し付き表。stem は表データを含まない */
+    stemTable: stemTable.optional(),
     /** 選択肢。text が本文、explanation が回答後に直下へ出す Markdown */
     choices: z
       .array(

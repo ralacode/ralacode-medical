@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content"
 
 import { ExamBreadcrumb } from "@/components/exam-breadcrumb"
 import QuestionStemGrid from "@/components/question-stem-grid.astro"
+import QuestionStemTable from "@/components/question-stem-table.astro"
 import { QuestionNav } from "@/components/question-nav"
 import { QuestionQuiz } from "@/components/question-quiz"
 import { buttonVariants } from "@/components/ui/button"
@@ -94,6 +95,7 @@ const {
   number,
   stem,
   stemGrid,
+  stemTable,
   choices,
   origin,
   subject,
@@ -101,9 +103,10 @@ const {
   mapsTo,
   terms,
 } = question.data
-const stemLabelIds = stemGrid
-  ? "question-stem question-stem-grid"
-  : "question-stem"
+const stemLabelIds =
+  stemGrid || stemTable
+    ? "question-stem question-stem-grid"
+    : "question-stem"
 const termLinks = await getArticlesByTermIds(terms)
 const answer = singleAnswer(question.data.answer)
 const heading = questionHeading(exam, session, number)
@@ -166,6 +169,15 @@ const categoryLinks = questionCategoryLinks(question.data)
         set:html={renderEmphasisHtml(stem)}
       />
       {stemGrid ? <QuestionStemGrid grid={stemGrid} /> : null}
+      {
+        stemTable ? (
+          <QuestionStemTable
+            caption={stemTable.caption}
+            columns={stemTable.columns}
+            rows={stemTable.rows}
+          />
+        ) : null
+      }
       <div class="flex flex-wrap gap-2">
         {
           categoryLinks.map((link) => (

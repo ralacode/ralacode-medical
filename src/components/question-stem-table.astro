@@ -1,0 +1,65 @@
+---
+interface Props {
+  caption?: string
+  columns: string[]
+  rows: string[][]
+  id?: string
+}
+
+const { caption, columns, rows, id = "question-stem-table" } = Astro.props
+const ariaLabel = caption ?? `表 ${rows.length} 行 × ${columns.length} 列`
+---
+
+<figure id={id} class="grid w-fit max-w-full gap-2">
+  {
+    caption ? (
+      <figcaption class="text-sm text-muted-foreground">{caption}</figcaption>
+    ) : null
+  }
+  <div
+    class="w-fit max-w-full overflow-x-auto rounded-xl border border-border bg-card shadow-sm"
+    role="figure"
+    aria-label={ariaLabel}
+  >
+    <table class="w-full min-w-[16rem] border-collapse text-sm">
+      <thead>
+        <tr class="border-b border-border bg-muted/60">
+          {
+            columns.map((column) => (
+              <th
+                scope="col"
+                class="px-3 py-2.5 text-left text-xs font-semibold tracking-wide text-muted-foreground"
+              >
+                {column}
+              </th>
+            ))
+          }
+        </tr>
+      </thead>
+      <tbody>
+        {
+          rows.map((row) => (
+            <tr class="border-b border-border last:border-b-0">
+              {
+                row.map((cell, index) =>
+                  index === 0 ? (
+                    <th
+                      scope="row"
+                      class="bg-muted/30 px-3 py-2.5 text-left font-medium text-foreground"
+                    >
+                      {cell}
+                    </th>
+                  ) : (
+                    <td class="px-3 py-2.5 text-right font-medium tabular-nums text-foreground">
+                      {cell}
+                    </td>
+                  )
+                )
+              }
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</figure>

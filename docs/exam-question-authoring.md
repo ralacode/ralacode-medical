@@ -37,7 +37,8 @@
 | `src/content.config.ts` | JSON スキーマ。必須フィールドの定義 |
 | `docs/exam-subjects-amendment-2023.md` | 試験科目を考えるときの根拠（令和5年改正通知） |
 | `src/lib/exam-subjects.ts` | 令和6年4月施行の11科目 ID |
-| `src/lib/exam-pdfs.ts` | 公式 PDF URL とページ対応。別冊の有無 |
+| `src/lib/exam-pdfs.ts` | 公式 PDF URL。ページ対応は `exam-pdf-page-ranges.ts` |
+| `src/lib/exam-pdf-page-ranges.ts` | 問番号 → PDF ページ（1 始まり）。`verify:exam-pages` も参照 |
 | 直近の `src/content/questions/*.json` | 文体・解説の厚さ・`mapsTo` の書き方 |
 
 レイアウトやクイズ UI（`question-quiz.tsx` など）は、問題追加のために開いて編集しない。
@@ -71,7 +72,35 @@ C:\Users\stsud\AppData\Local\Temp\pdf-page-render\mupdf-extract.mjs
 - 別冊指定があれば別冊 PDF を描画して所見を把握する。画像ファイルはリポジトリに置かない。
 - チャットや JSON に、公式の問題文・選択肢をそのまま貼らない。
 
-2026年午前の問題 PDF は、表紙・注意のあと問1が **PDF 5ページ目**。ページ対応は `src/lib/exam-pdfs.ts` の `am2026PageRanges`。別冊は表紙のあと No.1（問4）が 5ページ目。`am2026BookletPages`。
+2026年午前の問題 PDF は、表紙・注意のあと問1が **PDF 5ページ目**。ページ対応は `src/lib/exam-pdf-page-ranges.ts`（`exam-pdfs.ts` から参照）。別冊は表紙のあと No.1（問4）が 5ページ目。`am2026BookletPages`。
+
+#### PDF ページ番号の決め方（重要）
+
+**問題用紙フッターの `前H-N` / `後H-N` を、PDF ビューアの `#page=N` にそのまま使わない。**
+
+| 用語 | 意味 |
+| --- | --- |
+| **PDF ページ番号** | 表紙・注意を含むファイル全体の 1 始まり。リンク `#page=N`・`exam-pdf-page-ranges.ts`・`sourceExplanation` は**すべてこちら** |
+| **フッター `前H-N` / `後H-N`** | 問題用紙側の通し番号。PDF ページと**一致しないことがある**（第78回午後では多くのページで一致するが、根拠にしない） |
+
+**ページ表を更新するときの手順**
+
+1. ローカル原本 `exams/` または**公式 URL の PDF** を開く
+2. ビューア左下の**ページ番号**で、対象の**問番号**が載っているページを確認する
+3. その数字を `src/lib/exam-pdf-page-ranges.ts` に書く（`exam-pdfs.ts` は URL のみ）
+4. `sourceExplanation` の `#page=N` も**同じ N** に揃える
+5. **`pnpm verify:exam-pages`** を実行する（下記）
+
+**自動検証コマンド**
+
+```bash
+pnpm verify:exam-pages
+```
+
+- `src/lib/exam-pdf-page-ranges.ts` のページ表と、**`#page=` 付き `sourceExplanation`** が一致するか検証する
+- ローカルに `exams/2026/2026-78th-{am,pm}.pdf` があれば、フッター（前H-N / 後H-N）の参考表示と、テキスト化された PDF での問番号照合も行う
+- 問題文が画像のみの PDF では問番号の自動検出はスキップされる（JSON リンク照合は実行）
+- 問題追加・ページ表更新の**必須ステップ**（§7-3 の補助）
 
 ### 2. 科目を決める
 
@@ -130,11 +159,12 @@ src/content/questions/{year}-{exam}th-{session}-{NNN}.json
 
 ### 5. PDF 対応を足す（必要なときだけ）
 
-`src/lib/exam-pdfs.ts` 以外の UI は触らない。
+`src/lib/exam-pdf-page-ranges.ts` 以外の UI は触らない。
 
 - 新しい年・午前/午後の公式 URL が分かったら `officialExamPdfs` / `officialExamBookletPdfs` に追加する。
 - 別冊がある問は `am2026BookletPages`（または午後用の表）に **公式の問番号 → PDF ページ（1始まり）** を足す。表に無い問は別冊ボタンが出ない。
-- 問題 PDF のページ範囲表も、年・セッションが増えたら同じファイルに足す。
+- 問題 PDF のページ範囲表は `src/lib/exam-pdf-page-ranges.ts` に足す（`exam-pdfs.ts` は URL のみ）。
+- 追記後は **`pnpm verify:exam-pages`** を必ず実行する。
 
 ### 6. 確認（スキーマ・表示）
 
@@ -176,15 +206,16 @@ JSON を置いたあと、**ユーザーに渡す前に必ず**次の 3 点を�
 
 #### 7-3. 公式 PDF が該当ページで開くか
 
-**目的** … リンク先 PDF で、**その問が載っているページ**が表示されること。`exam-pdfs.ts` のページ表・`#page=N`・解説の「公式 PDF N ページ」表記が一致していること。
+**目的** … リンク先 PDF で、**その問が載っているページ**が表示されること。`exam-pdf-page-ranges.ts` のページ表・`#page=N`・解説の「公式 PDF N ページ」表記が一致していること。
 
 **手順**
 
-1. 7-2 で開いた PDF で、表示ページが **`exam-pdfs.ts` の `*PageRanges` に登録した N** と一致するか確認する。
+1. 7-2 で開いた PDF で、表示ページが **`exam-pdf-page-ranges.ts` に登録した N** と一致するか確認する。
 2. そのページに **対象の問番号**（例: 問 13）と、7-1 で確認した**論点**が載っているか目視する。
 3. `#page=N` が効かず表紙や別ページになる場合でも、**ページ表・リンクの N が実際の掲載ページと一致しているか**を優先して確認する（Adobe 拡張機能等は `#page=` を無視することがある。ボタン表記の N はユーザーが手動でページ移動する目安）。
+4. **`pnpm verify:exam-pages`** が成功すること（ローカル PDF がなくても JSON リンク照合は実行される）。
 
-**不合格時** … ページずれなら `exam-pdfs.ts` の範囲表を修正し、JSON の `sourceExplanation` 内リンクの `#page=N` と「N ページ」表記も**同じ値**に揃える。再度 7-1 からやり直す。
+**不合格時** … ページずれなら `exam-pdf-page-ranges.ts` の範囲表を修正し、JSON の `sourceExplanation` 内リンクの `#page=N` と「N ページ」表記も**同じ値**に揃える。再度 7-1 からやり直す。
 
 #### 検証の記録
 
@@ -364,7 +395,7 @@ JSON を置いたあと、**ユーザーに渡す前に必ず**次の 3 点を�
 ### PDF リンク
 
 - 問題 PDF は `<a href="公式URL#page=N" target="_blank" rel="noopener noreferrer">公式 PDF N ページ</a>`。
-- URL とページ番号は `src/lib/exam-pdfs.ts` に合わせる。
+- URL とページ番号は `src/lib/exam-pdf-page-ranges.ts`（および `exam-pdfs.ts` の URL）に合わせる。
 - 別冊は `officialExamBookletPdfLink` が出るよう `exam-pdfs.ts` の別冊表を先に登録する。
 
 ### 類似問題の解説との分担
@@ -430,4 +461,4 @@ JSON を置いたあと、**ユーザーに渡す前に必ず**次の 3 点を�
 - [ ] `sourceExplanation` に**公式 1〜5 番**の正誤理由がある（知識問題）。**正解**／**誤り**ラベルが付いている
 - [ ] **7-1** … 公式 PDF で**問番・論点**が `mapsTo` のスロットと一致（不一致なら作り直し）
 - [ ] **7-2** … 公式 PDF リンク・UI ボタンが**別タブ**で開く（`target="_blank"`）
-- [ ] **7-3** … 公式 PDF が **`exam-pdfs.ts` の該当ページ**で、対象の問が掲載されている
+- [ ] **7-3** … 公式 PDF が **`exam-pdf-page-ranges.ts` の該当ページ**で、対象の問が掲載されている（**`pnpm verify:exam-pages`** も実行）

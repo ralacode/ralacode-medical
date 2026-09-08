@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 26,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 26,
+    "answer": 5
+  },
+  "subject": "hoshasen-chiryo",
+  "stem": "密封小線源治療に用いられる核種で、**半減期が最も短い**のはどれか。",
+  "choices": [
+    {
+      "text": "137Cs",
+      "explanation": "**137Cs** の半減期は約 **30 年**です。最も短い、とは言えません。"
+    },
+    {
+      "text": "60Co",
+      "explanation": "**60Co** の半減期は約 **5.3 年**です。短い部類ではありません。"
+    },
+    {
+      "text": "192Ir",
+      "explanation": "**192Ir** の半減期は約 **74 日**です。**198Au より長い**です。"
+    },
+    {
+      "text": "125I",
+      "explanation": "**125I** の半減期は約 **59 日**です。**198Au より長い**です。"
+    },
+    {
+      "text": "198Au",
+      "explanation": "**198Au** の半減期は約 **2.7 日**で、選択肢の中で**最も短い**。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**密封小線源**の**半減期**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=15\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 15 ページ</a>）。\n\n- **1 番** … **60Co**（5.3 年） → **誤り**。\n- **2 番** … **125I**（59 日） → **誤り**。\n- **3 番** … **137Cs**（30 年） → **誤り**。\n- **4 番** … **192Ir**（74 日） → **誤り**。\n- **5 番** … **198Au**（2.7 日） → **正解**。**最短**。\n- **覚え方** … **198Au＝数 days**／**125I・192Ir＝数十 days**／**60Co・137Cs＝年単位**。",
+  "draft": false
+}

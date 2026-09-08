@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 32,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 32,
+    "answer": 2
+  },
+  "subject": "iryo-gazo-joho",
+  "stem": "コンピュータネットワークに関する**用語と説明の組合せ**で正しいのはどれか。",
+  "choices": [
+    {
+      "text": "HTTP … 電子メールを送信するためのプロトコル",
+      "explanation": "メール送信は **SMTP** などの役割です。**HTTP** は主に **Web ページの表示・取得**に用いるプロトコルです。"
+    },
+    {
+      "text": "SMTP … Web ページを表示するためのプロトコル",
+      "explanation": "Web 表示は **HTTP** の役割です。**SMTP** は主に**メール送信**用のプロトコルです。"
+    },
+    {
+      "text": "FTP … ファイルを転送するためのプロトコル",
+      "explanation": "**File Transfer Protocol** の略で、ネットワーク上で**ファイルを送受信**するためのプロトコルです。**正解**です。"
+    },
+    {
+      "text": "DNS … 大量のデータを蓄積するためのデータベース",
+      "explanation": "**DNS**（Domain Name System）は**ドメイン名を IP アドレスに変換**する名前解決の仕組みです。データ蓄積用の DB ではありません。"
+    },
+    {
+      "text": "TCP/IP … 内蔵時計を標準時刻と同期するためのプロトコル",
+      "explanation": "時刻同期は **NTP** などの用途です。**TCP/IP** はインターネット通信の**基本プロトコル群**です。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**ネットワーク用語**と説明の組合せです（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=17\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 17 ページ</a>）。\n\n- **1 番** … **DNS＝大量データ蓄積** → **誤り**。**ドメイン名→IP 変換**（名前解決）。\n- **2 番** … **FTP＝ファイル転送** → **正解**。\n- **3 番** … **HTTP＝時刻同期** → **誤り**。**Web 通信**用。\n- **4 番** … **SMTP＝メール受信** → **誤り**。主に**送信**（受信は POP3/IMAP など）。\n- **5 番** … **TCP/IP＝ドメイン名検索** → **誤り**。**通信の基本プロトコル**群。\n- **覚え方** … **DNS＝名前解決**／**FTP＝ファイル転送**／**HTTP＝Web**／**SMTP＝メール送信**。",
+  "draft": false
+}
