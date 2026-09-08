@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 38,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 38,
+    "answer": 4
+  },
+  "subject": "iryo-anzen",
+  "stem": "**施錠**による管理が必要な、**テクネチウム注射液調製用キット**はどれか。",
+  "choices": [
+    {
+      "text": "⁹⁹ᵐTc-MIBI（ミオカルド用）",
+      "explanation": "MIBI キット（カーディオライト等）は**薬機法で毒薬**に指定され、**他の物と区別して貯蔵し施錠**が義務付けられます。**正解**です。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-DMSA",
+      "explanation": "DMSA キットは**毒薬指定・施錠管理**の対象ではありません。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-MAG₃",
+      "explanation": "MAG₃ キットは**毒薬指定・施錠管理**の対象ではありません。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-MAA",
+      "explanation": "MAA キットは**毒薬指定・施錠管理**の対象ではありません。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-PYP",
+      "explanation": "PYP キットは**毒薬指定・施錠管理**の対象ではありません。"
+    }
+  ],
+  "answer": 1,
+  "terms": [],
+  "sourceExplanation": "この問は、**毒薬指定キットの施錠管理**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=19\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 19 ページ</a>）。\n\n- **1 番** … **DMSA** → **誤り**。\n- **2 番** … **MAA** → **誤り**。\n- **3 番** … **MAG₃** → **誤り**。\n- **4 番** … **MIBI** → **正解**。**薬機法の毒薬**に指定。**他の物と区別して貯蔵し施錠**が必要（カーディオライト等）。\n- **5 番** … **PYP** → **誤り**。\n- **覚え方** … **⁹⁹ᵐTc-MIBI キット＝毒薬→施錠**／DMSA・MAA・**MAG₃**・PYP は通常この要件なし。",
+  "draft": false
+}

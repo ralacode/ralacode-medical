@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 45,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 45,
+    "answer": 5
+  },
+  "subject": "kiso-igaku",
+  "stem": "細胞周期のうち、**DNA 複製**が行われる時期はどれか。",
+  "choices": [
+    {
+      "text": "G0 期",
+      "explanation": "**分裂休止**状態の期です。**DNA 複製**は行いません。"
+    },
+    {
+      "text": "G1 期",
+      "explanation": "分裂に向けた**準備期**です。**DNA 複製**はまだ始まっていません。"
+    },
+    {
+      "text": "S 期",
+      "explanation": "**合成期**（Synthesis）で、**DNA が複製**され1細胞あたりの DNA 量が倍増します。**正解**です。"
+    },
+    {
+      "text": "G2 期",
+      "explanation": "DNA 複製**後**の**分裂準備期**です。複製そのものは **S 期**で終えています。"
+    },
+    {
+      "text": "M 期",
+      "explanation": "**分裂期**で、染色体が分配されます。DNA 複製は **S 期**に済んでいます。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**細胞周期と DNA 複製**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=22\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 22 ページ</a>）。\n\n- **1 番** … **G1 期** → **誤り**。複製前の準備期。\n- **2 番** … **G2 前期** → **誤り**（実在しない区分のひっかけ）。\n- **3 番** … **G2 中期** → **誤り**（同上）。\n- **4 番** … **G2 後期** → **誤り**（同上）。\n- **5 番** … **S 期** → **正解**。**DNA 複製**が行われる合成期。\n- **覚え方** … **S＝Synthesis（DNA 合成）**／G1→**S**→G2→M。",
+  "draft": false
+}

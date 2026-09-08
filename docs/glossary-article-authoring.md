@@ -23,6 +23,7 @@
 | `src/content.config.ts` | 記事スキーマ（`title`, `description`, `pubDate`, `faq` など） |
 | `src/content/articles/k-space.mdx` | 文体・SEO・FAQ の書き方の参照 |
 | `src/content/questions/*.json` | リンクさせたい問題の `terms` を確認 |
+| `docs/external-links.md` | 参考用外部リンク台帳（追加・変更時に更新） |
 | `src/lib/article-seo.ts` | 自動出力される JSON-LD（Article / BreadcrumbList / FAQPage） |
 
 ---
@@ -96,6 +97,7 @@ faq:
 - 公式問題文・選択肢の転載はしない
 - **記事は用語の解説であり、1 問の解説ページではない。** 「2026 年午前問 9 の要点」のように回次・問番号を title / description / 冒頭に入れない。国試で問われやすいポイント、という粒度は残す
 - 公式 PDF へのリンクを本文に埋め込む必要はない。関連問題は末尾の自動一覧に任せる
+- 製品情報など**参考用の外部リンク**を載せる場合は `target="_blank"` `rel="noopener noreferrer"` を付け、**`docs/external-links.md` に追記**する（先例: `gadolinium.mdx`）
 
 ### KeyPoint（フロー・数式・要点の囲み）
 
@@ -155,6 +157,7 @@ faq:
 - [ ] `draft: false` にした
 - [ ] 関連問題が記事末尾に表示される（`terms` 連携）
 - [ ] 公式文の転載がない
+- [ ] 参考用外部リンクを追加したとき **`docs/external-links.md`** を更新した
 - [ ] `pnpm run build` が通る
 
 ---

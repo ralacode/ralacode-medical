@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 47,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 47,
+    "answer": 4
+  },
+  "subject": "kiso-igaku",
+  "stem": "**神経鞘腫**の発生が最も多いのはどれか。",
+  "choices": [
+    {
+      "text": "視神経",
+      "explanation": "視神経鞘腫はあり得ますが、**神経鞘腫全体**では**聴神経**に最も多いとされます。"
+    },
+    {
+      "text": "聴神経",
+      "explanation": "**前庭神経／蝸牛神経**（第8脳神経）に好発する**聴神経鞘腫**が代表例です。**正解**です。"
+    },
+    {
+      "text": "三叉神経",
+      "explanation": "三叉神経鞘腫も報告されますが、最多は**聴神経**です。"
+    },
+    {
+      "text": "顔面神経",
+      "explanation": "顔面神経周囲の腫瘍は別枠で評価されることが多く、**最多**は**聴神経**です。"
+    },
+    {
+      "text": "副神経",
+      "explanation": "副神経鞘腫は稀です。**最多**は**聴神経**です。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、**神経鞘腫**の好発部位です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=22\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 22 ページ</a>）。\n\n- **1 番** … **視神経** → **誤り**。\n- **2 番** … **三叉神経** → **誤り**。\n- **3 番** … **顔面神経** → **誤り**。\n- **4 番** … **聴神経** → **正解**。**聴神経鞘腫**（前庭神経鞘腫）が典型。\n- **5 番** … **副神経** → **誤り**。\n- **覚え方** … **神経鞘腫の最多＝聴神経**（内耳道・小脳橋角）。",
+  "draft": false
+}

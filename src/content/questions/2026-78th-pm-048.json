@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 48,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 48,
+    "answer": 4
+  },
+  "subject": "kiso-igaku",
+  "stem": "**ガドリニウム造影剤**を用いた MRI 検査前に、腎機能として確認する指標として最も適切なのはどれか。",
+  "choices": [
+    {
+      "text": "ALT",
+      "explanation": "**肝トランスアミナーゼ**で、**肝機能**の指標です。Gd 造影前の**腎機能**確認の第一選択ではありません。"
+    },
+    {
+      "text": "AST",
+      "explanation": "**肝・心**などに分布する酵素で、**肝機能**評価に用います。腎機能指標ではありません。"
+    },
+    {
+      "text": "eGFR",
+      "explanation": "**推定糸球体濾過量**で、**腎機能**を表します。Gd 造影剤投与前の**腎性全身性線維症（NSF）**リスク評価に用います。**正解**です。"
+    },
+    {
+      "text": "BUN",
+      "explanation": "**尿素窒素**は腎機能の参考になりますが、Gd 造影前の確認指標としては **eGFR** が優先されます。"
+    },
+    {
+      "text": "白血球数",
+      "explanation": "**感染・炎症**などの参考指標です。造影剤投与前の**腎機能**確認とは直接関係しません。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**MRI 用細胞外液性（Gd）造影剤**投与前の**腎機能確認**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=23\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 23 ページ</a>）。\n\n- **1 番** … **ALT** → **誤り**。**肝機能**。\n- **2 番** … **AST** → **誤り**。**肝機能**。\n- **3 番** … **BUN** → **誤り**（腎機能参考だが、**eGFR** が優先）。\n- **4 番** … **eGFR** → **正解**。**腎機能低下**時の Gd 投与リスク評価に用いる。\n- **5 番** … **白血球数** → **誤り**。\n- **覚え方** … **Gd 造影前＝eGFR**（ヨード造影の腎機能確認と混同しない）。",
+  "draft": false
+}
