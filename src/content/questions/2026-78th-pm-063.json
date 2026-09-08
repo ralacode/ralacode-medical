@@ -1,0 +1,45 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 63,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 63,
+    "answer": 4
+  },
+  "subject": "rikogaku-hoshasen",
+  "stem": "**中性子**について正しいのはどれか。",
+  "choices": [
+    {
+      "text": "光電効果に伴い発生する。",
+      "explanation": "**光電効果**は**光子**と物質の相互作用です。**中性子**の発生機序ではありません。"
+    },
+    {
+      "text": "熱中性子と物質の相互作用は捕獲反応が支配的である。",
+      "explanation": "**熱中性子**（低速）は** (n, γ) 中性子捕獲**などが主体です。**正解**です。"
+    },
+    {
+      "text": "静止質量は電子よりも小さい。",
+      "explanation": "中性子の質量は**電子よりはるかに大きい**（陽子に近い）です。"
+    },
+    {
+      "text": "中性子源として ²⁴¹Am の自発核分裂を利用する。",
+      "explanation": "**²⁴¹Am** は **α 線源**として **(α, n)** 反応に使われることがあります。**自発核分裂源**の代表は **²⁵²Cf** などです。"
+    },
+    {
+      "text": "核分裂で発生する即発中性子の平均エネルギーは約 10 keV である。",
+      "explanation": "即発分裂中性子の平均エネルギーは **MeV オーダー**（約 **2 MeV** 付近）です。**10 keV** は熱中性子に近く、**誤り**です。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、**中性子**の性質と相互作用です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=29\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 29 ページ</a>）。\n\n- **1 番** … **光電効果で発生** → **誤り**。\n- **2 番** … **静止質量＜電子** → **誤り**。\n- **3 番** … **²⁴¹Am の自発核分裂** → **誤り**。\n- **4 番** … **熱中性子＝捕獲反応優勢** → **正解**。\n- **5 番** … **即発中性子 ≈ 10 keV** → **誤り**（**MeV** オーダー）。\n- **覚え方** … **熱中性子＝(n,γ) 捕獲**／**高速中性子＝弾性・非弾性散乱**／**²⁵²Cf＝SF 中性子源**。",
+  "draft": false,
+  "studyTopics": [
+    "hoshasen-butsurigaku"
+  ]
+}

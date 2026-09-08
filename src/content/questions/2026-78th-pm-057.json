@@ -1,0 +1,45 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 57,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 57,
+    "answer": 1
+  },
+  "subject": "rikogaku-hoshasen",
+  "stem": "**放射性医薬品の投与**により、被検者に**内部被ばく**が生じうる検査はどれか。",
+  "choices": [
+    {
+      "text": "造影 CT",
+      "explanation": "ヨード造影剤は**被ばく因子ではありません**。被ばくは **X 線**（**外部照射**）です。**内部被ばく**ではありません。"
+    },
+    {
+      "text": "PET/CT",
+      "explanation": "**放射性医薬品**（例：¹⁸F-FDG）を**静注**し、体内で**崩壊・分布**するため**内部被ばく**が生じます。**正解**です。"
+    },
+    {
+      "text": "MRI",
+      "explanation": "**磁場・電磁波**による検査で、**放射線被ばくはありません**。"
+    },
+    {
+      "text": "乳房 X 線撮影",
+      "explanation": "**X 線**による**外部照射**です。放射性医薬品の投与はありません。"
+    },
+    {
+      "text": "造影超音波検査",
+      "explanation": "**超音波**と**造影剤（マイクロバブル等）**による検査で、**放射線被ばくはありません**。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、**内部被ばく**が生じる検査です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=26\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 26 ページ</a>）。\n\n- **1 番** … **PET/CT** → **正解**。**放射性医薬品投与**により内部被ばく。\n- **2 番** … **造影 MRI** → **誤り**。MRI は被ばくなし。\n- **3 番** … **乳房 X 線撮影** → **誤り**。**外部** X 線被ばく。\n- **4 番** … **造影超音波検査** → **誤り**。被ばくなし。\n- **5 番** … **上部消化管造影検査** → **誤り**。**外部** X 線被ばく（バリウムは被ばく源ではない）。\n- **覚え方** … **内部被ばく＝核医学（PET/SPECT 等）**／**外部被ばく＝X 線・CT**／造影剤（ヨード・バリウム）≠ 放射性医薬品。",
+  "draft": false,
+  "studyTopics": [
+    "hoshasen-seibutsugaku"
+  ]
+}

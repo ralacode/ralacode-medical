@@ -1,0 +1,45 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 64,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 64,
+    "answer": 3
+  },
+  "subject": "rikogaku-hoshasen",
+  "stem": "**核磁気共鳴（NMR）**について正しいのはどれか。",
+  "choices": [
+    {
+      "text": "T1 緩和時間は T2 緩和時間よりも短い。",
+      "explanation": "多くの組織で **T1 ＞ T2** です。「T1 の方が短い」は一般に**誤り**です。"
+    },
+    {
+      "text": "核スピンの励起にはマイクロ波を使用する。",
+      "explanation": "臨床 **MRI** では **RF（ラジオ波）** で **Larmor 周波数**に合わせて励起します。**マイクロ波**ではありません。"
+    },
+    {
+      "text": "陽子と中性子の両方が偶数個の原子核が主な観測対象である。",
+      "explanation": "**奇数個**の陽子または中性子をもつ核（例：**¹H**）が**磁気モーメント**をもち、NMR の観測対象です。両方偶数は**信号なし**が多い。"
+    },
+    {
+      "text": "外部磁場中の水素原子の核スピンは 4 つのエネルギー準位に分かれる。",
+      "explanation": "**¹H** の核スピン **I ＝ 1/2** なので、外部磁場中は **2 準位**（+1/2 と −1/2）です。**4 準位**は誤りです。"
+    },
+    {
+      "text": "Larmor（ラーモア）周波数は外部磁場の強さに比例する。",
+      "explanation": "**ω₀ ＝ γB₀**（磁気回転比 γ × 磁束密度 B₀）なので、**B₀ に比例**します。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**NMR / MRI の基礎物理**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=29\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 29 ページ</a>）。\n\n- **1 番** … **T1＜T2** → **誤り**（一般に **T1＞T2**）。\n- **2 番** … **マイクロ波で励起** → **誤り**。**RF パルス**。\n- **3 番** … **Larmor 周波数 ∝ B₀** → **正解**。\n- **4 番** … **両方偶数核が観測対象** → **誤り**。**奇数核**（**¹H** など）。\n- **5 番** … **¹H が 4 準位** → **誤り**。**2 準位**（I＝1/2）。\n- **覚え方** … **ω₀＝γB₀**／**MRI＝RF（ラーモア周波数）**／**¹H（奇数核）が主役**。",
+  "draft": false,
+  "studyTopics": [
+    "hoshasen-butsurigaku"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 60,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 60,
+    "answer": 3
+  },
+  "subject": "rikogaku-hoshasen",
+  "stem": "**ウラン235（²³⁵U）の核分裂**で、生成物として**収率が最も高い**のはどれか。",
+  "choices": [
+    {
+      "text": "¹³⁷Cs",
+      "explanation": "核分裂の**高収率生成物**の代表です。核事故・核実験の環境モニタリングでも重要な核種です。**正解**です。"
+    },
+    {
+      "text": "¹⁴C",
+      "explanation": "大気中の**天然・人工**に存在する炭素同位体です。**²³⁵U 核分裂の高収率生成物**の代表ではありません。"
+    },
+    {
+      "text": "⁴⁰K",
+      "explanation": "自然界に広く存在する**天然放射性核種**です。核分裂生成物の高収率核種ではありません。"
+    },
+    {
+      "text": "⁹⁰Sr",
+      "explanation": "核分裂生成物として**重要**ですが、収率の**最大**は一般に **¹³⁷Cs** など別核種とされます。"
+    },
+    {
+      "text": "¹³¹I",
+      "explanation": "核分裂で生じる**重要核種**ですが、**最も収率が高い**生成物の代表ではありません（甲状腺モニタリングで知られる）。"
+    }
+  ],
+  "answer": 1,
+  "terms": [],
+  "sourceExplanation": "この問は、**²³⁵U 核分裂生成物**の収率です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=27\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 27 ページ</a>）。\n\n- **1 番** … **¹⁴C** → **誤り**。天然・宇宙線起源など。\n- **2 番** … **⁴⁰K** → **誤り**。天然存在核種。\n- **3 番** … **¹³⁷Cs** → **正解**。核分裂の**高収率生成物**の代表。\n- **4 番** … **¹⁷⁷Lu** → **誤り**。核分裂高収率核種ではない。\n- **5 番** … **²²⁶Ra** → **誤り**。ウラン系崩壊系列の核種。\n- **覚え方** … 核分裂高収率＝**¹³⁷Cs・⁹⁰Sr・⁹⁵Zr** など／**¹³⁷Cs** は環境・食品モニタリングの代表。",
+  "draft": false,
+  "studyTopics": [
+    "hoshasen-butsurigaku"
+  ]
+}
