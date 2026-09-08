@@ -17,7 +17,7 @@ export const GET: APIRoute = ({ site }) => {
     return new Response("Set `site` in astro.config.mjs.", { status: 500 })
   }
 
-  const sitemapURL = new URL(withBase("sitemap-index.xml"), site).href
+  const sitemapURL = new URL(withBase("sitemap.xml"), site).href
 
   return new Response(robotsTxt(sitemapURL), {
     headers: {
