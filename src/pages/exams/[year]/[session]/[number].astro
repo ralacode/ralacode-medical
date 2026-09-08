@@ -21,6 +21,8 @@ import {
   compareQuestions,
   questionCategoryLinks,
   questionHeading,
+  questionSeoDescription,
+  questionSeoTitle,
   questionNavTarget,
   sessionLabel,
   singleAnswer,
@@ -110,8 +112,8 @@ const stemLabelIds =
 const termLinks = await getArticlesByTermIds(terms)
 const answer = singleAnswer(question.data.answer)
 const heading = questionHeading(exam, session, number)
-const title = `${heading}（類似問題）`
-const description = `第${exam}回 ${sessionLabel(session)} 問${number}の出題意図に沿った類似問題です。公式問題の転載ではありません。`
+const title = questionSeoTitle(exam, session, number)
+const description = questionSeoDescription(exam, session, number)
 const quizChoices = choices.map((choice) => ({
   text: choice.text,
   explanationHtml: choice.explanation.trim()

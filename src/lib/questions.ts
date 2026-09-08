@@ -292,6 +292,43 @@ export function questionHeading(
   return `第${exam}回 ${sessionLabel(session)} 問${number}`
 }
 
+export const examBrowseSeoTitle = "診療放射線技師国家試験対策問題"
+
+export const examBrowseSeoDescription =
+  "診療放射線技師国家試験の対策問題です。公式問題の転載ではありません。"
+
+export function examYearSeoTitle(year: number, exam: number) {
+  return `第${exam}回診療放射線技師国家試験対策問題（${year}）`
+}
+
+export function examYearSeoDescription(year: number, exam: number) {
+  return `第${exam}回診療放射線技師国家試験（${year}年）の対策問題です。公式問題の転載ではありません。`
+}
+
+export function questionSeoTitle(
+  exam: number,
+  session: ExamSession,
+  number: number
+) {
+  return `第${exam}回${sessionLabel(session)}問${number}の解説｜診療放射線技師国家試験`
+}
+
+export function questionSeoDescription(
+  exam: number,
+  session: ExamSession,
+  number: number
+) {
+  return `診療放射線技師国家試験 第${exam}回 ${sessionLabel(session)} 問${number}の解説です。公式問題の転載ではありません。`
+}
+
+export function examCategorySeoTitle(label: string) {
+  return `${label}の対策問題｜診療放射線技師国家試験`
+}
+
+export function examCategorySeoDescription(label: string) {
+  return `診療放射線技師国家試験「${label}」の対策問題です。公式問題の転載ではありません。`
+}
+
 export function compareQuestions(
   left: Pick<QuestionListItem, "year" | "session" | "number">,
   right: Pick<QuestionListItem, "year" | "session" | "number">

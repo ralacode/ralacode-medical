@@ -6,6 +6,8 @@ import { ExamQuestionBrowser } from "@/components/exam-question-browser"
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
 import {
+  examYearSeoDescription,
+  examYearSeoTitle,
   groupQuestions,
   questionCategoryLinks,
   questionHeading,
@@ -35,10 +37,12 @@ export async function getStaticPaths() {
 const { year, questions } = Astro.props
 const [group] = groupQuestions(questions.map((question) => question.data))
 const exam = group?.exam
-const title = exam ? `${year}年 第${exam}回` : `${year}年`
+const title = exam
+  ? examYearSeoTitle(year, exam)
+  : `${year}年の診療放射線技師国家試験対策問題`
 const description = exam
-  ? `第${exam}回診療放射線技師国家試験の出題意図に沿った類似問題です。公式問題の転載ではありません。`
-  : `${year}年の類似問題です。`
+  ? examYearSeoDescription(year, exam)
+  : `${year}年の診療放射線技師国家試験の対策問題です。公式問題の転載ではありません。`
 ---
 
 <Layout title={title} description={description} headerLabel="国家試験対策">

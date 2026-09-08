@@ -5,6 +5,8 @@ import { getPublishedQuestions } from "@/lib/exam-content"
 import { subjectLabel, studyTopicLabel } from "@/lib/exam-subjects"
 import {
   browseCategoryHref,
+  examBrowseSeoDescription,
+  examBrowseSeoTitle,
   groupQuestions,
   groupQuestionsByStudyTopic,
   groupQuestionsBySubject,
@@ -19,13 +21,13 @@ const studyTopics = groupQuestionsByStudyTopic(questions)
 ---
 
 <Layout
-  title="国家試験対策"
-  description="診療放射線技師国家試験の出題意図に沿った類似問題です。公式問題の転載ではありません。"
+  title={examBrowseSeoTitle}
+  description={examBrowseSeoDescription}
   headerLabel="国家試験対策"
 >
   <div class="mx-auto grid max-w-2xl gap-8">
     <header class="grid gap-3">
-      <h1 class="text-2xl font-semibold tracking-tight">国試対策オリジナル問題</h1>
+      <h1 class="text-2xl font-semibold tracking-tight">{examBrowseSeoTitle}</h1>
       <p class="text-sm leading-relaxed text-muted-foreground">
         年次または科目から探せます。
       </p>
