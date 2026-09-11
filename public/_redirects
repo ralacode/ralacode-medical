@@ -1,6 +1,30 @@
 # Astro `base: /medical/` — dist はルート直下だが公開 URL は /medical/ 配下。
 # Cloudflare (Workers 静的アセット) が /medical/* を dist 内の対応パスへ内部リライトする。
-# 最初にマッチした 1 ルールだけが適用されるため、末尾スラッシュなしの 301 を先頭に置く。
+# 最初にマッチした 1 ルールだけが適用される。
+#
+# 末尾スラッシュなしを先に 301 する。リライト後に html_handling の 307 が走ると
+# Location が /articles/... になり /medical/ が落ちる。
+# プレースホルダは 1 セグメントだけなので、既にスラッシュ付きの正規 URL には当たらない。
+# 新しい一覧パスを足したら、同じ形の 301 をリライトより上に足す。
+# 拡張子付き（sitemap.xml / robots.txt / _astro）は対象にしない。
+
 /medical  /medical/  301
+/medical/index.html  /medical/  301
+
+/medical/articles  /medical/articles/  301
+/medical/articles/index.html  /medical/articles/  301
+/medical/articles/:slug  /medical/articles/:slug/  301
+/medical/articles/:slug/index.html  /medical/articles/:slug/  301
+
+/medical/exams  /medical/exams/  301
+/medical/exams/index.html  /medical/exams/  301
+/medical/exams/subjects/:subject  /medical/exams/subjects/:subject/  301
+/medical/exams/subjects/:subject/index.html  /medical/exams/subjects/:subject/  301
+/medical/exams/:year  /medical/exams/:year/  301
+/medical/exams/:year/index.html  /medical/exams/:year/  301
+/medical/exams/:year/:session  /medical/exams/:year/:session/  301
+/medical/exams/:year/:session/:number  /medical/exams/:year/:session/:number/  301
+/medical/exams/:year/:session/:number/index.html  /medical/exams/:year/:session/:number/  301
+
 /medical/  /  200
 /medical/*  /:splat  200
