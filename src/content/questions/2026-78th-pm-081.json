@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 81,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 81,
+    "answer": 4
+  },
+  "subject": "xray-kiki",
+  "stem": "現在用いられている **dual energy CT（DECT）** の収集方式について、**誤っている**のはどれか。",
+  "choices": [
+    {
+      "text": "ビーム分割方式",
+      "explanation": "X 線ビームを**エネルギーごとに分割**して 2 つの検出器で読み取る方式です。**DECT として用いられます**。"
+    },
+    {
+      "text": "二層検出器方式",
+      "explanation": "**上下 2 層**の検出器で低・高エネルギーを同時に取得する方式です。**DECT として用いられます**。"
+    },
+    {
+      "text": "高速管電圧変調方式",
+      "explanation": "投影ごとに **kVp を高速切替**し、低・高エネルギーデータを取得する方式です。**DECT として用いられます**。"
+    },
+    {
+      "text": "dual source MDCT 収集方式",
+      "explanation": "**2 つの X 線管・2 系統の検出器**で異なる管電圧を同時照射する方式です。**DECT として用いられます**。"
+    },
+    {
+      "text": "ヘリカルスキャンは dual energy CT では用いられない。",
+      "explanation": "**kVp 変調 DECT** など、**ヘリカルスキャンと組み合わせた DECT** も臨床で用いられます。「用いられない」は**誤り**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**dual energy CT の収集方式**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=36\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 36 ページ</a>）。\n\n- **1 番** … **ビーム分割方式** → **正しい**（DECT）。\n- **2 番** … **二層検出器方式** → **正しい**（DECT）。\n- **3 番** … **高速管電圧変調方式** → **正しい**（DECT）。\n- **4 番** … **translate rotate 方式** → **誤り**（**第 1 世代 CT** の収集。**DECT ではない**）。\n- **5 番** … **dual source MDCT** → **正しい**（DECT）。\n- **覚え方** … **DECT＝分割・二層・kVp 変調・dual source**／**translate-rotate＝第 1 世代**（×）。",
+  "draft": false
+}

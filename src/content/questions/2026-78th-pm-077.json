@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 77,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 77,
+    "answer": 5
+  },
+  "subject": "xray-kiki",
+  "stem": "医用**液晶ディスプレイ（LCD）**の構成要素として適切なのはどれか。",
+  "choices": [
+    {
+      "text": "乳剤層",
+      "explanation": "**乳剤層**は**X 線フィルム**の構成です。液晶モニタには用いません。"
+    },
+    {
+      "text": "偏光フィルタ",
+      "explanation": "LCD は**偏光板＋液晶層**で光の通過を制御します。**偏光フィルタ**は必須の構成要素です。**正解**です。"
+    },
+    {
+      "text": "光電変換層",
+      "explanation": "**光電変換層**は **FPD** や **CCD** など、X 線・光を電気信号に変換する層です。LCD モニタの表示原理そのものではありません。"
+    },
+    {
+      "text": "輝尽性蛍光体層",
+      "explanation": "**輝尽性蛍光体**は **CR の IP** 向けです。LCD とは別系統です。"
+    },
+    {
+      "text": "シンチレーション結晶層",
+      "explanation": "**シンチレータ**は **I.I. や FPD（間接変換）** の X 線検出層です。LCD モニタの構成要素ではありません。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、**液晶ディスプレイの構成**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=35\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 35 ページ</a>）。\n\n- **1 番** … **乳剤層** → **誤り**（**フィルム**）。\n- **2 番** … **蛍光体層** → **誤り**（**I.I. / FPD / CR**）。\n- **3 番** … **誘電体層** → **誤り**（LCD の典型回答ではない）。\n- **4 番** … **光電変換層** → **誤り**（**FPD** 等）。\n- **5 番** … **偏光フィルタ** → **正解**。\n- **覚え方** … **LCD＝偏光板＋液晶＋バックライト**／**乳剤＝フィルム**／**シンチ＝検出器**。",
+  "draft": false
+}
