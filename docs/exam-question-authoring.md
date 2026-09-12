@@ -12,7 +12,7 @@
 2. **基本的なレイアウトと CSS は変更しない。** 問題追加の作業では、見た目・余白・コンポーネント構造・`global.css`・既存の React/Astro のマークアップを触らない。必要なのは JSON（と、PDF 対応表の追記だけ）である。
 3. **公式 PDF を git に入れない。** ローカル原本は `exams/`（gitignore）。解説カードからのリンクは厚生労働省の公式 URL を使う。
 4. **試験科目について考えるときは `docs/exam-subjects-amendment-2023.md` を参考にする。** 改正前後の科目名と、削られた科目・新設科目の判断に使う。画面に出す ID は `src/lib/exam-subjects.ts`。
-5. **コミット・push は、ユーザーが依頼したときだけ。**
+5. **コミット・push は、ユーザーが依頼したときだけ。** ただし **Cloud Agent** として割り当てブランチで作業するときは、コミット → push → PR 作成までが作業範囲（`AGENTS.md` の「Cursor Cloud specific instructions」）。どちらの場合も `main` へ直接 push しない。
 
 `exams/` は gitignore。`docs/` も原則 gitignore で、手順書・科目改正メモ・**外部リンク台帳**（`external-links.md`）だけリポジトリに含める。公式 PDF は入れない。
 
@@ -40,6 +40,7 @@
 | `src/lib/exam-subjects.ts` | 令和6年4月施行の11科目 ID |
 | `src/lib/exam-pdfs.ts` | 公式 PDF URL。ページ対応は `exam-pdf-page-ranges.ts` |
 | `src/lib/exam-pdf-page-ranges.ts` | 問番号 → PDF ページ（1 始まり）。`verify:exam-pages` も参照 |
+| `scripts/exam-pdf-sources.ts` | 公式 PDF の URL と `exams/` の保存先。`exam:fetch-pdfs` / `exam:pdf-text` / `exam:pdf-render` が参照 |
 | 直近の `src/content/questions/*.json` | 文体・解説の厚さ・`mapsTo` の書き方 |
 
 レイアウトやクイズ UI（`question-quiz.tsx` など）は、問題追加のために開いて編集しない。
@@ -52,7 +53,7 @@
 
 ### 1. 公式を読む（リポジトリには書かない）
 
-ローカル PDF（gitignore）:
+ローカル PDF（gitignore）。無ければ `pnpm exam:fetch-pdfs` で厚労省の公式 URL から取得する（URL と保存先は `scripts/exam-pdf-sources.ts`）:
 
 ```
 exams/2026/2026-78th-am.pdf
@@ -62,16 +63,19 @@ exams/2026/2026-78th-pm.pdf
 exams/2026/2026-78th-pm-supplement.pdf
 ```
 
-抽出の例（既存の mupdf スクリプトがある場合）:
+読み方（すべてリポジトリ内のスクリプト。Cloud Agent でも同じ）:
 
-```text
-C:\Users\stsud\AppData\Local\Temp\pdf-page-render\mupdf-extract.mjs
+```bash
+pnpm exam:pdf-text 2026 am --toc            # 各 PDF ページに載っている問番号の一覧
+pnpm exam:pdf-text 2026 am --question 13    # 問 13 が載っているページのテキスト
+pnpm exam:pdf-text 2026 answers             # 正答表（AM13 → 午前問 13 の公式正答）
+pnpm exam:pdf-render 2026 am-supplement --pages 5   # 別冊を PNG に描画 → exams/_render/
 ```
 
 - 問題 PDF の該当ページから、**出題の論点**と肢のテーマを把握する。
 - 正答表から公式正答を取る（午前問 N は `AMN`）。複数正解は `45` → `[4, 5]`。
-- 別冊指定があれば別冊 PDF を描画して所見を把握する。画像ファイルはリポジトリに置かない。
-- チャットや JSON に、公式の問題文・選択肢をそのまま貼らない。
+- 別冊指定があれば別冊 PDF を `exam:pdf-render` で描画して所見を把握する。描画した PNG はリポジトリに置かない（`exams/_render/` は gitignore）。
+- チャットや PR 本文や JSON に、公式の問題文・選択肢をそのまま貼らない。`exam:pdf-text` の出力を転載しない。
 
 2026年午前の問題 PDF は、表紙・注意のあと問1が **PDF 5ページ目**。ページ対応は `src/lib/exam-pdf-page-ranges.ts`（`exam-pdfs.ts` から参照）。別冊は表紙のあと No.1（問4）が 5ページ目。`am2026BookletPages`。
 

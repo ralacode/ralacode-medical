@@ -14,8 +14,12 @@
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{ts,tsx,astro}\"",
     "typecheck": "astro check",
-    "verify:exam-pages": "tsx scripts/verify-exam-pages.ts"
+    "verify:exam-pages": "tsx scripts/verify-exam-pages.ts",
+    "exam:fetch-pdfs": "tsx scripts/fetch-exam-pdfs.ts",
+    "exam:pdf-text": "tsx scripts/extract-exam-pdf-text.ts",
+    "exam:pdf-render": "tsx scripts/render-exam-pdf-page.ts"
   },
+  "packageManager": "pnpm@11.13.1",
   "dependencies": {
     "@astrojs/mdx": "^7.0.5",
     "@astrojs/react": "^6.0.2",
@@ -39,6 +43,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@eslint/js": "^10",
+    "@napi-rs/canvas": "^1.0.9",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^10",

@@ -12,7 +12,7 @@
 2. **用語解説の追加では、基本的なレイアウトと CSS を変更しない。** 通常は MDX（と、スキーマ拡張が必要なときだけ `src/content.config.ts`）だけ触る。記事ページの SEO は `src/pages/articles/[slug].astro` と `src/lib/article-seo.ts` が担う。
 3. **記事 ID（ファイル名）と問題 JSON の `terms` を一致させる。** 例: `k-space.mdx` ↔ `"terms": ["k-space"]`。これで問題ページの「関連する用語」と記事ページの「関連する問題」が自動でつながる。
 4. **FAQ は frontmatter の `faq` にだけ書く。** 本文 MDX に同内容の FAQ セクションを重複させない（表示・FAQPage 構造化データの単一ソース）。
-5. **コミット・push は、ユーザーが依頼したときだけ。**
+5. **コミット・push は、ユーザーが依頼したときだけ。** ただし **Cloud Agent** として割り当てブランチで作業するときは、コミット → push → PR 作成までが作業範囲（`AGENTS.md` の「Cursor Cloud specific instructions」）。どちらの場合も `main` へ直接 push しない。
 
 ---
 

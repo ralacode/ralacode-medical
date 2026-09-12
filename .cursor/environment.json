@@ -1,0 +1,4 @@
+{
+  "install": "corepack enable && corepack prepare pnpm@11.13.1 --activate && pnpm install --frozen-lockfile && pnpm exam:fetch-pdfs",
+  "start": "pnpm exam:fetch-pdfs"
+}
