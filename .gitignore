@@ -31,5 +31,6 @@ docs/*
 # local promo / capture videos
 movies/
 
-# local national exam PDFs (not for the repo)
+# local national exam PDFs and rendered pages (not for the repo)
 /exams/
+/.tmp-pdf-render/
