@@ -60,6 +60,9 @@ const pm2026BookletPages: Record<number, number> = {
   9: 7,
   10: 8,
   19: 9,
+  90: 10,
+  91: 11,
+  92: 12,
 }
 
 export function officialExamBookletPdfLink(

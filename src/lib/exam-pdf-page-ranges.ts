@@ -90,6 +90,8 @@ export const pm2026PageRanges: ExamPdfPageRange[] = [
   [79, 81, 36],
   [82, 84, 37],
   [85, 87, 38],
+  [88, 90, 39],
+  [91, 92, 40],
 ]
 
 /** ローカル原本 PDF（gitignore の exams/ 配下） */

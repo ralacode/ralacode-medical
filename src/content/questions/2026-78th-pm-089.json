@@ -1,0 +1,42 @@
+{
+  "year": 2026,
+  "exam": 78,
+  "session": "pm",
+  "number": 89,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2026,
+    "exam": 78,
+    "session": "pm",
+    "number": 89,
+    "answer": 5
+  },
+  "subject": "xray-gijutsu",
+  "stem": "**骨密度（BMD）測定**で、**大腿骨頸部**を標準的な測定部位として扱う方法はどれか。",
+  "choices": [
+    {
+      "text": "定量的超音波（QUS）法",
+      "explanation": "QUS は**踵骨**などが中心で、**大腿骨頸部**を標準部位としません。"
+    },
+    {
+      "text": "X 線写真濃度測定（RA）法",
+      "explanation": "RA 法は**第二〜第四中手骨**など**手**の部位が一般的です。大腿骨頸部は標準部位ではありません。"
+    },
+    {
+      "text": "二重エネルギー X 線吸収測定（DXA）法",
+      "explanation": "DXA では**腰椎**と**大腿骨頸部**が WHO 基準でも用いられる**代表部位**です。**正解**です。"
+    },
+    {
+      "text": "定量的 CT（QCT）法",
+      "explanation": "QCT は**腰椎**の**体積骨密度**測定が中心です。大腿骨頸部を標準部位とするのは DXA です。"
+    },
+    {
+      "text": "単一エネルギー X 線吸収測定（SXA）法",
+      "explanation": "SXA 法は**橈骨遠位端**など**前腕**の測定が一般的です。大腿骨頸部は標準部位ではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**骨塩定量（骨密度）検査**の測定部位です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp260424-06b_01.pdf#page=39\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 39 ページ</a>）。図表はありません。\n\n- **1 番** … QCT 法 → **誤り**（**腰椎**の体積骨密度が中心）。\n- **2 番** … QUS 法 → **誤り**（**踵骨**など）。\n- **3 番** … RA 法 → **誤り**（**中手骨**など）。\n- **4 番** … SXA 法 → **誤り**（**前腕（橈骨）**など）。\n- **5 番** … **DXA 法** → **正解**（**腰椎・大腿骨頸部**が標準部位）。\n- **覚え方** … **DXA＝腰椎＋大腿骨頸部**／QUS＝踵骨／RA＝手／SXA＝前腕。",
+  "draft": false
+}
