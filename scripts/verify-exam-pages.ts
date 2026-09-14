@@ -3,7 +3,10 @@
  * ローカル PDF がある場合は、各ページのフッター（前H-N / 後H-N）も表示し、
  * 問題文がテキスト化されている PDF では問番号の自動照合も行う（scripts/lib/exam-pdf.ts を使用）。
  *
- * 用法: pnpm verify:exam-pages
+ * 用法:
+ *   pnpm verify:exam-pages
+ *   pnpm verify:exam-pages --strict   ローカル PDF が無いときも失敗にする（Cloud / CI 用）
+ *
  * 前提: exams/{year}/{year}-{exam}th-{am,pm}.pdf（gitignore、任意。無ければ pnpm exam:fetch-pdfs）
  */
 import fs from "node:fs"
@@ -15,38 +18,29 @@ import {
   officialExamPdfPage,
   registeredExamQuestionNumbersFor,
 } from "../src/lib/exam-data.ts"
+import { isGrandfatherYear } from "../src/lib/exam-manifest.ts"
 import {
   assignQuestionPages,
   loadExamPdf,
   readAllExamPdfPages,
   repoRoot,
 } from "./lib/exam-pdf.ts"
-
-const questionsDir = path.join(repoRoot, "src/content/questions")
+import { parseQuestionJsonFiles } from "./lib/question-json.ts"
 
 type ExamSession = "am" | "pm"
 
 type Failure = {
-  kind: "pdf-page" | "json-link"
+  kind: "pdf-page" | "json-link" | "pdf-missing"
   message: string
 }
 
-function parseQuestionJsonFiles() {
-  return fs
-    .readdirSync(questionsDir)
-    .filter((name) => name.endsWith(".json"))
-    .map((name) => {
-      const filePath = path.join(questionsDir, name)
-      const data = JSON.parse(fs.readFileSync(filePath, "utf8")) as {
-        mapsTo?: {
-          year?: number
-          session?: ExamSession
-          number?: number
-        }
-        sourceExplanation?: string
-      }
-      return { filePath, name, data }
-    })
+function parseArgs(argv: string[]) {
+  let strict = false
+  for (const arg of argv) {
+    if (arg === "--strict") strict = true
+    else throw new Error(`不明な引数: ${arg}`)
+  }
+  return { strict }
 }
 
 /** examPdfUrl の公式 URL から「その URL に #page=N が付いたリンク」を検出する正規表現を作る */
@@ -84,16 +78,20 @@ function collectImplementedQuestionNumbers(year: number, session: ExamSession) {
 async function verifyRegisteredPagesAgainstPdf(
   year: number,
   session: ExamSession,
-  failures: Failure[]
+  failures: Failure[],
+  strict: boolean
 ) {
   const relativePath = localExamPdfPath(year, session)
   if (!relativePath) return
 
   const absolutePath = path.join(repoRoot, relativePath)
   if (!fs.existsSync(absolutePath)) {
-    console.warn(
-      `[skip] ローカル PDF なし: ${relativePath}（JSON リンク検証のみ実行）`
-    )
+    const message = `ローカル PDF なし: ${relativePath}（JSON リンク検証のみ実行）`
+    if (strict) {
+      failures.push({ kind: "pdf-missing", message })
+    } else {
+      console.warn(`[skip] ${message}`)
+    }
     return
   }
 
@@ -174,7 +172,14 @@ function verifyQuestionJsonLinks(failures: Failure[]) {
     const label = `${mapsTo.year} ${mapsTo.session.toUpperCase()} 問${mapsTo.number} (${name})`
 
     if (linkedPage === undefined) {
-      missing += 1
+      if (isGrandfatherYear(mapsTo.year)) {
+        missing += 1
+        continue
+      }
+      failures.push({
+        kind: "json-link",
+        message: `${label}: sourceExplanation に #page= がありません（exam-data page=${expectedPage}）`,
+      })
       continue
     }
 
@@ -189,17 +194,18 @@ function verifyQuestionJsonLinks(failures: Failure[]) {
 
   console.log(
     `[ok] 問題 JSON の sourceExplanation リンク: ${checked} 件照合` +
-      (missing > 0 ? `（#page= 未記載 ${missing} 件はスキップ）` : "")
+      (missing > 0 ? `（祖父化年の #page= 未記載 ${missing} 件はスキップ）` : "")
   )
 }
 
 async function main() {
+  const { strict } = parseArgs(process.argv.slice(2))
   const failures: Failure[] = []
 
   for (const yearText of Object.keys(examData)) {
     const year = Number(yearText)
     for (const session of ["am", "pm"] as const) {
-      await verifyRegisteredPagesAgainstPdf(year, session, failures)
+      await verifyRegisteredPagesAgainstPdf(year, session, failures, strict)
     }
   }
 

@@ -11,7 +11,10 @@
 | --- | --- |
 | `pnpm dev` / `pnpm build` | 開発サーバー / 本番ビルド。問題 JSON のスキーマ不備は `build` で失敗する |
 | `pnpm lint` / `pnpm typecheck` | ESLint / `astro check` |
+| `pnpm lint:questions` | 問題 JSON のゲート検査（ファイル名 / `mapsTo` / 科目がマニフェストと一致。2026 年は形式を祖父化） |
 | `pnpm verify:exam-pages` | 公式 PDF ページ表と `sourceExplanation` のリンク照合 |
+| `pnpm exam:manifest --year 2026` | 既存 JSON からスロット台帳 `src/data/exam-manifests/{year}.json` を逆生成 |
+| `pnpm exam:external-links` | 参考リンク台帳 `docs/external-links.md` をコンテンツから再生成 |
 | `pnpm exam:fetch-pdfs` | 厚労省の公式 PDF を `exams/{year}/` にダウンロード（既存はスキップ） |
 | `pnpm exam:pdf-text <year> <kind> [--pages 5-7 \| --question 13 \| --toc]` | 公式 PDF のテキストを閲覧。`kind` は `am` / `pm` / `am-supplement` / `pm-supplement` / `answers` |
 | `pnpm exam:pdf-render <year> <kind> --pages N` | ページを PNG に描画（別冊の画像確認用）。出力は `exams/_render/` |
@@ -39,13 +42,15 @@ Cloud Agent（Cursor Cloud / Background Agent）として起動されたとき�
 - 割り当てられた作業ブランチで作業する。ブランチが指定されていなければ `q/{year}-{exam}th/{subject-id}`（類似問題）または `article/{term-id}`（用語記事）で切る。
 - **`main` へ直接 push しない。**
 - Cloud では、コミット → push → PR 作成までが作業範囲。手順書の「コミット・push は依頼されたときだけ」はローカル対話向けであり、Cloud では PR を開くことがタスク完了の条件。
-- 1 PR = 1 科目（または 1 記事）。問題作成の PR で触るのは `src/content/questions/*.json` だけ。ページ表・PDF URL（`src/lib/exam-data.ts`）の変更が必要になったら、勝手に直さず PR 本文に書いて止める。
+- 1 PR = 1 科目（または 1 記事）。問題作成の PR で触るのは `src/content/questions/*.json` だけ。ページ表・PDF URL（`src/lib/exam-data.ts`）やマニフェスト（`src/data/exam-manifests/{year}.json`）の変更が必要になったら、勝手に直さず PR 本文に書いて止める。参考リンクを足したら `pnpm exam:external-links` で台帳を再生成してよい。
 
 ### PR を開く前に必ず実行
 
 ```bash
 pnpm build
+pnpm lint:questions
 pnpm verify:exam-pages
+pnpm exam:external-links --check
 pnpm lint
 ```
 

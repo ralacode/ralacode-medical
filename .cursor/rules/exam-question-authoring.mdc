@@ -12,9 +12,10 @@ alwaysApply: true
 要点:
 
 - 公式の問題文・選択肢・別冊画像はリポジトリに転載しない。オリジナルの類似問題だけを JSON に書く。
-- **基本的なレイアウトと CSS は変更しない。** 問題追加では JSON（と必要なときだけ `src/lib/exam-pdfs.ts`）以外を触らない。
-- 試験科目を考えるときは `docs/exam-subjects-amendment-2023.md` を参考にする。
+- **基本的なレイアウトと CSS は変更しない。** 問題追加では `src/content/questions/*.json` 以外を触らない（ページ表・マニフェストが必要なら PR 本文に書いて止める）。
+- 試験科目を考えるときは `docs/exam-subjects-amendment-2023.md` を参考にする。実装の科目 ID は `src/lib/exam-subjects.ts`。スロットの科目は `src/data/exam-manifests/{year}.json` に合わせる。
 - 演習画面は単一正解のみ。公式が「2つ選べ」でも類似は一文択一。
-- **過去問解説（`sourceExplanation`）** … 公式 1〜5 番それぞれに**正解／誤りと理由**を書く（知識問題は省略不可）。番号は公式の肢番号。詳細は手順書の「過去問解説（sourceExplanation）の書き方」。
-- **作成後の必須検証** … JSON 完成後、手順書 **§7** の 3 点（公式スロット一致・PDF 別タブ・該当ページ）を必ず実行。不一致なら作り直し。
+- **過去問解説（`sourceExplanation`）** … 公式 1〜5 番それぞれに**正解／誤りと理由**を書く（知識問題は省略不可）。番号は公式の肢番号。詳細は手順書の「過去問解説（sourceExplanation）の書き方」。**2026 年**の既存問は形式を祖父化（`pnpm lint:questions`）。
+- **作成後の必須検証** … JSON 完成後、手順書 **§7** の 3 点に加え **`pnpm lint:questions`** と **`pnpm verify:exam-pages`**。不一致なら作り直し。
+- 参考リンクを足したら **`pnpm exam:external-links`** で台帳を再生成する。
 - コミットは依頼されたときだけ。Cloud Agent として割り当てブランチで作業するときは `AGENTS.md` の Cloud 節に従い、コミット・push・PR 作成まで行う（`main` へ直接 push しない）。

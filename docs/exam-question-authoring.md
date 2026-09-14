@@ -36,9 +36,10 @@
 | --- | --- |
 | `src/content.config.ts` | JSON スキーマ。必須フィールドの定義 |
 | `docs/exam-subjects-amendment-2023.md` | 試験科目を考えるときの根拠（令和5年改正通知） |
-| `docs/external-links.md` | 参考用外部リンク台帳（MHLW 公式 PDF 以外） |
+| `docs/external-links.md` | 参考用外部リンク台帳（生成物。`pnpm exam:external-links`） |
 | `src/lib/exam-subjects.ts` | 令和6年4月施行の11科目 ID |
 | `src/lib/exam-data.ts` | 年次ごとの公式 PDF URL・ページ範囲・別冊ページ表・`exams/` の保存先。`exam:fetch-pdfs` / `exam:pdf-text` / `exam:pdf-render` / `verify:exam-pages` が参照 |
+| `src/data/exam-manifests/{year}.json` | スロット台帳（科目・公式正答・採点除外・別冊の有無・論点 1 行）。ページ番号は `exam-data.ts`。科目ブランチは触らない |
 | 直近の `src/content/questions/*.json` | 文体・解説の厚さ・`mapsTo` の書き方 |
 
 レイアウトやクイズ UI（`question-quiz.tsx` など）は、問題追加のために開いて編集しない。
@@ -98,10 +99,13 @@ pnpm exam:pdf-render 2026 am-supplement --pages 5   # 別冊を PNG に描画 �
 
 ```bash
 pnpm verify:exam-pages
+pnpm lint:questions
 ```
 
 - `src/lib/exam-data.ts` のページ表と、**`#page=` 付き `sourceExplanation`** が一致するか検証する
 - ローカルに `exams/{year}/{year}-{exam}th-{am,pm}.pdf` があれば、フッター（前H-N / 後H-N）の参考表示と、テキスト化された PDF での問番号照合も行う
+- **2026 年**は `#page=` 未記載をスキップする（祖父化。2027 年以降は欠落を失敗にする）
+- `--strict` を付けると、ローカル PDF が無いときも失敗にする（Cloud / CI 用）
 - 問題文が画像のみの PDF では問番号の自動検出はスキップされる（JSON リンク照合は実行）
 - 問題追加・ページ表更新の**必須ステップ**（§7-3 の補助）
 
@@ -164,12 +168,13 @@ src/content/questions/{year}-{exam}th-{session}-{NNN}.json
 
 ### 5. PDF 対応を足す（必要なときだけ）
 
-`src/lib/exam-data.ts` 以外の UI は触らない。
+`src/lib/exam-data.ts` と `src/data/exam-manifests/{year}.json` 以外の UI は触らない。**科目ごとの問題作成では `src/content/questions/*.json` だけを触る。**
 
 - 新しい年・午前/午後の公式 URL が分かったら `examData[year].pdfs` に追加する。
 - 別冊がある問は `examData[year].bookletPages.{am|pm}` に **公式の問番号 → PDF ページ（1始まり）** を足す。表に無い問は別冊ボタンが出ない。
 - 問題 PDF のページ範囲表は `examData[year].pageRanges.{am|pm}` に足す。
-- 追記後は **`pnpm verify:exam-pages`** を必ず実行する。
+- 科目・公式正答・採点除外は `src/data/exam-manifests/{year}.json` に先に書く。既存年の逆生成は `pnpm exam:manifest --year {year}`。
+- 追記後は **`pnpm verify:exam-pages`** と **`pnpm lint:questions`** を必ず実行する。
 
 ### 6. 確認（スキーマ・表示）
 
@@ -322,6 +327,8 @@ JSON を置いたあと、**ユーザーに渡す前に必ず**次の 3 点を�
 | 計算・式選択 | **正解肢だけ**でよい | 式の意味・落とし穴。公式 5 肢すべてが不要なら省略可 |
 | 別冊・画像問題 | 所見を文章化して **5肢すべて** | 別冊所見 ＋ **公式 1〜5 番**（次節） |
 
+**2026 年の祖父化** … 初期に書いた問は 1〜5 番ラベルや `#page=` が無いものがある。`pnpm lint:questions` は 2026 年の形式チェックを免除する。2027 年以降と、新規に書く問は上表どおり。
+
 **用語解説記事との分担**
 
 - 記事が未作成でも `terms` にスラッグを置いてよい。
@@ -407,7 +414,7 @@ JSON を置いたあと、**ユーザーに渡す前に必ず**次の 3 点を�
 ### 参考用の外部リンク
 
 - 類似問題の `choices[].explanation` や `sourceExplanation` に、**厚労省公式 PDF 以外**の参考 URL を載せる場合は、`target="_blank"` と `rel="noopener noreferrer"` を付ける。
-- **追加・変更・削除のたびに `docs/external-links.md` を更新する**（リンク切れ確認用台帳）。
+- 台帳 `docs/external-links.md` は **生成物**。リンクを足したら **`pnpm exam:external-links`** で再生成する（手で表を編集しない）。
 - 学習上の具体例として必要なときに限り使う。先例: 午後問39 のゾーフィゴ（治療用 RI の例）。
 
 ### 類似問題の解説との分担
@@ -476,4 +483,5 @@ JSON を置いたあと、**ユーザーに渡す前に必ず**次の 3 点を�
 - [ ] **7-1** … 公式 PDF で**問番・論点**が `mapsTo` のスロットと一致（不一致なら作り直し）
 - [ ] **7-2** … 公式 PDF リンク・UI ボタンが**別タブ**で開く（`target="_blank"`）
 - [ ] **7-3** … 公式 PDF が **`exam-data.ts` の該当ページ**で、対象の問が掲載されている（**`pnpm verify:exam-pages`** も実行）
-- [ ] 参考用外部リンクを追加したとき **`docs/external-links.md`** を更新した
+- [ ] **`pnpm lint:questions`** が成功する（ファイル名 / `mapsTo` / 科目がマニフェストと一致。2026 年は 1〜5 番ラベルと `#page=` を祖父化）
+- [ ] 参考用外部リンクを追加したとき **`pnpm exam:external-links`** で台帳を再生成した

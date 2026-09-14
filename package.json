@@ -15,6 +15,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,astro}\"",
     "typecheck": "astro check",
     "verify:exam-pages": "tsx scripts/verify-exam-pages.ts",
+    "lint:questions": "tsx scripts/lint-questions.ts",
+    "exam:manifest": "tsx scripts/generate-exam-manifest.ts",
+    "exam:external-links": "tsx scripts/extract-external-links.ts",
     "exam:fetch-pdfs": "tsx scripts/fetch-exam-pdfs.ts",
     "exam:pdf-text": "tsx scripts/extract-exam-pdf-text.ts",
     "exam:pdf-render": "tsx scripts/render-exam-pdf-page.ts"
