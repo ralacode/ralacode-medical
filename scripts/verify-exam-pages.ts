@@ -1,24 +1,27 @@
 /**
- * exam-pdf-page-ranges.ts のページ表と、問題 JSON の sourceExplanation リンクが一致するか検証する。
+ * src/lib/exam-data.ts のページ表と、問題 JSON の sourceExplanation リンクが一致するか検証する。
  * ローカル PDF がある場合は、各ページのフッター（前H-N / 後H-N）も表示し、
- * 問題文がテキスト化されている PDF では問番号の自動照合も行う。
+ * 問題文がテキスト化されている PDF では問番号の自動照合も行う（scripts/lib/exam-pdf.ts を使用）。
  *
  * 用法: pnpm verify:exam-pages
- * 前提: exams/2026/2026-78th-{am,pm}.pdf（gitignore、任意）
+ * 前提: exams/{year}/{year}-{exam}th-{am,pm}.pdf（gitignore、任意。無ければ pnpm exam:fetch-pdfs）
  */
 import fs from "node:fs"
 import path from "node:path"
-import { fileURLToPath } from "node:url"
-import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs"
 import {
-  examPdfPageRangesFor,
-  localExamPdfPaths,
+  examData,
+  examPdfUrl,
+  localExamPdfPath,
   officialExamPdfPage,
-  registeredExamQuestionNumbers,
-} from "../src/lib/exam-pdf-page-ranges.ts"
+  registeredExamQuestionNumbersFor,
+} from "../src/lib/exam-data.ts"
+import {
+  assignQuestionPages,
+  loadExamPdf,
+  readAllExamPdfPages,
+  repoRoot,
+} from "./lib/exam-pdf.ts"
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const repoRoot = path.resolve(__dirname, "..")
 const questionsDir = path.join(repoRoot, "src/content/questions")
 
 type ExamSession = "am" | "pm"
@@ -26,60 +29,6 @@ type ExamSession = "am" | "pm"
 type Failure = {
   kind: "pdf-page" | "json-link"
   message: string
-}
-
-type PdfPageInfo = {
-  pageNumber: number
-  footerLabel?: string
-  questionNumbers: number[]
-}
-
-/** 問題番号行: 「31 画像に…」の半角スペース。選択肢「1．」の全角中点は除外 */
-const QUESTION_HEADING_RE = /(?:^|[\n\r])([1-9]\d{0,2}) (?=[\u3040-\u3299\u4e00-\u9fff])/g
-const FOOTER_LABEL_RE = /([前后]H-\d+)/
-
-function resolveLocalPdf(relativePath: string) {
-  return path.join(repoRoot, relativePath)
-}
-
-async function analyzePdfPages(pdfPath: string): Promise<PdfPageInfo[]> {
-  const absolutePath = resolveLocalPdf(pdfPath)
-  const data = new Uint8Array(fs.readFileSync(absolutePath))
-  const document = await getDocument({ data, disableFontFace: true }).promise
-
-  const pages: PdfPageInfo[] = []
-
-  for (let pageNumber = 1; pageNumber <= document.numPages; pageNumber += 1) {
-    const page = await document.getPage(pageNumber)
-    const textContent = await page.getTextContent()
-    const text = textContent.items
-      .map((item) => ("str" in item ? item.str : ""))
-      .join("\n")
-
-    const questionNumbers = [
-      ...new Set(
-        [...text.matchAll(QUESTION_HEADING_RE)].map((match) => Number(match[1]))
-      ),
-    ].sort((a, b) => a - b)
-
-    const footerLabel = text.match(FOOTER_LABEL_RE)?.[1]
-
-    pages.push({ pageNumber, footerLabel, questionNumbers })
-  }
-
-  return pages
-}
-
-function questionPageMapFromPdf(pages: PdfPageInfo[]) {
-  const questionPages = new Map<number, number>()
-  for (const { pageNumber, questionNumbers } of pages) {
-    for (const questionNumber of questionNumbers) {
-      if (!questionPages.has(questionNumber)) {
-        questionPages.set(questionNumber, pageNumber)
-      }
-    }
-  }
-  return questionPages
 }
 
 function parseQuestionJsonFiles() {
@@ -100,14 +49,12 @@ function parseQuestionJsonFiles() {
     })
 }
 
+/** examPdfUrl の公式 URL から「その URL に #page=N が付いたリンク」を検出する正規表現を作る */
 function examPdfUrlPattern(year: number, session: ExamSession) {
-  if (year === 2026 && session === "am") {
-    return /tp260424-06a_01\.pdf#page=(\d+)/
-  }
-  if (year === 2026 && session === "pm") {
-    return /tp260424-06b_01\.pdf#page=(\d+)/
-  }
-  return undefined
+  const url = examPdfUrl(year, session)
+  if (!url) return undefined
+  const escaped = url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+  return new RegExp(`${escaped}#page=(\\d+)`)
 }
 
 function extractSourceExplanationPage(
@@ -134,74 +81,74 @@ function collectImplementedQuestionNumbers(year: number, session: ExamSession) {
   return numbers
 }
 
-function verifyRegisteredPagesAgainstPdf(
+async function verifyRegisteredPagesAgainstPdf(
   year: number,
   session: ExamSession,
-  pdfPath: string,
   failures: Failure[]
 ) {
-  const ranges = examPdfPageRangesFor(year, session)
-  if (!ranges) return Promise.resolve()
+  const relativePath = localExamPdfPath(year, session)
+  if (!relativePath) return
 
-  const absolutePath = resolveLocalPdf(pdfPath)
+  const absolutePath = path.join(repoRoot, relativePath)
   if (!fs.existsSync(absolutePath)) {
     console.warn(
-      `[skip] ローカル PDF なし: ${pdfPath}（JSON リンク検証のみ実行）`
+      `[skip] ローカル PDF なし: ${relativePath}（JSON リンク検証のみ実行）`
     )
-    return Promise.resolve()
+    return
   }
 
-  return analyzePdfPages(pdfPath).then((pages) => {
-    const label = `${year} ${session.toUpperCase()}`
-    const detectedPages = questionPageMapFromPdf(pages)
-    const implementedNumbers = collectImplementedQuestionNumbers(year, session)
-    const registeredNumbers = registeredExamQuestionNumbers(ranges).filter(
-      (questionNumber) => implementedNumbers.has(questionNumber)
-    )
+  const label = `${year} ${session.toUpperCase()}`
+  const document = await loadExamPdf(absolutePath)
+  const pages = await readAllExamPdfPages(document)
+  const detectedPages = assignQuestionPages(pages)
+  const implementedNumbers = collectImplementedQuestionNumbers(year, session)
+  const registeredNumbers = registeredExamQuestionNumbersFor(
+    year,
+    session
+  ).filter((questionNumber) => implementedNumbers.has(questionNumber))
 
-    const footerSamples = pages
-      .filter((page) => page.footerLabel)
-      .slice(0, 3)
-      .map((page) => `${page.pageNumber}→${page.footerLabel}`)
-    if (footerSamples.length > 0) {
-      console.log(
-        `[info] ${label} フッター例: ${footerSamples.join(", ")} …（PDF ページ番号 ≠ 後H-N を混同しない）`
-      )
-    }
-
-    if (detectedPages.size === 0) {
-      console.warn(
-        `[skip] ${label} ${path.basename(pdfPath)}: 問題文がテキスト化されていないため問番号の自動照合をスキップ`
-      )
-      return
-    }
-
-    for (const questionNumber of registeredNumbers) {
-      const registeredPage = officialExamPdfPage(year, session, questionNumber)
-      const detectedPage = detectedPages.get(questionNumber)
-
-      if (registeredPage === undefined) continue
-
-      if (detectedPage === undefined) {
-        failures.push({
-          kind: "pdf-page",
-          message: `${label} 問${questionNumber}: PDF 内に問番号が見つかりません（登録 page=${registeredPage}）`,
-        })
-        continue
-      }
-
-      if (detectedPage !== registeredPage) {
-        failures.push({
-          kind: "pdf-page",
-          message: `${label} 問${questionNumber}: exam-pdfs 登録=${registeredPage} ページ / PDF 検出=${detectedPage} ページ`,
-        })
-      }
-    }
-
+  const footerSamples = pages
+    .filter((page) => page.footerLabel)
+    .slice(0, 3)
+    .map((page) => `${page.pageNumber}→${page.footerLabel}`)
+  if (footerSamples.length > 0) {
     console.log(
-      `[ok] ${label} PDF ${path.basename(pdfPath)}: ${registeredNumbers.length} 問を PDF テキストと照合`
+      `[info] ${label} フッター例: ${footerSamples.join(", ")} …（PDF ページ番号 ≠ 後H-N を混同しない）`
     )
-  })
+  }
+
+  if (detectedPages.size === 0) {
+    console.warn(
+      `[skip] ${label} ${path.basename(relativePath)}: 問題文がテキスト化されていないため問番号の自動照合をスキップ`
+    )
+    return
+  }
+
+  for (const questionNumber of registeredNumbers) {
+    const registeredPage = officialExamPdfPage(year, session, questionNumber)
+    const detectedPage = detectedPages.get(questionNumber)
+
+    if (registeredPage === undefined) continue
+
+    if (detectedPage === undefined) {
+      failures.push({
+        kind: "pdf-page",
+        message: `${label} 問${questionNumber}: PDF 内に問番号が見つかりません（登録 page=${registeredPage}）`,
+      })
+      continue
+    }
+
+    if (detectedPage !== registeredPage) {
+      failures.push({
+        kind: "pdf-page",
+        message: `${label} 問${questionNumber}: exam-data 登録=${registeredPage} ページ / PDF 検出=${detectedPage} ページ`,
+      })
+    }
+  }
+
+  console.log(
+    `[ok] ${label} PDF ${path.basename(relativePath)}: ${registeredNumbers.length} 問を PDF テキストと照合`
+  )
 }
 
 function verifyQuestionJsonLinks(failures: Failure[]) {
@@ -235,7 +182,7 @@ function verifyQuestionJsonLinks(failures: Failure[]) {
     if (linkedPage !== expectedPage) {
       failures.push({
         kind: "json-link",
-        message: `${label}: sourceExplanation page=${linkedPage} / exam-pdfs page=${expectedPage}`,
+        message: `${label}: sourceExplanation page=${linkedPage} / exam-data page=${expectedPage}`,
       })
     }
   }
@@ -249,16 +196,10 @@ function verifyQuestionJsonLinks(failures: Failure[]) {
 async function main() {
   const failures: Failure[] = []
 
-  for (const [yearText, sessions] of Object.entries(localExamPdfPaths)) {
+  for (const yearText of Object.keys(examData)) {
     const year = Number(yearText)
-    for (const [session, pdfPath] of Object.entries(sessions)) {
-      if (!pdfPath) continue
-      await verifyRegisteredPagesAgainstPdf(
-        year,
-        session as ExamSession,
-        pdfPath,
-        failures
-      )
+    for (const session of ["am", "pm"] as const) {
+      await verifyRegisteredPagesAgainstPdf(year, session, failures)
     }
   }
 

@@ -12,12 +12,12 @@
 import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
-import { localExamPdfPaths } from "../src/lib/exam-pdf-page-ranges.ts"
 import {
+  examData,
   examPdfKinds,
-  examPdfSources,
+  examPdfUrl,
   localExamPdfPath,
-} from "./exam-pdf-sources.ts"
+} from "../src/lib/exam-data.ts"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const repoRoot = path.resolve(__dirname, "..")
@@ -43,21 +43,6 @@ function parseArgs(argv: string[]) {
   return { year, force }
 }
 
-/** exam-pdf-page-ranges.ts の localExamPdfPaths と保存先が食い違っていないか */
-function checkConsistencyWithPageRanges(year: number) {
-  const registered = localExamPdfPaths[year]
-  if (!registered) return
-  for (const session of ["am", "pm"] as const) {
-    const expected = registered[session]
-    const actual = localExamPdfPath(year, session)
-    if (expected && actual && expected !== actual) {
-      console.warn(
-        `[warn] ${year} ${session}: exam-pdf-page-ranges.ts は ${expected}、exam-pdf-sources.ts は ${actual}。verify:exam-pages が PDF を見つけられません`
-      )
-    }
-  }
-}
-
 async function download(url: string, destination: string) {
   const response = await fetch(url, {
     headers: { "user-agent": "ralacode-medical exam:fetch-pdfs" },
@@ -80,12 +65,12 @@ async function download(url: string, destination: string) {
 async function main() {
   const { year: onlyYear, force } = parseArgs(process.argv.slice(2))
 
-  const years = Object.keys(examPdfSources)
+  const years = Object.keys(examData)
     .map(Number)
     .filter((year) => onlyYear === undefined || year === onlyYear)
   if (years.length === 0) {
     throw new Error(
-      `exam-pdf-sources.ts に ${onlyYear ?? "（年次）"} のエントリがありません`
+      `src/lib/exam-data.ts に ${onlyYear ?? "（年次）"} のエントリがありません`
     )
   }
 
@@ -94,11 +79,8 @@ async function main() {
   const failures: string[] = []
 
   for (const year of years) {
-    checkConsistencyWithPageRanges(year)
-    const { urls } = examPdfSources[year]!
-
     for (const kind of examPdfKinds) {
-      const url = urls[kind]
+      const url = examPdfUrl(year, kind)
       const relativePath = localExamPdfPath(year, kind)
       if (!url || !relativePath) continue
 

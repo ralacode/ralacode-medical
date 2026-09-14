@@ -39,7 +39,7 @@ Cloud Agent（Cursor Cloud / Background Agent）として起動されたとき�
 - 割り当てられた作業ブランチで作業する。ブランチが指定されていなければ `q/{year}-{exam}th/{subject-id}`（類似問題）または `article/{term-id}`（用語記事）で切る。
 - **`main` へ直接 push しない。**
 - Cloud では、コミット → push → PR 作成までが作業範囲。手順書の「コミット・push は依頼されたときだけ」はローカル対話向けであり、Cloud では PR を開くことがタスク完了の条件。
-- 1 PR = 1 科目（または 1 記事）。問題作成の PR で触るのは `src/content/questions/*.json` だけ。ページ表（`src/lib/exam-pdf-page-ranges.ts`）や PDF URL（`src/lib/exam-pdfs.ts`）の変更が必要になったら、勝手に直さず PR 本文に書いて止める。
+- 1 PR = 1 科目（または 1 記事）。問題作成の PR で触るのは `src/content/questions/*.json` だけ。ページ表・PDF URL（`src/lib/exam-data.ts`）の変更が必要になったら、勝手に直さず PR 本文に書いて止める。
 
 ### PR を開く前に必ず実行
 

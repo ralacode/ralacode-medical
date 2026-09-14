@@ -8,11 +8,11 @@ import { fileURLToPath } from "node:url"
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs"
 import type { PDFDocumentProxy, PDFPageProxy } from "pdfjs-dist/legacy/build/pdf.mjs"
 import {
+  examData,
   examPdfKinds,
-  examPdfSources,
   isExamPdfKind,
   localExamPdfPath,
-} from "../exam-pdf-sources.ts"
+} from "../../src/lib/exam-data.ts"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export const repoRoot = path.resolve(__dirname, "../..")
@@ -26,7 +26,7 @@ export type ResolvedExamPdf = {
 
 /**
  * 位置引数を PDF に解決する。
- * - `<year> <kind>` … exam-pdf-sources.ts の表からローカルパスを解決（例: 2026 am、2026 am-supplement、2026 answers）
+ * - `<year> <kind>` … src/lib/exam-data.ts の表からローカルパスを解決（例: 2026 am、2026 am-supplement、2026 answers）
  * - `<path/to.pdf>` … 任意のローカル PDF
  */
 export function resolveExamPdf(positional: string[]): ResolvedExamPdf {
@@ -41,9 +41,9 @@ export function resolveExamPdf(positional: string[]): ResolvedExamPdf {
   if (positional.length === 2) {
     const year = Number(positional[0])
     const kind = positional[1]!
-    if (!Number.isInteger(year) || !examPdfSources[year]) {
+    if (!Number.isInteger(year) || !examData[year]) {
       throw new Error(
-        `exam-pdf-sources.ts に ${positional[0]} 年のエントリがありません`
+        `src/lib/exam-data.ts に ${positional[0]} 年のエントリがありません`
       )
     }
     if (!isExamPdfKind(kind)) {
