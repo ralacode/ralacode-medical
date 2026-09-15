@@ -47,7 +47,7 @@ export async function getStaticPaths() {
   )
   const allData = questions.map((entry) => entry.data)
 
-  return questions.map((question, index) => {
+  return questions.map((question) => {
     const inSubject = questions.filter(
       (entry) => entry.data.subject === question.data.subject
     )
@@ -57,8 +57,16 @@ export async function getStaticPaths() {
         entry.data.session === question.data.session &&
         entry.data.number === question.data.number
     )
-    const examPrevEntry = questions[index - 1]
-    const examNextEntry = questions[index + 1]
+    const inYear = questions.filter(
+      (entry) => entry.data.year === question.data.year
+    )
+    const yearIndex = inYear.findIndex(
+      (entry) =>
+        entry.data.session === question.data.session &&
+        entry.data.number === question.data.number
+    )
+    const examPrevEntry = inYear[yearIndex - 1]
+    const examNextEntry = inYear[yearIndex + 1]
     const subjectPrevEntry = inSubject[subjectIndex - 1]
     const subjectNextEntry = inSubject[subjectIndex + 1]
 
@@ -208,6 +216,8 @@ const categoryLinks = questionCategoryLinks(question.data)
                       "min-h-9",
                     ]}
                     href={term.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {term.title}
                   </a>

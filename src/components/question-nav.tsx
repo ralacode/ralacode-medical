@@ -80,7 +80,9 @@ export function QuestionNav({
           key={backHref}
           href={backHref}
           label={backLabel}
-          title="問題一覧に戻る"
+          title={
+            fromTopic || fromSubject ? "問題一覧に戻る" : `${year}年一覧へ`
+          }
         />
       )}
     </nav>

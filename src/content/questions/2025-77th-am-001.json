@@ -24,7 +24,7 @@
     },
     {
       "text": "スライス厚",
-      "explanation": "xy 面（z 軸に垂直な断面）では、設定したスライス厚どおりに撮れているかを**楔（くさび）型ファントム**などで評価します。**正解**です。"
+      "explanation": "xy 面（z 軸に垂直な断面）では、設定したスライス厚どおりに撮れているかを**楔（くさび）型ファントム**などで評価します。**正解**です。詳しくは <a href=\"/medical/articles/slice-thickness/\" target=\"_blank\" rel=\"noopener noreferrer\">MRI のスライス厚とは</a> をご覧ください。"
     },
     {
       "text": "幾何学的ひずみ",
@@ -36,7 +36,7 @@
     }
   ],
   "answer": 3,
-  "terms": ["slice-thickness", "mri-phantom"],
+  "terms": ["mri-phantom"],
   "sourceExplanation": "この問は、JIS 規格**診断用 MRI ファントム**の **xy 面**（z 軸に垂直な断面）で点検する項目です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=5\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 5 ページ</a>）。\n\n- **1 番** … **均一性** → **誤り**（xy 面の主点検項目ではない）。\n- **2 番** … **空間分解能** → **誤り**（面内分解能の評価が主）。\n- **3 番** … **スライス厚** → **正解**（xy 面で楔型ファントム等により評価）。\n- **4 番** … **幾何学的ひずみ** → **誤り**。\n- **5 番** … **画像コントラスト** → **誤り**。\n- **覚え方** … **xy 面＝スライス厚**／均一性・分解能は別の評価軸。",
   "draft": false
 }

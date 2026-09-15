@@ -36,7 +36,7 @@
     }
   ],
   "answer": 2,
-  "terms": ["fundus-photography"],
+  "terms": ["fundus-camera"],
   "sourceExplanation": "この問は、**無散瞳眼底写真**の撮影原理です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=6\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 6 ページ</a>）。\n\n- **1 番** … 明室では撮影**できない** → **誤り**（明室でも可）。\n- **2 番** … 観察光に**赤外線** → **正解**。\n- **3 番** … 黄斑と視神経乳頭を**重ねて**撮影 → **誤り**。\n- **4 番** … 画角大→範囲**狭い** → **誤り**（逆）。\n- **5 番** … 瞳孔 **5 mm 以上**必須 → **誤り**。\n- **覚え方** … 無散瞳＝**赤外線で合焦**／明室 OK・小瞳孔 OK。",
   "draft": false
 }

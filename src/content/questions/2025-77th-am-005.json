@@ -24,7 +24,7 @@
     },
     {
       "text": "脂肪抑制法が併用されている。",
-      "explanation": "皮下脂肪が暗く、病変が明るいのは**脂肪抑制 T2 強調**の所見です。**正解**です。"
+      "explanation": "皮下脂肪が暗く、病変が明るいのは**脂肪抑制 T2 強調**の所見です。**正解**です。詳しくは <a href=\"/medical/articles/fat-suppression/\" target=\"_blank\" rel=\"noopener noreferrer\">MRI の脂肪抑制とは</a> をご覧ください。"
     },
     {
       "text": "右乳房腫瘤は骨格筋と比較して低信号である。",
@@ -36,7 +36,7 @@
     }
   ],
   "answer": 3,
-  "terms": ["breast-mri", "fat-suppression"],
+  "terms": [],
   "sourceExplanation": "この問は、**乳房 MR 像**（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_02.pdf#page=5\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.1・5 ページ</a>）の撮像条件と信号です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=6\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 6 ページ</a>）。本サイトの類似問題は図を載せられないため、**所見を文章化**しています。\n\n- **別冊所見** … 横断像で右乳房に**不整な高信号腫瘤**。皮下脂肪は**低信号**（脂肪抑制 T2 強調像）。\n- **1 番** … **T1 強調** → **誤り**（T2 脂肪抑制）。\n- **2 番** … 位相方向**前後** → **誤り**。\n- **3 番** … **脂肪抑制法併用** → **正解**。\n- **4 番** … 腫瘤は筋より**低信号** → **誤り**（高信号）。\n- **5 番** … 大動脈内腔**高信号** → **誤り**。\n- **覚え方** … 脂肪暗・病変明＝**脂肪抑制 T2**。",
   "draft": false
 }
