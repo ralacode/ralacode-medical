@@ -14,7 +14,7 @@ import {
   officialExamBookletPdfLink,
   officialExamPdfLink,
 } from "@/lib/exam-data"
-import { renderEmphasisHtml, renderMarkdown } from "@/lib/markdown"
+import { renderEmphasisHtml, renderQuizMarkdown } from "@/lib/markdown"
 import { subjectLabel } from "@/lib/exam-subjects"
 import {
   browseCategoryHref,
@@ -125,11 +125,11 @@ const description = questionSeoDescription(exam, session, number)
 const quizChoices = choices.map((choice) => ({
   text: choice.text,
   explanationHtml: choice.explanation.trim()
-    ? renderMarkdown(choice.explanation)
+    ? renderQuizMarkdown(choice.explanation)
     : "",
 }))
 const sourceExplanationHtml = sourceExplanation?.trim()
-  ? renderMarkdown(sourceExplanation)
+  ? renderQuizMarkdown(sourceExplanation)
   : undefined
 const sourceExplanationTitle = `${mapsTo.year}年 ${sessionLabel(mapsTo.session)} 問${mapsTo.number}の解説`
 const sourceAnswerLabel = sourceOfficialAnswerLabel(mapsTo)
@@ -218,6 +218,7 @@ const categoryLinks = questionCategoryLinks(question.data)
                     href={term.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-astro-reload
                   >
                     {term.title}
                   </a>

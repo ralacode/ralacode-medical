@@ -12,6 +12,8 @@ alwaysApply: true
 要点:
 
 - 公式の問題文・選択肢・別冊画像はリポジトリに転載しない。オリジナルの類似問題だけを JSON に書く。
+- **類似の `choices` は公式の 1〜5 番と同じ順にしない。** 言い換えはよいが、書き終わったら配列を並べ替え、`answer` を新しい位置に合わせる。画面のシャッフルに頼らない。`shuffleChoices: false` のときだけ並びを固定する。既存の 2026 年問は後から並べ替えない。
+- 記事へのリンクは `choices[].text` に置かない。`explanation` か `sourceExplanation` に書く（問題ページでは別タブで開く）。
 - **基本的なレイアウトと CSS は変更しない。** 問題追加では `src/content/questions/*.json` 以外を触らない（ページ表・マニフェストが必要なら PR 本文に書いて止める）。
 - 試験科目を考えるときは `docs/exam-subjects-amendment-2023.md` を参考にする。実装の科目 ID は `src/lib/exam-subjects.ts`。スロットの科目は `src/data/exam-manifests/{year}.json` に合わせる。
 - 演習画面は単一正解のみ。公式が「2つ選べ」でも類似は一文択一。

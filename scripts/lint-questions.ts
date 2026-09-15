@@ -66,6 +66,10 @@ function hasNoopener(attrs: string) {
   return tokens.has("noopener") && tokens.has("noreferrer")
 }
 
+function hasChoiceTextLink(text: string) {
+  return /<a\b/i.test(text) || /\[[^\]]+\]\((?:https?:|\/)[^)]+\)/.test(text)
+}
+
 function forbiddenWording(text: string): string[] {
   const found: string[] = []
   if (text.includes("アーティファクト")) found.push("アーティファクト（アーチファクトを使う）")
@@ -153,6 +157,11 @@ function lintGate(file: QuestionFile, failures: Failure[]) {
   } else {
     for (const [index, choice] of data.choices.entries()) {
       if (!choice.text?.trim()) fail(`肢 ${index + 1} の text が空です`)
+      if (hasChoiceTextLink(choice.text)) {
+        fail(
+          `肢 ${index + 1} の text にリンクがあります。記事リンクは explanation に書いてください`
+        )
+      }
     }
   }
 

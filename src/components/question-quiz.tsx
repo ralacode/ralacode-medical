@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react"
 import { createPortal } from "react-dom"
 import { CheckIcon, ExternalLinkIcon, RotateCcwIcon, XIcon } from "lucide-react"
 
@@ -208,6 +208,16 @@ function ChoiceOrderToggle({
       ) : null}
     </div>
   )
+}
+
+function handleQuizHtmlClick(event: MouseEvent<HTMLElement>) {
+  const target = event.target
+  if (!(target instanceof Element)) return
+  const link = target.closest("a")
+  if (!(link instanceof HTMLAnchorElement) || !link.getAttribute("href")) return
+  event.preventDefault()
+  event.stopPropagation()
+  window.open(link.href, "_blank", "noopener,noreferrer")
 }
 
 function scrollIntoPage(
@@ -490,6 +500,7 @@ export function QuestionQuiz({
               {submitted && choice.explanationHtml ? (
                 <div
                   className="explanation-md ps-7 text-base"
+                  onClickCapture={handleQuizHtmlClick}
                   dangerouslySetInnerHTML={{ __html: choice.explanationHtml }}
                 />
               ) : null}
@@ -572,6 +583,7 @@ export function QuestionQuiz({
           </h2>
           <div
             className="explanation-md text-base"
+            onClickCapture={handleQuizHtmlClick}
             dangerouslySetInnerHTML={{ __html: sourceExplanationHtml }}
           />
           </section>

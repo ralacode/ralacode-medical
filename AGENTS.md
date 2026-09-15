@@ -44,6 +44,7 @@ Cloud Agent（Cursor Cloud / Background Agent）として起動されたとき�
 - **`main` へ直接 push しない。**
 - Cloud では、コミット → push → PR 作成までが作業範囲。手順書の「コミット・push は依頼されたときだけ」はローカル対話向けであり、Cloud では PR を開くことがタスク完了の条件。
 - 1 PR = 1 科目（または 1 記事）。問題作成の PR で触るのは `src/content/questions/*.json` だけ。ページ表・PDF URL（`src/lib/exam-data.ts`）やマニフェスト（`src/data/exam-manifests/{year}.json`）の変更が必要になったら、勝手に直さず PR 本文に書いて止める。参考リンクを足したら `pnpm exam:external-links` で台帳を再生成してよい。
+- 類似の `choices` は公式と同じ順にしない（並べ替えて `answer` を合わせる。画面シャッフルに頼らない）。記事リンクは肢の `text` ではなく `explanation` に書く。
 
 ### PR を開く前に必ず実行
 
@@ -61,7 +62,8 @@ pnpm lint
 
 - **類似問題**は `.github/PULL_REQUEST_TEMPLATE/exam.md` に従う。記事・基盤は `.github/pull_request_template.md`。
 - 問ごとに 1 行: `AM 問13 ＝ 論点、PDF N ページ、公式正答 n`（手順書 §7「検証の記録」）。
-- 知識問題は問ごとに **5 肢の真偽表**（類似問題の各肢が、問題文の問い方の下で正しいか誤りか、理由 1 行）。正解がちょうど 1 肢であることをここで示す。
+- 知識問題は問ごとに **5 肢の真偽表**（類似問題の各肢が、問題文の問い方の下で正しいか誤りか、理由 1 行）。正解がちょうど 1 肢であることをここで示す。番号は類似 JSON の並び（公式の 1〜5 番ではない）。
+- 類似の `choices` 並びが公式と異なること（`shuffleChoices: false` は例外）。
 - 実行した検査コマンドと結果。
 - 判断に迷った点・手順書に無かったケース。
 - 公式の問題文・選択肢・別冊画像・`exam:pdf-text` の出力は PR 本文に貼らない。
