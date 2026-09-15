@@ -1,0 +1,38 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 18,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 18,
+    "answer": 2
+  },
+  "subject": "kakui-gaku",
+  "stem": "肝受容体シンチグラフィ（⁹⁹ᵐTc-GSA など）の**血中滞在率**を示す式はどれか。心臓 ROI の 5 分と 20 分のカウントをそれぞれ H5、H20、肝臓 ROI の 20 分のカウントを L20 とする。",
+  "choices": [
+    {
+      "text": "L20 / (H20 ＋ L20)"
+    },
+    {
+      "text": "H5 / (H5 ＋ H20)"
+    },
+    {
+      "text": "H20 / (H20 ＋ L20)"
+    },
+    {
+      "text": "H20 / H5",
+      "explanation": "血中滞在率は、投与後時間経過に伴う**心臓（血中）カウントの増加**を、初期（5 分）に対する後期（20 分）の比で表します。**H20 / H5** が正しい式です。"
+    },
+    {
+      "text": "H5 / H20"
+    }
+  ],
+  "answer": 4,
+  "terms": ["hepatic-receptor-scintigraphy"],
+  "sourceExplanation": "この問は、**肝受容体シンチグラフィ**の血中滞在率の式です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=11\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 11 ページ</a>）。公式は 3 分・15 分（H3/H15）を用い、類似では 5 分・20 分に変更しています。\n\n- 血中滞在率 … 心臓 ROI の**後期カウント / 初期カウント**（時間経過で血中に残る割合）。\n- **正解** … **H後期 / H初期**（公式：**H15 / H3**）。\n- ひっかけ … **H初期 / H後期**（逆）、肝臓カウントを含む式（肝取込み率のイメージに近い）。\n- **覚え方** … 滞在率＝**後 ÷ 前**（時間が進むほど分子が大きい方）。",
+  "draft": false
+}

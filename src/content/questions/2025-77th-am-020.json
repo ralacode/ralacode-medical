@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 20,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 20,
+    "answer": 2
+  },
+  "subject": "kakui-gaku",
+  "stem": "核医学治療に用いられる放射性核種のうち、**物理的半減期が最も短い**のはどれか。",
+  "choices": [
+    {
+      "text": "²²³Ra（ラジウム-223）",
+      "explanation": "²²³Ra の物理半減期は約 **11.4 日**です。⁹⁰Y より長いです。"
+    },
+    {
+      "text": "¹³¹I（ヨウ素-131）",
+      "explanation": "¹³¹I の物理半減期は約 **8 日**です。甲状腺癌・バセドウ病治療に用いますが、⁹⁰Y より長いです。"
+    },
+    {
+      "text": "⁹⁰Y（イットリウム-90）",
+      "explanation": "⁹⁰Y の物理半減期は約 **64 時間（2.7 日）**です。選択肢の中で**最も短い**物理半減期です。**正解**です。"
+    },
+    {
+      "text": "⁸⁹Sr（ストロンチウム-89）",
+      "explanation": "⁸⁹Sr の物理半減期は約 **50 日**です。骨転移痛治療に用いられますが、本問の選択肢の中では最長クラスです。"
+    },
+    {
+      "text": "¹⁷⁷Lu（ルテチウム-177）",
+      "explanation": "¹⁷⁷Lu の物理半減期は約 **6.7 日**です。⁹⁰Y より長いです。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["therapeutic-radioisotope"],
+  "sourceExplanation": "この問は、**核医学治療核種**の物理半減期の比較です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=12\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 12 ページ</a>）。\n\n- **1 番** … **⁸⁹Sr**（約 50 日）→ **誤り**（最長）。\n- **2 番** … **⁹⁰Y**（約 2.7 日）→ **正解**（最短）。\n- **3 番** … **¹³¹I**（約 8 日）→ **誤り**。\n- **4 番** … **¹⁷⁷Lu**（約 6.7 日）→ **誤り**。\n- **5 番** … **²²³Ra**（約 11 日）→ **誤り**。\n- **覚え方** … 治療 RI の半減期：**⁹⁰Y が最短クラス**（日〜時間オーダー）、⁸⁹Sr・²²³Ra は**週〜月**オーダー。",
+  "draft": false
+}
