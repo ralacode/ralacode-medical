@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 8,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 8,
+    "answer": 1
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "発症半日以内の脳梗塞を疑う患者の頭部 MRI である。**FLAIR 像では病変が目立たず**、**拡散強調像では視床に局在した高信号**が見える。病変部位として正しいのはどれか。",
+  "choices": [
+    {
+      "text": "視床",
+      "explanation": "拡散強調像で**視床**に限局した高信号は、超急性〜急性期梗塞の典型です。FLAIR 陰性・DWI 陽性の組合せも一致します。**正解**です。"
+    },
+    {
+      "text": "中脳",
+      "explanation": "中脳梗塞なら**中脳レベル**の横断像で DWI 高信号が見えます。視床限局の所見ではありません。"
+    },
+    {
+      "text": "被殻",
+      "explanation": "被殻（基底核）梗塞は**被殻**に DWI 高信号が出ます。視床とは部位が異なります。"
+    },
+    {
+      "text": "小脳虫部",
+      "explanation": "小脳虫部梗塞なら**小脳レベル**の画像で評価します。視床の横断像とは一致しません。"
+    },
+    {
+      "text": "内包前脚",
+      "explanation": "内包前脚は**被殻と視床の間**を走る白質です。視床そのものを指す部位ではありません。"
+    }
+  ],
+  "answer": 1,
+  "terms": ["dwi", "flair", "acute-stroke"],
+  "sourceExplanation": "この問は、急性期脳梗塞の **FLAIR と DWI**（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_02.pdf#page=8\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.4・8 ページ</a>）から**病変部位**を同定する問題です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=8\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 8 ページ</a>）。本サイトの類似問題は図を載せられないため、**シーケンス所見を文章化**しています。\n\n- **別冊所見** … FLAIR（A）では目立たず、DWI（B）で**視床**に高信号（DWI/FLAIR mismatch）。\n- **1 番** … **視床** → **正解**。\n- **2 番** … **中脳** → **誤り**。\n- **3 番** … **被殻** → **誤り**。\n- **4 番** … **小脳虫部** → **誤り**。\n- **5 番** … **内包前脚** → **誤り**。\n- **覚え方** … 超急性期＝**DWI 先行**／視床 DWI 高信号＝**視床梗塞**。",
+  "draft": false
+}

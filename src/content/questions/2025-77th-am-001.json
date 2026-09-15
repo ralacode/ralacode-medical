@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 1,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 1,
+    "answer": 3
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "JIS 規格の診断用 MRI 装置用ファントムを、**z 軸に垂直な断面（xy 面）**で撮像して装置性能を点検するとき、主に評価できる項目として最も適切なものはどれか。",
+  "choices": [
+    {
+      "text": "信号均一性",
+      "explanation": "均一性は xy 面でも評価できますが、**スライス方向の精度**を xy 面で点検する代表項目ではありません。"
+    },
+    {
+      "text": "面内の空間分解能",
+      "explanation": "面内分解能は主に**面内方向**の性能評価です。xy 面撮像の主目的はスライス厚の評価です。"
+    },
+    {
+      "text": "スライス厚",
+      "explanation": "xy 面（z 軸に垂直な断面）では、設定したスライス厚どおりに撮れているかを**楔（くさび）型ファントム**などで評価します。**正解**です。"
+    },
+    {
+      "text": "幾何学的ひずみ",
+      "explanation": "幾何学的ひずみは**距離・角度の歪み**の評価で、xy 面点検の主項目ではありません。"
+    },
+    {
+      "text": "画像コントラスト",
+      "explanation": "コントラストはシーケンスや組織依存の評価であり、**スライス厚点検**とは目的が異なります。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["slice-thickness", "mri-phantom"],
+  "sourceExplanation": "この問は、JIS 規格**診断用 MRI ファントム**の **xy 面**（z 軸に垂直な断面）で点検する項目です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=5\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 5 ページ</a>）。\n\n- **1 番** … **均一性** → **誤り**（xy 面の主点検項目ではない）。\n- **2 番** … **空間分解能** → **誤り**（面内分解能の評価が主）。\n- **3 番** … **スライス厚** → **正解**（xy 面で楔型ファントム等により評価）。\n- **4 番** … **幾何学的ひずみ** → **誤り**。\n- **5 番** … **画像コントラスト** → **誤り**。\n- **覚え方** … **xy 面＝スライス厚**／均一性・分解能は別の評価軸。",
+  "draft": false
+}
