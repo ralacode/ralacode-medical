@@ -12,7 +12,7 @@
 | `pnpm dev` / `pnpm build` | 開発サーバー / 本番ビルド。問題 JSON のスキーマ不備は `build` で失敗する |
 | `pnpm lint` / `pnpm typecheck` | ESLint / `astro check` |
 | `pnpm lint:questions` | 問題 JSON のゲート検査（ファイル名 / `mapsTo` / 科目がマニフェストと一致。2026 年は形式を祖父化） |
-| `pnpm verify:exam-pages` | 公式 PDF ページ表と `sourceExplanation` のリンク照合 |
+| `pnpm verify:exam-pages` | 公式 PDF ページ表と `sourceExplanation` のリンク照合。Cloud / CI では `--strict`（PDF 未取得を失敗にする） |
 | `pnpm exam:manifest --year 2026` | 既存 JSON からスロット台帳 `src/data/exam-manifests/{year}.json` を逆生成 |
 | `pnpm exam:external-links` | 参考リンク台帳 `docs/external-links.md` をコンテンツから再生成 |
 | `pnpm exam:fetch-pdfs` | 厚労省の公式 PDF を `exams/{year}/` にダウンロード（既存はスキップ） |
@@ -26,6 +26,7 @@
 - 試験科目の分類: `docs/exam-subjects-amendment-2023.md`、科目 ID は `src/lib/exam-subjects.ts`
 - **公式の問題文・選択肢・別冊画像をリポジトリ・PR 本文・チャットに転載しない。** `exams/` と `exams/_render/` は gitignore。`public/` に置かない。
 - **レイアウト・CSS・既存コンポーネントは、明示的に依頼されたときだけ触る。**
+- CI は `.github/workflows/ci.yml`。類似問題の PR 本文は `.github/PULL_REQUEST_TEMPLATE/exam.md`、記事・基盤は `.github/pull_request_template.md`。
 
 ## Cursor Cloud specific instructions
 
@@ -49,19 +50,21 @@ Cloud Agent（Cursor Cloud / Background Agent）として起動されたとき�
 ```bash
 pnpm build
 pnpm lint:questions
-pnpm verify:exam-pages
+pnpm verify:exam-pages --strict
 pnpm exam:external-links --check
 pnpm lint
 ```
 
-すべて成功していること。失敗したら直してから PR を開く。
+すべて成功していること。失敗したら直してから PR を開く。GitHub Actions の `CI` も同じ検査を回す。
 
 ### PR 本文に書くこと
 
+- **類似問題**は `.github/PULL_REQUEST_TEMPLATE/exam.md` に従う。記事・基盤は `.github/pull_request_template.md`。
 - 問ごとに 1 行: `AM 問13 ＝ 論点、PDF N ページ、公式正答 n`（手順書 §7「検証の記録」）。
 - 知識問題は問ごとに **5 肢の真偽表**（類似問題の各肢が、問題文の問い方の下で正しいか誤りか、理由 1 行）。正解がちょうど 1 肢であることをここで示す。
 - 実行した検査コマンドと結果。
 - 判断に迷った点・手順書に無かったケース。
+- 公式の問題文・選択肢・別冊画像・`exam:pdf-text` の出力は PR 本文に貼らない。
 
 ### レビューコメントへの対応
 

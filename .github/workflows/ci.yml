@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Cache exam PDFs
+        uses: actions/cache@v4
+        with:
+          path: exams
+          key: exam-pdfs-${{ hashFiles('src/lib/exam-data.ts') }}
+
+      - name: Fetch exam PDFs
+        run: pnpm exam:fetch-pdfs
+
+      - name: Build
+        run: pnpm build
+
+      - name: Lint questions
+        run: pnpm lint:questions
+
+      - name: Verify exam pages
+        run: pnpm verify:exam-pages --strict
+
+      - name: Check external links ledger
+        run: pnpm exam:external-links --check
+
+      - name: ESLint
+        run: pnpm lint
