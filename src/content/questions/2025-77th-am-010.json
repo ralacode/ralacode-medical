@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 10,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 10,
+    "answer": 3
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "肝臓に**辺縁整った高エコー性腫瘤**がある。GRE **T1 強調 in-phase 像**では比較的高信号、**out-of-phase 像**では同部位の信号が低下し、脂肪と水の境界に **India ink artifact（黒線）** を認める。この腫瘤に含まれる成分として最も考えられるのはどれか。",
+  "choices": [
+    {
+      "text": "ガス",
+      "explanation": "ガスは超音波で**強い反射と後方エコー欠落**を生じますが、MR の化学シフトによる in/out-of-phase 信号差の原因ではありません。"
+    },
+    {
+      "text": "血液",
+      "explanation": "血液成分の腫瘤は**T1/T2 信号**や出血期相で評価します。in/out-of-phase の**信号キャンセル**は典型ではありません。"
+    },
+    {
+      "text": "脂肪",
+      "explanation": "脂肪と水が同一ボクセルに共存すると、out-of-phase で信号が**相殺**し India ink artifact が出ます。**正解**です。"
+    },
+    {
+      "text": "鉄分",
+      "explanation": "鉄は**T2* 短縮**で低信号になりますが、in-phase 高信号→out-of-phase さらに低下という化学シフトパターンとは異なります。"
+    },
+    {
+      "text": "カルシウム",
+      "explanation": "カルシウムは超音波で**後方エコー欠落（音響陰影）**を生じます。MR 化学シフト所見の説明にはなりません。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["chemical-shift", "out-of-phase", "liver-mri"],
+  "sourceExplanation": "この問は、同一腫瘤の**超音波像と MR 像**（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_02.pdf#page=10\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.6・10 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_02.pdf#page=11\" target=\"_blank\" rel=\"noopener noreferrer\">11 ページ</a>）から**成分**を読む問題です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=9\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 9 ページ</a>）。本サイトの類似問題は図を載せられないため、**所見を文章化**しています。\n\n- **別冊所見** … 超音波（A）で**高エコー性**腫瘤。MR（B）で in-phase 高信号→out-of-phase 信号低下＋India ink artifact（**脂肪**を示す）。\n- **1 番** … **ガス** → **誤り**。\n- **2 番** … **血液** → **誤り**。\n- **3 番** … **脂肪** → **正解**。\n- **4 番** … **鉄分** → **誤り**。\n- **5 番** … **カルシウム** → **誤り**。\n- **覚え方** … **in/out-of-phase 信号差＋India ink＝脂肪**／高エコー＋脂肪信号＝**血管腫**など。",
+  "draft": false
+}

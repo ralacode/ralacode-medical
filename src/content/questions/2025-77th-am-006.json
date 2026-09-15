@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 6,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 6,
+    "answer": 4
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "膝関節 MR **矢状断像**で、脛骨前方から後上方へ斜めに走る**低信号帯**に相当する構造はどれか。",
+  "choices": [
+    {
+      "text": "大腿四頭筋（膝蓋骨上方の大きな筋）",
+      "explanation": "大腿四頭筋は膝蓋骨**上方**の筋肉塊です。関節内を斜走する**低信号帯**ではありません。"
+    },
+    {
+      "text": "腓腹筋（膝窩後方の筋）",
+      "explanation": "腓腹筋は**膝窩後方**の後室筋です。脛骨前方から後上方へ斜走する靭帯ではありません。"
+    },
+    {
+      "text": "後十字靭帯",
+      "explanation": "後十字靭帯は**脛骨後方**から大腿骨後方へ走ります。前方起点の斜走低信号帯ではありません。"
+    },
+    {
+      "text": "前十字靭帯",
+      "explanation": "前十字靭帯（ACL）は**脛骨前方**から**大腿骨後上方**へ斜めに走る低信号帯として描出されます。**正解**です。"
+    },
+    {
+      "text": "膝蓋下脂肪体（Hoffa 脂肪）",
+      "explanation": "膝蓋下脂肪体は膝蓋靱帯**後方**の**高信号脂肪**です。低信号の斜走帯ではありません。"
+    }
+  ],
+  "answer": 4,
+  "terms": ["knee-mri", "acl"],
+  "sourceExplanation": "この問は、**膝関節 MR 矢状断**（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_02.pdf#page=6\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.2・6 ページ</a>）の解剖同定です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=7\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 7 ページ</a>）。公式は記号と構造の組合せでした。本サイトの類似問題は図を載せられないため、**走行方向**から同定する形式にしています。\n\n- **別冊所見** … ア＝大腿四頭筋、イ＝腓腹筋、ウ＝後十字靭帯、**エ＝前十字靭帯**、オ＝膝蓋下脂肪体。\n- **1 番** … ア × **腓腹筋** → **誤り**（大腿四頭筋）。\n- **2 番** … イ × **外側広筋** → **誤り**（腓腹筋）。\n- **3 番** … ウ × **内側半月板** → **誤り**（後十字靭帯）。\n- **4 番** … **エ × 前十字靭帯** → **正解**。\n- **5 番** … オ × **膝蓋靱帯** → **誤り**（膝蓋下脂肪体）。\n- **覚え方** … 前方から後上方の低信号斜走＝**ACL**／後方から上＝**PCL**。",
+  "draft": false
+}

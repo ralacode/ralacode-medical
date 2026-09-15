@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 7,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 7,
+    "answer": 3
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "乳房超音波の横断像で、**皮下脂肪層と大胸筋の間**にある、**腺組織を主成分とする層**はどれか。",
+  "choices": [
+    {
+      "text": "皮下脂肪層（表皮直下の低エコー〜等エコー層）",
+      "explanation": "皮下脂肪層は**表皮直下**の脂肪主体の層です。腺組織を主成分とする層ではありません。"
+    },
+    {
+      "text": "前乳腺筋膜付近（脂肪と腺の境界）",
+      "explanation": "前乳腺筋膜は**境界線**に近い構造です。腺組織そのものを指す層ではありません。"
+    },
+    {
+      "text": "乳腺実質層（中層の混在エコー性を示す腺組織）",
+      "explanation": "皮下脂肪と大胸筋の間の**中層**が乳腺実質（腺葉・乳管）です。**正解**です。"
+    },
+    {
+      "text": "後乳腺間隙（腺組織後方の薄い低エコー層）",
+      "explanation": "後乳腺間隙は腺組織**後方**の薄い隙間です。腺組織を主成分とする層ではありません。"
+    },
+    {
+      "text": "大胸筋層（深部の線維状低エコー層）",
+      "explanation": "大胸筋は**最深部**の筋層です。腺組織ではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["breast-ultrasound"],
+  "sourceExplanation": "この問は、**乳房超音波**（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_02.pdf#page=7\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.3・7 ページ</a>）の層構造同定です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=7\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 7 ページ</a>）。本サイトの類似問題は図を載せられないため、**層の位置**から同定する形式にしています。\n\n- **別冊所見** … ア＝皮下脂肪、イ＝前乳腺筋膜付近、**ウ＝乳腺実質**、エ＝後乳腺間隙、オ＝大胸筋。\n- **1 番** … **ア** → **誤り**（皮下脂肪）。\n- **2 番** … **イ** → **誤り**（境界）。\n- **3 番** … **ウ** → **正解**（乳腺組織）。\n- **4 番** … **エ** → **誤り**（後乳腺間隙）。\n- **5 番** … **オ** → **誤り**（大胸筋）。\n- **覚え方** … 乳房超音波＝**浅→深：脂肪→腺→筋**／腺は**中層**。",
+  "draft": false
+}

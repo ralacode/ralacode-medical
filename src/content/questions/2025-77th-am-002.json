@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 2,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 2,
+    "answer": 3
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "MRI の撮像法または技術と、関連する用語・原理の組合せとして正しいものはどれか。",
+  "choices": [
+    {
+      "text": "拡散強調像 — 時間的フライング（TOF）法",
+      "explanation": "TOF 法は**血管造影（MRA）**の原理です。拡散強調は**b 値と ADC**の話です。"
+    },
+    {
+      "text": "脂肪抑制法 — b 値",
+      "explanation": "**b 値**は**拡散強調像**のパラメータです。脂肪抑制は化学シフト選択法や STIR など別の仕組みです。"
+    },
+    {
+      "text": "非造影脳血流評価 — 動脈スピンラベリング（ASL）",
+      "explanation": "ASL は**造影剤を使わず**、動脈血のスピンをラベルして灌流を見る方法です。**正解**です。"
+    },
+    {
+      "text": "MR 水画像（hydrography）— BOLD 効果",
+      "explanation": "BOLD 効果は**機能 MRI（fMRI）**で酸素化ヘモグロビン差を利用します。水画像とは別です。"
+    },
+    {
+      "text": "機能 MRI — 化学シフト",
+      "explanation": "化学シフトは**脂肪と水の周波数差**に関する現象で、fMRI の BOLD とは別の話です。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["asl", "dwi", "fat-suppression", "bold", "mra"],
+  "sourceExplanation": "この問は、**MRI 撮像法と関連用語**の組合せです（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=5\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 5 ページ</a>）。\n\n- **1 番** … 拡散強調像 × TOF 法 → **誤り**（TOF は MRA）。\n- **2 番** … 脂肪抑制法 × b 値 → **誤り**（b 値は DWI）。\n- **3 番** … 非造影灌流 MRI × ASL → **正解**。\n- **4 番** … MR hydrography × BOLD → **誤り**（BOLD は fMRI）。\n- **5 番** … functional MRI × 化学シフト → **誤り**。\n- **覚え方** … **ASL＝非造影灌流**／**b 値＝DWI**／**BOLD＝fMRI**／**TOF＝MRA**。",
+  "draft": false
+}
