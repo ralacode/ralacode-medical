@@ -14,7 +14,7 @@
 4. **試験科目について考えるときは `docs/exam-subjects-amendment-2023.md` を参考にする。** 改正前後の科目名と、削られた科目・新設科目の判断に使う。画面に出す ID は `src/lib/exam-subjects.ts`。
 5. **コミット・push は、ユーザーが依頼したときだけ。** ただし **Cloud Agent** として割り当てブランチで作業するときは、コミット → push → PR 作成までが作業範囲（`AGENTS.md` の「Cursor Cloud specific instructions」）。どちらの場合も `main` へ直接 push しない。
 
-`exams/` は gitignore。`docs/` も原則 gitignore で、手順書・科目改正メモ・**外部リンク台帳**（`external-links.md`）だけリポジトリに含める。公式 PDF は入れない。
+`exams/` は gitignore。`docs/` も原則 gitignore で、手順書・科目改正メモ・**Cloud 科目プロンプト生成**（`cloud-subject-prompt.md`）・**外部リンク台帳**（`external-links.md`）だけリポジトリに含める。公式 PDF は入れない。
 
 ---
 

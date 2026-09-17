@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 14,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 14,
+    "answer": 4
+  },
+  "subject": "kakui-gaku",
+  "stem": "Silicon photomultiplier（SiPM）を検出素子に用いた PET 検出器について、**正しい**のはどれか。",
+  "choices": [
+    {
+      "text": "動作に高電圧（数千 V 級）が必須である。",
+      "explanation": "SiPM は**低電圧（数十 V 程度）**で動作します。高電圧が必要なのは光電子増倍管（PMT）の特徴です。"
+    },
+    {
+      "text": "強い磁場の影響を強く受ける。",
+      "explanation": "SiPM は**半導体素子**で、PMT と違い磁場の影響を受けにくいのが利点です。MRI 併用 PET などで注目されています。"
+    },
+    {
+      "text": "到達光子数を 1 光子ずつカウントできない。",
+      "explanation": "SiPM は**単一光子計数**が可能で、光子数の情報を利用できます。この記述は誤りです。"
+    },
+    {
+      "text": "光電子増倍管（PMT）より時間分解能が優れる。",
+      "explanation": "SiPM は**高速な信号処理**が可能で、TOF-PET 向けに PMT より**時間分解能が良い**装置が多いです。**正解**です。"
+    },
+    {
+      "text": "物理的サイズは PMT と同等以上に大きい。",
+      "explanation": "SiPM は**小型・薄型**に作れるのが特徴です。PMT より同等以上に大きい、という記述は逆です。"
+    }
+  ],
+  "answer": 4,
+  "terms": ["sipm-pet"],
+  "sourceExplanation": "この問は、**SiPM PET 検出器**の特徴です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=10\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 10 ページ</a>）。\n\n- **1 番** … **冷却不要** → **誤り**（温度依存性はある。完全に不要ではない）。\n- **2 番** … **磁場の影響を受ける** → **誤り**（SiPM は磁場に強い）。\n- **3 番** … **光子数を求められない** → **誤り**（単光子計数可能）。\n- **4 番** … **PMT より時間分解能が高い** → **正解**。\n- **5 番** … **PMT と同等サイズ** → **誤り**（SiPM は小型）。\n- **覚え方** … SiPM＝**低電圧・小型・磁場に強い・時間分解能良好**。",
+  "draft": false
+}
