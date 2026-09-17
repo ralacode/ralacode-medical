@@ -22,6 +22,7 @@
 ## リポジトリの決まり
 
 - 類似問題の作成: `.cursor/rules/exam-question-authoring.mdc` → `docs/exam-question-authoring.md`
+- Cloud 用の科目プロンプト生成（ローカル）: `.cursor/rules/cloud-subject-prompt.mdc` → `docs/cloud-subject-prompt.md`
 - 用語解説記事: `.cursor/rules/glossary-article-authoring.mdc` → `docs/glossary-article-authoring.md`
 - 試験科目の分類: `docs/exam-subjects-amendment-2023.md`、科目 ID は `src/lib/exam-subjects.ts`
 - **公式の問題文・選択肢・別冊画像をリポジトリ・PR 本文・チャットに転載しない。** `exams/` と `exams/_render/` は gitignore。`public/` に置かない。
