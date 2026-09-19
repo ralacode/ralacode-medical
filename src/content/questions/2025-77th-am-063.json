@@ -1,0 +1,41 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 63,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 63,
+    "answer": 3
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": [
+    "hoshasen-butsurigaku"
+  ],
+  "stem": "80 keV 光子に対する炭素（原子番号 6、原子量 12、密度 2.2 g·cm⁻³）の線減弱係数が 0.66 cm⁻¹ であるとき、このエネルギーにおける炭素の電子断面積［b］に最も近いのはどれか。ただし、アボガドロ数を 6.0 × 10²³、1 b ＝ 10⁻²⁴ cm² とする。",
+  "choices": [
+    {
+      "text": "6.0"
+    },
+    {
+      "text": "0.50"
+    },
+    {
+      "text": "3.0"
+    },
+    {
+      "text": "1.0",
+      "explanation": "原子数密度 n ＝ (ρ / A) × N_A ＝ (2.2 / 12) × 6.0 × 10²³ ＝ **1.1 × 10²³ cm⁻³**。電子数密度 n_e ＝ n × Z ＝ 1.1 × 10²³ × 6 ＝ **6.6 × 10²³ cm⁻³**。電子断面積 σ_e ＝ μ / n_e ＝ 0.66 / (6.6 × 10²³) ＝ **1.0 × 10⁻²⁴ cm² ＝ 1.0 b**。光子エネルギー 80 keV は式に使いません。**正解**です。"
+    },
+    {
+      "text": "0.05"
+    }
+  ],
+  "answer": 4,
+  "terms": ["electron-cross-section"],
+  "sourceExplanation": "この問は、線減弱係数 μ から**電子断面積**を求める計算です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=26\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 26 ページ</a>）。\n\n- **式** … n ＝ (ρ / A) × N_A、n_e ＝ n × Z、σ_e ＝ μ / n_e。1 b ＝ 10⁻²⁴ cm²。\n- 与えられた光子エネルギーは代入しません。\n- 公式の数値を代入すると約 **1.3 b** → **3 番**が正解。\n- **落とし穴** … Z を掛け忘れて原子断面積になる、バーン換算（10⁻²⁴）を忘れる、密度で割る位置を間違える。",
+  "draft": false
+}
