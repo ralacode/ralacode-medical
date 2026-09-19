@@ -3,7 +3,7 @@ import { useMemo, useState } from "react"
 import { LinkCard } from "@/components/link-card"
 import { SearchField } from "@/components/search-field"
 import { buttonVariants } from "@/components/ui/button"
-import { matchesSearchText } from "@/lib/search-text"
+import { choiceSearchSnippet, matchesSearchText } from "@/lib/search-text"
 import { cn } from "@/lib/utils"
 
 export type ExamQuestionBrowserItem = {
@@ -13,6 +13,8 @@ export type ExamQuestionBrowserItem = {
   analog?: boolean
   /** 科目名検索用（試験科目＋学習タグ） */
   searchLabels?: string[]
+  /** 選択肢本文。問題文に無い用語でもヒットさせる */
+  choiceTexts?: string[]
   categoryLinks?: { href: string; label: string }[]
 }
 
@@ -21,12 +23,28 @@ export type ExamQuestionBrowserSection = {
   items: ExamQuestionBrowserItem[]
 }
 
+function questionPrimaryText(item: ExamQuestionBrowserItem) {
+  return [item.stem, item.heading, ...(item.searchLabels ?? [])]
+    .filter(Boolean)
+    .join("\n")
+}
+
+function questionChoiceText(item: ExamQuestionBrowserItem) {
+  return (item.choiceTexts ?? []).filter(Boolean).join("\n")
+}
+
 function matchesExamQuestion(item: ExamQuestionBrowserItem, query: string) {
   return matchesSearchText(
-    [item.stem, item.heading, ...(item.searchLabels ?? [])]
-      .filter(Boolean)
-      .join("\n"),
+    [questionPrimaryText(item), questionChoiceText(item)].join("\n"),
     query
+  )
+}
+
+/** 問題文・見出し・科目だけでは足りず、選択肢がヒットに寄与したとき */
+function matchedViaChoices(item: ExamQuestionBrowserItem, query: string) {
+  return (
+    Boolean(query.trim()) &&
+    !matchesSearchText(questionPrimaryText(item), query)
   )
 }
 
@@ -58,7 +76,7 @@ export function ExamQuestionBrowser({
         <SearchField
           value={query}
           onChange={setQuery}
-          placeholder="例: 脂肪、放射線生物学"
+          placeholder="例: 脂肪、コンプトン散乱"
         />
 
         {trimmedQuery && resultCount > 0 ? (
@@ -93,6 +111,15 @@ export function ExamQuestionBrowser({
                     href={item.href}
                     label={`${item.heading}${item.analog ? " · 類似問題" : ""}`}
                     title={item.stem}
+                    note={
+                      matchedViaChoices(item, query)
+                        ? choiceSearchSnippet(
+                            item.choiceTexts ?? [],
+                            query,
+                            questionPrimaryText(item)
+                          )
+                        : undefined
+                    }
                   />
                   {item.categoryLinks && item.categoryLinks.length > 0 ? (
                     <div className="flex flex-wrap gap-2 border-t border-border p-3">

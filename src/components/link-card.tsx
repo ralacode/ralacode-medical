@@ -10,6 +10,8 @@ type LinkCardProps = {
   title: string
   /** 下段の説明（muted）。label とは併用しない */
   description?: string
+  /** タイトル下の補足（muted）。label と併用可。**強調**可 */
+  note?: string
   /** 親要素（li 等）が枠線・背景を持つ場合に true */
   bare?: boolean
   /** back: 左向き矢印を左側。forward: 右向き矢印を右側（デフォルト） */
@@ -24,6 +26,7 @@ export function LinkCard({
   label,
   title,
   description,
+  note,
   bare = false,
   direction = "forward",
 }: LinkCardProps) {
@@ -51,6 +54,12 @@ export function LinkCard({
             className="font-medium leading-snug"
             dangerouslySetInnerHTML={{ __html: renderEmphasisHtml(title) }}
           />
+          {note != null ? (
+            <span
+              className="text-sm text-muted-foreground"
+              dangerouslySetInnerHTML={{ __html: renderEmphasisHtml(note) }}
+            />
+          ) : null}
         </>
       ) : (
         <>

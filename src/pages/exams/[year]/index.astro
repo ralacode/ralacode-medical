@@ -76,6 +76,7 @@ const description = exam
                   stem: item.stem,
                   analog: item.origin === "analog",
                   searchLabels: questionSearchLabels(item),
+                  choiceTexts: item.choices.map((choice) => choice.text),
                   categoryLinks: questionCategoryLinks(item),
                 }
               }),
