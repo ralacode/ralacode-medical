@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 47,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 47,
+    "answer": [3, 5]
+  },
+  "subject": "kiso-igaku",
+  "stem": "I 型（即時型）アレルギーで、肥満細胞の表面に結合して**脱顆粒を起こす抗体**はどれか。",
+  "choices": [
+    {
+      "text": "IgM",
+      "explanation": "IgM は初回感染で早く出る抗体で、II 型・III 型などに関わります。I 型の肥満細胞結合抗体ではありません。"
+    },
+    {
+      "text": "IgA",
+      "explanation": "IgA は粘膜免疫の主力です。花粉症などの即時型反応の主役ではありません。"
+    },
+    {
+      "text": "ヒスタミン",
+      "explanation": "ヒスタミンは肥満細胞から出る**化学伝達物質**であり、抗体ではありません。問いが抗体クラスなので、ここでは誤りです。"
+    },
+    {
+      "text": "IgE",
+      "explanation": "IgE が肥満細胞・好塩基球の受容体に結合し、抗原の再侵入で脱顆粒が起きます。鍵（抗原）が鍵穴（IgE）に入ると、細胞が中身を吐き出すイメージです。**正解**です。"
+    },
+    {
+      "text": "補体",
+      "explanation": "補体は II 型・III 型アレルギーで組織傷害に関与します。I 型の主役ではありません。抗体でもありません。"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、**I 型アレルギー**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=21\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 21 ページ</a>）。公式は **2 つ選べ**で、正答は **3 番**と **5 番**でした。本類似問題は**抗体クラス**に絞った単一正解です。\n\n- **1 番** … **補体** → **誤り**（II 型・III 型に関与）。\n- **2 番** … **T 細胞** → **誤り**（IV 型＝遅延型の主役）。\n- **3 番** … **IgE** → **正解**（肥満細胞に結合する抗体）。\n- **4 番** … **IgM** → **誤り**（I 型の主役ではない）。\n- **5 番** … **ヒスタミン** → **正解**（脱顆粒で放出される化学伝達物質）。\n- **覚え方** … I 型＝**IgE → 肥満細胞 → ヒスタミン**／T 細胞は IV 型。",
+  "draft": false
+}
