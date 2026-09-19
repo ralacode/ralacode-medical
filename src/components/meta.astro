@@ -2,11 +2,22 @@
 import { siteMeta } from "@/lib/constants"
 import { withBase } from "@/lib/paths"
 
+export type RobotsContent =
+  | "index, follow"
+  | "noindex, follow"
+  | "noindex, nofollow"
+
 export interface Props {
   title?: string
   description?: string
   /** `public/` 配下のパス（先頭スラッシュなし） */
   image?: string
+  /**
+   * 既定は `index, follow`。
+   * 個別問題は `noindex, follow`。404 は `noindex`（`noindex, nofollow`）。
+   */
+  robots?: RobotsContent
+  /** `robots` 未指定時の短縮形。`noindex, nofollow` になる（404 用）。 */
   noindex?: boolean
   ogType?: string
   articlePublishedTime?: Date
@@ -18,12 +29,16 @@ const {
   title: titleProp,
   description = siteMeta.siteDesc,
   image = siteMeta.siteImg,
+  robots,
   noindex = false,
   ogType = siteMeta.siteType,
   articlePublishedTime,
   articleModifiedTime,
   jsonLdGraph = [],
 } = Astro.props
+
+const robotsContent =
+  robots ?? (noindex ? "noindex, nofollow" : "index, follow")
 
 if (!Astro.site) {
   throw new Error("Set `site` in astro.config.mjs for SEO absolute URLs.")
@@ -71,13 +86,7 @@ const isArticle = ogType === "article"
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
-{
-  noindex ? (
-    <meta name="robots" content="noindex, nofollow" />
-  ) : (
-    <meta name="robots" content="index, follow" />
-  )
-}
+<meta name="robots" content={robotsContent} />
 
 <title>{pageTitle}</title>
 <meta name="description" content={description} />

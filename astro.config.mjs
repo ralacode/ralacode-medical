@@ -8,6 +8,7 @@ import react from "@astrojs/react"
 import mdx from "@astrojs/mdx"
 import sitemap from "@astrojs/sitemap"
 
+import { isExamQuestionUrl } from "./src/lib/exam-question-url.ts"
 import { remarkFixEmphasis } from "./src/lib/emphasis.ts"
 
 /** @astrojs/sitemap は index 形式だけ出す。Search Console 向けに urlset を sitemap.xml へ複製する。 */
@@ -45,7 +46,8 @@ export default defineConfig({
     react(),
     mdx(),
     sitemap({
-      filter: (page) => !page.includes("/test"),
+      filter: (page) =>
+        !page.includes("/test") && !isExamQuestionUrl(page),
     }),
     copySitemapXml(),
   ],

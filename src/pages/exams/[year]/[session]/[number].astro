@@ -146,7 +146,12 @@ const sourceBookletPdf = officialExamBookletPdfLink(
 const categoryLinks = questionCategoryLinks(question.data)
 ---
 
-<Layout title={title} description={description} headerLabel="国家試験対策">
+<Layout
+  title={title}
+  description={description}
+  headerLabel="国家試験対策"
+  robots="noindex, follow"
+>
   <span slot="header" class="text-sm text-muted-foreground md:hidden">
     国家試験対策
   </span>
