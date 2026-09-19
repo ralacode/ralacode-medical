@@ -1,0 +1,45 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 67,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 67,
+    "answer": 3
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": [
+    "iyo-kogaku"
+  ],
+  "stem": "診断用 MRI で体幹部を覆う**ボリューム送信コイル**を使うとき、JIS（IEC 60601-2-33 相当）の**通常操作モード**における**全身 SAR** の上限［W/kg］はどれか。",
+  "choices": [
+    {
+      "text": "10",
+      "explanation": "**10 W/kg** は通常操作モードの**局部 SAR（体幹部）**の上限です。全身平均ではありません。"
+    },
+    {
+      "text": "4.0",
+      "explanation": "**4 W/kg** は**第 1 水準管理操作モード**の全身 SAR 上限です。通常操作モードはもっと低い値です。"
+    },
+    {
+      "text": "3.2",
+      "explanation": "**3.2 W/kg** は**頭部 SAR** の上限です。全身平均の上限と取り違えないようにします。"
+    },
+    {
+      "text": "20",
+      "explanation": "**20 W/kg** は通常操作モードの**四肢の局部 SAR**、または第 1 水準の体幹部局部 SAR です。全身平均ではありません。"
+    },
+    {
+      "text": "2.0",
+      "explanation": "通常操作モードの**全身 SAR** 上限は **2 W/kg** です。電子レンジの出力を体重で割った平均、という粗いたとえで、体全体に均一に熱が乗る量の上限です。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、MRI の安全規格における**通常操作モードの全身 SAR 上限**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=28\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 28 ページ</a>）。ボリューム送信コイルでは全身 SAR が管理対象になります。\n\n- **1 番** … **0.1 W/kg** → **誤り**（全身・通常操作の上限ではない）。\n- **2 番** … **0.5 W/kg** → **誤り**（同上）。\n- **3 番** … **2.0 W/kg** → **正解**（通常操作モードの**全身 SAR**）。\n- **4 番** … **3.2 W/kg** → **誤り**（**頭部 SAR** の上限）。\n- **5 番** … **10 W/kg** → **誤り**（通常操作の**体幹部局部 SAR**）。\n- **覚え方** … **通常・全身＝2**／**第 1 水準・全身＝4**／**頭部＝3.2**／**局部（体幹）＝10**。",
+  "draft": false
+}
