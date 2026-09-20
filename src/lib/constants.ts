@@ -12,3 +12,6 @@ export const siteMeta = {
   authorUrl: "https://twitter.com/radiologis2",
   startYear: 2026,
 } as const
+
+/** 計算ツールをトップ・サイドバーに出す。未公開のうちは false */
+export const showTools = false

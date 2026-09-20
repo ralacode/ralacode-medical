@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/main.astro"
 import { buttonVariants } from "@/components/ui/button"
-import { siteMeta } from "@/lib/constants"
+import { showTools, siteMeta } from "@/lib/constants"
 import { articlesHref } from "@/lib/article-paths"
 import { examsHref } from "@/lib/questions"
 import {
@@ -110,19 +110,23 @@ const showFollowCta = false
             </a>
           </div>
         </li>
-        <li id="tools">
-          <div class="pillar">
-            <div class="pillar-heading">
-              <span class="pillar-icon">
-                <CalculatorIcon className="size-5" aria-hidden="true" />
-              </span>
-              <span class="pillar-title">計算ツール</span>
-            </div>
-            <p class="pillar-desc">
-              減衰や造影剤まわりなど、実務で再訪される計算をこれから公開します。
-            </p>
-          </div>
-        </li>
+        {
+          showTools ? (
+            <li id="tools">
+              <div class="pillar">
+                <div class="pillar-heading">
+                  <span class="pillar-icon">
+                    <CalculatorIcon className="size-5" aria-hidden="true" />
+                  </span>
+                  <span class="pillar-title">計算ツール</span>
+                </div>
+                <p class="pillar-desc">
+                  減衰や造影剤まわりなど、実務で再訪される計算をこれから公開します。
+                </p>
+              </div>
+            </li>
+          ) : null
+        }
       </ul>
     </section>
 
@@ -462,8 +466,12 @@ const showFollowCta = false
 
   @media (min-width: 800px) {
     .pillar-list {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 2rem;
+    }
+
+    .pillar-list:has(#tools) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 

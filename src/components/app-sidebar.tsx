@@ -17,7 +17,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { siteMeta } from "@/lib/constants"
+import { showTools, siteMeta } from "@/lib/constants"
 import { withBase } from "@/lib/paths"
 import { articlesHref } from "@/lib/article-paths"
 import { examsHref } from "@/lib/questions"
@@ -30,27 +30,27 @@ const navItems = [
     href: examsHref(),
     icon: GraduationCapIcon,
   },
-  { title: "計算ツール", href: withBase("#tools"), icon: CalculatorIcon },
+  ...(showTools
+    ? [{ title: "計算ツール", href: withBase("#tools"), icon: CalculatorIcon }]
+    : []),
 ]
 
 export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg" tooltip={siteMeta.siteTitle}>
-              <img
-                src={withBase(siteMeta.siteIcon)}
-                alt={siteMeta.siteTitle}
-                width={32}
-                height={32}
-                className="size-8 rounded-lg"
-              />
-              <span className="truncate font-medium">{siteMeta.siteTitle}</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+        <div className="flex items-center gap-2 overflow-hidden px-2 py-1.5">
+          <img
+            src={withBase(siteMeta.siteIcon)}
+            alt=""
+            width={32}
+            height={32}
+            className="size-8 shrink-0 rounded-lg"
+          />
+          <span className="truncate font-medium group-data-[collapsible=icon]:sr-only">
+            {siteMeta.siteTitle}
+          </span>
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
