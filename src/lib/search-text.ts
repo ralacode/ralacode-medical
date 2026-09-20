@@ -46,7 +46,7 @@ function excerptAroundMatch(text: string, tokens: string[], max = CHOICE_SNIPPET
 
   const pad = Math.max(0, Math.floor((max - length) / 2))
   let from = Math.max(0, start - pad)
-  let to = Math.min(text.length, from + max)
+  const to = Math.min(text.length, from + max)
   if (to - from < max) from = Math.max(0, to - max)
   const prefix = from > 0 ? "…" : ""
   const suffix = to < text.length ? "…" : ""
