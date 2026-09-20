@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 74,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 74,
+    "answer": 5
+  },
+  "subject": "xray-kiki",
+  "stem": "**X 線 CT** の線量指標と撮影条件について、正しい記述はどれか。",
+  "choices": [
+    {
+      "text": "ピッチ係数を大きくすると、同じ範囲の撮影時間は長くなる。",
+      "explanation": "ピッチを大きくすると、1 回転あたりのテーブル移動が伸び、同じ範囲をより**短時間**で撮れます。長くはなりません。"
+    },
+    {
+      "text": "dual energy CT では、仮想単色 X 線画像を再構成できる。",
+      "explanation": "高低 2 つのエネルギー情報から、任意の keV に相当する**仮想単色 X 線画像**を作れます。2 色の照明で素材の違いを分ける、に近い使い方です。**正解**です。"
+    },
+    {
+      "text": "DLP の単位は mGy である。",
+      "explanation": "**DLP**（dose length product）はスキャン長を掛けた量で、単位は **mGy·cm** です。**mGy** なのは **CTDIvol** 側です。"
+    },
+    {
+      "text": "管電圧を下げると、ヨード造影領域の CT 値は下がる。",
+      "explanation": "低い管電圧の方がヨードの減弱が強く出やすく、造影部の CT 値は**上がる**方向です。下がる、は逆です。"
+    },
+    {
+      "text": "管電圧を下げると、画像ノイズは小さくなる。",
+      "explanation": "管電圧を下げると光子が減り、ノイズは**増える**方向です。低くすると静かになる、は逆です。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、**X 線 CT の線量指標と dual energy**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=30\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 30 ページ</a>）。\n\n- **1 番** … DLP の単位を **mGy** とする → **誤り**（**mGy·cm**。mGy は CTDIvol）。\n- **2 番** … 管電圧が低いほどノイズが**低下** → **誤り**（光子減少でノイズは増える）。\n- **3 番** … ピッチを大きくすると撮影時間が**長い** → **誤り**（同じ範囲なら短くなる）。\n- **4 番** … 管電圧が低いほど造影部 CT 値が**低下** → **誤り**（ヨードは低管電圧で CT 値が上がりやすい）。\n- **5 番** … dual energy CT で**仮想単色 X 線画像**を作成できる → **正解**。\n- **覚え方** … CTDI＝mGy／DLP＝mGy·cm／DECT＝仮想単色。",
+  "draft": false
+}
