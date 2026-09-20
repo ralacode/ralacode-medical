@@ -6,13 +6,18 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 import { SIDEBAR_TOGGLE_EVENT } from "@/lib/ui-contracts"
 
 function SidebarEventBridge() {
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar, setOpenMobile } = useSidebar()
 
   useEffect(() => {
     const onToggle = () => toggleSidebar()
+    const onNavigate = () => setOpenMobile(false)
     window.addEventListener(SIDEBAR_TOGGLE_EVENT, onToggle)
-    return () => window.removeEventListener(SIDEBAR_TOGGLE_EVENT, onToggle)
-  }, [toggleSidebar])
+    document.addEventListener("astro:after-swap", onNavigate)
+    return () => {
+      window.removeEventListener(SIDEBAR_TOGGLE_EVENT, onToggle)
+      document.removeEventListener("astro:after-swap", onNavigate)
+    }
+  }, [toggleSidebar, setOpenMobile])
 
   return null
 }
