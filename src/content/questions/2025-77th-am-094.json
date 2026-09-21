@@ -1,0 +1,38 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 94,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 94,
+    "answer": 1
+  },
+  "subject": "gazo-kogaku",
+  "stem": "相対 X 線強度が**最大 7.2**、**最小 4.8** で繰り返す周期パターンがある。Michelson（マイケルソン）コントラストはどれか。",
+  "choices": [
+    {
+      "text": "4.8"
+    },
+    {
+      "text": "1.5"
+    },
+    {
+      "text": "0.20",
+      "explanation": "Michelson コントラストは **C ＝ (Imax − Imin) / (Imax ＋ Imin)** です。7.2 と 4.8 を入れると (7.2 − 4.8) / (7.2 ＋ 4.8) ＝ 2.4 / 12 ＝ **0.20**。山と谷の差だけ（2.4）や、最小値そのもの（4.8）、比（7.2 / 4.8 ＝ 1.5）、Weber 型の (Imax − Imin) / Imin ＝ 0.50 と混同しないことがポイントです。暗い部屋のまだらと真昼のまだらでは、同じ差でも見え方が違う、という正規化です。**正解**です。"
+    },
+    {
+      "text": "2.4"
+    },
+    {
+      "text": "0.50"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、周期パターンの **Michelson コントラスト**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=38\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 38 ページ</a>）。公式は図の縦軸から山（Imax）と谷（Imin）を読み取ります。本サイトの類似問題は図を載せられないため、最大・最小の数値を問題文に書いています。\n\n- **式** … C ＝ (Imax − Imin) / (Imax ＋ Imin)。値は 0〜1 に収まる。\n- **公式正答** … **1 番**。図のピークと谷を代入すると、差を和で割った値になる。\n- **落とし穴** … 差だけ、Imax や Imin そのもの、Imax / Imin、Weber 型 (Imax − Imin) / Imin を選ぶ。\n- **類似問題** … Imax ＝ 7.2、Imin ＝ 4.8 → 2.4 / 12 ＝ **0.20**。",
+  "draft": false
+}
