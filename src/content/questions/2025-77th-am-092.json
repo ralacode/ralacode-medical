@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 92,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 92,
+    "answer": 4
+  },
+  "subject": "xray-gijutsu",
+  "stem": "甲状腺の高さの**頸部造影 CT 横断像**で、甲状腺外側に接する**小さくて丸い強造影**の構造はどれか。",
+  "choices": [
+    {
+      "text": "内頸静脈",
+      "explanation": "**誤り**です。内頸静脈は総頸動脈の**外側**にあり、断面は大きく楕円になりやすいです。小さくて真円に近い強造影は動脈側です。"
+    },
+    {
+      "text": "甲状腺",
+      "explanation": "**誤り**です。甲状腺は気管を囲む**実質臓器**で、円い血管断面ではありません。"
+    },
+    {
+      "text": "気管",
+      "explanation": "**誤り**です。気管は前方正中の**大きな空気（黒）**です。造影される円形構造ではありません。"
+    },
+    {
+      "text": "食道",
+      "explanation": "**誤り**です。食道は気管の**背側**（やや左）の管腔で、空気や内容物を含むことが多く、円い強造影血管ではありません。"
+    },
+    {
+      "text": "総頸動脈",
+      "explanation": "動脈は壁が厚く圧が高いので、横断では**小さく真円に近い強造影**になります。甲状腺という看板の横に立つ丸い水道管、というイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**頸部造影 CT の解剖**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=37\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 37 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_02.pdf#page=16\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 16 ページ</a>）。本サイトの類似問題は図を載せられないため、位置と造影パターンを文章化しています。\n\n- **別冊所見** … 甲状腺高さの横断。前方の空気は気管。矢印は甲状腺外側の小さく円い強造影＝**総頸動脈**。より外側の大きめの管腔が内頸静脈。\n- **1 番** … 気管 → **誤り**（前方の空気）。\n- **2 番** … 食道 → **誤り**（気管背側）。\n- **3 番** … 甲状腺 → **誤り**（気管周囲の実質）。\n- **4 番** … 総頸動脈 → **正解**。\n- **5 番** … 内頸静脈 → **誤り**（外側・大きめ）。\n- **覚え方** … 甲状腺の横の**小さい円＝総頸動脈**／外側の大きい管＝内頸静脈。",
+  "draft": false
+}

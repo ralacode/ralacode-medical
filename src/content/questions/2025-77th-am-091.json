@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 91,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 91,
+    "answer": 2
+  },
+  "subject": "xray-gijutsu",
+  "stem": "頭部の**側面血管造影像**で、トルコ鞍付近を**S 字に屈曲**して走行する太い動脈はどれか。",
+  "choices": [
+    {
+      "text": "中大脳動脈",
+      "explanation": "**誤り**です。中大脳動脈は内頸動脈分岐のあと、外側溝（シルヴィウス裂）へ向かう枝です。頭蓋底の S 字本体ではありません。"
+    },
+    {
+      "text": "脳底動脈",
+      "explanation": "**誤り**です。脳底動脈は斜台の前方を正中に上がる**椎骨動脈系**です。側面ではより後方に見えます。"
+    },
+    {
+      "text": "浅側頭動脈",
+      "explanation": "**誤り**です。浅側頭動脈は外頸動脈の枝で、**頭蓋の外側・頭皮側**を走ります。頭蓋内のサイフォンではありません。"
+    },
+    {
+      "text": "椎骨動脈",
+      "explanation": "**誤り**です。椎骨動脈は頸椎横突孔を上がり、大後頭孔から頭蓋内へ入る**後方循環**です。"
+    },
+    {
+      "text": "内頸動脈",
+      "explanation": "海綿静脈洞部の内頸動脈は、側面で**サイフォン（S 字）**と呼ばれます。ジェットコースターの急カーブが鞍の横にあるイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**頭部血管造影像の血管名**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=36\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 36 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_02.pdf#page=15\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 15 ページ</a>）。本サイトの類似問題は図を載せられないため、走行の特徴を文章化しています。\n\n- **別冊所見** … 頭部側面の動脈相。矢印は鞍部の S 字走行＝**内頸動脈（サイフォン）**。\n- **1 番** … 椎骨動脈 → **誤り**（後方循環）。\n- **2 番** … 内頸動脈 → **正解**。\n- **3 番** … 脳底動脈 → **誤り**（斜台前方の正中）。\n- **4 番** … 浅側頭動脈 → **誤り**（頭蓋外）。\n- **5 番** … 中大脳動脈 → **誤り**（分岐後、外側溝へ）。\n- **覚え方** … 側面の鞍部 **S 字＝内頸動脈サイフォン**。",
+  "draft": false
+}

@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "am",
+  "number": 89,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "am",
+    "number": 89,
+    "answer": 1
+  },
+  "subject": "xray-gijutsu",
+  "stem": "腰部 CT のベッド上に置く、**弓なりのパッド**に**濃度の違う円柱が複数**埋め込まれた校正用ファントムを用いる骨塩定量法はどれか。",
+  "choices": [
+    {
+      "text": "二重エネルギー X 線吸収測定〈DXA〉法",
+      "explanation": "**誤り**です。DXA は 2 種の X 線エネルギーで平面スキャンします。校正体は装置付属の**矩形ブロック**が多く、CT 用の弓形パッドではありません。"
+    },
+    {
+      "text": "X 線写真濃度測定〈RA〉法",
+      "explanation": "**誤り**です。RA は手の X 線写真に**アルミニウム階段**を並べ、フィルム濃度から推定します。CT ファントムではありません。"
+    },
+    {
+      "text": "定量的超音波〈QUS〉法",
+      "explanation": "**誤り**です。QUS は踵などへ**超音波**を当てる方法で、X 線も CT ファントムも使いません。"
+    },
+    {
+      "text": "単一エネルギー X 線吸収測定〈SXA〉法",
+      "explanation": "**誤り**です。SXA は 1 種の X 線で末梢骨を測る古い吸収法です。腰椎 CT 用の弓形ファントムは使いません。"
+    },
+    {
+      "text": "定量的 CT〈QCT〉法",
+      "explanation": "QCT は腰椎 CT のとき、背中側に**既知濃度の円柱**が入った弓形ファントムを置き、椎体の CT 値を骨密度に換算します。写真のカラーチャートを被写体の横に置くイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**骨塩定量ファントムの測定法**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=35\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 35 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_02.pdf#page=13\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 13 ページ</a>）。本サイトの類似問題は図を載せられないため、ファントム形状を文章化しています。\n\n- **別冊所見** … 弓形の黒いパッドに、濃度の異なる白い円柱が横一列。腰椎 CT 用 **QCT 校正ファントム**。\n- **1 番** … 定量的 CT〈QCT〉 → **正解**。\n- **2 番** … 定量的超音波〈QUS〉 → **誤り**（超音波。X 線ファントムなし）。\n- **3 番** … X 線写真濃度測定〈RA〉 → **誤り**（手＋アルミ階段）。\n- **4 番** … 単一エネルギー X 線吸収測定〈SXA〉 → **誤り**。\n- **5 番** … 二重エネルギー X 線吸収測定〈DXA〉 → **誤り**（平面スキャン。弓形 CT パッドではない）。\n- **覚え方** … **弓形＋円柱＝QCT**。DXA はテーブル型、QUS は超音波、RA は手の写真。",
+  "draft": false
+}
