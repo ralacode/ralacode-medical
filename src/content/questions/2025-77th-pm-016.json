@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 16,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 16,
+    "answer": 5
+  },
+  "subject": "kakui-gaku",
+  "stem": "健常者の脳横断像で、**大脳白質**（放線冠〜半卵円中心）に強い集積があり、**皮質灰白質の集積は相対的に低く**、線条体に限局した集積ではない。使用した放射性医薬品として適切なのはどれか。",
+  "choices": [
+    {
+      "text": "¹²³I-イオフルパン",
+      "explanation": "イオフルパンはドパミントランスポーターに結合し、**線条体**に限局します。白質全体が強い像ではありません。"
+    },
+    {
+      "text": "¹²³I-IMP",
+      "explanation": "IMP は脳血流トレーサーで、**灰白質（皮質・基底核）**に高く、白質は相対的に低いです。本問の白質優位とは逆です。"
+    },
+    {
+      "text": "¹⁸F-フルテメタモル",
+      "explanation": "アミロイド PET 製剤は、アミロイド陰性（正常）では**白質に結合**し、皮質は相対的に低く見えます。白質の「道路」が目立つ地図のような像です。**正解**です。"
+    },
+    {
+      "text": "¹⁸F-FDG",
+      "explanation": "FDG はブドウ糖代謝を反映し、正常では**灰白質**が高く白質は低いです。白質優位の像にはなりません。"
+    },
+    {
+      "text": "¹⁵O-CO₂ ガス",
+      "explanation": "¹⁵O-CO₂ は脳血流量の評価に使い、分布は**灰白質優位**です。白質に強い正常像ではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["amyloid-pet", "flutemetamol"],
+  "sourceExplanation": "この問は、正常脳核医学画像の**放射性医薬品の同定**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_02.pdf#page=12\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.6・12 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=11\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 11 ページ</a>）。本サイトの類似問題は図を載せられないため、**白質優位の集積**として文章化しています。\n\n- **別冊所見** … 脳横断。白質（放線冠〜半卵円中心）が高集積、皮質は相対的に低い。線条体限局ではない。\n- **1 番** … **¹²³I-IMP** → **誤り**（灰白質・血流）。\n- **2 番** … **¹⁸F-FDG** → **誤り**（灰白質・糖代謝）。\n- **3 番** … **¹⁵O-CO₂** → **誤り**（灰白質・血流）。\n- **4 番** … **¹²³I-イオフルパン** → **誤り**（線条体）。\n- **5 番** … **¹⁸F-フルテメタモル** → **正解**（アミロイド PET。正常では白質結合）。\n- **覚え方** … **白質が道のように目立つ＝アミロイド PET（陰性）**／灰白質が高い＝血流・FDG／点やコンマ＝イオフルパン。",
+  "draft": false
+}
