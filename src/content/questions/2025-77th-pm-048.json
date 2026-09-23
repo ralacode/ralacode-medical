@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 48,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 48,
+    "answer": 4
+  },
+  "subject": "kiso-igaku",
+  "stem": "通常の肺区域で、**独立した区域として存在しない**のはどれか。",
+  "choices": [
+    {
+      "text": "右肺 S7（内側底区）",
+      "explanation": "右肺下葉には内側底区（S7）があります。存在する区域です。"
+    },
+    {
+      "text": "左肺 S8（前底区）",
+      "explanation": "左肺下葉に前底区（S8）はあります。存在する区域です。"
+    },
+    {
+      "text": "左肺 S1＋2（上下区）",
+      "explanation": "左肺上葉では S1 と S2 が合わさった **S1＋2** として扱います。名称は特殊ですが、存在する区域です。"
+    },
+    {
+      "text": "右肺 S4（外側区）",
+      "explanation": "右肺中葉の外側区（S4）はあります。存在する区域です。"
+    },
+    {
+      "text": "左肺 S7（内側底区）",
+      "explanation": "左肺下葉では内側底区（S7）が独立しません。心臓が寄る側で区域が潰れる、欠けたパズルのピースです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**肺区域で存在しないもの**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=22\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 22 ページ</a>）。\n\n- **1 番** … **右肺 S3** → **誤り**（右上葉の前区として存在）。\n- **2 番** … **右肺 S5** → **誤り**（右中葉の内側区として存在）。\n- **3 番** … **左肺 S1＋2** → **誤り**（左上葉で合わさって存在する）。\n- **4 番** … **左肺 S7** → **正解**（左下葉に独立した内側底区は通常ない）。\n- **5 番** … **左肺 S9** → **誤り**（左下葉の外底区として存在）。\n- **覚え方** … **左に S7 なし**／左上葉は **S1＋2**。",
+  "draft": false
+}
