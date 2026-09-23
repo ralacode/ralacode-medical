@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 19,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 19,
+    "answer": 5
+  },
+  "subject": "kakui-gaku",
+  "stem": "¹⁸F-FDG PET で、褐色脂肪組織への生理的集積を増やす要因として正しいのはどれか。",
+  "choices": [
+    {
+      "text": "肥満",
+      "explanation": "褐色脂肪は、体を暖めるための「小さな暖房」です。肥満では褐色脂肪の活動はむしろ目立ちにくいことが多く、集積を増やす要因ではありません。"
+    },
+    {
+      "text": "寒冷刺激",
+      "explanation": "寒いと褐色脂肪が熱を作るため、FDG が首・鎖骨上・傍脊椎などに集まります。検査室を暖かくする・暖かい飲み物を飲むのは、この生理的集積を抑える対策です。**正解**です。"
+    },
+    {
+      "text": "喫煙",
+      "explanation": "喫煙は FDG の解釈を乱すことはありますが、褐色脂肪への生理的集積の主因ではありません。"
+    },
+    {
+      "text": "運動負荷",
+      "explanation": "運動後は**骨格筋**への FDG が増えやすいです。褐色脂肪（熱産生）とは別の生理的集積です。"
+    },
+    {
+      "text": "高血糖",
+      "explanation": "血糖が高いと、腫瘍や正常組織の FDG 取り込みは**下がる**方向です。褐色脂肪を特に増やす要因ではありません。"
+    }
+  ],
+  "answer": 2,
+  "terms": ["fdg-pet", "brown-adipose-tissue"],
+  "sourceExplanation": "この問は、FDG の**褐色脂肪への生理的集積**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=12\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 12 ページ</a>）。\n\n- **1 番** … **運動** → **誤り**。筋集積の話。\n- **2 番** … **喫煙** → **誤り**。褐色脂肪の主因ではない。\n- **3 番** … **肥満** → **誤り**。褐色脂肪は目立ちにくい方向。\n- **4 番** … **高血糖** → **誤り**。FDG 取り込みは下がる方向。\n- **5 番** … **寒冷刺激** → **正解**。熱産生で褐色脂肪が FDG を取り込む。\n- **覚え方** … **寒いと褐色脂肪が燃える**／暖かくして撮影する。",
+  "draft": false
+}

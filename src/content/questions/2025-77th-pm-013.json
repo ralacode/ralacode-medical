@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 13,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 13,
+    "answer": 2
+  },
+  "subject": "kakui-gaku",
+  "stem": "PET 装置の性能評価（NEMA NU 2-2018）の評価項目として、**含まれない**のはどれか。",
+  "choices": [
+    {
+      "text": "PET/CT の重ね合わせ精度",
+      "explanation": "PET と CT の位置合わせ精度は、NEMA NU 2 の後年の改訂で評価項目に入っています。**含まれる**項目です。"
+    },
+    {
+      "text": "空間分解能",
+      "explanation": "点線源などで測る**空間分解能**は、NEMA NU 2 の基本項目です。**含まれる**項目です。"
+    },
+    {
+      "text": "散乱フラクション",
+      "explanation": "真の同時計数に対する散乱の割合（散乱フラクション）は、NEMA NU 2 の基本項目です。**含まれる**項目です。"
+    },
+    {
+      "text": "均一性",
+      "explanation": "視野内の感度のむら（均一性）は、ガンマカメラ／SPECT の日常点検でよく出ます。NEMA NU 2-2018 の PET 性能評価項目には**入っていません**。**正解**です。"
+    },
+    {
+      "text": "感度",
+      "explanation": "単位放射能あたりの計数率（感度）は、NEMA NU 2 の基本項目です。**含まれる**項目です。"
+    }
+  ],
+  "answer": 4,
+  "terms": ["nema-nu2"],
+  "sourceExplanation": "この問は、PET の **NEMA NU 2-2018** に載る評価項目です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=10\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 10 ページ</a>）。**含まれないもの**を選びます。\n\n- **1 番** … **感度** → **誤り**（項目に含まれる）。\n- **2 番** … **均一性** → **正解**。均一性はガンマカメラ／SPECT の QC で頻出。NEMA NU 2-2018 の PET 項目ではない。\n- **3 番** … **空間分解能** → **誤り**（項目に含まれる）。\n- **4 番** … **散乱フラクション** → **誤り**（項目に含まれる）。\n- **5 番** … **PET/CT の重ね合わせ精度** → **誤り**（項目に含まれる）。\n- **覚え方** … NEMA NU 2＝**分解能・感度・散乱・計数率・画質・重ね合わせ**。**均一性は SPECT 側**。",
+  "draft": false
+}
