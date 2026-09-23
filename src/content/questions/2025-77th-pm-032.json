@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 32,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 32,
+    "answer": 5
+  },
+  "subject": "iryo-gazo-joho",
+  "stem": "集合 A と集合 B について、**B に属し、かつ A に属さない要素だけ**を表す論理演算はどれか。",
+  "choices": [
+    {
+      "text": "A XOR B（排他的論理和）",
+      "explanation": "XOR は「どちらか一方だけ」なので、**A だけ**の領域と**B だけ**の領域の両方を含みます。B 側だけを取り出す式ではありません。"
+    },
+    {
+      "text": "A AND B（論理積）",
+      "explanation": "AND は**共通部分**（重なり）です。A にも B にも入る要素であり、「B にだけ入る」領域ではありません。"
+    },
+    {
+      "text": "NOT A（A の否定）",
+      "explanation": "NOT A は A の外側すべてです。B だけの三日月に加え、**A にも B にも入らない外側**まで含みます。"
+    },
+    {
+      "text": "（NOT A）AND B",
+      "explanation": "「A ではない」かつ「B である」なので、重なりを除いた **B 側だけ**です。ベン図でいえば B の三日月部分です。**正解**です。"
+    },
+    {
+      "text": "A NAND B（否定論理積）",
+      "explanation": "NAND は「両方に同時に入ることはない」なので、**重なり以外の全域**（A だけ・B だけ・外側）です。B 側だけではありません。"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、**ベン図の斜線領域を論理演算で表す**問題です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=17\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 17 ページ</a>）。公式は図で領域を示します。本サイトの類似問題は図を載せられないため、同じ領域（**B に属し A に属さない**）を文章化しています。\n\n- **1 番** … **NOT A** → **誤り**（A の外側全体。B 以外の外側も含む）。\n- **2 番** … **A XOR B** → **誤り**（A だけと B だけを両方含む）。\n- **3 番** … **A NAND B** → **誤り**（共通部分以外の全域）。\n- **4 番** … **NOT（A XOR B）** → **誤り**（一致：共通部分と外側。XNOR）。\n- **5 番** … **（NOT A）AND B** → **正解**（B だけの領域）。\n- **覚え方** … **B だけ ＝ （NOT A）AND B**／XOR＝左右の三日月／NAND＝重なり以外。",
+  "draft": false
+}

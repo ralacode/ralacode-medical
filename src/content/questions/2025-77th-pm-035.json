@@ -1,0 +1,38 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 35,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 35,
+    "answer": 2
+  },
+  "subject": "iryo-gazo-joho",
+  "stem": "2,048 × 2,048 画素、1 画素あたり 16 bit の DICOM 画像 1 枚について、画素データ量として最も近い値［MB］はどれか。ただしヘッダ情報は含めない。",
+  "choices": [
+    {
+      "text": "16"
+    },
+    {
+      "text": "4"
+    },
+    {
+      "text": "32"
+    },
+    {
+      "text": "2"
+    },
+    {
+      "text": "8",
+      "explanation": "画素データ量［byte］＝横×縦×（bit 数÷8）です。2,048×2,048×2＝8,388,608 byte。1 MB＝1,024² byte で割ると **8 MB**。16 bit を 1 byte と読むと 4 MB になるので、bit と byte の取り違えに注意します。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、DICOM 画像の**画素データ量**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=18\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 18 ページ</a>）。\n\n画素データ量［byte］＝**画素数 ×（階調 bit 数÷8）**。16 bit は **2 byte**。求めた byte を 1,024² で割ると MB になります（10³ 換算でも選択肢の「最も近い」に入ります）。公式の数値を代入すると約 **4 MB** になり、公式正答は **2 番**です。ヘッダは含めません。\n\n- **落とし穴** … 16 bit を 1 byte のまま計算する、bit のまま MB に換算する、ヘッダまで足す。",
+  "draft": false
+}
