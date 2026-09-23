@@ -1,0 +1,38 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 30,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 30,
+    "answer": 3
+  },
+  "subject": "hoshasen-chiryo",
+  "stem": "6 MV X 線で、照射野 10 cm × 10 cm の基準点吸収線量が 1 MU あたり 1 cGy であった。照射野 15 cm × 15 cm、深さ 10 cm の点に 2.7 Gy を投与するとき、MU 値で最も近いのはどれか。ただし、この点の組織最大線量比を 0.75、照射野 10 cm × 10 cm に対する出力係数を 1.20 とする。",
+  "choices": [
+    {
+      "text": "225"
+    },
+    {
+      "text": "300",
+      "explanation": "処方 2.7 Gy＝**270 cGy**。1 MU あたりの線量は 1 cGy × 出力係数 1.20 × TMR 0.75＝**0.90 cGy/MU**。MU＝270÷0.90＝**300**。出力係数だけ、または TMR だけを掛け忘れると 225 や 360 になります。**正解**です。"
+    },
+    {
+      "text": "270"
+    },
+    {
+      "text": "360"
+    },
+    {
+      "text": "450"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、**出力校正（1 MU あたりの吸収線量）から MU を求める計算**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=16\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 16 ページ</a>）。公式正答は **3 番**です。式は **MU＝処方線量÷（基準出力×出力係数×組織最大線量比）** です。類似問題はエネルギー・照射野・深さ・処方線量・係数を変えています。\n\n- **落とし穴** … 出力係数だけを使う、TMR だけを使う、両方を掛け忘れる、と公式の誤答肢に相当します。\n- **覚え方** … **欲しい cGy ÷（1 cGy/MU × OF × TMR）**。",
+  "draft": false
+}
