@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 5,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 5,
+    "answer": 5
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "腹部 MRI の横断像で、椎体前方の大動脈と同じ円形の高信号が、肝臓の中にも同じ形で**前後方向に並んで**見える。この偽像の主な原因はどれか。",
+  "choices": [
+    {
+      "text": "化学シフト",
+      "explanation": "**誤り**です。化学シフトは脂肪と水の周波数差で、境界が左右（周波数方向）にずれたり黒線が出たりします。同じ円が前後にコピーされる所見ではありません。"
+    },
+    {
+      "text": "動脈の拍動",
+      "explanation": "**正解**です。大動脈の拍動が位相エンコード方向へゴーストとして繰り返します。ストロボ写真で動くものが残像として並ぶ、という例えです。腹部では位相方向を前後に取ることが多く、肝臓内に大動脈と同じ丸い高信号が並びます。詳しくは <a href=\"/medical/articles/phase-frequency-encoding/\" target=\"_blank\" rel=\"noopener noreferrer\">MRI の位相・周波数エンコードとは</a> をご覧ください。"
+    },
+    {
+      "text": "折り返し（エイリアシング）",
+      "explanation": "**誤り**です。折り返しは視野の外の構造が反対側へはみ出す所見です。大動脈と同じ円が肝臓内に等間隔で並ぶパターンではありません。"
+    },
+    {
+      "text": "金属",
+      "explanation": "**誤り**です。金属は局所の強い信号欠損や歪みを起こします。大動脈と同じ形の丸い高信号が位相方向へ並ぶ所見ではありません。"
+    },
+    {
+      "text": "磁化率効果",
+      "explanation": "**誤り**です。磁化率アーチファクトは空気や骨の境界で歪みや信号抜けを出します。拍動ゴーストのような規則正しい複製にはなりません。"
+    }
+  ],
+  "answer": 2,
+  "terms": ["phase-frequency-encoding"],
+  "sourceExplanation": "この問は、腹部 MR の**アーチファクト原因**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_02.pdf#page=5\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.1・5 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=6\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 6 ページ</a>）。本サイトの類似問題は図を載せられないため、**大動脈と同じ円形高信号が位相方向へ並ぶ**所見を文章化しています。\n\n- **別冊所見** … 腹部横断像。椎体前方の大動脈と、肝臓内に並ぶ同じ円形の高信号（拍動ゴースト）。\n- **1 番** … **金属** → **誤り**（局所の欠損・歪み）。\n- **2 番** … **磁化率** → **誤り**（境界の歪み・信号抜け）。\n- **3 番** … **折り返し** → **誤り**（FOV 外の構造が反対側へ）。\n- **4 番** … **化学シフト** → **誤り**（脂肪と水の周波数差）。\n- **5 番** … **動脈の拍動** → **正解**（位相方向のゴースト）。\n- **覚え方** … 大動脈と同じ丸が前後に並ぶ＝**拍動ゴースト**。",
+  "draft": false
+}

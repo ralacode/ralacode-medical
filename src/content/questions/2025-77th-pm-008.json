@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 8,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 8,
+    "answer": 4
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "頭部 MRA の正面 MIP と 3D 再構成で、左右の前大脳動脈が**正中でつながる短い橋**の部位に、囊状の膨隆がある。この動脈瘤の部位はどれか。",
+  "choices": [
+    {
+      "text": "中大脳動脈",
+      "explanation": "**誤り**です。中大脳動脈瘤は外側（シルビウス裂側）にあります。正中の短い橋ではありません。"
+    },
+    {
+      "text": "後大脳動脈",
+      "explanation": "**誤り**です。後大脳動脈はウィリス動脈輪の後方へ走ります。正面中央の橋ではありません。"
+    },
+    {
+      "text": "脳底動脈",
+      "explanation": "**誤り**です。脳底動脈は後方正中の太い血管です。左右前大脳動脈をつなぐ短い橋ではありません。"
+    },
+    {
+      "text": "後交通動脈",
+      "explanation": "**誤り**です。後交通動脈は内頸動脈と後大脳動脈をつなぐ左右の短い血管で、正面中央ではありません。"
+    },
+    {
+      "text": "前交通動脈",
+      "explanation": "**正解**です。左右の前大脳動脈をつなぐ正中の短い橋が前交通動脈で、囊状動脈瘤の好発部位です。正面から見て輪のいちばん手前の中央、という位置です。"
+    }
+  ],
+  "answer": 5,
+  "terms": ["mra"],
+  "sourceExplanation": "この問は、頭部 MRA の**動脈瘤の部位**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_02.pdf#page=8\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.3Ａ・8 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_02.pdf#page=9\" target=\"_blank\" rel=\"noopener noreferrer\">No.3Ｂ・9 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=8\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 8 ページ</a>）。本サイトの類似問題は図を載せられないため、**左右前大脳動脈をつなぐ正中の短い橋**として文章化しています。\n\n- **別冊所見** … 正面 MIP と 3D。正中・前方の短い交通部に囊状膨隆（前交通動脈瘤）。\n- **1 番** … **脳底動脈** → **誤り**（後方正中の太い血管）。\n- **2 番** … **後交通動脈** → **誤り**（内頸〜後大脳の左右の橋）。\n- **3 番** … **後大脳動脈** → **誤り**（後方へ走る左右の枝）。\n- **4 番** … **前交通動脈** → **正解**。\n- **5 番** … **中大脳動脈** → **誤り**（外側・シルビウス裂側）。\n- **覚え方** … 正面中央の短い橋＝**前交通**／外側＝中大脳／後ろ＝脳底・後大脳。",
+  "draft": false
+}
