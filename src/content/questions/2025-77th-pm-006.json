@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 6,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 6,
+    "answer": 5
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "右季肋部の縦走査超音波で、無エコーの胆嚢内腔の**浅い側**（体表に近い壁のすぐ深部）に、体表とほぼ平行な線状エコーが**等間隔で繰り返して**見える。この偽像はどれか。",
+  "choices": [
+    {
+      "text": "後方エコー増強",
+      "explanation": "**誤り**です。後方エコー増強は液体の深部が**広く明るくなる**所見で、等間隔の線が並ぶ所見ではありません。"
+    },
+    {
+      "text": "音響陰影",
+      "explanation": "**誤り**です。音響陰影は結石などの強エコーのすぐ後ろが**縦に暗く落ちる**帯です。等間隔の明るい線ではありません。詳しくは <a href=\"/medical/articles/acoustic-shadow/\" target=\"_blank\" rel=\"noopener noreferrer\">超音波の音響陰影とは</a> をご覧ください。"
+    },
+    {
+      "text": "多重反射",
+      "explanation": "**正解**です。皮膚や胆嚢前壁など強い反射面の間を音が往復すると、同じ線が等間隔で何度も描かれます。向かい合う鏡に自分が何人も映る、という例えです。"
+    },
+    {
+      "text": "鏡面現象（ミラーイメージ）",
+      "explanation": "**誤り**です。鏡面現象は横隔膜の向こう側に、肝臓など実在構造の**コピー**が映る所見です。胆嚢浅部の等間隔線とは違います。"
+    },
+    {
+      "text": "側方陰影（エッジシャドウ）",
+      "explanation": "**誤り**です。側方陰影は丸い構造の左右端から、細い暗い帯が深部へ落ちる屈折の偽像です。等間隔の線状エコーではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["acoustic-shadow"],
+  "sourceExplanation": "この問は、右季肋部超音波の**アーチファクト**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_02.pdf#page=6\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.2・6 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=7\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 7 ページ</a>）。本サイトの類似問題は図を載せられないため、**等間隔に並ぶ線状エコー**として文章化しています。\n\n- **別冊所見** … 右季肋部縦走査。胆嚢内腔の浅い側に、平行な線が繰り返す偽像。\n- **1 番** … **音響陰影** → **誤り**（強エコー後方の暗い帯）。\n- **2 番** … **外側陰影** → **誤り**（辺縁の暗い帯。側方陰影と同系統）。\n- **3 番** … **鏡面反射** → **誤り**（横隔膜の向こうに実在構造のコピー）。\n- **4 番** … **側方陰影** → **誤り**（辺縁の屈折による暗い帯）。\n- **5 番** … **多重反射** → **正解**（強反射面の往復で線が等間隔に並ぶ）。\n- **覚え方** … 等間隔の線＝**多重反射**／暗い帯＝陰影／コピー＝鏡面。",
+  "draft": false
+}

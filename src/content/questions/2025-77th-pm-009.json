@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 9,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 9,
+    "answer": 4
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "心臓大血管基部の MRI 横断像で、患者右側（向かって左）にある円形の太い管腔は上行大動脈である。この血管と**直接交通している**心腔または血管はどれか。",
+  "choices": [
+    {
+      "text": "下大静脈",
+      "explanation": "**誤り**です。下大静脈は右心房に入ります。上行大動脈とは直接つながりません。"
+    },
+    {
+      "text": "左心室",
+      "explanation": "**正解**です。上行大動脈は大動脈弁を介して**左心室**から出ます。左室がポンプ、上行大動脈が送り出し口、という位置関係です。"
+    },
+    {
+      "text": "右心房",
+      "explanation": "**誤り**です。右心房につながる太い血管は大静脈です。上行大動脈ではありません。"
+    },
+    {
+      "text": "左心房",
+      "explanation": "**誤り**です。左心房につながるのは肺静脈です。上行大動脈は左室側です。"
+    },
+    {
+      "text": "右心室",
+      "explanation": "**誤り**です。右心室から出るのは肺動脈幹です。横断像で患者左側に並ぶもう一方の円が肺動脈側です。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、胸部 MR で**矢印の血管がどの心腔と直接交通するか**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_02.pdf#page=10\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.4・10 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=8\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 8 ページ</a>）。本サイトの類似問題は図を載せられないため、**患者右側の円形管腔＝上行大動脈**と文章化しています。\n\n- **別冊所見** … 心臓基部横断。左右に並ぶ 2 つの円のうち、患者右側が上行大動脈。\n- **1 番** … **右心房** → **誤り**（大静脈側）。\n- **2 番** … **右心室** → **誤り**（肺動脈幹側）。\n- **3 番** … **左心房** → **誤り**（肺静脈側）。\n- **4 番** … **左心室** → **正解**（大動脈弁を介して上行大動脈と交通）。\n- **5 番** … **下大静脈** → **誤り**（右房へ入る）。\n- **覚え方** … 上行大動脈＝**左室の出口**／肺動脈幹＝右室の出口。",
+  "draft": false
+}

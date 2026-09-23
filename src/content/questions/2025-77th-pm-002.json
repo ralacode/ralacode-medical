@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 2,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 2,
+    "answer": 4
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "急性期の脳卒中を疑う患者の頭部 MRI で、撮像の順番として適切なのはどれか。",
+  "choices": [
+    {
+      "text": "T1 強調像 → T2 強調像 → FLAIR 像 → 拡散強調像 → MRA → T2* 強調像",
+      "explanation": "**誤り**です。T1・T2 を先に回すと、いちばん急ぐ虚血の判定が遅れます。電池が切れる前に、まず一番大事な写真を撮る、という順です。"
+    },
+    {
+      "text": "拡散強調像 → T1 強調像 → T2 強調像 → FLAIR 像 → T2* 強調像 → MRA",
+      "explanation": "**誤り**です。拡散強調のあとすぐ T1・T2 に入ると、血管評価（MRA）と出血評価（T2*）が後ろへ押されます。MRA を最後に回すのも適切ではありません。"
+    },
+    {
+      "text": "MRA → FLAIR 像 → T2 強調像 → T1 強調像 → T2* 強調像 → 拡散強調像",
+      "explanation": "**誤り**です。拡散強調を最後に置くと、動かなくなったあとで梗塞の有無を見ることになり、本末転倒です。"
+    },
+    {
+      "text": "T2 強調像 → T2* 強調像 → MRA → FLAIR 像 → 拡散強調像 → T1 強調像",
+      "explanation": "**誤り**です。T2 強調から入ると時間がかかり、超急性期の拡散制限を先に拾えません。"
+    },
+    {
+      "text": "拡散強調像 → 頭部 MRA → T2* 強調像 → FLAIR 像 → T2 強調像 → T1 強調像",
+      "explanation": "**正解**です。短い拡散強調で虚血を先に拾い、続けて血管（MRA）、出血（T2*）、病変の広がり（FLAIR）を見ます。T2・T1 は後回しです。詳しくは <a href=\"/medical/articles/dwi/\" target=\"_blank\" rel=\"noopener noreferrer\">MRI の拡散強調とは</a> をご覧ください。"
+    }
+  ],
+  "answer": 5,
+  "terms": ["dwi", "flair", "mra"],
+  "sourceExplanation": "この問は、脳卒中疑いの **MRI 撮影順**を扱います（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=5\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 5 ページ</a>）。\n\n- **1 番** … **MRA を先**に置き、拡散強調がその後ろ → **誤り**。\n- **2 番** … **T1・T2 を先**に撮り、拡散強調が最後 → **誤り**。\n- **3 番** … **T1・T2 を先**に撮り、拡散強調が中盤以降 → **誤り**。\n- **4 番** … **拡散強調 → MRA → FLAIR → T2* → T2 → T1** → **正解**（虚血と血管を先に、通常強調は後）。\n- **5 番** … 拡散強調のあとすぐ **T1** に入り、**MRA が最後** → **誤り**。\n- **覚え方** … 脳卒中 MRI＝**DWI と MRA を先**／T1 は最後でよい。",
+  "draft": false
+}

@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 7,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 7,
+    "answer": 2
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "頭部 MRI の FLAIR 像（脂肪抑制なし）で、最も高信号を呈するのはどれか。",
+  "choices": [
+    {
+      "text": "頭蓋冠の皮質骨",
+      "explanation": "**誤り**です。皮質骨はプロトンが少なく、FLAIR でも**低信号**です。"
+    },
+    {
+      "text": "シルビウス裂の脳脊髄液",
+      "explanation": "**誤り**です。FLAIR は自由水（CSF）の信号を落とす撮像です。シルビウス裂の髄液は**低信号**になります。"
+    },
+    {
+      "text": "大脳基底核の灰白質",
+      "explanation": "**誤り**です。基底核は中等度の信号で、脂肪ほど明るくなりません。"
+    },
+    {
+      "text": "眼窩内の脂肪組織",
+      "explanation": "**正解**です。FLAIR は CSF を落とす T2 風画像で、脂肪抑制を掛けなければ**脂肪は明るく残ります**。絵の具の水たまりだけ消して、油の色は残す加工、という例えです。詳しくは <a href=\"/medical/articles/flair/\" target=\"_blank\" rel=\"noopener noreferrer\">MRI の FLAIR とは</a> をご覧ください。"
+    },
+    {
+      "text": "側脳室内の脳脊髄液",
+      "explanation": "**誤り**です。側脳室の CSF は FLAIR で抑制され、**低信号**です。高信号に見えるのは失敗か病的内容です。"
+    }
+  ],
+  "answer": 4,
+  "terms": ["flair"],
+  "sourceExplanation": "この問は、頭部 **FLAIR 像で高信号になる構造**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=7\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 7 ページ</a>）。\n\n- **1 番** … **側脳室** → **誤り**（CSF は抑制され低信号）。\n- **2 番** … **眼窩脂肪** → **正解**（脂肪抑制なし FLAIR では脂肪が高信号）。\n- **3 番** … **頭蓋骨皮質** → **誤り**（プロトン少なく低信号）。\n- **4 番** … **大脳基底核** → **誤り**（中等度信号）。\n- **5 番** … **シルビウス裂** → **誤り**（CSF は低信号）。\n- **覚え方** … FLAIR＝**水は暗い・脂肪は明るい**（脂肪抑制を掛けないとき）。",
+  "draft": false
+}

@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 10,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 10,
+    "answer": 3
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "腹部 MRI の T1 強調横断像で、肝右葉の実質内を走り、**下大静脈へ向かって合流する**管状の低信号がある。この構造はどれか。",
+  "choices": [
+    {
+      "text": "門脈",
+      "explanation": "**誤り**です。門脈は肝門から肝内へ**入り込む**血流で、下大静脈へ直接合流しません。走行の向きが逆です。"
+    },
+    {
+      "text": "肝動脈",
+      "explanation": "**誤り**です。肝動脈も肝門から入る細い動脈で、下大静脈への合流血管ではありません。"
+    },
+    {
+      "text": "奇静脈",
+      "explanation": "**誤り**です。奇静脈は椎体右前方を上行し、肝実質の中は走りません。"
+    },
+    {
+      "text": "肝静脈",
+      "explanation": "**正解**です。肝静脈は肝実質を流れた血液を集め、横隔膜直下で**下大静脈へ返す**排水路です。右葉内を IVC 方向へ走る管は肝静脈です。"
+    },
+    {
+      "text": "肝管",
+      "explanation": "**誤り**です。肝管は胆汁の管で、肝門方向へ集まります。下大静脈へ合流する管ではありません。"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、腹部 T1 強調像の**血管名**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_02.pdf#page=11\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.5・11 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=9\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 9 ページ</a>）。本サイトの類似問題は図を載せられないため、**肝右葉内を下大静脈へ向かう管**として文章化しています。\n\n- **別冊所見** … 腹部 T1 横断。肝右葉実質内を IVC 方向へ走る管状低信号（肝静脈）。\n- **1 番** … **肝管** → **誤り**（胆汁路、肝門方向）。\n- **2 番** … **門脈** → **誤り**（肝門から肝内へ入る）。\n- **3 番** … **肝静脈** → **正解**（肝実質から IVC へ還流）。\n- **4 番** … **肝動脈** → **誤り**（肝門から入る細い動脈）。\n- **5 番** … **奇静脈** → **誤り**（椎体右前方、肝外）。\n- **覚え方** … 肝の中を走って **IVC に入る＝肝静脈**／肝門から入る＝門脈・肝動脈。",
+  "draft": false
+}
