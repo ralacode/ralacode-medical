@@ -1,0 +1,30 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 84,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 84,
+    "answer": 4
+  },
+  "subject": "xray-gijutsu",
+  "stem": "焦点サイズ **0.2 mm** の X 線管で拡大撮影を行う。半影を **0.3 mm** まで許容できるとき、最大となる拡大率［倍］はどれか。",
+  "choices": [
+    { "text": "4.0" },
+    { "text": "1.5" },
+    { "text": "3.5" },
+    {
+      "text": "2.5",
+      "explanation": "半影 **P = f × (M − 1)** より **M = 1 ＋ P / f**。0.3 / 0.2 ＝ 1.5 なので **M = 2.5**。**P / f だけ**（1.5）は、1 を足し忘れた値です。"
+    },
+    { "text": "2.0" }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、**拡大撮影の半影と拡大率**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=38\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 38 ページ</a>）。公式と同じ式で、焦点サイズと許容半影の数値を変えています。\n\n- 半影 **P = f × (b / a)**。拡大率 **M = (a ＋ b) / a = 1 ＋ b / a** なので **P = f × (M − 1)**。\n- よって **M = 1 ＋ P / f**。許容半影いっぱいで最大拡大率になります。\n- **公式正答**は 4 番。落とし穴は **P / f** だけ求めて 1 を足さないこと。",
+  "draft": false
+}
