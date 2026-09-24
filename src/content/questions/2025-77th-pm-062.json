@@ -1,0 +1,45 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 62,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 62,
+    "answer": 2
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": [
+    "hoshasen-butsurigaku"
+  ],
+  "stem": "陽電子を放出する核種のうち、水中での陽電子の**最大飛程が最も短い**のはどれか。",
+  "choices": [
+    {
+      "text": "¹⁵O",
+      "explanation": "¹⁵O の陽電子最大エネルギーは約 **1.7 MeV** で、水中の最大飛程はおよそ **8 mm** です。¹⁸F より長くなります。"
+    },
+    {
+      "text": "⁶⁸Ga",
+      "explanation": "⁶⁸Ga の陽電子最大エネルギーは約 **1.9 MeV** で、水中の最大飛程はおよそ **9 mm** です。¹⁸F より明らかに長いです。"
+    },
+    {
+      "text": "¹¹C",
+      "explanation": "¹¹C の陽電子最大エネルギーは約 **0.96 MeV** で、水中の最大飛程はおよそ **4 mm** です。¹⁸F より長いです。"
+    },
+    {
+      "text": "⁸²Rb",
+      "explanation": "⁸²Rb の陽電子最大エネルギーは約 **3.4 MeV** で、水中の最大飛程はおよそ **16 mm** と、PET 核種の中でも長い部類です。"
+    },
+    {
+      "text": "¹⁸F",
+      "explanation": "¹⁸F の陽電子最大エネルギーは約 **0.63 MeV** で、水中の最大飛程はおよそ **2.4 mm** です。挙げた核種のなかで初速が最も小さく、一番早く止まります。投げたボールの初速が小さいほど早く地面に落ちる、というイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": ["positron-range"],
+  "sourceExplanation": "この問は、PET 核種から出る陽電子の**最大飛程**の比較です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=27\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 27 ページ</a>）。飛程は陽電子の**最大エネルギー**が大きいほど長くなります。\n\n- **1 番** … **¹¹C** → **誤り**（最大エネルギー約 0.96 MeV。¹⁸F より長い）。\n- **2 番** … **¹⁸F** → **正解**（約 0.63 MeV。この並びでは最短）。\n- **3 番** … **¹³N** → **誤り**（約 1.2 MeV）。\n- **4 番** … **¹⁵O** → **誤り**（約 1.7 MeV）。\n- **5 番** … **⁶⁸Ga** → **誤り**（約 1.9 MeV。長い）。\n- **覚え方** … **¹⁸F が最短**。エネルギー順はおおむね ¹⁸F ＜ ¹¹C ＜ ¹³N ＜ ¹⁵O ＜ ⁶⁸Ga。",
+  "draft": false
+}
