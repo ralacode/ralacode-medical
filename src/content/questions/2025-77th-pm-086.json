@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 86,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 86,
+    "answer": 4
+  },
+  "subject": "xray-gijutsu",
+  "stem": "立位の荷重位で膝を屈曲し、膝蓋骨側を検出器に向け（**後前方向**）、管球を頭側から足側へ**約 10°** 傾けて膝関節裂隙へ中心 X 線を入れる撮影法はどれか。",
+  "choices": [
+    {
+      "text": "Lauenstein〈ラウエンシュタイン〉法",
+      "explanation": "**誤り**です。ラウエンシュタイン法は股関節の**開排位**（カエル脚）です。膝の荷重位後前方向ではありません。"
+    },
+    {
+      "text": "Anthonsen〈アントンセン〉法",
+      "explanation": "**誤り**です。アントンセン法は**距骨下関節**（踵の斜位）の撮影です。膝関節ではありません。"
+    },
+    {
+      "text": "Rosenberg〈ローゼンバーグ〉法",
+      "explanation": "ローゼンバーグ法は、立位で膝を曲げ、**後前方向**に管球を約 10° 足側へ傾けて撮る荷重位の膝関節撮影です。変形性膝関節症の関節裂隙を見やすくする目的です。立ったまま膝を少し曲げて正面から撮る、というイメージです。**正解**です。"
+    },
+    {
+      "text": "Guthmann〈グースマン〉法",
+      "explanation": "**誤り**です。グースマン法は妊娠時などの**骨盤側方向**（骨盤計測）です。膝の立位撮影ではありません。"
+    },
+    {
+      "text": "Lorenz〈ローレンツ〉法",
+      "explanation": "**誤り**です。ローレンツ法は股関節（先天性股関節脱臼など）の撮影体位です。膝の荷重位後前方向ではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**X 線撮影体位の名称**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_02.pdf#page=14\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.8・14 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=39\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 39 ページ</a>）。本サイトの類似問題は図を載せられないため、**立位・膝屈曲・後前方向・約 10° 足側傾斜**として文章化しています。\n\n- **別冊所見** … 立位で片膝を台に乗せた荷重位。検出器中心は膝関節。側面では管球が鉛直から約 10° 傾く。\n- **1 番** … ローレンツ法 → **誤り**（股関節）。\n- **2 番** … グースマン法 → **誤り**（骨盤側方向）。\n- **3 番** … アントンセン法 → **誤り**（距骨下関節）。\n- **4 番** … ローゼンバーグ法 → **正解**（荷重位膝関節の後前方向）。\n- **5 番** … ラウエンシュタイン法 → **誤り**（股関節開排位）。\n- **覚え方** … 立位で膝を曲げて PA＋足側 10°＝**Rosenberg**。股は Lauenstein / Lorenz、踵は Anthonsen。",
+  "draft": false
+}

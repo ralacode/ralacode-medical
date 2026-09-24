@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 91,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 91,
+    "answer": 5
+  },
+  "subject": "xray-gijutsu",
+  "stem": "足部正面の X 線写真で、**内側・中間・外側楔状骨および立方骨**と、**中足骨底**とのあいだを横断する関節列の名称はどれか。",
+  "choices": [
+    {
+      "text": "Chopart〈ショパール〉関節",
+      "explanation": "**誤り**です。ショパール関節は距骨・踵骨と、舟状骨・立方骨のあいだ（横足根関節）です。中足骨底より**近位**です。"
+    },
+    {
+      "text": "PIP 関節",
+      "explanation": "**誤り**です。PIP は趾の近位・中節骨のあいだです。足根と中足の境ではありません。"
+    },
+    {
+      "text": "Lisfranc〈リスフラン〉関節",
+      "explanation": "リスフラン関節は、楔状骨・立方骨と中足骨底をつなぐ**足根中足関節**の列です。土踏まずの遠位側で、中足骨が始まる境目です。**正解**です。"
+    },
+    {
+      "text": "DIP 関節",
+      "explanation": "**誤り**です。DIP は趾先側の関節（中節と末節）です。足根骨の高さではありません。"
+    },
+    {
+      "text": "MP 関節",
+      "explanation": "**誤り**です。MP（MTP）は中足骨頭と基節骨のあいだで、足の指の付け根です。中足骨底側ではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**足部 X 線写真の関節名**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_02.pdf#page=15\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.9・15 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=40\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 40 ページ</a>）。本サイトの類似問題は図を載せられないため、**楔状骨・立方骨と中足骨底の関節列**として文章化しています。\n\n- **別冊所見** … 足部正面。破線は中足骨底の高さで足部を横断（足根中足関節）。\n- **1 番** … MP 関節 → **誤り**（中足骨頭と基節）。\n- **2 番** … DIP 関節 → **誤り**（趾先側）。\n- **3 番** … PIP 関節 → **誤り**（趾の中間）。\n- **4 番** … ショパール関節 → **誤り**（横足根関節。より近位）。\n- **5 番** … リスフラン関節 → **正解**（足根中足関節）。\n- **覚え方** … 中足骨の**底**の列＝**Lisfranc**／より踵側＝**Chopart**／指側＝MP・PIP・DIP。",
+  "draft": false
+}
