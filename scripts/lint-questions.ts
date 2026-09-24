@@ -162,6 +162,11 @@ function lintGate(file: QuestionFile, failures: Failure[]) {
           `肢 ${index + 1} の text にリンクがあります。記事リンクは explanation に書いてください`
         )
       }
+      if (/<\/?(?:sub|sup)\b/i.test(choice.text)) {
+        fail(
+          `肢 ${index + 1} の text は HTML にならないので、下付き・上付きは Unicode で書いてください`
+        )
+      }
     }
   }
 
@@ -179,8 +184,8 @@ function lintGate(file: QuestionFile, failures: Failure[]) {
   }
 
   const html = allText(file)
-  if (/<\/?sub>/i.test(html) || /<\/?sup>/i.test(html)) {
-    fail("<sub> / <sup> は使わず Unicode で書いてください")
+  if (/<(sub|sup)\s/i.test(html) || /<(sub|sup)\//i.test(html)) {
+    fail("<sub> / <sup> に属性を付けないでください")
   }
   for (const wording of forbiddenWording(html)) {
     fail(`禁止表記: ${wording}`)
