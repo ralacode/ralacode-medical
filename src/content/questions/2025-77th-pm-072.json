@@ -1,0 +1,43 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 72,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 72,
+    "answer": 1
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": ["hoshasen-keisoku"],
+  "stem": "**⁶⁰Co** の γ 線（1.17 MeV と 1.33 MeV）を検出器で測ったエネルギースペクトルで、対生成のあとに消滅光子 1 個が検出器外へ逃げたときに出る**エスケープピーク**に最も近いのはどれか。",
+  "choices": [
+    {
+      "text": "1.17 MeV",
+      "explanation": "1.17 MeV は **⁶⁰Co** の一方の**光電ピーク**です。エスケープではありません。"
+    },
+    {
+      "text": "2.50 MeV",
+      "explanation": "1.17 ＋ 1.33 ＝ **2.50 MeV** は、2 本の γ 線が同時に入った**和ピーク**です。逃げではなく足し算です。"
+    },
+    {
+      "text": "0.51 MeV",
+      "explanation": "0.51 MeV は対生成後の**消滅光子そのもの**のピークです。光電ピークから 0.51 MeV を引いた位置（エスケープ）ではありません。"
+    },
+    {
+      "text": "1.33 MeV",
+      "explanation": "1.33 MeV は **⁶⁰Co** のもう一方の**光電ピーク**です。エスケープではありません。"
+    },
+    {
+      "text": "0.82 MeV",
+      "explanation": "1.33 MeV の光電ピークから消滅光子 1 個分（0.51 MeV）を引くと **約 0.82 MeV** です。対生成で生まれた光が 1 個外へ逃げるので、ピークが 0.51 MeV 分だけ左へずれる、というイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": ["escape-peak"],
+  "sourceExplanation": "この問は、**⁶⁰Co スペクトルのエスケープピーク**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=34\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 34 ページ</a>）。公式はスペクトル図上の記号を選ぶ形式でした。本サイトの類似問題は図を載せられないため、同じピークをエネルギーで問うています。\n\n- **1 番** … 約 0.8 MeV 付近の小さなピーク（1.33 MeV − 0.51 MeV）→ **正解**（シングルエスケープ）。\n- **2 番** … 1.17 MeV の光電ピーク → **誤り**。\n- **3 番** … 1.33 MeV の光電ピーク → **誤り**。\n- **4 番** … 和ピーク直前の連続成分（コンプトン端付近）→ **誤り**。\n- **5 番** … 2.50 MeV の和ピーク → **誤り**。\n- **覚え方** … エスケープ＝**光電ピーク − 0.51 MeV**／和ピーク＝**1.17＋1.33**。",
+  "draft": false
+}

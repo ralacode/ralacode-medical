@@ -113,6 +113,8 @@ export async function loadExamPdf(absolutePath: string): Promise<PDFDocumentProx
 const QUESTION_HEADING_RE = /^([1-9]\d{0,2}) (?=\S)/
 /** 選択肢 1 の行。見出し候補の直後にこれがあるものだけを問番号とみなす（表紙・注意書きの「2 …」を除外） */
 const FIRST_CHOICE_RE = /^1[．.]/
+/** 肢が図だけの問は「1．」がテキストに出ない。定型の問い文があれば見出しとみなす */
+const QUESTION_PROMPT_RE = /正しいのはどれか|誤っているのはどれか|2\s*つ選べ/
 /** フッターは 1 テキスト項目（例: "DKIX-06-前H-5"）。連結後だと隣のページ番号と癒着するので項目単位で見る */
 const FOOTER_ITEM_RE = /([前後]H-\d+)$/
 
@@ -122,8 +124,12 @@ function detectQuestionCandidates(lines: string[]) {
   lines.forEach((line, index) => {
     const match = line.match(QUESTION_HEADING_RE)
     if (!match) return
-    const following = lines.slice(index + 1, index + 13)
-    if (following.some((next) => FIRST_CHOICE_RE.test(next))) {
+    const following = lines.slice(index, index + 13)
+    if (
+      following.some(
+        (next) => FIRST_CHOICE_RE.test(next) || QUESTION_PROMPT_RE.test(next)
+      )
+    ) {
       numbers.add(Number(match[1]))
     }
   })

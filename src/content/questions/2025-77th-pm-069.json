@@ -1,0 +1,39 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 69,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 69,
+    "answer": 4
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": ["hoshasen-keisoku"],
+  "stem": "ある線源を **40 秒** 測ったところ、全計数は **6400** だった。計数率とその標準偏差［s⁻¹］はどれか。",
+  "choices": [
+    {
+      "text": "160 ± 80"
+    },
+    {
+      "text": "160 ± 2",
+      "explanation": "計数率は **N / t ＝ 6400 / 40 ＝ 160 s⁻¹**。ポアソン統計では全計数の標準偏差は **√N ＝ 80**。時間で割ると計数率の標準偏差は **√N / t ＝ 80 / 40 ＝ 2 s⁻¹**。よって **160 ± 2**。**正解**です。"
+    },
+    {
+      "text": "6400 ± 80"
+    },
+    {
+      "text": "160 ± 13"
+    },
+    {
+      "text": "160 ± 4"
+    }
+  ],
+  "answer": 2,
+  "terms": ["counting-statistics"],
+  "sourceExplanation": "この問は、**計数率の標準偏差**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=30\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 30 ページ</a>）。公式は文字式の選択で、正答は **4 番**（計数率 **N/t** に、標準偏差 **√N / t** を付けた形）でした。類似問題は同じ式に数値を入れています。\n\n**式**\n- 計数率 **n ＝ N / t**\n- 全計数の標準偏差 **√N**（ポアソン）\n- 計数率の標準偏差 **σ_n ＝ √N / t**（同じこととして **√(n / t)**）\n\n**ひっかけ**\n- 全計数のまま ±√N を付ける\n- 計数率に ±√N を付ける（時間で割らない）\n- ±√(N / t) にする（√t で割るべきところを根号の中に入れる）\n- **覚え方** … 率にしたら、ブレも**同じ t で割る**。",
+  "draft": false
+}
