@@ -1,0 +1,42 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 44,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 44,
+    "answer": 4
+  },
+  "subject": "kiso-igaku",
+  "stem": "小児の**骨年齢（骨成熟）**をX線で評価するとき、標準的に用いる部位はどれか。",
+  "choices": [
+    {
+      "text": "肩甲骨",
+      "explanation": "肩甲骨は骨年齢の標準チャートの主対象ではありません。撮影も重ねが多く、成熟指標として使いません。"
+    },
+    {
+      "text": "左手関節を含む手（手根骨と指骨）",
+      "explanation": "Greulich-Pyle 法や Tanner-Whitehouse 法など、小児の骨年齢は**左手の手根骨・中手骨・指骨**のX線が標準です。小さな骨がたくさん並び、成熟の段階が見やすい「成長の目盛り」です。**正解**です。"
+    },
+    {
+      "text": "頭蓋冠",
+      "explanation": "頭蓋の縫合や泉門は乳児の評価に使うことはありますが、年長児の骨年齢の標準法ではありません。"
+    },
+    {
+      "text": "大腿骨骨幹部",
+      "explanation": "長管骨の骨端核は参考になりますが、日常の骨年齢評価の第一選択は手・手関節です。"
+    },
+    {
+      "text": "下顎骨",
+      "explanation": "下顎は歯科的な成長評価に使うことはあっても、全身の骨年齢の標準部位ではありません。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、小児の**骨年齢評価に用いる骨**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=21\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 21 ページ</a>）。\n\n- **1 番** … **頭蓋骨** → **誤り**。\n- **2 番** … **下顎骨** → **誤り**。\n- **3 番** … **肩甲骨** → **誤り**。\n- **4 番** … **手根骨** → **正解**（左手の手根・指が標準。GP 法など）。\n- **5 番** … **大腿骨** → **誤り**。\n- **覚え方** … 小児の骨年齢＝**左手（手根骨＋指）**。",
+  "draft": false
+}
