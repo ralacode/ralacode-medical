@@ -1,0 +1,38 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 100,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 100,
+    "answer": 1
+  },
+  "subject": "hoshasen-anzen",
+  "stem": "¹⁸F を **180 MBq** 投与した直後の患者に、**2 m** の距離で **10 分間**、年間 **40 回**対応した。放射線業務従事者の年間被ばく線量［μSv］に最も近いのはどれか。\n\nただし、¹⁸F の実効線量率定数は **0.14 μSv・m²・MBq⁻¹・h⁻¹** とする。",
+  "choices": [
+    {
+      "text": "21"
+    },
+    {
+      "text": "84"
+    },
+    {
+      "text": "42",
+      "explanation": "点線源の線量は **H ＝ Γ × A × t × N / r²** です。時間は時間単位なので 10 分 ＝ 10/60 h。H ＝ 0.14 × 180 × (10/60) × 40 / 2² ＝ 25.2 × (1/6) × 40 / 4 ＝ 4.2 × 10 ＝ **42 μSv**。距離の 2 乗で薄まり、時間と回数で積み上がるイメージです。"
+    },
+    {
+      "text": "168"
+    },
+    {
+      "text": "336"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、¹⁸F 投与直後の患者対応による**外部被ばく線量**の計算です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=44\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 44 ページ</a>）。公式と同じ式で、放射能・時間・回数を変えています。減衰は見ません（投与直後）。\n\n- 式は **H ＝ Γ × A × t × N / r²**。t は時間（h）。\n- 公式の代入では約 **30 μSv** になり、これが**正解（1 番）**です。\n- 落とし穴 … **1/r** にする、**r² を割らない**、分を時間に直さない。",
+  "draft": false
+}
