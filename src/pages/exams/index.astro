@@ -10,6 +10,7 @@ import {
   groupQuestions,
   groupQuestionsByStudyTopic,
   groupQuestionsBySubject,
+  reviewHref,
   sessionLabel,
   yearHref,
 } from "@/lib/questions"
@@ -32,6 +33,8 @@ const studyTopics = groupQuestionsByStudyTopic(questions)
         年次または科目から探せます。
       </p>
     </header>
+
+    <LinkCard href={reviewHref()} title="間違えた問題" />
 
     {
       years.length === 0 ? (

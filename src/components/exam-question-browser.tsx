@@ -2,11 +2,13 @@ import { useMemo, useState } from "react"
 
 import { LinkCard } from "@/components/link-card"
 import { SearchField } from "@/components/search-field"
+import { StartStudySessionButton } from "@/components/start-study-session-button"
 import { buttonVariants } from "@/components/ui/button"
 import { choiceSearchSnippet, matchesSearchText } from "@/lib/search-text"
 import { cn } from "@/lib/utils"
 
 export type ExamQuestionBrowserItem = {
+  id: string
   href: string
   heading: string
   stem: string
@@ -21,6 +23,10 @@ export type ExamQuestionBrowserItem = {
 export type ExamQuestionBrowserSection = {
   title: string
   items: ExamQuestionBrowserItem[]
+  session?: {
+    title: string
+    returnHref: string
+  }
 }
 
 function questionPrimaryText(item: ExamQuestionBrowserItem) {
@@ -95,53 +101,75 @@ export function ExamQuestionBrowser({
           該当する問はありません。
         </p>
       ) : (
-        filtered.map((section) => (
-          <section key={section.title} className="grid gap-3">
-            <h2 className="text-sm font-medium text-muted-foreground">
-              {section.title}
-            </h2>
-            <ul className="grid gap-3">
-              {section.items.map((item) => (
-                <li
-                  key={item.href}
-                  className="overflow-hidden rounded-xl border border-border bg-card"
-                >
-                  <LinkCard
-                    bare
-                    href={item.href}
-                    label={`${item.heading}${item.analog ? " · 類似問題" : ""}`}
-                    title={item.stem}
-                    note={
-                      matchedViaChoices(item, query)
-                        ? choiceSearchSnippet(
-                            item.choiceTexts ?? [],
-                            query,
-                            questionPrimaryText(item)
-                          )
-                        : undefined
-                    }
+        filtered.map((section) => {
+          const source =
+            sections.find((entry) => entry.title === section.title) ?? section
+          const sessionItems = source.session
+            ? source.items.map((item) => ({
+                id: item.id,
+                href: item.href,
+                heading: item.heading,
+                stem: item.stem,
+              }))
+            : []
+
+          return (
+            <section key={section.title} className="grid gap-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h2 className="text-sm font-medium text-muted-foreground">
+                  {section.title}
+                </h2>
+                {source.session && sessionItems.length > 0 ? (
+                  <StartStudySessionButton
+                    title={source.session.title}
+                    items={sessionItems}
+                    returnHref={source.session.returnHref}
                   />
-                  {item.categoryLinks && item.categoryLinks.length > 0 ? (
-                    <div className="flex flex-wrap gap-2 border-t border-border p-3">
-                      {item.categoryLinks.map((link) => (
-                        <a
-                          key={link.href}
-                          className={cn(
-                            buttonVariants({ variant: "default" }),
-                            "min-h-11"
-                          )}
-                          href={link.href}
-                        >
-                          {link.label}
-                        </a>
-                      ))}
-                    </div>
-                  ) : null}
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))
+                ) : null}
+              </div>
+              <ul className="grid gap-3">
+                {section.items.map((item) => (
+                  <li
+                    key={item.href}
+                    className="overflow-hidden rounded-xl border border-border bg-card"
+                  >
+                    <LinkCard
+                      bare
+                      href={item.href}
+                      label={`${item.heading}${item.analog ? " · 類似問題" : ""}`}
+                      title={item.stem}
+                      note={
+                        matchedViaChoices(item, query)
+                          ? choiceSearchSnippet(
+                              item.choiceTexts ?? [],
+                              query,
+                              questionPrimaryText(item)
+                            )
+                          : undefined
+                      }
+                    />
+                    {item.categoryLinks && item.categoryLinks.length > 0 ? (
+                      <div className="flex flex-wrap gap-2 border-t border-border p-3">
+                        {item.categoryLinks.map((link) => (
+                          <a
+                            key={link.href}
+                            className={cn(
+                              buttonVariants({ variant: "default" }),
+                              "min-h-11"
+                            )}
+                            href={link.href}
+                          >
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    ) : null}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        })
       )}
     </div>
   )

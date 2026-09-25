@@ -20,6 +20,8 @@ type ExamBreadcrumbProps = {
   number?: number
   category?: BrowseCategoryId
   subject?: ExamSubjectId
+  /** 年・科目以外の現在地（間違えた問題など） */
+  current?: string
   className?: string
   class?: string
 }
@@ -41,6 +43,7 @@ export function ExamBreadcrumb({
   number,
   category,
   subject,
+  current,
   className,
   class: classProp,
 }: ExamBreadcrumbProps) {
@@ -49,7 +52,7 @@ export function ExamBreadcrumb({
   const questionPage = year != null && session != null && number != null
   const browseId =
     questionPage && fromSubject ? (topic ?? subject) : undefined
-  const atRoot = year == null && category == null
+  const atRoot = year == null && category == null && current == null
 
   return (
     <nav aria-label="パンくずリスト" className={navClass}>
@@ -101,6 +104,12 @@ export function ExamBreadcrumb({
             <li className={cn(currentClass, "truncate")}>
               {browseCategoryLabel(category)}
             </li>
+          </>
+        ) : null}
+        {current && year == null && category == null ? (
+          <>
+            <CrumbSep />
+            <li className={cn(currentClass, "truncate")}>{current}</li>
           </>
         ) : null}
       </ol>

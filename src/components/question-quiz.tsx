@@ -11,6 +11,10 @@ import {
   type ChoiceOrderMode,
 } from "@/lib/choice-order"
 import { recordAttempt } from "@/lib/study-record"
+import {
+  isActiveSessionQuestion,
+  markSessionFirstResult,
+} from "@/lib/study-session"
 import { PAGE_SCROLL_SLOT, PAGE_SCROLL_TOP_OFFSET } from "@/lib/ui-contracts"
 import { cn } from "@/lib/utils"
 
@@ -393,12 +397,17 @@ export function QuestionQuiz({
     const selectedChoice = ordered[selected - 1]
     if (!selectedChoice) return
 
+    const retry = nextAttemptIsRetry.current
+    const correct = selected === displayAnswer
+    const inSession = isActiveSessionQuestion(questionId, window.location.search)
+
     const saved = recordAttempt(questionId, {
       selected: selectedChoice.originalNumber,
-      correct: selected === displayAnswer,
-      retry: nextAttemptIsRetry.current,
-      mode: "single",
+      correct,
+      retry,
+      mode: inSession ? "session" : "single",
     })
+    if (inSession && !retry) markSessionFirstResult(questionId, correct)
     nextAttemptIsRetry.current = true
     setSaveError(!saved.ok)
     setSubmitted(true)

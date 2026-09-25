@@ -173,3 +173,58 @@ export function recordAttempt(
 
   return saveStudyRecord(addAttempt(loadStudyRecord(), questionId, nextAttempt))
 }
+
+export function latestFirstAttempt(
+  record: StudyRecordV1,
+  questionId: string
+): Attempt | undefined {
+  const attempts = record.questions[questionId]?.attempts ?? []
+  for (let index = attempts.length - 1; index >= 0; index -= 1) {
+    const attempt = attempts[index]
+    if (attempt && !attempt.retry) return attempt
+  }
+  return undefined
+}
+
+export type IncorrectFirstAttempt = {
+  questionId: string
+  at: string
+  selected: number
+}
+
+/** 直近の 1 回目（retry: false）が不正解の問題。新しい順 */
+export function listIncorrectFirstAttempts(
+  record: StudyRecordV1
+): IncorrectFirstAttempt[] {
+  const hits: IncorrectFirstAttempt[] = []
+
+  for (const questionId of Object.keys(record.questions)) {
+    const attempt = latestFirstAttempt(record, questionId)
+    if (attempt && !attempt.correct) {
+      hits.push({
+        questionId,
+        at: attempt.at,
+        selected: attempt.selected,
+      })
+    }
+  }
+
+  return hits.sort((left, right) => right.at.localeCompare(left.at))
+}
+
+export function hasAnyAttempts(record: StudyRecordV1) {
+  return Object.values(record.questions).some(
+    (question) => question.attempts.length > 0
+  )
+}
+
+/** 解答履歴だけ消す。未知のトップレベルキーは残す */
+export function clearStudyRecord(): SaveStudyRecordResult {
+  const current = loadStudyRecord()
+  return saveStudyRecord({
+    ...current,
+    version: 1,
+    questions: {},
+    updatedAt: new Date().toISOString(),
+  })
+}

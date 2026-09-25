@@ -14,6 +14,7 @@ import {
   questionHref,
   questionSearchLabels,
   sessionLabel,
+  yearHref,
 } from "@/lib/questions"
 
 interface Props {
@@ -65,12 +66,17 @@ const description = exam
           client:load
           sections={group.sessions.map((session) => ({
             title: sessionLabel(session.session),
+            session: {
+              title: `${year}年 ${sessionLabel(session.session)}`,
+              returnHref: yearHref(year),
+            },
             items: questions
               .filter((question) => question.data.session === session.session)
               .sort((left, right) => left.data.number - right.data.number)
               .map((question) => {
                 const item = question.data
                 return {
+                  id: question.id,
                   href: questionHref(item.year, item.session, item.number),
                   heading: questionHeading(item.exam, item.session, item.number),
                   stem: item.stem,

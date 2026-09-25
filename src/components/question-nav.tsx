@@ -1,12 +1,17 @@
+import { useEffect, useState } from "react"
+
 import { LinkCard } from "@/components/link-card"
+import { SessionNav } from "@/components/session-nav"
 import { useQuestionBrowseState } from "@/hooks/use-question-browse-state"
 import { studyTopicLabel, type StudyTopicId } from "@/lib/exam-subjects"
 import {
   browseCategoryHref,
   type QuestionNavTarget,
 } from "@/lib/questions"
+import { isActiveSessionQuestion } from "@/lib/study-session"
 
 type QuestionNavProps = {
+  questionId: string
   examPrev?: QuestionNavTarget
   examNext?: QuestionNavTarget
   subjectPrev?: QuestionNavTarget
@@ -21,6 +26,7 @@ type QuestionNavProps = {
 }
 
 export function QuestionNav({
+  questionId,
   examPrev,
   examNext,
   subjectPrev,
@@ -31,7 +37,24 @@ export function QuestionNav({
   subjectLabel,
   year,
 }: QuestionNavProps) {
+  const [inSession, setInSession] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    const sync = () => {
+      setInSession(isActiveSessionQuestion(questionId, window.location.search))
+    }
+
+    sync()
+    document.addEventListener("astro:page-load", sync)
+    return () => document.removeEventListener("astro:page-load", sync)
+  }, [questionId])
+
   const { fromSubject, topic } = useQuestionBrowseState()
+
+  if (inSession) return <SessionNav questionId={questionId} />
+  if (inSession === null) {
+    return <nav className="min-h-16" aria-hidden="true" />
+  }
   const topicSequence = topic ? topicNav?.[topic] : undefined
   const fromTopic = fromSubject && topic != null
 

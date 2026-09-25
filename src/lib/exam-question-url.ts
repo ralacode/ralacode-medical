@@ -17,3 +17,8 @@ function toPathname(urlOrPath: string) {
 export function isExamQuestionUrl(urlOrPath: string) {
   return EXAM_QUESTION_PATH.test(toPathname(urlOrPath))
 }
+
+/** 端末内の学習記録ページ。sitemap に出さない。 */
+export function isPrivateStudyUrl(urlOrPath: string) {
+  return /\/exams\/(?:review|session)\/?$/.test(toPathname(urlOrPath))
+}

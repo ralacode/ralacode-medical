@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content"
 
 import { ExamBreadcrumb } from "@/components/exam-breadcrumb"
 import ExamQuestionList from "@/components/exam-question-list.astro"
+import { StartStudySessionButton } from "@/components/start-study-session-button"
 import Layout from "@/layouts/main.astro"
 import { getPublishedQuestions } from "@/lib/exam-content"
 import {
@@ -11,9 +12,13 @@ import {
   type BrowseCategoryId,
 } from "@/lib/exam-subjects"
 import {
+  browseCategoryHref,
+  compareQuestions,
   examCategorySeoDescription,
   examCategorySeoTitle,
   groupQuestions,
+  questionHeading,
+  questionHref,
 } from "@/lib/questions"
 
 interface Props {
@@ -53,6 +58,24 @@ const browseTopic = isStudyTopicId(category) ? category : undefined
 const years = groupQuestions(questions.map((question) => question.data))
 const title = examCategorySeoTitle(label)
 const description = examCategorySeoDescription(label)
+const sessionItems =
+  !isStudyTopicId(category) && questions.length > 0
+    ? [...questions]
+        .sort(
+          (left, right) =>
+            right.data.year - left.data.year ||
+            compareQuestions(left.data, right.data)
+        )
+        .map((question) => {
+          const item = question.data
+          return {
+            id: question.id,
+            href: questionHref(item.year, item.session, item.number),
+            heading: questionHeading(item.exam, item.session, item.number),
+            stem: item.stem,
+          }
+        })
+    : []
 ---
 
 <Layout title={title} description={description} headerLabel="国家試験対策">
@@ -71,6 +94,16 @@ const description = examCategorySeoDescription(label)
       <p class="text-sm leading-relaxed text-muted-foreground">
         公式の問題文・選択肢は掲載していません。この科目の類似問題を選んで演習できます。
       </p>
+      {
+        sessionItems.length > 0 ? (
+          <StartStudySessionButton
+            client:load
+            title={label}
+            items={sessionItems}
+            returnHref={browseCategoryHref(category)}
+          />
+        ) : null
+      }
     </header>
 
     {
