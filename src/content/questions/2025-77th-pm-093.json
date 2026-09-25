@@ -1,0 +1,38 @@
+{
+  "year": 2025,
+  "exam": 77,
+  "session": "pm",
+  "number": 93,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2025,
+    "exam": 77,
+    "session": "pm",
+    "number": 93,
+    "answer": 3
+  },
+  "subject": "gazo-kogaku",
+  "stem": "デジタル X 線検出器に、1 mm² あたり平均 **2,500 個**の入射 X 線光子が届いた。出力画像の SNR が **40** のとき、量子検出効率（DQE）として最も近いのはどれか。",
+  "choices": [
+    {
+      "text": "0.80"
+    },
+    {
+      "text": "0.16"
+    },
+    {
+      "text": "1.00"
+    },
+    {
+      "text": "0.40"
+    },
+    {
+      "text": "0.64",
+      "explanation": "広い面積（ゼロ周波数）の DQE は **(SNR_out / SNR_in)²** です。入射がポアソンなら **SNR_in ＝ √N** なので、**DQE ＝ SNR_out² / N** です。40² / 2,500 ＝ 1,600 / 2,500 ＝ **0.64**。雨粒 2,500 個分のばらつきに対し、画像に残った情報量が 40²＝1,600 粒相当、という比率です。40 / 50 ＝ 0.80 は比を 2 乗し忘れた値、1.00 は損失なしと決めてしまった値です。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": ["dqe"],
+  "sourceExplanation": "この問は、入射 X 線量子数と出力 SNR から **DQE** を求める計算です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=41\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 41 ページ</a>）。\n\n- **式** … DQE ＝ (SNR_out)² / N（N は単位面積あたりの平均入射量子数。SNR_in ＝ √N）。\n- **公式正答** … **3 番**。与えられた入射量子数と出力 SNR を代入すると、2 乗を入射数で割った値になる。\n- **落とし穴** … SNR / √N（2 乗忘れ）、SNR / N、逆数 N / SNR²、損失なしの 1。\n- **類似問題** … N ＝ 2,500、SNR_out ＝ 40 → 1,600 / 2,500 ＝ **0.64**。",
+  "draft": false
+}
