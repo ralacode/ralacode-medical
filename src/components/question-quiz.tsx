@@ -10,6 +10,7 @@ import {
   writeChoiceOrderMode,
   type ChoiceOrderMode,
 } from "@/lib/choice-order"
+import { recordAttempt } from "@/lib/study-record"
 import { PAGE_SCROLL_SLOT, PAGE_SCROLL_TOP_OFFSET } from "@/lib/ui-contracts"
 import { cn } from "@/lib/utils"
 
@@ -23,6 +24,7 @@ type OrderedChoice = Choice & {
 }
 
 type QuestionQuizProps = {
+  questionId: string
   labelledBy: string
   choices: Choice[]
   answer: number
@@ -252,6 +254,7 @@ function orderChoices(
 }
 
 export function QuestionQuiz({
+  questionId,
   labelledBy,
   choices,
   answer,
@@ -279,9 +282,11 @@ export function QuestionQuiz({
   const [value, setValue] = useState<string | null>(null)
   const [submitted, setSubmitted] = useState(false)
   const [resultPhase, setResultPhase] = useState<ResultPhase>("idle")
+  const [saveError, setSaveError] = useState(false)
   const resultRef = useRef<HTMLDivElement>(null)
   const choicesRef = useRef<HTMLDivElement>(null)
   const scrollToChoicesAfterRetry = useRef(false)
+  const nextAttemptIsRetry = useRef(false)
   const prefersReducedMotion = usePrefersReducedMotion()
 
   /* eslint-disable react-hooks/set-state-in-effect --
@@ -293,8 +298,10 @@ export function QuestionQuiz({
     setValue(null)
     setSubmitted(false)
     setResultPhase("idle")
+    setSaveError(false)
+    nextAttemptIsRetry.current = false
     setMounted(true)
-  }, [indexed, shuffleChoices])
+  }, [questionId, indexed, shuffleChoices])
   /* eslint-enable react-hooks/set-state-in-effect */
 
   const displayAnswer =
@@ -369,6 +376,7 @@ export function QuestionQuiz({
     setValue(null)
     setSubmitted(false)
     setResultPhase("idle")
+    setSaveError(false)
     setOrdered(orderChoices(indexed, nextMode, shuffleChoices))
   }
 
@@ -381,6 +389,18 @@ export function QuestionQuiz({
   function handleSubmit(event: { preventDefault(): void }) {
     event.preventDefault()
     if (!selected) return
+
+    const selectedChoice = ordered[selected - 1]
+    if (!selectedChoice) return
+
+    const saved = recordAttempt(questionId, {
+      selected: selectedChoice.originalNumber,
+      correct: selected === displayAnswer,
+      retry: nextAttemptIsRetry.current,
+      mode: "single",
+    })
+    nextAttemptIsRetry.current = true
+    setSaveError(!saved.ok)
     setSubmitted(true)
   }
 
@@ -510,30 +530,37 @@ export function QuestionQuiz({
         </RadioGroup>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3">
-        {submitted ? (
-          <>
-            <ResultStatus
-              correct={correct}
-              answer={displayAnswer}
-              visible={resultVisible}
-              celebrate={celebrateResult}
-            />
-            <Button
-              type="button"
-              variant="outline"
-              size="lg"
-              onClick={handleRetry}
-            >
-              <RotateCcwIcon />
-              やり直す
+      <div className="grid gap-2">
+        <div className="flex flex-wrap items-center gap-3">
+          {submitted ? (
+            <>
+              <ResultStatus
+                correct={correct}
+                answer={displayAnswer}
+                visible={resultVisible}
+                celebrate={celebrateResult}
+              />
+              <Button
+                type="button"
+                variant="outline"
+                size="lg"
+                onClick={handleRetry}
+              >
+                <RotateCcwIcon />
+                やり直す
+              </Button>
+            </>
+          ) : (
+            <Button type="submit" size="lg" disabled={!value}>
+              回答
             </Button>
-          </>
-        ) : (
-          <Button type="submit" size="lg" disabled={!value}>
-            回答
-          </Button>
-        )}
+          )}
+        </div>
+        {saveError ? (
+          <p className="text-xs text-muted-foreground">
+            記録をこの端末に保存できませんでした。ブラウザの保存容量やプライベートモードをご確認ください。
+          </p>
+        ) : null}
       </div>
 
       {submitted && sourceExplanationHtml ? (

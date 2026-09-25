@@ -236,6 +236,7 @@ const categoryLinks = questionCategoryLinks(question.data)
     </header>
     <QuestionQuiz
       client:load
+      questionId={question.id}
       labelledBy={stemLabelIds}
       choices={quizChoices}
       answer={answer}
