@@ -1,0 +1,42 @@
+---
+import { ExamBreadcrumb } from "@/components/exam-breadcrumb"
+import { ExamStats } from "@/components/exam-stats"
+import Layout from "@/layouts/main.astro"
+import { getPublishedQuestions } from "@/lib/exam-content"
+import {
+  examStatsSeoDescription,
+  examStatsSeoTitle,
+} from "@/lib/questions"
+
+const questions = (await getPublishedQuestions()).map((question) => ({
+  id: question.id,
+  subject: question.data.subject,
+  studyTopics: question.data.studyTopics,
+}))
+---
+
+<Layout
+  title={examStatsSeoTitle}
+  description={examStatsSeoDescription}
+  headerLabel="国家試験対策"
+  robots="noindex, follow"
+>
+  <span slot="header" class="text-sm text-muted-foreground md:hidden">
+    国家試験対策
+  </span>
+  <ExamBreadcrumb
+    slot="header"
+    className="hidden min-w-0 md:block"
+    current="科目別の正答率"
+  />
+  <div class="mx-auto grid max-w-2xl gap-8">
+    <header class="grid gap-3">
+      <ExamBreadcrumb className="md:hidden" current="科目別の正答率" />
+      <h1 class="text-2xl font-semibold tracking-tight">科目別の正答率</h1>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        直近の1回目の解答から出しています。10問未満の正答率は参考値です。記録はこの端末のブラウザに保存されます。
+      </p>
+    </header>
+    <ExamStats client:load questions={questions} />
+  </div>
+</Layout>

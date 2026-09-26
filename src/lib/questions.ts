@@ -75,6 +75,10 @@ export function sessionHref() {
   return withBase("exams/session/")
 }
 
+export function statsHref() {
+  return withBase("exams/stats/")
+}
+
 export function withDrillQuery(href: string) {
   const [path, search = ""] = href.split("?")
   const params = new URLSearchParams(search)
@@ -321,6 +325,11 @@ export const examSessionSeoTitle = "連続演習の結果｜診療放射線技�
 
 export const examSessionSeoDescription =
   "選んだ範囲の連続演習の結果です。記録はこの端末のブラウザに保存されます。"
+
+export const examStatsSeoTitle = "科目別の正答率｜診療放射線技師国家試験対策"
+
+export const examStatsSeoDescription =
+  "この端末に保存した解答から、科目ごとの正答率を見られます。記録はこの端末のブラウザに保存されます。"
 
 export function examYearSeoTitle(year: number, exam: number) {
   return `第${exam}回診療放射線技師国家試験対策問題（${year}）`

@@ -12,6 +12,7 @@ import {
   groupQuestionsBySubject,
   reviewHref,
   sessionLabel,
+  statsHref,
   yearHref,
 } from "@/lib/questions"
 
@@ -34,7 +35,10 @@ const studyTopics = groupQuestionsByStudyTopic(questions)
       </p>
     </header>
 
-    <LinkCard href={reviewHref()} title="間違えた問題" />
+    <div class="grid gap-3">
+      <LinkCard href={reviewHref()} title="間違えた問題を見る" />
+      <LinkCard href={statsHref()} title="科目別の正答率を見る" />
+    </div>
 
     {
       years.length === 0 ? (

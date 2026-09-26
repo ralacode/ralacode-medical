@@ -218,6 +218,33 @@ export function hasAnyAttempts(record: StudyRecordV1) {
   )
 }
 
+/** この数未満の正答率は参考値 */
+export const ACCURACY_SAMPLE_MIN = 10
+
+export type CategoryAccuracy = {
+  attempted: number
+  correct: number
+  total: number
+}
+
+/** 直近の 1 回目（retry: false）だけで集計する */
+export function summarizeCategory(
+  record: StudyRecordV1,
+  questionIds: readonly string[]
+): CategoryAccuracy {
+  let attempted = 0
+  let correct = 0
+
+  for (const questionId of questionIds) {
+    const attempt = latestFirstAttempt(record, questionId)
+    if (!attempt) continue
+    attempted += 1
+    if (attempt.correct) correct += 1
+  }
+
+  return { attempted, correct, total: questionIds.length }
+}
+
 /** 解答履歴だけ消す。未知のトップレベルキーは残す */
 export function clearStudyRecord(): SaveStudyRecordResult {
   const current = loadStudyRecord()
