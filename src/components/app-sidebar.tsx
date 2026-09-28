@@ -3,11 +3,13 @@ import {
   CalculatorIcon,
   GraduationCapIcon,
   HomeIcon,
+  InfoIcon,
 } from "lucide-react"
 
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -17,6 +19,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { privacyHref } from "@/lib/analytics"
 import { showTools, siteMeta } from "@/lib/constants"
 import { withBase } from "@/lib/paths"
 import { articlesHref } from "@/lib/article-paths"
@@ -72,6 +75,19 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              tooltip="プライバシー"
+              render={<a href={privacyHref()} />}
+            >
+              <InfoIcon />
+              <span>プライバシー</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )

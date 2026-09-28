@@ -1,0 +1,45 @@
+---
+import { GA_MEASUREMENT_ID, GA_PRODUCTION_HOST } from "@/lib/analytics"
+
+const enabled = import.meta.env.PROD && Boolean(GA_MEASUREMENT_ID)
+---
+
+{
+  enabled ? (
+    <script
+      is:inline
+      define:vars={{
+        measurementId: GA_MEASUREMENT_ID,
+        productionHost: GA_PRODUCTION_HOST,
+      }}
+    >
+      ;(function () {
+        if (location.hostname !== productionHost) return
+        if (window.__ralacodeGa) return
+        window.__ralacodeGa = true
+
+        window.dataLayer = window.dataLayer || []
+        function gtag() {
+          window.dataLayer.push(arguments)
+        }
+        window.gtag = gtag
+        gtag("js", new Date())
+        gtag("config", measurementId, { send_page_view: false })
+
+        document.addEventListener("astro:page-load", function () {
+          gtag("event", "page_view", {
+            page_title: document.title,
+            page_location: location.href,
+            page_path: location.pathname + location.search,
+          })
+        })
+
+        var script = document.createElement("script")
+        script.async = true
+        script.src =
+          "https://www.googletagmanager.com/gtag/js?id=" + measurementId
+        document.head.appendChild(script)
+      })()
+    </script>
+  ) : null
+}

@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css"
 import { AppShell } from "@/components/app-shell"
+import GoogleAnalytics from "@/components/google-analytics.astro"
 import Meta, { type Props as MetaProps } from "@/components/meta.astro"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { ClientRouter } from "astro:transitions"
@@ -47,6 +48,7 @@ const {
       jsonLdGraph={jsonLdGraph}
     />
     <ClientRouter fallback="swap" />
+    <GoogleAnalytics />
     <script is:inline>
       (() => {
         // src/lib/ui-contracts.ts の THEME_STORAGE_KEY と一致させること

@@ -1,0 +1,61 @@
+---
+import Layout from "@/layouts/main.astro"
+import { siteMeta } from "@/lib/constants"
+---
+
+<Layout
+  title="プライバシー"
+  description={`${siteMeta.siteTitle} のアクセス解析と、端末内に保存する学習記録の扱いです。`}
+  headerLabel="プライバシー"
+>
+  <div class="mx-auto grid max-w-2xl gap-8">
+    <header class="grid gap-3">
+      <h1 class="text-2xl font-semibold tracking-tight">プライバシー</h1>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        このサイトの利用状況の調べ方と、学習記録の保存先です。
+      </p>
+    </header>
+
+    <section class="grid gap-3">
+      <h2 class="text-lg font-semibold tracking-tight">アクセス解析</h2>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        どのページが読まれているかを把握するため、Google Analytics（GA4）を使っています。計測は
+        {" "}{siteMeta.siteTitle}{" "}
+        の公開サイトだけで行い、開発用の画面やプレビュー用の URL
+        では送りません。
+      </p>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        ページのアドレス、参照元、おおまかな地域や端末の情報などが Google
+        に送られます。氏名や連絡先は送りません。解答の正誤や学習記録も送りません。
+      </p>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        計測には Cookie を使います。Google の説明は
+        <a
+          class="underline underline-offset-2"
+          href="https://policies.google.com/privacy"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-astro-reload>Google プライバシーポリシー</a
+        >と
+        <a
+          class="underline underline-offset-2"
+          href="https://marketingplatform.google.com/about/analytics/terms/jp/"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-astro-reload>Google Analytics 利用規約</a
+        >にあります。
+      </p>
+    </section>
+
+    <section class="grid gap-3">
+      <h2 class="text-lg font-semibold tracking-tight">この端末に残る情報</h2>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        国家試験対策の解答記録は、この端末のブラウザに保存します。Google
+        には送りません。
+      </p>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        サイドバーの開閉状態も、このサイトの Cookie に保存します。
+      </p>
+    </section>
+  </div>
+</Layout>
