@@ -20,7 +20,7 @@ type ExamBreadcrumbProps = {
   number?: number
   category?: BrowseCategoryId
   subject?: ExamSubjectId
-  /** 年・科目以外の現在地（間違えた問題など） */
+  /** 年・科目以外の現在地（苦手問題など） */
   current?: string
   className?: string
   class?: string

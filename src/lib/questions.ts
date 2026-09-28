@@ -316,10 +316,10 @@ export const examBrowseSeoTitle = "診療放射線技師国家試験対策問題
 export const examBrowseSeoDescription =
   "診療放射線技師国家試験の対策問題です。公式問題の転載ではありません。"
 
-export const examReviewSeoTitle = "間違えた問題｜診療放射線技師国家試験対策"
+export const examReviewSeoTitle = "苦手問題｜診療放射線技師国家試験対策"
 
 export const examReviewSeoDescription =
-  "この端末に保存した不正解の類似問題を解き直せます。記録はこの端末のブラウザに保存されます。"
+  "この端末に保存した苦手な類似問題を解き直せます。記録はこの端末のブラウザに保存されます。"
 
 export const examSessionSeoTitle = "連続演習の結果｜診療放射線技師国家試験対策"
 

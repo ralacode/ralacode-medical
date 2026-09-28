@@ -15,6 +15,10 @@ export type Attempt = {
 
 export type QuestionRecord = {
   attempts: Attempt[]
+  /** 利用者が苦手として残したもの。正答率には使わない */
+  weak?: boolean
+  /** 苦手にした日時。並び用 */
+  weakAt?: string
 }
 
 export type StudyRecordV1 = {
@@ -76,7 +80,16 @@ function parseQuestionRecord(value: unknown): QuestionRecord | undefined {
     .map(parseAttempt)
     .filter((attempt): attempt is Attempt => attempt !== undefined)
 
-  return { attempts }
+  const weak = value.weak === true
+  const weakAt =
+    typeof value.weakAt === "string" && value.weakAt.length > 0
+      ? value.weakAt
+      : undefined
+
+  return {
+    attempts,
+    ...(weak ? { weak: true, ...(weakAt ? { weakAt } : {}) } : {}),
+  }
 }
 
 /** 未知 version・破損データは空の記録として扱う */
@@ -145,15 +158,25 @@ export function addAttempt(
   questionId: string,
   attempt: Attempt
 ): StoredStudyRecord {
-  const previous = record.questions[questionId]?.attempts ?? []
-  const attempts = [...previous, attempt].slice(-MAX_ATTEMPTS_PER_QUESTION)
+  const previous = record.questions[questionId]
+  const attempts = [...(previous?.attempts ?? []), attempt].slice(
+    -MAX_ATTEMPTS_PER_QUESTION
+  )
 
   return {
     ...record,
     version: 1,
     questions: {
       ...record.questions,
-      [questionId]: { attempts },
+      [questionId]: {
+        attempts,
+        ...(previous?.weak
+          ? {
+              weak: true,
+              ...(previous.weakAt ? { weakAt: previous.weakAt } : {}),
+            }
+          : {}),
+      },
     },
     updatedAt: attempt.at,
   }
@@ -186,27 +209,77 @@ export function latestFirstAttempt(
   return undefined
 }
 
-export type IncorrectFirstAttempt = {
+export type ReviewQuestionHit = {
   questionId: string
   at: string
   selected: number
+  markedWeak: boolean
+  incorrect: boolean
 }
 
-/** 直近の 1 回目（retry: false）が不正解の問題。新しい順 */
-export function listIncorrectFirstAttempts(
-  record: StudyRecordV1
-): IncorrectFirstAttempt[] {
-  const hits: IncorrectFirstAttempt[] = []
+function latestAttempt(record: StudyRecordV1, questionId: string) {
+  const attempts = record.questions[questionId]?.attempts ?? []
+  return attempts[attempts.length - 1]
+}
+
+export function isQuestionWeak(record: StudyRecordV1, questionId: string) {
+  return record.questions[questionId]?.weak === true
+}
+
+export function setQuestionWeak(
+  questionId: string,
+  weak: boolean
+): SaveStudyRecordResult {
+  const current = loadStudyRecord()
+  const previous = current.questions[questionId] ?? { attempts: [] }
+  const now = new Date().toISOString()
+  const next: QuestionRecord = weak
+    ? {
+        attempts: previous.attempts,
+        weak: true,
+        weakAt: previous.weakAt ?? now,
+      }
+    : { attempts: previous.attempts }
+
+  return saveStudyRecord({
+    ...current,
+    version: 1,
+    questions: {
+      ...current.questions,
+      [questionId]: next,
+    },
+    updatedAt: now,
+  })
+}
+
+/** 直近の1回目が不正解、または苦手として保存した問題。新しい順 */
+export function listReviewQuestions(record: StudyRecordV1): ReviewQuestionHit[] {
+  const hits: ReviewQuestionHit[] = []
 
   for (const questionId of Object.keys(record.questions)) {
-    const attempt = latestFirstAttempt(record, questionId)
-    if (attempt && !attempt.correct) {
-      hits.push({
-        questionId,
-        at: attempt.at,
-        selected: attempt.selected,
-      })
-    }
+    const question = record.questions[questionId]
+    const first = latestFirstAttempt(record, questionId)
+    const last = latestAttempt(record, questionId)
+    const incorrect = Boolean(first && !first.correct)
+    const markedWeak = question?.weak === true
+    if (!incorrect && !markedWeak) continue
+
+    const selected = first?.selected ?? last?.selected
+    if (selected === undefined) continue
+
+    const at = [first?.at, last?.at, question?.weakAt]
+      .filter((value): value is string => Boolean(value))
+      .sort()
+      .at(-1)
+    if (!at) continue
+
+    hits.push({
+      questionId,
+      at,
+      selected,
+      markedWeak,
+      incorrect,
+    })
   }
 
   return hits.sort((left, right) => right.at.localeCompare(left.at))

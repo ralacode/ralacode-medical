@@ -1,6 +1,12 @@
 import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react"
 import { createPortal } from "react-dom"
-import { CheckIcon, ExternalLinkIcon, RotateCcwIcon, XIcon } from "lucide-react"
+import {
+  BookmarkIcon,
+  CheckIcon,
+  ExternalLinkIcon,
+  RotateCcwIcon,
+  XIcon,
+} from "lucide-react"
 
 import { Button, buttonVariants } from "@/components/ui/button"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
@@ -10,7 +16,12 @@ import {
   writeChoiceOrderMode,
   type ChoiceOrderMode,
 } from "@/lib/choice-order"
-import { recordAttempt } from "@/lib/study-record"
+import {
+  isQuestionWeak,
+  loadStudyRecord,
+  recordAttempt,
+  setQuestionWeak,
+} from "@/lib/study-record"
 import {
   isActiveSessionQuestion,
   markSessionFirstResult,
@@ -226,6 +237,29 @@ function handleQuizHtmlClick(event: MouseEvent<HTMLElement>) {
   window.open(link.href, "_blank", "noopener,noreferrer")
 }
 
+function RetryAndWeakButtons({
+  weak,
+  onRetry,
+  onToggleWeak,
+}: {
+  weak: boolean
+  onRetry: () => void
+  onToggleWeak: () => void
+}) {
+  return (
+    <>
+      <Button type="button" variant="outline" size="lg" onClick={onRetry}>
+        <RotateCcwIcon />
+        やり直す
+      </Button>
+      <Button type="button" variant="outline" size="lg" onClick={onToggleWeak}>
+        <BookmarkIcon />
+        {weak ? "苦手から外す" : "苦手問題として保存"}
+      </Button>
+    </>
+  )
+}
+
 function scrollIntoPage(
   el: HTMLElement | null,
   behavior: ScrollBehavior = "smooth"
@@ -287,6 +321,7 @@ export function QuestionQuiz({
   const [submitted, setSubmitted] = useState(false)
   const [resultPhase, setResultPhase] = useState<ResultPhase>("idle")
   const [saveError, setSaveError] = useState(false)
+  const [weak, setWeak] = useState(false)
   const resultRef = useRef<HTMLDivElement>(null)
   const choicesRef = useRef<HTMLDivElement>(null)
   const scrollToChoicesAfterRetry = useRef(false)
@@ -303,6 +338,7 @@ export function QuestionQuiz({
     setSubmitted(false)
     setResultPhase("idle")
     setSaveError(false)
+    setWeak(false)
     nextAttemptIsRetry.current = false
     setMounted(true)
   }, [questionId, indexed, shuffleChoices])
@@ -410,7 +446,19 @@ export function QuestionQuiz({
     if (inSession && !retry) markSessionFirstResult(questionId, correct)
     nextAttemptIsRetry.current = true
     setSaveError(!saved.ok)
+    setWeak(isQuestionWeak(loadStudyRecord(), questionId))
     setSubmitted(true)
+  }
+
+  function handleToggleWeak() {
+    const next = !weak
+    const saved = setQuestionWeak(questionId, next)
+    if (!saved.ok) {
+      setSaveError(true)
+      return
+    }
+    setSaveError(false)
+    setWeak(next)
   }
 
   function handleRetry() {
@@ -460,15 +508,11 @@ export function QuestionQuiz({
               visible={resultVisible}
               celebrate={celebrateResult}
             />
-            <Button
-              type="button"
-              variant="outline"
-              size="lg"
-              onClick={handleRetry}
-            >
-              <RotateCcwIcon />
-              やり直す
-            </Button>
+            <RetryAndWeakButtons
+              weak={weak}
+              onRetry={handleRetry}
+              onToggleWeak={handleToggleWeak}
+            />
           </div>
           {explainedCount > 0 ? (
             <p className="text-sm text-muted-foreground">
@@ -549,15 +593,11 @@ export function QuestionQuiz({
                 visible={resultVisible}
                 celebrate={celebrateResult}
               />
-              <Button
-                type="button"
-                variant="outline"
-                size="lg"
-                onClick={handleRetry}
-              >
-                <RotateCcwIcon />
-                やり直す
-              </Button>
+              <RetryAndWeakButtons
+                weak={weak}
+                onRetry={handleRetry}
+                onToggleWeak={handleToggleWeak}
+              />
             </>
           ) : (
             <Button type="submit" size="lg" disabled={!value}>

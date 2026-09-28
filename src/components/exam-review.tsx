@@ -17,7 +17,7 @@ import {
 import {
   clearStudyRecord,
   hasAnyAttempts,
-  listIncorrectFirstAttempts,
+  listReviewQuestions,
   loadStudyRecord,
   type StudyRecordV1,
 } from "@/lib/study-record"
@@ -65,25 +65,33 @@ export function ExamReview({ questions }: ExamReviewProps) {
     return () => document.removeEventListener("astro:page-load", sync)
   }, [])
 
-  const incorrect = useMemo(() => {
+  const reviewItems = useMemo(() => {
     if (!record) return []
 
-    return listIncorrectFirstAttempts(record).flatMap((hit) => {
+    return listReviewQuestions(record).flatMap((hit) => {
       const meta = questionsById.get(hit.questionId)
       if (!meta) return []
-      return [{ ...meta, at: hit.at, selected: hit.selected }]
+      return [
+        {
+          ...meta,
+          at: hit.at,
+          selected: hit.selected,
+          markedWeak: hit.markedWeak,
+          incorrect: hit.incorrect,
+        },
+      ]
     })
   }, [questionsById, record])
 
   const subjectsWithItems = examSubjectIds.filter((id) =>
-    incorrect.some((item) => item.subject === id)
+    reviewItems.some((item) => item.subject === id)
   )
   const activeSubject =
     subject !== "all" && subjectsWithItems.includes(subject) ? subject : "all"
   const visible =
     activeSubject === "all"
-      ? incorrect
-      : incorrect.filter((item) => item.subject === activeSubject)
+      ? reviewItems
+      : reviewItems.filter((item) => item.subject === activeSubject)
 
   function handleClear() {
     if (!window.confirm(CLEAR_CONFIRM)) return
@@ -111,8 +119,8 @@ export function ExamReview({ questions }: ExamReviewProps) {
 
   const sessionTitle =
     activeSubject === "all"
-      ? "間違えた問題"
-      : `間違えた問題（${subjectLabel(activeSubject)}）`
+      ? "苦手問題"
+      : `苦手問題（${subjectLabel(activeSubject)}）`
 
   return (
     <div className="grid gap-6">
@@ -129,7 +137,7 @@ export function ExamReview({ questions }: ExamReviewProps) {
         />
       ) : null}
 
-      {incorrect.length > 0 ? (
+      {reviewItems.length > 0 ? (
         <div
           className="flex flex-wrap gap-1 rounded-lg bg-muted p-0.5"
           role="radiogroup"
@@ -140,10 +148,10 @@ export function ExamReview({ questions }: ExamReviewProps) {
             onSelect={() => setSubject("all")}
           >
             すべて
-            <span className="tabular-nums">（{incorrect.length}）</span>
+            <span className="tabular-nums">（{reviewItems.length}）</span>
           </FilterChip>
           {subjectsWithItems.map((id) => {
-            const count = incorrect.filter((item) => item.subject === id).length
+            const count = reviewItems.filter((item) => item.subject === id).length
             return (
               <FilterChip
                 key={id}
@@ -163,10 +171,12 @@ export function ExamReview({ questions }: ExamReviewProps) {
           <p>まだ解答の記録がありません。</p>
           <p>記録はこの端末のブラウザに保存されます。</p>
         </EmptyState>
-      ) : incorrect.length === 0 ? (
+      ) : reviewItems.length === 0 ? (
         <EmptyState>
-          <p>いま間違えている問題はありません。</p>
-          <p>直近の1回目で不正解だった問題が、ここに並びます。</p>
+          <p>いま苦手にしている問題はありません。</p>
+          <p>
+            直近の1回目で不正解だった問題と、苦手として保存した問題が、ここに並びます。
+          </p>
         </EmptyState>
       ) : (
         <ul className="grid gap-3">
@@ -182,7 +192,12 @@ export function ExamReview({ questions }: ExamReviewProps) {
                   item.analog ? " · 類似問題" : ""
                 }`}
                 title={item.stem}
-                note={answerNote(item.selected, item.choiceTexts)}
+                note={answerNote(
+                  item.selected,
+                  item.choiceTexts,
+                  item.markedWeak,
+                  item.incorrect
+                )}
               />
               {item.categoryLinks.length > 0 ? (
                 <div className="flex flex-wrap gap-2 border-t border-border p-3">
@@ -221,11 +236,18 @@ export function ExamReview({ questions }: ExamReviewProps) {
   )
 }
 
-function answerNote(selected: number, choiceTexts: string[]) {
+function answerNote(
+  selected: number,
+  choiceTexts: string[],
+  markedWeak: boolean,
+  incorrect: boolean
+) {
   const text = choiceTexts[selected - 1]
-  return text
+  const answer = text
     ? `あなたの回答 ${selected}. ${text}`
     : `あなたの回答 ${selected}`
+  if (markedWeak && !incorrect) return `苦手として保存 · ${answer}`
+  return answer
 }
 
 function FilterChip({
