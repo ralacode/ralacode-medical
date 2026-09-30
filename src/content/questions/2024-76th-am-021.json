@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 21,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 21,
+    "answer": 3
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "腹部 MRI の T2 強調横断像で、腹大動脈の左側・左腎の前方に、T2 高信号の房が複数集まった腫瘤がある。この腫瘤が存在する臓器はどれか。",
+  "choices": [
+    {
+      "text": "脾臓",
+      "explanation": "**誤り**です。脾は左後方の大きな実質で、この高さでは外側寄りにあります。大動脈左前方の横走する臓器ではありません。"
+    },
+    {
+      "text": "大腸",
+      "explanation": "**誤り**です。大腸はガスや便を含む管腔で、位置も周囲に散在します。左腎前方の横長実質に載った多房性腫瘤の典型部位ではありません。"
+    },
+    {
+      "text": "肝臓",
+      "explanation": "**誤り**です。肝は主に右側の大きな実質です。左腎前方・大動脈左側の腫瘤の母地にはなりません。"
+    },
+    {
+      "text": "腎臓",
+      "explanation": "**誤り**です。腎は後方の後腹膜臓器です。腫瘤は左腎の**前方**にあり、腎そのものではありません。"
+    },
+    {
+      "text": "膵臓",
+      "explanation": "大動脈の前〜左側を横に走る実質が膵体部〜尾部です。その位置に T2 で明るい房が集まるのは、膵の多房性嚢胞性病変の典型です。細長い棚の上にぶどうの房が載っている、というイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、腹部 MRI **T2 強調横断像**の多房性腫瘤の母地です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=13\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 13 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_02.pdf#page=6\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.2・6 ページ</a>）。本サイトの類似問題は図を載せられないため、**ランドマーク**から臓器を問う形式にしています。\n\n- **別冊所見** … 横断 T2 強調。左腎前方・大動脈左側に **T2 高信号の多房性腫瘤**。膵体部〜尾部に一致。\n- **1 番** … **肝臓** → **誤り**（右側の実質）。\n- **2 番** … **腎臓** → **誤り**（後方。腫瘤は腎の前方）。\n- **3 番** … **膵臓** → **正解**。\n- **4 番** … **大腸** → **誤り**。\n- **5 番** … **脾臓** → **誤り**（左後方の実質）。\n- **覚え方** … 左腎の前・大動脈の左＝**膵**／多房性 T2 高信号は膵嚢胞性病変を疑う。",
+  "draft": false
+}
