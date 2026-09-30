@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 43,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 43,
+    "answer": 2
+  },
+  "subject": "hoshasen-chiryo",
+  "stem": "標準計測法12 で電子線の線質を表す指標はどれか。",
+  "choices": [
+    {
+      "text": "zref",
+      "explanation": "**誤り**です。zref は吸収線量を測る**参照深さ**です。R50 から求めますが、線質指標そのものではありません。"
+    },
+    {
+      "text": "TPR20,10",
+      "explanation": "**誤り**です。TPR20,10 は**光子線**の線質指標です。電子線には使いません。"
+    },
+    {
+      "text": "Rp",
+      "explanation": "**誤り**です。Rp は実用飛程で、深さ分布の形を読む量です。標準計測法12 の電子線線質指標は R50 です。"
+    },
+    {
+      "text": "R50",
+      "explanation": "吸収線量が最大値の半分になる深さ（50％深度）が、電子線の線質指標です。ここから参照深さを決め、校正へ進みます。水に投げた石が半分の勢いに落ちる深さ、で硬さを見るイメージです。**正解**です。"
+    },
+    {
+      "text": "Rres",
+      "explanation": "**誤り**です。Rres は残留飛程で、深さ分布の解析に使います。線質指標として採用されているのは R50 です。"
+    }
+  ],
+  "answer": 4,
+  "terms": ["electron-beam"],
+  "sourceExplanation": "この問は、**標準計測法12 の電子線線質指標**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=20\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 20 ページ</a>）。\n\n- **1 番** … **Rp**（実用飛程） → **誤り**（分布の指標。線質指標ではない）。\n- **2 番** … **R50** → **正解**（電子線の線質指標。参照深さの起点）。\n- **3 番** … **Rres**（残留飛程） → **誤り**。\n- **4 番** … **zref**（参照深さ） → **誤り**（R50 から求める測定深さ）。\n- **5 番** … **TPR20,10** → **誤り**（**光子線**の線質指標）。\n- **覚え方** … 電子線の線質＝**R50**／光子線＝**TPR20,10**／zref は測る深さ。",
+  "draft": false
+}
