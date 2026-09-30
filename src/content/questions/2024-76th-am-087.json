@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 87,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 87,
+    "answer": 3
+  },
+  "subject": "xray-gijutsu",
+  "stem": "仰臥位で検側股関節を屈曲・外転・外旋し、大腿骨長軸は検出器面に対し約 45°、中心 X 線は股関節へ垂直入射する。この撮影法はどれか。",
+  "choices": [
+    {
+      "text": "Stenvers〈ステンバース〉法",
+      "explanation": "**誤り**です。ステンバース法は側頭骨（錐体・内耳道）の撮影です。股関節の開排位ではありません。"
+    },
+    {
+      "text": "Rosenberg〈ローゼンバーグ〉法",
+      "explanation": "**誤り**です。ローゼンバーグ法は立位で膝を屈曲した荷重位の後前方向です。股関節のカエル脚ではありません。"
+    },
+    {
+      "text": "Anthonsen〈アントンセン〉法",
+      "explanation": "**誤り**です。アントンセン法は距骨下関節の斜方向です。股関節の開排位ではありません。"
+    },
+    {
+      "text": "Lauenstein〈ラウエンシュタイン〉法",
+      "explanation": "仰向けで股関節を開き、カエルが脚を広げたような開排位にするのがラウエンシュタイン法です。股関節の側面に相当する像を、管球は垂直のまま得ます。**正解**です。"
+    },
+    {
+      "text": "Guthmann〈グースマン〉法",
+      "explanation": "**誤り**です。グースマン法は骨盤の側方向（真結合線など）です。股関節を 45° 開排する体位ではありません。"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、X 線撮影体位の**名称**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=40\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 40 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_02.pdf#page=12\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.8・12 ページ</a>）。本サイトの類似問題は図を載せられないため、開排位と入射を文章化しています。\n\n- **別冊所見** … 仰臥位。検側股関節が屈曲・外転し、大腿は約 45°。中心 X 線は股関節へ垂直。\n- **1 番** … アントンセン法 → **誤り**（距骨下関節）。\n- **2 番** … グースマン法 → **誤り**（骨盤側方向）。\n- **3 番** … ラウエンシュタイン法 → **正解**（股関節の開排位）。\n- **4 番** … ローゼンバーグ法 → **誤り**（荷重位膝関節）。\n- **5 番** … ステンバース法 → **誤り**（側頭骨）。\n- **覚え方** … カエル脚の股＝**Lauenstein**／膝の立位屈曲 PA＝Rosenberg／踵の斜位＝Anthonsen。",
+  "draft": false
+}

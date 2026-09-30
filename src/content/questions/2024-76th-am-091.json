@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 91,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 91,
+    "answer": 1
+  },
+  "subject": "xray-gijutsu",
+  "stem": "骨密度測定で、手の単純 X 線写真から**第2中手骨**を主たる測定対象とする方法はどれか。",
+  "choices": [
+    {
+      "text": "定量的超音波〈QUS〉法",
+      "explanation": "**誤り**です。QUS は踵骨などへ超音波を当てる方法です。手の X 線写真で第2中手骨を測りません。"
+    },
+    {
+      "text": "二重エネルギー X 線吸収測定〈DXA〉法",
+      "explanation": "**誤り**です。DXA の標準部位は腰椎と大腿骨近位です。手の第2中手骨を主対象にはしません。"
+    },
+    {
+      "text": "単一エネルギー X 線吸収測定〈SXA〉法",
+      "explanation": "**誤り**です。SXA は橈骨遠位など前腕の末梢骨が中心です。第2中手骨を主対象とする方法ではありません。"
+    },
+    {
+      "text": "定量的 CT〈QCT〉法",
+      "explanation": "**誤り**です。QCT は腰椎などの体積骨密度が中心です。手の単純写真で第2中手骨を測る方法ではありません。"
+    },
+    {
+      "text": "デジタル画像処理〈DIP〉法",
+      "explanation": "DIP 法は手の X 線写真をデジタル処理し、第2中手骨の皮質幅などから骨量を推定します。物差しを指の骨に当てるイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、骨塩定量の**測定部位と方法**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=41\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 41 ページ</a>）。\n\n- **1 番** … DIP 法 → **正解**（手の X 線、第2中手骨）。\n- **2 番** … DXA 法 → **誤り**（腰椎・大腿骨近位）。\n- **3 番** … QCT 法 → **誤り**（腰椎などの体積）。\n- **4 番** … QUS 法 → **誤り**（踵骨など、超音波）。\n- **5 番** … SXA 法 → **誤り**（前腕・橈骨など）。\n- **覚え方** … **DIP＝第2中手骨**／DXA＝腰＋股／QCT＝腰椎 CT／QUS＝踵／SXA＝前腕。",
+  "draft": false
+}
