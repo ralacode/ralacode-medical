@@ -1,0 +1,43 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 79,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 79,
+    "answer": 4
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": ["hoshasen-keisoku"],
+  "stem": "水中に置いた小さな空気空洞について、Bragg-Gray（ブラッグ・グレイ）の空洞理論で水の吸収線量 D_w を表す式はどれか。ただし空洞空気の吸収線量を D_air、水および空気の質量衝突阻止能をそれぞれ（s/ρ）_w、（s/ρ）_air とする。",
+  "choices": [
+    {
+      "text": "D_w ＝ D_air ×（s/ρ）_air ／（s/ρ）_w",
+      "explanation": "**誤り**です。比が逆です。水の方が空気より止まりやすいとき、水の線量は空気の線量より大きくなります。分母と分子を入れ替えると大小が反転します。"
+    },
+    {
+      "text": "D_w ＝ D_air",
+      "explanation": "**誤り**です。空洞気体と周囲の水で、単位質量あたりの付与エネルギーは一般に等しくありません。質量衝突阻止能の比で結びます。"
+    },
+    {
+      "text": "D_w ＝ D_air ×（μ_en/ρ）_w ／（μ_en/ρ）_air",
+      "explanation": "**誤り**です。質量エネルギー吸収係数の比は、大きな体積で光子のカーマを結ぶときに使います。小さな空洞の Bragg-Gray は**質量衝突阻止能**の比です。"
+    },
+    {
+      "text": "D_w ＝（Q/m）×（s/ρ）_w ／（s/ρ）_air",
+      "explanation": "**誤り**です。電荷密度 Q/m は、空気の吸収線量そのものではありません。D_air にするには W/e（イオン対 1 個あたりの平均エネルギー）を掛けます。ここでは D_air が与えられているので、阻止能比だけを掛けます。"
+    },
+    {
+      "text": "D_w ＝ D_air ×（s/ρ）_w ／（s/ρ）_air",
+      "explanation": "Bragg-Gray では、薄い空気の袋に沈めた線量に「水と空気の止まりにくさの比」を掛けて、袋の外の水の線量に直します。**D_w ＝ D_air ×（s/ρ）_w／（s/ρ）_air** です。薄いストローで味見して、鍋全体の濃さを推定する、というイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": ["bragg-gray"],
+  "sourceExplanation": "この問は、水の吸収線量を **Bragg-Gray の空洞理論**で表す式です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=35\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 35 ページ</a>）。公式は Q、m、D_air と質量衝突阻止能を組み合わせた式選択でした。類似は同じ関係を、記号を少し変えて問い直しています。\n\n- **1 番** … 電荷密度に空気／水の阻止能比 → **誤り**（Q/m は D_air ではなく、比も逆）。\n- **2 番** … 電荷密度の逆数に水／空気の阻止能比 → **誤り**（Q/m が逆。W/e も無い）。\n- **3 番** … D_air に空気／水の阻止能比 → **誤り**（比が逆）。\n- **4 番** … D_air に水／空気の質量衝突阻止能比 → **正解**（D_w ＝ D_air × s_w／s_air）。\n- **5 番** … 電荷密度と D_air を重ね、比も逆 → **誤り**。\n- **覚え方** … 小さな空洞は **D_媒質 ＝ D_気体 ×（質量衝突阻止能の比）**。μ_en/ρ や Q/m だけで済ませない。",
+  "draft": false
+}
