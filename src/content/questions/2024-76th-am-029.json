@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 29,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 29,
+    "answer": 2
+  },
+  "subject": "kakui-gaku",
+  "stem": "指標を求めるために、投与直後からの連続収集（ダイナミック収集）が必要なのはどれか。",
+  "choices": [
+    {
+      "text": "¹⁸F-FDG の SUV",
+      "explanation": "**不要**です。SUV は、一定時間待ったあとの静的画像と投与量・体重から出します。連続撮影は前提ではありません。"
+    },
+    {
+      "text": "¹²³I-イオフルパンの specific binding ratio（SBR）",
+      "explanation": "**不要**です。SBR は、待機後の静的 SPECT で線条体と参照領域を比べます。投与直後の連続収集は使いません。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-MAA の右左シャント率",
+      "explanation": "**不要**です。肺と全身の静的カウント比で見積もるのが一般的です。脳や腎に粒子が出たかを、あとから全身像で見ます。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-MAG₃ レノグラムの半減時間（T½）",
+      "explanation": "腎臓の「排水カーブ」を描く指標です。投与直後から時間ごとのカウントが要るので、**ダイナミック収集が必要**です。蛇口を開けてから浴槽の水位を連続記録する、というイメージです。**正解**です。"
+    },
+    {
+      "text": "¹²³I-MIBG の心縦隔比（H/M）",
+      "explanation": "**不要**です。H/M は、決まった時間の静的プラナー像で心臓と縦隔のカウント比を取ります。連続収集は必須ではありません。"
+    }
+  ],
+  "answer": 4,
+  "terms": ["dynamic-acquisition"],
+  "sourceExplanation": "この問は、**ダイナミック収集が必要な指標**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=16\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 16 ページ</a>）。\n\n- **1 番** … FDG の SUV → **誤り**（待機後の静的画像）。\n- **2 番** … GSA の肝取込み指標（LHL15） → **正解**。心臓と肝臓の時間変化から出すため、連続または経時収集が要る。\n- **3 番** … MAA の右左シャント率 → **誤り**（静的な全身カウントが基本）。\n- **4 番** … イオフルパンの SBR → **誤り**（静的 SPECT）。\n- **5 番** … MIBG の H/M → **誤り**（静的プラナー）。\n- **覚え方** … **時間カーブが要る指標＝ダイナミック**（GSA の LHL15・HH15、レノグラムなど）。",
+  "draft": false
+}
