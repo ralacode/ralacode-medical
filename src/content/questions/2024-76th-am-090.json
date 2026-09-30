@@ -1,0 +1,30 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 90,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 90,
+    "answer": 2
+  },
+  "subject": "xray-gijutsu",
+  "stem": "焦点サイズ **0.8 mm**、焦点−被写体間距離 **100 cm**、被写体−検出器間距離 **25 cm** のとき、半影の大きさ［mm］はどれか。",
+  "choices": [
+    { "text": "3.2" },
+    { "text": "0.16" },
+    {
+      "text": "0.20",
+      "explanation": "半影 **P = F × (b / a)**。F＝0.8 mm、a＝100 cm、b＝25 cm より 25／100＝0.25、0.8 × 0.25＝**0.20 mm**。拡大率 **M = (a＋b)／a** を使うと **P = F × (M − 1)** でも同じです。分母と分子を逆にすると 3.2、焦点−検出器間（125 cm）を分母にすると 0.16 になります。"
+    },
+    { "text": "1.0" },
+    { "text": "0.80" }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、幾何学的半影の**式**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=41\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 41 ページ</a>）。公式は記号の式選択でした。類似問題は同じ式で数値を変えています。\n\n- 半影 **P = F × (b / a)**。a は焦点−被写体、b は被写体−検出器、F は焦点サイズ。\n- 拡大率 **M = (a ＋ b) / a** なら **P = F × (M − 1)** と同じです。\n- **公式正答**は 2 番（b／a × F）。落とし穴は a／b にすることと、焦点−検出器間を分母にすることです。",
+  "draft": false
+}

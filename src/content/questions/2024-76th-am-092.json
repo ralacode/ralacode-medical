@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 92,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 92,
+    "answer": 3
+  },
+  "subject": "xray-gijutsu",
+  "stem": "CT の線量指標 **DLP**（dose length product）の単位として正しいのはどれか。",
+  "choices": [
+    {
+      "text": "mSv",
+      "explanation": "**誤り**です。mSv は実効線量の単位です。DLP に係数を掛けて概算することはありますが、DLP そのものの単位ではありません。"
+    },
+    {
+      "text": "mGy·cm",
+      "explanation": "DLP は CTDIvol（mGy）にスキャン長（cm）を掛けた量なので、単位は **mGy·cm** です。長さあたりの濃さを距離で積分する、ロールケーキの断面濃度×長さ、というイメージです。**正解**です。"
+    },
+    {
+      "text": "mSv·cm⁻¹",
+      "explanation": "**誤り**です。実効線量を長さで割った形で、DLP の単位ではありません。"
+    },
+    {
+      "text": "mGy",
+      "explanation": "**誤り**です。mGy は **CTDIvol**（スライスあたりの線量の目安）の単位です。長さを掛けていないので DLP ではありません。"
+    },
+    {
+      "text": "mSv·cm",
+      "explanation": "**誤り**です。実効線量に長さを付けた形で、慣用される DLP の単位ではありません。DLP は吸収線量側の **mGy·cm** です。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、**DLP の単位**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=42\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 42 ページ</a>）。\n\n- **1 番** … mGy → **誤り**（**CTDIvol** の単位）。\n- **2 番** … mSv → **誤り**（実効線量）。\n- **3 番** … mGy·cm → **正解**（CTDIvol × スキャン長）。\n- **4 番** … mSv·cm → **誤り**（実効線量に長さを付けた形）。\n- **5 番** … mSv·cm⁻¹ → **誤り**。\n- **覚え方** … **CTDIvol＝mGy**／**DLP＝mGy·cm**／実効線量＝mSv。",
+  "draft": false
+}
