@@ -1,0 +1,44 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 48,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 48,
+    "answer": 4
+  },
+  "subject": "iryo-gazo-joho",
+  "stem": "空間関数を周波数成分へ写すフーリエ変換の核関数 **e^{-i2πux}** を、オイラーの公式で三角関数に展開した式はどれか。ただし u は空間周波数、x は位置、i は虚数単位とする。",
+  "choices": [
+    {
+      "text": "cos(2πux) ＋ i sin(2πux)",
+      "explanation": "**誤り**です。これは **e^{+i2πux}** の展開です。指数の符号がプラス側で、核関数のマイナス符号と一致しません。"
+    },
+    {
+      "text": "cos(2πux) − i sin(2πux)",
+      "explanation": "オイラーの公式は e^{iθ} ＝ cos θ ＋ i sin θ です。θ を **−2πux** に置き換えると、余弦は偶関数、正弦は奇関数なので e^{-i2πux} ＝ **cos(2πux) − i sin(2πux)** になります。回転する矢印を、左右成分（余弦）と上下成分（正弦）に分けるイメージです。指数がマイナスのとき、上下成分の符号が反転します。**正解**です。詳しくは [MRI のフーリエ変換再構成とは](/medical/articles/fourier-transform/) も参照してください。"
+    },
+    {
+      "text": "−cos(2πux) − i sin(2πux)",
+      "explanation": "**誤り**です。実部までマイナスになると、核関数全体に −1 を掛けた形になり、e^{-i2πux} とは一致しません。"
+    },
+    {
+      "text": "cos(−2πux) − i sin(−2πux)",
+      "explanation": "**誤り**です。余弦は偶関数、正弦は奇関数なので、この式は cos(2πux) ＋ i sin(2πux) に戻り、**e^{+i2πux}** と同じになります。"
+    },
+    {
+      "text": "cos(2πux) ＋ sin(2πux)",
+      "explanation": "**誤り**です。虚数単位 i が消えており、実部と虚部を分けた複素数になっていません。オイラーの公式の展開ではありません。"
+    }
+  ],
+  "answer": 2,
+  "terms": [
+    "fourier-transform"
+  ],
+  "sourceExplanation": "この問は、フーリエ変換の核関数を**オイラーの公式**で展開する式です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=22\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 22 ページ</a>）。\n\n- **1 番** … 余弦＋正弦（i なし） → **誤り**（複素展開になっていない）。\n- **2 番** … 余弦−正弦（i なし） → **誤り**（同様に虚数単位がない）。\n- **3 番** … 余弦＋i 正弦 → **誤り**（これは e の指数がプラスのとき）。\n- **4 番** … 余弦−i 正弦 → **正解**。e^{-iθ} ＝ cos θ − i sin θ（θ＝2πux）。\n- **5 番** … 負の偏角を代入した形 → **誤り**（偶関数・奇関数の性質でプラス指数側に戻る）。\n- **覚え方** … **マイナス指数＝余弦マイナス i 正弦**。符号を落とすと逆回転（プラス指数）になる。",
+  "draft": false
+}
