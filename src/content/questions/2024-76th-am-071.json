@@ -1,0 +1,39 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 71,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 71,
+    "answer": 3
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": ["hoshasen-butsurigaku"],
+  "stem": "運動エネルギーが **2 GeV** の **¹⁶O** 原子核を、**2 nA** のビーム電流で **20 秒**間流した。¹⁶O 原子核によって運ばれた総エネルギー［J］に最も近いのはどれか。",
+  "choices": [
+    {
+      "text": "5"
+    },
+    {
+      "text": "80"
+    },
+    {
+      "text": "2"
+    },
+    {
+      "text": "20"
+    },
+    {
+      "text": "10",
+      "explanation": "電流 I は、イオン1個の電荷 Ze と個数の流れです。個数は N＝I t / (Z e)、1個のエネルギーは 2 GeV＝2×10⁹ eV なので、総エネルギー［J］は **I t ×（2×10⁹）/ Z** になります（電気素量 e は打ち消されます）。I＝2×10⁻⁹ A、t＝20 s、Z＝8 を入れると 2×10⁻⁹×20×2×10⁹ / 8＝**10 J** です。ベルトコンベアの箱が1個あたり電荷8個分を運ぶと、同じ電流でも箱の数は 1/8 になる、というイメージです。"
+    }
+  ],
+  "answer": 5,
+  "terms": ["heavy-ion"],
+  "sourceExplanation": "この問は、荷電粒子ビームが運ぶ**総エネルギー**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=30\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 30 ページ</a>）。\n\n- **公式正答** … **3 番**。与えられた核種・電流・照射時間から、運ばれたエネルギーのジュール値がその肢に最も近い。\n- **式** … イオン数 N＝I t / (Z e)。1個の運動エネルギーをジュールに直して掛けると、e が打ち消され **E＝I t E_eV / Z**。¹²C なら Z＝6。\n- **落とし穴** … 電荷数 Z を忘れて I t E_eV のまま答える、質量数 A で割る、nA と GeV の 10 の位数を落とす。\n- **類似問題** … ¹⁶O（Z＝8）・2 GeV・2 nA・20 秒 → **10 J**。\n- **覚え方** … **電流÷電荷数＝粒子の個数の流れ**。エネルギーは個数×1個分。",
+  "draft": false
+}
