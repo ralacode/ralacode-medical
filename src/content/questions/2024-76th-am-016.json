@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 16,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 16,
+    "answer": 5
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "MRI の脂肪抑制法について、正しいのはどれか。",
+  "choices": [
+    {
+      "text": "CHESS 法では、最初に 180° の反転パルスを印加する。",
+      "explanation": "**誤り**です。最初に 180° で縦磁化を倒すのは **STIR**（反転回復）です。CHESS は脂肪の周波数を狙った**飽和パルス**が先です。"
+    },
+    {
+      "text": "CHESS 法は、組織の T1 値によって抑制対象が決まる。",
+      "explanation": "**誤り**です。T1 の長さで脂肪をヌルにするのは **STIR** です。CHESS は脂肪と水の**共鳴周波数の差**を使います。"
+    },
+    {
+      "text": "STIR 法は、CHESS 法より静磁場の不均一の影響を受けにくい。",
+      "explanation": "STIR は脂肪の**短い T1** に合わせて反転時間を置く方法で、周波数のずれには比較的強いです。CHESS は周波数をピンポイントで狙うため、磁場が歪むと外れやすいです。音程で消すフィルター（CHESS）より、タイマーで消す方法（STIR）の方が、ピアノが少し狂っていても効く、というイメージです。**正解**です。"
+    },
+    {
+      "text": "STIR 法は、脂肪の共鳴周波数だけを選んで飽和する。",
+      "explanation": "**誤り**です。周波数を選んで飽和するのは **CHESS** です。STIR は反転回復で、短い T1 の組織をまとめて落とします。"
+    },
+    {
+      "text": "Dixon 法は、in-phase 画像そのものを脂肪抑制画像として使う。",
+      "explanation": "**誤り**です。Dixon は in-phase と opposed-phase（逆位相）から水画像・脂肪画像を分離します。in-phase 単体は水と脂肪が足し算された像で、脂肪抑制そのものではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["fat-suppression"],
+  "sourceExplanation": "この問は、**MRI 脂肪抑制法（CHESS・STIR・Dixon）**の違いです（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=11\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 11 ページ</a>）。\n\n- **1 番** … CHESS は T1 値の影響を受ける → **誤り**（周波数選択。T1 で決まるのは STIR）。\n- **2 番** … STIR は周波数選択的に脂肪を抑制する → **誤り**（反転回復。周波数選択は CHESS）。\n- **3 番** … CHESS は最初に 180° パルス → **誤り**（180° 反転は STIR。CHESS は飽和パルス）。\n- **4 番** … Dixon は in-phase の脂肪抑制効果を使う → **誤り**（in/opposed-phase から水画像を作る）。\n- **5 番** … STIR は CHESS より磁場不均一の影響を受けにくい → **正解**。\n- **覚え方** … **CHESS＝周波数**／**STIR＝T1（不均一に強い）**／**Dixon＝in と opposed の組**。",
+  "draft": false
+}
