@@ -339,6 +339,14 @@ export function examYearSeoDescription(year: number, exam: number) {
   return `第${exam}回診療放射線技師国家試験（${year}年）の対策問題です。公式問題の転載ではありません。`
 }
 
+export function examYearPreparingSeoTitle(year: number) {
+  return `${year}年の類似問題は準備中`
+}
+
+export function examYearPreparingSeoDescription(year: number) {
+  return `${year}年の類似問題は準備中です。直近2年分を公開しています。`
+}
+
 export function questionSeoTitle(
   exam: number,
   session: ExamSession,

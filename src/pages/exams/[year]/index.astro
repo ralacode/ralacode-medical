@@ -2,10 +2,18 @@
 import type { CollectionEntry } from "astro:content"
 
 import { ExamBreadcrumb } from "@/components/exam-breadcrumb"
+import ExamYearPreparing from "@/components/exam-year-preparing.astro"
 import { ExamQuestionBrowser } from "@/components/exam-question-browser"
 import Layout from "@/layouts/main.astro"
-import { getPublishedQuestions } from "@/lib/exam-content"
+import { getCatalogQuestions } from "@/lib/exam-content"
 import {
+  catalogExamYears,
+  examYearExamNumber,
+  isExamYearPreparing,
+} from "@/lib/exam-visibility"
+import {
+  examYearPreparingSeoDescription,
+  examYearPreparingSeoTitle,
   examYearSeoDescription,
   examYearSeoTitle,
   groupQuestions,
@@ -23,8 +31,8 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  const questions = await getPublishedQuestions()
-  const years = [...new Set(questions.map((question) => question.data.year))]
+  const questions = await getCatalogQuestions()
+  const years = catalogExamYears(questions.map((question) => question.data.year))
 
   return years.map((year) => ({
     params: { year: String(year) },
@@ -36,60 +44,81 @@ export async function getStaticPaths() {
 }
 
 const { year, questions } = Astro.props
+const preparing = isExamYearPreparing(year)
 const [group] = groupQuestions(questions.map((question) => question.data))
-const exam = group?.exam
-const title = exam
-  ? examYearSeoTitle(year, exam)
-  : `${year}年の診療放射線技師国家試験対策問題`
-const description = exam
-  ? examYearSeoDescription(year, exam)
-  : `${year}年の診療放射線技師国家試験の対策問題です。公式問題の転載ではありません。`
+const exam = examYearExamNumber(year, group?.exam)
+const title = preparing
+  ? examYearPreparingSeoTitle(year)
+  : exam
+    ? examYearSeoTitle(year, exam)
+    : `${year}年の診療放射線技師国家試験対策問題`
+const description = preparing
+  ? examYearPreparingSeoDescription(year)
+  : exam
+    ? examYearSeoDescription(year, exam)
+    : `${year}年の診療放射線技師国家試験の対策問題です。公式問題の転載ではありません。`
 ---
 
-<Layout title={title} description={description} headerLabel="国家試験対策">
+<Layout
+  title={title}
+  description={description}
+  headerLabel="国家試験対策"
+  robots={preparing ? "noindex, follow" : undefined}
+>
   <span slot="header" class="text-sm text-muted-foreground md:hidden">
     国家試験対策
   </span>
   <ExamBreadcrumb slot="header" className="hidden min-w-0 md:block" year={year} />
   <div class="mx-auto grid max-w-2xl gap-8">
-    <header class="grid gap-3">
-      <ExamBreadcrumb className="md:hidden" year={year} />
-      <h1 class="text-2xl font-semibold tracking-tight">{title}</h1>
-      <p class="text-sm leading-relaxed text-muted-foreground">
-        公式の問題文・選択肢は掲載していません。類似問題を選んで演習できます。
-      </p>
-    </header>
-
     {
-      group ? (
-        <ExamQuestionBrowser
-          client:load
-          sections={group.sessions.map((session) => ({
-            title: sessionLabel(session.session),
-            session: {
-              title: `${year}年 ${sessionLabel(session.session)}`,
-              returnHref: yearHref(year),
-            },
-            items: questions
-              .filter((question) => question.data.session === session.session)
-              .sort((left, right) => left.data.number - right.data.number)
-              .map((question) => {
-                const item = question.data
-                return {
-                  id: question.id,
-                  href: questionHref(item.year, item.session, item.number),
-                  heading: questionHeading(item.exam, item.session, item.number),
-                  stem: item.stem,
-                  analog: item.origin === "analog",
-                  searchLabels: questionSearchLabels(item),
-                  choiceTexts: item.choices.map((choice) => choice.text),
-                  categoryLinks: questionCategoryLinks(item),
-                }
-              }),
-          }))}
-        />
+      preparing ? (
+        <div class="grid gap-8">
+          <ExamBreadcrumb className="md:hidden" year={year} />
+          <ExamYearPreparing year={year} exam={exam} />
+        </div>
       ) : (
-        <p class="text-sm text-muted-foreground">この年の問題はまだありません。</p>
+        <>
+          <header class="grid gap-3">
+            <ExamBreadcrumb className="md:hidden" year={year} />
+            <h1 class="text-2xl font-semibold tracking-tight">{title}</h1>
+            <p class="text-sm leading-relaxed text-muted-foreground">
+              公式の問題文・選択肢は掲載していません。類似問題を選んで演習できます。
+            </p>
+          </header>
+
+          {
+            group ? (
+              <ExamQuestionBrowser
+                client:load
+                sections={group.sessions.map((session) => ({
+                  title: sessionLabel(session.session),
+                  session: {
+                    title: `${year}年 ${sessionLabel(session.session)}`,
+                    returnHref: yearHref(year),
+                  },
+                  items: questions
+                    .filter((question) => question.data.session === session.session)
+                    .sort((left, right) => left.data.number - right.data.number)
+                    .map((question) => {
+                      const item = question.data
+                      return {
+                        id: question.id,
+                        href: questionHref(item.year, item.session, item.number),
+                        heading: questionHeading(item.exam, item.session, item.number),
+                        stem: item.stem,
+                        analog: item.origin === "analog",
+                        searchLabels: questionSearchLabels(item),
+                        choiceTexts: item.choices.map((choice) => choice.text),
+                        categoryLinks: questionCategoryLinks(item),
+                      }
+                    }),
+                }))}
+              />
+            ) : (
+              <p class="text-sm text-muted-foreground">この年の問題はまだありません。</p>
+            )
+          }
+        </>
       )
     }
   </div>

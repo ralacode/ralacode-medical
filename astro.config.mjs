@@ -10,6 +10,7 @@ import sitemap from "@astrojs/sitemap"
 
 import {
   isExamQuestionUrl,
+  isPreparingExamYearUrl,
   isPrivateStudyUrl,
 } from "./src/lib/exam-question-url.ts"
 import { remarkFixEmphasis } from "./src/lib/emphasis.ts"
@@ -52,6 +53,7 @@ export default defineConfig({
       filter: (page) =>
         !page.includes("/test") &&
         !isExamQuestionUrl(page) &&
+        !isPreparingExamYearUrl(page) &&
         !isPrivateStudyUrl(page),
     }),
     copySitemapXml(),

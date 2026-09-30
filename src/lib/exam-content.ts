@@ -1,9 +1,17 @@
 import { getCollection } from "astro:content"
 
+import { canRevealExamYear } from "@/lib/exam-visibility"
 import { compareQuestions, questionNavTarget } from "@/lib/questions"
 
-export async function getPublishedQuestions() {
+/** draft でない問。年次ページの静的パス用。本番の一覧は getPublishedQuestions。 */
+export async function getCatalogQuestions() {
   return await getCollection("questions", ({ data }) => !data.draft)
+}
+
+export async function getPublishedQuestions() {
+  return (await getCatalogQuestions()).filter((entry) =>
+    canRevealExamYear(entry.data.year)
+  )
 }
 
 export async function getQuestionsByTermId(termId: string) {

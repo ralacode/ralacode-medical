@@ -1,7 +1,13 @@
 ---
 import { LinkCard } from "@/components/link-card"
 import Layout from "@/layouts/main.astro"
-import { getPublishedQuestions } from "@/lib/exam-content"
+import { getCatalogQuestions } from "@/lib/exam-content"
+import { examYearData } from "@/lib/exam-data"
+import {
+  canRevealExamYear,
+  catalogExamYears,
+  isExamYearPreparing,
+} from "@/lib/exam-visibility"
 import { subjectLabel, studyTopicLabel } from "@/lib/exam-subjects"
 import {
   browseCategoryHref,
@@ -16,10 +22,43 @@ import {
   yearHref,
 } from "@/lib/questions"
 
-const questions = (await getPublishedQuestions()).map((question) => question.data)
-const years = groupQuestions(questions)
-const subjects = groupQuestionsBySubject(questions)
-const studyTopics = groupQuestionsByStudyTopic(questions)
+const catalog = await getCatalogQuestions()
+const listedQuestions = catalog
+  .filter((question) => canRevealExamYear(question.data.year))
+  .map((question) => question.data)
+const catalogYears = catalogExamYears(catalog.map((question) => question.data.year))
+const listedGroups = groupQuestions(listedQuestions)
+const listedByYear = new Map(listedGroups.map((group) => [group.year, group]))
+const yearCards: {
+  year: number
+  exam: number
+  preparing: boolean
+  count: number
+  sessionCounts: string
+}[] = []
+for (const year of catalogYears) {
+  const preparing = isExamYearPreparing(year)
+  const group = listedByYear.get(year)
+  const exam = group?.exam ?? examYearData(year)?.exam
+  if (exam == null) continue
+  if (preparing) {
+    yearCards.push({ year, exam, preparing, count: 0, sessionCounts: "" })
+    continue
+  }
+  if (!group) continue
+  const count = group.sessions.reduce(
+    (sum, session) => sum + session.items.length,
+    0
+  )
+  const sessionCounts = group.sessions
+    .map(
+      (session) => ` · ${sessionLabel(session.session)} ${session.items.length}問`
+    )
+    .join("")
+  yearCards.push({ year, exam, preparing, count, sessionCounts })
+}
+const subjects = groupQuestionsBySubject(listedQuestions)
+const studyTopics = groupQuestionsByStudyTopic(listedQuestions)
 ---
 
 <Layout
@@ -41,7 +80,7 @@ const studyTopics = groupQuestionsByStudyTopic(questions)
     </div>
 
     {
-      years.length === 0 ? (
+      yearCards.length === 0 ? (
         <p class="text-sm text-muted-foreground">公開中の問題はまだありません。</p>
       ) : (
         <div class="browse grid gap-6">
@@ -73,27 +112,19 @@ const studyTopics = groupQuestionsByStudyTopic(questions)
 
           <section class="browse-years grid gap-3" aria-label="年次">
             <ul class="grid gap-3">
-              {years.map((group) => {
-                const count = group.sessions.reduce(
-                  (sum, session) => sum + session.items.length,
-                  0
-                )
-                const sessionCounts = group.sessions
-                  .map(
-                    (session) =>
-                      ` · ${sessionLabel(session.session)} ${session.items.length}問`
-                  )
-                  .join("")
-                return (
-                  <li>
-                    <LinkCard
-                      href={yearHref(group.year)}
-                      title={`${group.year}年 第${group.exam}回`}
-                      description={`類似問題 ${count}問${sessionCounts}`}
-                    />
-                  </li>
-                )
-              })}
+              {yearCards.map((card) => (
+                <li>
+                  <LinkCard
+                    href={yearHref(card.year)}
+                    title={`${card.year}年 第${card.exam}回`}
+                    description={
+                      card.preparing
+                        ? "準備中"
+                        : `類似問題 ${card.count}問${card.sessionCounts}`
+                    }
+                  />
+                </li>
+              ))}
             </ul>
           </section>
 

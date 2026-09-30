@@ -55,3 +55,25 @@
 ## 第3 施行期日
 
 - 施行期日: 令和6年4月1日
+
+## サイトでの割当（改正前後）
+
+画面の科目 ID は改正後の 11 科目（`src/lib/exam-subjects.ts`）だけ。改正前の回（第76回＝2024年2月15日実施）は、公式の 14 科目を次のように寄せる。
+
+| 改正前の科目 | サイトの `subject` / `studyTopics` |
+| --- | --- |
+| 基礎医学大要 | `kiso-igaku` |
+| 放射線生物学 | `rikogaku-hoshasen` + `hoshasen-seibutsugaku` |
+| 放射線物理学 | `rikogaku-hoshasen` + `hoshasen-butsurigaku` |
+| 放射化学 | `rikogaku-hoshasen` + `hoshasen-kagaku` |
+| 医用工学 | `rikogaku-hoshasen` + `iyo-kogaku` |
+| 放射線計測学 | `rikogaku-hoshasen` + `hoshasen-keisoku` |
+| 診療画像機器学 | 機器（X 線管・装置・FPD など）→ `xray-kiki`。CT / MRI / 超音波 / 眼底 → `shinryo-gazo-kensa` |
+| エックス線撮影技術学 | `xray-gijutsu` |
+| 診療画像検査学 | `shinryo-gazo-kensa` |
+| 画像工学 | `gazo-kogaku` |
+| 医用画像情報学 | `iryo-gazo-joho` |
+| 核医学検査技術学 | `kakui-gaku` |
+| 放射線治療技術学 | `hoshasen-chiryo` |
+| 放射線安全管理学 | `hoshasen-anzen` |
+| （改正後の新設）医療安全管理学 | 第76回にはスロットを置かない |

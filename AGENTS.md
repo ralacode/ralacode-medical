@@ -24,8 +24,9 @@
 - 類似問題の作成: `.cursor/rules/exam-question-authoring.mdc` → `docs/exam-question-authoring.md`
 - Cloud 用の科目プロンプト生成（ローカル）: `.cursor/rules/cloud-subject-prompt.mdc` → `docs/cloud-subject-prompt.md`
 - 用語解説記事: `.cursor/rules/glossary-article-authoring.mdc` → `docs/glossary-article-authoring.md`
-- 試験科目の分類: `docs/exam-subjects-amendment-2023.md`、科目 ID は `src/lib/exam-subjects.ts`
+- 試験科目の分類: `docs/exam-subjects-amendment-2023.md`、科目 ID は `src/lib/exam-subjects.ts`（理工学の学習タグに放射化学 `hoshasen-kagaku` を含む。第76回は改正前科目をこの ID に寄せる）
 - **公式の問題文・選択肢・別冊画像をリポジトリ・PR 本文・チャットに転載しない。** `exams/` と `exams/_render/` は gitignore。`public/` に置かない。
+- **本番で問題本文を出すのは直近 2 年**（`src/lib/exam-visibility.ts`）。それより前の年は準備中。開発サーバ（`pnpm dev`）では全年の中身を出す。問の `draft` は未完成フラグであり、年次の公開範囲ではない。
 - **レイアウト・CSS・既存コンポーネントは、明示的に依頼されたときだけ触る。**
 - CI は `.github/workflows/ci.yml`。類似問題の PR 本文は `.github/PULL_REQUEST_TEMPLATE/exam.md`、記事・基盤は `.github/pull_request_template.md`。
 

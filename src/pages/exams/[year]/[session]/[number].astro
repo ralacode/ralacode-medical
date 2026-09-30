@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content"
 
 import { ExamBreadcrumb } from "@/components/exam-breadcrumb"
+import ExamYearPreparing from "@/components/exam-year-preparing.astro"
 import QuestionStemGrid from "@/components/question-stem-grid.astro"
 import QuestionStemTable from "@/components/question-stem-table.astro"
 import { QuestionNav } from "@/components/question-nav"
@@ -9,7 +10,8 @@ import { QuestionQuiz } from "@/components/question-quiz"
 import { buttonVariants } from "@/components/ui/button"
 import Layout from "@/layouts/main.astro"
 import { getArticlesByTermIds } from "@/lib/articles"
-import { getPublishedQuestions } from "@/lib/exam-content"
+import { getCatalogQuestions } from "@/lib/exam-content"
+import { isExamYearPreparing } from "@/lib/exam-visibility"
 import {
   officialExamBookletPdfLink,
   officialExamPdfLink,
@@ -21,6 +23,8 @@ import {
   compareQuestions,
   questionCategoryLinks,
   questionHeading,
+  examYearPreparingSeoDescription,
+  examYearPreparingSeoTitle,
   questionSeoDescription,
   questionSeoTitle,
   questionNavTarget,
@@ -42,7 +46,7 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  const questions = [...(await getPublishedQuestions())].sort((left, right) =>
+  const questions = [...(await getCatalogQuestions())].sort((left, right) =>
     compareQuestions(left.data, right.data)
   )
   const allData = questions.map((entry) => entry.data)
@@ -117,11 +121,16 @@ const stemLabelIds =
   stemGrid || stemTable
     ? "question-stem question-stem-grid"
     : "question-stem"
-const termLinks = await getArticlesByTermIds(terms)
+const preparing = isExamYearPreparing(year)
+const termLinks = preparing ? [] : await getArticlesByTermIds(terms)
 const answer = singleAnswer(question.data.answer)
 const heading = questionHeading(exam, session, number)
-const title = questionSeoTitle(exam, session, number)
-const description = questionSeoDescription(exam, session, number)
+const title = preparing
+  ? examYearPreparingSeoTitle(year)
+  : questionSeoTitle(exam, session, number)
+const description = preparing
+  ? examYearPreparingSeoDescription(year)
+  : questionSeoDescription(exam, session, number)
 const quizChoices = choices.map((choice) => ({
   text: choice.text,
   explanationHtml: choice.explanation.trim()
@@ -160,11 +169,19 @@ const categoryLinks = questionCategoryLinks(question.data)
     client:load
     className="hidden min-w-0 md:block"
     year={year}
-    session={session}
-    number={number}
-    subject={subject}
+    session={preparing ? undefined : session}
+    number={preparing ? undefined : number}
+    subject={preparing ? undefined : subject}
   />
   <article class="mx-auto grid max-w-2xl gap-6">
+    {
+      preparing ? (
+        <>
+          <ExamBreadcrumb className="md:hidden" year={year} />
+          <ExamYearPreparing year={year} exam={exam} />
+        </>
+      ) : (
+        <>
     <header class="grid gap-3">
       <ExamBreadcrumb
         client:load
@@ -262,5 +279,8 @@ const categoryLinks = questionCategoryLinks(question.data)
       subjectLabel={subjectLabel(subject)}
       year={year}
     />
+        </>
+      )
+    }
   </article>
 </Layout>

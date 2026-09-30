@@ -117,7 +117,14 @@ pnpm lint:questions
 
 試験科目の改正（新設・名称変更・統合・削除）を考えるときは `docs/exam-subjects-amendment-2023.md` を読む。実装の ID は `src/lib/exam-subjects.ts` の改正後 11 科目だけ。削られた科目（診療画像機器学、放射線計測学など）には置かない。
 
-MRI・超音波・眼底カメラなどは改正前の「診療画像機器学」寄りでも、その科目は削られているので **診療画像検査学**（`shinryo-gazo-kensa`）に置く。年次マニフェストも同じ方針で割当済み。
+MRI・超音波・眼底カメラなどは改正前の「診療画像機器学」寄りでも、その科目は削られているので **診療画像検査学**（`shinryo-gazo-kensa`）に置く。X 線管・撮影装置・FPD など機器そのものは **エックス線撮影機器学**（`xray-kiki`）。年次マニフェストも同じ方針で割当済み。
+
+**第76回（2024年2月15日）** は改正施行（令和6年4月1日）前なので、公式の科目立ては改正前の 14 科目。サイトの ID は改正後 11 科目だけなので、マニフェストでは次のように寄せる。
+
+- 放射化学 → `rikogaku-hoshasen` + `studyTopics: ["hoshasen-kagaku"]`
+- 放射線生物学 / 物理学 / 医用工学 / 放射線計測学 → 同じく `rikogaku-hoshasen` + 対応タグ
+- 診療画像機器学 → 中身で `xray-kiki` または `shinryo-gazo-kensa`
+- **医療安全管理学**（`iryo-anzen`）のスロットは無い（改正後の新設）。医療安全の用語が出ても 76 回は `hoshasen-anzen` 側に置く。
 
 ### 3. 類似問題を書く
 
@@ -252,7 +259,7 @@ JSON を置いたあと、**ユーザーに渡す前に必ず** §7-1 と §7-3 
 | `mapsTo.answer` | **公式の正答**（1始まり。複数は配列 `[4, 5]`）。**採点除外で公式正答がない問では省略** |
 | `mapsTo.scoringExcluded` | `true` のとき採点除外（公式正答なし）。UI では「採点除外（公式正答なし）」と表示 |
 | `subject` | `exam-subjects.ts` の ID（令和6年施行の11科目） |
-| `studyTopics` | 省略可（省略時 `[]`）。`exam-subjects.ts` の学習タグ ID 配列。理工学・放射線科学を細分化するとき使う（例：問55–59 → `["hoshasen-seibutsugaku"]`、問60–64 → `["hoshasen-butsurigaku"]`、問65以降は `iyo-kogaku` / `hoshasen-keisoku`） |
+| `studyTopics` | 省略可（省略時 `[]`）。`exam-subjects.ts` の学習タグ ID 配列。理工学・放射線科学を細分化するとき使う（`hoshasen-seibutsugaku` / `hoshasen-butsurigaku` / `hoshasen-kagaku` / `iyo-kogaku` / `hoshasen-keisoku`）。第76回の放射化学スロットは `["hoshasen-kagaku"]` |
 | `stem` | 類似問題の問題文（オリジナル） |
 | `stemGrid` | 省略可。画素値などの **2 次元整数配列**（各行の長さは同一）。問題文直下に表表示 |
 | `choices` | 長さ 5。`text` 必須。`explanation` は Markdown、省略時は空文字 |
@@ -260,7 +267,7 @@ JSON を置いたあと、**ユーザーに渡す前に必ず** §7-1 と §7-3 
 | `answer` | **類似問題の正答**（1始まり。単一の数） |
 | `terms` | 英小文字のスラッグ配列。例 `["dwi"]` |
 | `sourceExplanation` | 対応する**公式過去問**の解説。公式文の全文転載はしない。下記ルールに従う |
-| `draft` | 公開するなら `false` |
+| `draft` | 未完成なら `true`（形式チェックの一部が外れる）。完成したら `false`。年次の公開範囲とは別。本番は直近 2 年だけ本文を出し、それより前は準備中（`exam-visibility.ts`）。`pnpm dev` では全年見える |
 
 ### 最小の形（計算問題の例）
 
@@ -485,7 +492,7 @@ JSON を置いたあと、**ユーザーに渡す前に必ず** §7-1 と §7-3 
 - [ ] 画像問題は文章化。別冊ならマニフェストの `hasBooklet` と `exam-data.ts` の別冊表を確認（科目ブランチでは表を編集しない）
 - [ ] レイアウト・CSS・既存コンポーネントを変更していない。科目ブランチでは JSON 以外を触っていない
 - [ ] ファイル名は `2026-78th-am-011.json` の形
-- [ ] `draft: false` で一覧に出る
+- [ ] `draft: false` で、開発サーバまたは直近 2 年の本番一覧に出る（それより前の年は本番では準備中）
 - [ ] `sourceExplanation` に**公式 1〜5 番**の正誤理由がある（知識問題）。**正解**／**誤り**ラベルが付いている
 - [ ] **7-1** … 公式 PDF で**問番・論点**が `mapsTo` のスロットと一致（不一致なら作り直し）
 - [ ] **7-2** … 手書きリンクに `target="_blank" rel="noopener noreferrer"`。**`pnpm lint:questions`** で確認（ブラウザ不要）

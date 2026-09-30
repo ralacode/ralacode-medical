@@ -1,0 +1,20 @@
+---
+import { LinkCard } from "@/components/link-card"
+import { examsHref } from "@/lib/questions"
+
+interface Props {
+  year: number
+  exam?: number
+}
+
+const { year, exam } = Astro.props
+const heading = exam ? `${year}年 第${exam}回` : `${year}年`
+---
+
+<header class="grid gap-3">
+  <h1 class="text-2xl font-semibold tracking-tight">{heading}</h1>
+  <p class="text-sm leading-relaxed text-muted-foreground">
+    この年の類似問題は準備中です。直近 2 年分を公開しています。
+  </p>
+  <LinkCard href={examsHref()} title="公開中の年次を見る" direction="back" />
+</header>
