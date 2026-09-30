@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 33,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 33,
+    "answer": 4
+  },
+  "subject": "kakui-gaku",
+  "stem": "心臓核医学検査について、正しいのはどれか。",
+  "choices": [
+    {
+      "text": "¹²³I-BMIPP は、心筋の交感神経機能を描出する。",
+      "explanation": "**誤り**です。BMIPP は脂肪酸の仲間で、**脂肪酸代謝**を見ます。交感神経を見るのは MIBG です。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-MIBI は、急性期の梗塞巣そのものに集まって熱い像になる。",
+      "explanation": "**誤り**です。MIBI は生きた心筋に留まり、梗塞は**欠損（冷たい像）**になります。急性梗塞に集まるのはピロリン酸などです。"
+    },
+    {
+      "text": "²⁰¹TlCl は、受動拡散だけで心筋細胞に入る。",
+      "explanation": "**誤り**です。タリウムはカリウムに似て、**Na⁺/K⁺-ATPase** を使って能動的に入ります。ただ流れて染み込むだけ、ではありません。"
+    },
+    {
+      "text": "¹²³I-MIBG は、心筋の脂肪酸代謝を描出する。",
+      "explanation": "**誤り**です。MIBG はノルアドレナリンに似て、**交感神経終末**の機能を見ます。脂肪酸代謝は BMIPP です。役割が入れ替わっています。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-テトロホスミンは、負荷心筋血流シンチグラフィで狭心症の評価に使う。",
+      "explanation": "テトロホスミンは MIBI と同じく、生きた心筋の血流分布を描きます。負荷と安静を比べて、狭心症の虚血を見ます。水道の流れが細いかを見る検査、というイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": ["cardiac-nuclear-medicine"],
+  "sourceExplanation": "この問は、**心臓核医学**の集積機序と適応です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=17\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 17 ページ</a>）。\n\n- **1 番** … MIBI は急性梗塞巣に集積する → **誤り**（生存心筋に集まり、梗塞は欠損。熱い梗塞はピロリン酸）。\n- **2 番** … ²⁰¹Tl は受動拡散で取り込まれる → **誤り**（Na⁺/K⁺-ATPase による能動輸送）。\n- **3 番** … MIBG は脂肪酸代謝を画像化する → **誤り**（交感神経。脂肪酸は BMIPP）。\n- **4 番** … テトロホスミンは狭心症の診断に用いる → **正解**。\n- **5 番** … BMIPP は交感神経活性を画像化する → **誤り**（脂肪酸代謝。交感神経は MIBG）。\n- **覚え方** … **MIBI／テトロホスミン＝血流**／**BMIPP＝脂肪酸**／**MIBG＝交感神経**／**Tl＝Na/K ポンプ**。",
+  "draft": false
+}

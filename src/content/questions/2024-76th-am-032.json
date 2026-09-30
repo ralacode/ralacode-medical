@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 32,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 32,
+    "answer": 1
+  },
+  "subject": "kakui-gaku",
+  "stem": "換気シンチグラフィなどで、気体として吸入させて用いる放射性医薬品はどれか。",
+  "choices": [
+    {
+      "text": "¹¹¹In-DTPA",
+      "explanation": "**誤り**です。脳槽シンチグラフィなどでは髄腔内に入れます。吸入用ではありません。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-GSA",
+      "explanation": "**誤り**です。肝臓の受容体を見る薬で、静脈注射します。吸入はしません。"
+    },
+    {
+      "text": "¹³³Xe",
+      "explanation": "キセノンは不活性ガスなので、息として肺に送り、換気を描きます。霧を吸って肺の風通しを見る、というイメージです。**正解**です。"
+    },
+    {
+      "text": "Na¹²³I",
+      "explanation": "**誤り**です。甲状腺検査ではカプセルや溶液を**経口**投与します。吸入薬ではありません。"
+    },
+    {
+      "text": "¹³¹I-アドステロール",
+      "explanation": "**誤り**です。副腎皮質シンチグラフィの薬で、静脈からゆっくり入れます。吸入はしません。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["ventilation-scintigraphy"],
+  "sourceExplanation": "この問は、**吸入して用いる放射性医薬品**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=17\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 17 ページ</a>）。\n\n- **1 番** … ⁸¹ᵐKr → **正解**（換気用の不活性ガス。連続吸入）。\n- **2 番** … ⁹⁹ᵐTc-GSA → **誤り**（静注。肝受容体）。\n- **3 番** … ¹¹¹In-DTPA → **誤り**（髄腔内投与など。吸入ではない）。\n- **4 番** … Na¹²³I → **誤り**（経口。甲状腺）。\n- **5 番** … ¹³¹I-アドステロール → **誤り**（静注。副腎皮質）。\n- **覚え方** … **吸う＝⁸¹ᵐKr・¹³³Xe・テックネガス・DTPA エアロゾル**。",
+  "draft": false
+}
