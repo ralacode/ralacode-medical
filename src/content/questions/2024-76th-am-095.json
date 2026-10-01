@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "am",
+  "number": 95,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "am",
+    "number": 95,
+    "answer": 2
+  },
+  "subject": "gazo-kogaku",
+  "stem": "X 線検出器の **量子検出効率（DQE）** で正しいのはどれか。",
+  "choices": [
+    {
+      "text": "NEQ と入射光子数との積である。",
+      "explanation": "**誤り**です。DQE は **NEQ を入射量子数 q で割った比**（DQE ＝ NEQ / q）です。掛け算ではありません。効率（割合）なので、分子を分母で割ります。"
+    },
+    {
+      "text": "面積の次元を持つ。",
+      "explanation": "**誤り**です。DQE は入力と出力の情報量の比なので**無次元**です。**mm²** は雑音パワースペクトル（NPS）の単位で、混ぜてはいけません。"
+    },
+    {
+      "text": "同一の値であれば、解像特性（MTF）も等しい。",
+      "explanation": "**誤り**です。DQE は MTF と NPS と線量の組み合わせです。同じ DQE でも、ぼけ方（MTF）とざらつき（NPS）の内訳は同じとは限りません。"
+    },
+    {
+      "text": "理論的な最大値は 1 である。",
+      "explanation": "検出器は入射光子が持つ情報を増やすことはできず、DQE の上限は **1**（100%）です。降った雨をバケツで汲むとき、汲んだ量が雨量を超えない、というイメージです。**正解**です。"
+    },
+    {
+      "text": "出力画像の SN 比の 2 乗に等しい。",
+      "explanation": "**誤り**です。出力 SNR の 2 乗に対応するのは **NEQ**（雑音等価量子数）です。DQE は (SNR_out / SNR_in)²、すなわち NEQ を入力側の量子限度で割った比です。"
+    }
+  ],
+  "answer": 4,
+  "terms": ["dqe"],
+  "sourceExplanation": "この問は、**量子検出効率（DQE）**の定義と性質です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=43\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 43 ページ</a>）。\n\n- **1 番** … 面積の次元を持つ → **誤り**（無次元。面積次元は NPS）。\n- **2 番** … 理論的な最大値は 1 → **正解**（情報は増やせない）。\n- **3 番** … NEQ と入射光子数の積 → **誤り**（DQE ＝ NEQ / q。商である）。\n- **4 番** … 出力画像の SN 比の 2 乗に対応 → **誤り**（それは NEQ。DQE は (SNR_out / SNR_in)²）。\n- **5 番** … 同一の値なら解像特性も等しい → **誤り**（MTF と NPS の内訳は一意に決まらない）。\n- **覚え方** … **DQE＝NEQ÷入射量子数**、上限 **1**、単位なし。NPS の mm² や MTF そのものと混同しない。",
+  "draft": false
+}
