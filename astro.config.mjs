@@ -3,6 +3,7 @@
 import { copyFile } from "node:fs/promises"
 
 import tailwindcss from "@tailwindcss/vite"
+import { unified } from "@astrojs/markdown-remark"
 import { defineConfig } from "astro/config"
 import react from "@astrojs/react"
 import mdx from "@astrojs/mdx"
@@ -22,7 +23,10 @@ function copySitemapXml() {
     name: "copy-sitemap-xml",
     hooks: {
       "astro:build:done": async ({ dir, logger }) => {
-        await copyFile(new URL("sitemap-0.xml", dir), new URL("sitemap.xml", dir))
+        await copyFile(
+          new URL("sitemap-0.xml", dir),
+          new URL("sitemap.xml", dir)
+        )
         logger.info("Copied sitemap-0.xml to sitemap.xml")
       },
     },
@@ -35,7 +39,9 @@ export default defineConfig({
   site: "https://ralacode.com",
   base: "/medical/",
   markdown: {
-    remarkPlugins: [remarkFixEmphasis],
+    processor: unified({
+      remarkPlugins: [remarkFixEmphasis],
+    }),
     shikiConfig: {
       themes: {
         light: "github-light",
