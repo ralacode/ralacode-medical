@@ -24,7 +24,7 @@
     },
     {
       "text": "副腎皮質シンチグラフィ",
-      "explanation": "¹³¹I-アドステロールなどヨウ素標識薬では、遊離したヨウ素が甲状腺に取り込まれるのを防ぐため、投与前にヨウ化カリウムなどでブロックします。水道の本管を先に閉じて、枝管へ水が流れないようにするイメージです。**正解**です。"
+      "explanation": "¹³¹I-アドステロールなどヨウ素標識薬では、遊離したヨウ素が甲状腺に取り込まれるのを防ぐため、投与前にヨウ化カリウムなどでブロックします。水道の本管を先に閉じて、枝管へ水が流れないようにするイメージです。**正解**です。詳しくは <a href=\"/medical/articles/adrenal-cortex-scintigraphy/\" target=\"_blank\" rel=\"noopener noreferrer\">副腎皮質シンチグラフィとは</a> をご覧ください。"
     },
     {
       "text": "肝胆道シンチグラフィ",
@@ -36,7 +36,7 @@
     }
   ],
   "answer": 3,
-  "terms": ["thyroid-block", "i-131-adosterol"],
+  "terms": ["thyroid-block", "i-131-adosterol", "adrenal-cortex-scintigraphy"],
   "sourceExplanation": "この問は、投与前の**甲状腺ブロック**が必要な検査です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=11\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 11 ページ</a>）。\n\n- **1 番** … **肝胆道シンチグラフィ** → **誤り**。⁹⁹ᵐTc 系。ブロック不要。\n- **2 番** … **甲状腺シンチグラフィ** → **誤り**。甲状腺を見る検査なのでブロックしない。\n- **3 番** … **唾液腺シンチグラフィ** → **誤り**。⁹⁹ᵐTcO₄⁻。ブロック不要。\n- **4 番** … **副甲状腺シンチグラフィ** → **誤り**。MIBI など。ブロック不要。\n- **5 番** … **副腎皮質シンチグラフィ** → **正解**。¹³¹I-アドステロールなどの遊離ヨウ素対策。\n- **覚え方** … **ヨウ素標識の副腎皮質＝ブロックする**／甲状腺を見る検査と ⁹⁹ᵐTc 系はブロックしない。",
   "draft": false
 }

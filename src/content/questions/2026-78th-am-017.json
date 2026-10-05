@@ -28,7 +28,7 @@
     },
     {
       "text": "¹³¹I-アドステロール（副腎皮質用）",
-      "explanation": "急激な投与で**血圧変動**などが起きやすい薬剤です。血管への負担を減らすため、**30 秒以上かけてゆっくり**静注します。**正解**です。"
+      "explanation": "急激な投与で**血圧変動**などが起きやすい薬剤です。血管への負担を減らすため、**30 秒以上かけてゆっくり**静注します。**正解**です。詳しくは <a href=\"/medical/articles/adrenal-cortex-scintigraphy/\" target=\"_blank\" rel=\"noopener noreferrer\">副腎皮質シンチグラフィとは</a> をご覧ください。"
     },
     {
       "text": "²⁰¹TlCl（ミオカルド用）",
@@ -36,7 +36,7 @@
     }
   ],
   "answer": 4,
-  "terms": ["i-131-adosterol"],
+  "terms": ["i-131-adosterol", "adrenal-cortex-scintigraphy"],
   "sourceExplanation": "この問は、**投与速度に注意が必要な放射性医薬品**の識別です。\n\n- **¹³¹I-アドステロール**（副腎皮質シンチ）… **30 秒以上のゆっくり静注**が推奨。急投与で血圧低下などの副作用リスク。\n- ⁹⁹ᵐTc 系（ECD、MIBI など）… 通常速度の静注が一般的。\n- ²⁰¹Tl … 通常速度。\n- ¹²³I-MIBG … 速度配慮はあるが、アドステロールほど「必ず 30 秒以上」と覚える典型ではない。",
   "draft": false
 }

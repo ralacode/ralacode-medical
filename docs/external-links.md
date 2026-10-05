@@ -27,7 +27,12 @@
 | --- | --- | --- | --- | --- |
 | https://pharma-navi.bayer.jp/gadovist/basic-docs | ガドビスト（ガドブトロール）— バイエル製薬 製品情報 | `src/content/articles/gadolinium.mdx` | reference | 2026-09-08 |
 | https://pharma-navi.bayer.jp/xofigo/basic-docs | ゾーフィゴ | `src/content/questions/2026-78th-pm-039.json` | reference | 2026-09-08 |
+| https://pins.japic.or.jp/pdf/newPINS/00005843.pdf | アドステロール−I131 注射液 添付文書（2022 年 3 月改訂 第 2 版、JAPIC） | `src/content/articles/adrenal-cortex-scintigraphy.mdx` | reference | — |
 | https://www.gehealthcare.com/ja-jp/event-and-news/news-and-initiatives/2020/press14 | マグネビスト（ガドペンテートメグルミン）— GE HealthCare に関する参考情報 | `src/content/articles/gadolinium.mdx` | reference | 2026-09-08 |
+| https://www.jstage.jst.go.jp/article/endocrine/92/Suppl.September/92_1/_pdf/-char/ja | 日本内分泌学会「わが国の原発性アルドステロン症の診療に関するコンセンサス・ステートメント」 | `src/content/articles/adrenal-cortex-scintigraphy.mdx` | reference | — |
+| https://www.kegg.jp/medicus-bin/japic_med?japic_code=00005843 | アドステロール−I131 注射液（KEGG MEDICUS、上記添付文書の HTML） | `src/content/articles/adrenal-cortex-scintigraphy.mdx` | reference | — |
+| https://www.pdradiopharma.com/uploads/mibg_pi.pdf | ミオ MIBG−I123 注射液 添付文書（PDR ファーマ） | `src/content/articles/adrenal-cortex-scintigraphy.mdx` | reference | — |
+| https://www.pmda.go.jp/safety/info-services/drugs/0001.html | PMDA の医薬品情報 | `src/content/articles/adrenal-cortex-scintigraphy.mdx` | reference | — |
 
 ---
 
