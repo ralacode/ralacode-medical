@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "pm",
+  "number": 32,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "pm",
+    "number": 32,
+    "answer": [4, 5]
+  },
+  "subject": "kakui-gaku",
+  "stem": "副腎**皮質**の腫瘍を核医学で評価するときに用いる放射性医薬品はどれか。",
+  "choices": [
+    {
+      "text": "¹²³I-BMIPP",
+      "explanation": "**誤り**です。BMIPP は心筋の脂肪酸代謝を見る薬です。副腎皮質の評価には使いません。"
+    },
+    {
+      "text": "¹³¹I-アドステロール",
+      "explanation": "コレステロールに似た構造で、副腎**皮質**に集まります。皮質腺腫などの評価に用います。詳しくは[副腎皮質シンチグラフィ](/medical/articles/adrenal-cortex-scintigraphy/)を参照してください。**正解**です。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-ECD",
+      "explanation": "**誤り**です。ECD は脳血流シンチグラフィの薬です。副腎には使いません。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-DMSA",
+      "explanation": "**誤り**です。DMSA は腎皮質の形態を見る薬です。公式スロットでは髄質用の MIBG が正答のひとつでしたが、本問では腎皮質用に置き換えてあります。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-MAA",
+      "explanation": "**誤り**です。MAA は肺血流シンチグラフィの粒子です。副腎腫瘍の診断薬ではありません。"
+    }
+  ],
+  "answer": 2,
+  "terms": ["adrenal-cortex-scintigraphy"],
+  "sourceExplanation": "この問は、**副腎腫瘍の放射性医薬品**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=16\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 16 ページ</a>）。公式は**2つ選べ**で、正答は **4 番**と **5 番**でした。類似問題は単一正解にし、皮質用のアドステロールを残しています。公式のもう一つの正答（¹²³I-MIBG）は、類似では⁹⁹ᵐTc-DMSA という**誤り肢**に書き換えています。\n\n- **1 番** … 脳血流用テクネチウム製剤 → **誤り**。\n- **2 番** … 肺血流用粒子 → **誤り**。\n- **3 番** … 心筋脂肪酸製剤 → **誤り**。\n- **4 番** … ノルアドレナリン類似の MIBG → **正解**（副腎**髄質**・褐色細胞腫。類似では残していない）。\n- **5 番** … コレステロール類似のアドステロール → **正解**（副腎**皮質**）。\n- **覚え方** … **皮質＝アドステロール**／**髄質＝MIBG**。脳・肺・心筋の薬と取り違えない。",
+  "draft": false
+}
