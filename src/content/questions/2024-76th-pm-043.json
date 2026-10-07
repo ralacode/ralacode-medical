@@ -1,0 +1,38 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "pm",
+  "number": 43,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "pm",
+    "number": 43,
+    "answer": 3
+  },
+  "subject": "hoshasen-chiryo",
+  "stem": "6 MV X 線を照射野 12 cm × 12 cm で照射したとき、組織中の深さ 8 cm の点の線量率が 2.10 Gy·min⁻¹ であった。照射野 10 cm × 10 cm の基準点の吸収線量率［Gy·min⁻¹］に最も近いのはどれか。ただし、照射野 12 cm × 12 cm の出力係数は 1.05、組織最大線量比は 0.80、線源標的間距離は一定とする。",
+  "choices": [
+    {
+      "text": "2.6"
+    },
+    {
+      "text": "1.8"
+    },
+    {
+      "text": "2.0"
+    },
+    {
+      "text": "2.5",
+      "explanation": "SAD 一定では、測定点の線量率＝基準点線量率 × 出力係数 × 組織最大線量比、です。基準点＝2.10÷(1.05×0.80)＝2.10÷0.84＝**2.5**。掛け算してしまうと約 1.8、出力係数だけだと 2.0、TMR だけだと約 2.6 になります。6 MV は式に使いません。"
+    },
+    {
+      "text": "2.1"
+    }
+  ],
+  "answer": 4,
+  "terms": ["tmr"],
+  "sourceExplanation": "この問は、**SAD 一定**での **10 cm × 10 cm 基準点の吸収線量率**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=20\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 20 ページ</a>）。公式正答は **3 番**です。\n\n式は **基準点線量率＝測定点線量率÷（出力係数×組織最大線量比）** です。測定点は「その照射野の深さの点」、基準点は 10 cm × 10 cm の校正点、と読みます。公称エネルギーは式に入りません。\n\n- **落とし穴** … 出力係数と TMR を**掛けて**測定点にする、一方だけを使う、測定値そのものを選ぶ。\n- **覚え方** … SAD 一定：**測った値 ÷（OF × TMR）＝基準の出力**。",
+  "draft": false
+}
