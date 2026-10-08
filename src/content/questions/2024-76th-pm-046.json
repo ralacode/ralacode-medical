@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "pm",
+  "number": 46,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "pm",
+    "number": 46,
+    "answer": 5
+  },
+  "subject": "iryo-gazo-joho",
+  "stem": "医療情報システムの用語・規格に関する記述で、正しいのはどれか。",
+  "choices": [
+    {
+      "text": "ICD-10 は、撮影手順をコード化した検査プロトコルである。",
+      "explanation": "**誤り**です。ICD-10（国際疾病分類）は**病名・疾患**を分類するコードです。どの撮影をどの順で行うか、という検査プロトコルではありません。図書館の「病気の棚番号」であり、撮影マニュアルではありません。"
+    },
+    {
+      "text": "Radiation Dose Structured Report（RDSR）は、照射線量の情報を構造化レポートとして記録する。",
+      "explanation": "RDSR は DICOM の**構造化レポート**で、CT などの**照射線量**（CTDI、DLP など）を機械可読な形で残します。レシートに「何をどれだけ使ったか」が項目ごとに並ぶ、というイメージです。**正解**です。"
+    },
+    {
+      "text": "MWM は、モダリティから RIS へ検査実施情報を返す規格である。",
+      "explanation": "**誤り**です。MWM（Modality Worklist Management）は、HIS／RIS から装置へ**検査オーダ（ワークリスト）を渡す**側です。実施結果を装置から返すのは **MPPS**（Modality Performed Procedure Step）です。予約表をカメラへ送るのが MWM、終了報告が MPPS、と覚えると取り違えません。"
+    },
+    {
+      "text": "IHE は、DICOM や HL7 に代わる画像通信の標準規格である。",
+      "explanation": "**誤り**です。IHE（Integrating the Healthcare Enterprise）は、既存の DICOM や HL7 を**どう組み合わせてつなぐか**を示す連携の枠組みです。DICOM を置き換える新しい通信規格ではありません。既存の食材の使い方を揃えるレシピであり、新しい食材そのものではありません。"
+    },
+    {
+      "text": "SSL は、医用画像を院外へ保存するための統合プロトコルである。",
+      "explanation": "**誤り**です。SSL（Secure Sockets Layer）は通信路を暗号化する仕組みです。画像の院外保存そのものを決める統合規格（保存形態や送付の枠組み）ではありません。封筒の封蝋であり、倉庫の住所録ではありません。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、医療情報に関する用語の**記載が正しいか**を扱います（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=22\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 22 ページ</a>）。\n\n- **1 番** … IHE を業務ワークフローの標準規格とする → **誤り**。IHE は既存規格（DICOM・HL7）を組み合わせる連携の枠組みであり、それらに代わる標準規格そのものではない。\n- **2 番** … MWM を検査実施情報の RIS 伝送とする → **誤り**。MWM はワークリストを装置へ渡す。実施情報の返送は MPPS。\n- **3 番** … SSL を画像の外部保存用統合プロトコルとする → **誤り**。SSL は通信の暗号化。\n- **4 番** … ICD-10 をコード化した検査プロトコルとする → **誤り**。ICD-10 は疾病分類。\n- **5 番** … RDSR を線量情報の構造化レポートとする → **正解**。\n- **覚え方** … **RDSR＝線量の構造化レポート**／MWM＝オーダを装置へ／MPPS＝実施を返す／IHE＝つなぎ方／ICD＝病名。",
+  "draft": false
+}
