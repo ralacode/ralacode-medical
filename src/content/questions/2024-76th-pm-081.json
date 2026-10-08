@@ -1,0 +1,47 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "pm",
+  "number": 81,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "pm",
+    "number": 81,
+    "answer": 5
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": [
+    "hoshasen-keisoku"
+  ],
+  "stem": "空気中の水分を吸って溶ける性質（潮解性）があるため、気密に封じて用いる放射線検出器はどれか。",
+  "choices": [
+    {
+      "text": "LiF 熱蛍光線量計",
+      "explanation": "**誤り**です。LiF の TLD 素子は固体の粉末・チップで、潮解性の検出器としては扱いません。湿気で溶ける塩の結晶、という話ではありません。"
+    },
+    {
+      "text": "空気電離箱",
+      "explanation": "**誤り**です。電離箱は気体の電離電荷を集める検出器で、潮解する結晶を使いません。"
+    },
+    {
+      "text": "NaI（Tl）シンチレーション検出器",
+      "explanation": "NaI（Tl）結晶は湿気を吸って溶ける**潮解性**があります。缶に気密封入し、窓から光だけを光電子増倍管へ送ります。食卓塩が梅雨に固まるのを、缶入りで防ぐイメージです。[シンチレータ](/medical/articles/scintillator/)の代表例です。**正解**です。"
+    },
+    {
+      "text": "プラスチックシンチレータ",
+      "explanation": "**誤り**です。プラスチックシンチレータは有機高分子で、NaI（Tl）のような潮解性はありません。大型化や β 線測定向きです。"
+    },
+    {
+      "text": "シリコン半導体検出器",
+      "explanation": "**誤り**です。Si 検出器は空乏層の電荷収集で動作します。冷却が要る Ge 検出器は別にありますが、潮解性の結晶ではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": [
+    "scintillator"
+  ],
+  "sourceExplanation": "この問は、**潮解性を示す放射線検出器**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=35\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 35 ページ</a>）。\n\n- **1 番** … GM 計数管 → **誤り**（気体増幅。潮解する結晶ではない）。\n- **2 番** … 比例計数管 → **誤り**（気体検出器）。\n- **3 番** … 半導体検出器 → **誤り**（空乏層。潮解性ではない）。\n- **4 番** … 蛍光ガラス線量計 → **誤り**（リン酸塩ガラス。潮解性の代表ではない）。\n- **5 番** … NaI（Tl）シンチレーション検出器 → **正解**。気密缶に封入する。\n- **覚え方** … **NaI（Tl）は湿気に弱い**。プラスチックシンチレータや気体検出器と混ぜない。",
+  "draft": false
+}
