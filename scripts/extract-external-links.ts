@@ -180,7 +180,7 @@ function main() {
 
   if (check) {
     const current = fs.existsSync(outPath) ? fs.readFileSync(outPath, "utf8") : ""
-    if (current !== markdown) {
+    if (current.replaceAll("\r\n", "\n") !== markdown.replaceAll("\r\n", "\n")) {
       console.error(
         "docs/external-links.md がコンテンツと一致しません。pnpm exam:external-links を実行してください"
       )

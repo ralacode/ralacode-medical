@@ -12,11 +12,11 @@
     "answer": 1
   },
   "subject": "shinryo-gazo-kensa",
-  "stem": "頭部 MRI の T2 強調横断像で、両側の眼球が見える高さにおいて、後方の小脳（ひだが目立つ）のすぐ前に、脳槽で囲まれた太い脳幹がある。矢印が示すこの構造はどれか。",
+  "stem": "頭部 MRI の T2 強調横断像で、両側の眼球が見える高さにおいて、後方の小脳（ひだが目立つ）のすぐ前にあり、脳槽で囲まれた太い脳幹はどれか。",
   "choices": [
     {
       "text": "小脳",
-      "explanation": "**誤り**です。小脳は後方を占める、ひだが目立つ大きな構造です。矢印は小脳の**前**にある太い脳幹を指しています。"
+      "explanation": "**誤り**です。小脳は後方を占める、ひだが目立つ大きな構造です。問われているのは小脳の**前**にある太い脳幹です。"
     },
     {
       "text": "中脳",
@@ -37,6 +37,6 @@
   ],
   "answer": 4,
   "terms": [],
-  "sourceExplanation": "この問は、頭部 T2 強調横断像の**脳幹同定**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=13\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 13 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_02.pdf#page=8\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.4・8 ページ</a>）。本サイトの類似問題は図を載せられないため、**眼球が見える高さで小脳の前方にある太い脳幹**として文章化しています。\n\n- **別冊所見** … 眼球と側頭葉が見える横断 T2 強調。後方は小脳のひだ。その前方の太い脳幹（腹側の膨らみ）＝**橋**。\n- **1 番** … **橋** → **正解**。\n- **2 番** … **延髄** → **誤り**（より尾側・細い）。\n- **3 番** … **視床** → **誤り**（より頭側の間脳。第三脳室の左右）。\n- **4 番** … **小脳** → **誤り**（後方のひだ。矢印の前の脳幹ではない）。\n- **5 番** … **中脳** → **誤り**（より頭側。大脳脚・中脳水道の高さ）。\n- **覚え方** … 眼球が見えて小脳の前が太い＝**橋**／細い尾側＝延髄／脚が見える頭側＝中脳。",
+  "sourceExplanation": "この問は、頭部 T2 強調横断像の**脳幹同定**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=13\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 13 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_02.pdf#page=8\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.4・8 ページ</a>）。本サイトの類似問題は図を載せられないため、**眼球が見える高さで小脳の前方にある太い脳幹**として文章化しています。\n\n- **別冊所見** … 眼球と側頭葉が見える横断 T2 強調。後方は小脳のひだ。その前方の太い脳幹（腹側の膨らみ）＝**橋**。\n- **1 番** … **橋** → **正解**。\n- **2 番** … **延髄** → **誤り**（より尾側・細い）。\n- **3 番** … **視床** → **誤り**（より頭側の間脳。第三脳室の左右）。\n- **4 番** … **小脳** → **誤り**（後方のひだであり、前方の太い脳幹ではない）。\n- **5 番** … **中脳** → **誤り**（より頭側。大脳脚・中脳水道の高さ）。\n- **覚え方** … 眼球が見えて小脳の前が太い＝**橋**／細い尾側＝延髄／脚が見える頭側＝中脳。",
   "draft": false
 }
