@@ -1,0 +1,39 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "pm",
+  "number": 77,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "pm",
+    "number": 77,
+    "answer": 3
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": ["iyo-kogaku"],
+  "stem": "長辺 **8 mm**・短辺 **5 mm** の長方形極板を、間隔 **2.0 mm** で平行に向かい合わせた。極板間の誘電率を **8.0 × 10⁻¹¹ F·m⁻¹** とするとき、静電容量［pF］はどれか。",
+  "choices": [
+    {
+      "text": "16"
+    },
+    {
+      "text": "0.80"
+    },
+    {
+      "text": "3.2"
+    },
+    {
+      "text": "0.16"
+    },
+    {
+      "text": "1.6",
+      "explanation": "平行平板の容量は **C ＝ ε A / d** です。A ＝ 8×10⁻³ × 5×10⁻³ ＝ **4.0×10⁻⁵ m²**、d ＝ 2.0×10⁻³ m を入れると C ＝ 8.0×10⁻¹¹ × 4.0×10⁻⁵ / 2.0×10⁻³ ＝ **1.6×10⁻¹² F ＝ 1.6 pF** です。カーペットが広いほど、隙間が狭いほど電気を溜めやすい、というイメージです。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**平行平板コンデンサの静電容量**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=34\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 34 ページ</a>）。公式は寸法の図付きです。本サイトの類似問題は図を載せられないため、極板の辺と間隔を文章で与え、数値を変えています。\n\n- **公式正答** … **3 番**。図の面積と間隔、与えられた誘電率から **C ＝ ε A / d** を pF に直した値がその肢。\n- **式** … 面積 A は向かい合う面の積（mm は 10⁻³ m）、間隔 d も m、C の単位は F。1 pF ＝ 10⁻¹² F。\n- **類似問題** … ε ＝ 8.0×10⁻¹¹ F·m⁻¹、A ＝ 8 mm × 5 mm、d ＝ 2.0 mm → **1.6 pF**。\n- **落とし穴** … mm を m に直さない、間隔に極板の辺を使う、10⁻¹² の桁を一つずらす。\n- **覚え方** … **広い・近い・誘電率が大きいほど容量が大きい**。",
+  "draft": false
+}
