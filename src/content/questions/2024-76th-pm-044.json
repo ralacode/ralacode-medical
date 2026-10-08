@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "pm",
+  "number": 44,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "pm",
+    "number": 44,
+    "answer": 3
+  },
+  "subject": "hoshasen-chiryo",
+  "stem": "全身状態の指標である Performance Status（PS）について、正しいのはどれか。",
+  "choices": [
+    {
+      "text": "有害事象の評価基準に用いられる。",
+      "explanation": "**誤り**です。有害事象のグレードは **CTCAE** などです。PS は日常の活動度であり、有害事象の物差しそのものではありません。"
+    },
+    {
+      "text": "治療法の選択に影響する。",
+      "explanation": "歩けるか、身の回りのことが自分でできるか、で化学療法や照射の強さを決めます。ECOG PS 0〜1 なら強い治療、3〜4 なら緩和に寄せる、といった使い方です。登山の装備を体力で変える、というイメージです。**正解**です。"
+    },
+    {
+      "text": "癌の分化度に影響する。",
+      "explanation": "**誤り**です。分化度は顕微鏡の**組織型の顔つき**です。患者がどれだけ動けるか（PS）とは別物です。"
+    },
+    {
+      "text": "標的病変の治療効果判定に用いられる。",
+      "explanation": "**誤り**です。標的病変の縮小は **RECIST** などで見ます。PS は全身状態であり、病変径の物差しではありません。"
+    },
+    {
+      "text": "癌の病期分類に影響する。",
+      "explanation": "**誤り**です。病期（TNM など）は腫瘍の広がりです。PS は患者の活動度で、病期の数字そのものには入りません。"
+    }
+  ],
+  "answer": 2,
+  "terms": ["performance-status"],
+  "sourceExplanation": "この問は、**Performance Status（PS）**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=20\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 20 ページ</a>）。\n\n- **1 番** … **分化度に影響** → **誤り**（分化度は組織所見）。\n- **2 番** … **病期分類に影響** → **誤り**（TNM などは腫瘍の広がり。PS は活動度）。\n- **3 番** … **治療法の選択に影響** → **正解**（適応や強度の判断材料）。\n- **4 番** … **有害事象の評価基準** → **誤り**（それは CTCAE など）。\n- **5 番** … **標的病変の効果判定** → **誤り**（それは RECIST など）。\n- **覚え方** … PS＝**どれだけ動けるか** → **治療の選び方**。病期・分化度・CTCAE・RECIST とは別。",
+  "draft": false
+}
