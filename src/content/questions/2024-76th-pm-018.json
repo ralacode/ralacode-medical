@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "pm",
+  "number": 18,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "pm",
+    "number": 18,
+    "answer": 5
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "生体内の代謝物の量や比を、画像ではなくスペクトルとして得られる MRI の手法はどれか。",
+  "choices": [
+    {
+      "text": "動脈スピンラベリング（ASL）",
+      "explanation": "**誤り**です。ASL は血液を磁化ラベルして**灌流**を見る方法です。代謝物のピークは出しません。"
+    },
+    {
+      "text": "磁化率強調像（SWI）",
+      "explanation": "**誤り**です。SWI は磁化率の差で静脈や出血を強調する**形態画像**です。代謝情報ではありません。"
+    },
+    {
+      "text": "MR スペクトロスコピー（MRS）",
+      "explanation": "MRS は、NAA・コリン・クレアチン・乳酸などの**代謝物**を周波数の山として見ます。写真ではなく成分表を読む、というイメージです。**正解**です。"
+    },
+    {
+      "text": "拡散強調像（DWI）",
+      "explanation": "**誤り**です。DWI は水分子の動きやすさ（拡散）を見る画像です。代謝物の定量ではありません。詳しくは <a href=\"/medical/articles/dwi/\" target=\"_blank\" rel=\"noopener noreferrer\">拡散強調像とは</a> をご覧ください。"
+    },
+    {
+      "text": "TOF 法 MR アンギオグラフィ",
+      "explanation": "**誤り**です。TOF-MRA は流入する血液の信号で**血管**を描出します。代謝のスペクトルではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**生体内の代謝情報を取得する撮像**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=11\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 11 ページ</a>）。\n\n- **1 番** … **MRA** → **誤り**（血管形態）。\n- **2 番** … **FLAIR 像** → **誤り**（CSF を落とした形態画像）。\n- **3 番** … **拡散強調像** → **誤り**（水の拡散）。\n- **4 番** … **MR hydrography** → **誤り**（液体の T2 強調。胆管・尿路など）。\n- **5 番** … **MR spectroscopy** → **正解**。代謝物のピークを見る。\n- **覚え方** … 代謝＝**MRS**／血管＝MRA／水の動き＝DWI／液体の管＝ハイドログラフィ。",
+  "draft": false
+}

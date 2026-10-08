@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "pm",
+  "number": 12,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "pm",
+    "number": 12,
+    "answer": 4
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "静磁場 3 T の頭部 MRI で、正常な大脳白質の縦緩和時間（T1）の目安として最も近いのはどれか。",
+  "choices": [
+    {
+      "text": "10 s",
+      "explanation": "**誤り**です。10 秒は自由水の T1 としても長すぎ、白質の目安ではありません。装置の待ち時間と緩和時間を混同しないでください。"
+    },
+    {
+      "text": "10 ms",
+      "explanation": "**誤り**です。10 ms は T2 や TE の桁です。白質の T1 はこれより 2 桁ほど長いです。"
+    },
+    {
+      "text": "1 s",
+      "explanation": "3 T の白質 T1 はおおよそ 0.8〜1.1 秒で、**1 秒**が一番近い桁です。「いち、に」と数えるくらいで縦磁化が戻る、というイメージです。**正解**です。"
+    },
+    {
+      "text": "1 ms",
+      "explanation": "**誤り**です。1 ms はエコー間隔や非常に短い T2 成分の話です。白質の T1 ではありません。"
+    },
+    {
+      "text": "100 ms",
+      "explanation": "**誤り**です。100 ms は白質の **T2**（数十 ms）に近い桁で、T1 としては短すぎます。T1 と T2 の桁を取り違えないことが要点です。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**3 T 脳白質の T1 緩和時間**の桁です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=9\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 9 ページ</a>）。\n\n- **1 番** … **1 × 10⁻³ s（1 ms）** → **誤り**（TE や極短い T2 の桁）。\n- **2 番** … **1 × 10⁻² s（10 ms）** → **誤り**。\n- **3 番** … **1 × 10⁻¹ s（100 ms）** → **誤り**（T2 に近い桁）。\n- **4 番** … **1 × 10⁰ s（1 s）** → **正解**。3 T 白質 T1 は約 1 秒。\n- **5 番** … **1 × 10¹ s（10 s）** → **誤り**（長すぎる）。\n- **覚え方** … 3 T 白質 **T1 ≒ 1 秒**／**T2 ≒ 0.1 秒未満**。",
+  "draft": false
+}
