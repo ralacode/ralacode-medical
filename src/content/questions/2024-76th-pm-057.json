@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "pm",
+  "number": 57,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "pm",
+    "number": 57,
+    "answer": 1
+  },
+  "subject": "kiso-igaku",
+  "stem": "バセドウ病（Basedow 病）の患者で、低下する所見はどれか。",
+  "choices": [
+    {
+      "text": "遊離サイロキシン（FT4）",
+      "explanation": "**誤り**です。バセドウ病では甲状腺が刺激され、FT4 は**上昇**します。下がる項目ではありません。"
+    },
+    {
+      "text": "抗 TSH 受容体抗体",
+      "explanation": "**誤り**です。この抗体が TSH 受容体を刺激するのがバセドウ病の原因なので、検出され**増える**側です。低下しません。"
+    },
+    {
+      "text": "心拍数",
+      "explanation": "**誤り**です。甲状腺ホルモン過剰で代謝と交感神経が上がり、心拍数は**増えます**。徐脈にはなりません。"
+    },
+    {
+      "text": "甲状腺刺激ホルモン（TSH）",
+      "explanation": "甲状腺ホルモン（FT3・FT4）が高いと、下垂体は TSH の分泌を止めます。部屋が暑すぎると暖房を切る、という負のフィードバックです。**正解**です。"
+    },
+    {
+      "text": "遊離トリヨードサイロニン（FT3）",
+      "explanation": "**誤り**です。FT3 も甲状腺から過剰に出るため**上昇**します。TSH だけが抑制されます。"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、**バセドウ病で低下する検査・所見**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=26\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 26 ページ</a>）。\n\n- **1 番** … TSH → **正解**（高 FT3・FT4 による負のフィードバックで低下）。\n- **2 番** … 心拍数 → **誤り**（頻脈になる。低下しない）。\n- **3 番** … FT3 → **誤り**（上昇する）。\n- **4 番** … FT4 → **誤り**（上昇する）。\n- **5 番** … 抗 TSH 受容体抗体 → **誤り**（原因抗体であり上昇・陽性）。\n- **覚え方** … バセドウ＝**TRAb↑・FT3↑・FT4↑・TSH↓・脈は速い**。",
+  "draft": false
+}
