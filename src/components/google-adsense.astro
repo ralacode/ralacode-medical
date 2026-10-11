@@ -38,3 +38,46 @@ const enabled = import.meta.env.PROD && Boolean(ADSENSE_CLIENT_ID)
     </>
   ) : null
 }
+
+<script is:inline>
+  // in-article（fluid）がシェルへ height:auto !important を付け、
+  // overflow:hidden の内側スクロールを潰すのを戻す。
+  ;(function () {
+    if (window.__ralacodeShellHeightGuard) return
+    window.__ralacodeShellHeightGuard = true
+
+    var slots = ["sidebar-wrapper", "sidebar-inset"]
+    var seen = new WeakSet()
+
+    function revert(el) {
+      if (!el || !el.style) return
+      if (el.style.getPropertyValue("height") === "auto") {
+        el.style.removeProperty("height")
+      }
+    }
+
+    function guard(el) {
+      if (!el || seen.has(el)) return
+      seen.add(el)
+      revert(el)
+      new MutationObserver(function () {
+        revert(el)
+      }).observe(el, { attributes: true, attributeFilter: ["style"] })
+    }
+
+    function scan() {
+      for (var i = 0; i < slots.length; i++) {
+        var nodes = document.querySelectorAll('[data-slot="' + slots[i] + '"]')
+        for (var j = 0; j < nodes.length; j++) guard(nodes[j])
+      }
+    }
+
+    document.addEventListener("astro:page-load", scan)
+    document.addEventListener("astro:after-swap", scan)
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", scan)
+    } else {
+      scan()
+    }
+  })()
+</script>
