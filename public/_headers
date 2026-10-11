@@ -12,6 +12,12 @@
 /medical/favicon.svg
   Cache-Control: public, max-age=604800
 
+/ads.txt
+  Cache-Control: public, max-age=3600
+
+/medical/ads.txt
+  Cache-Control: public, max-age=3600
+
 # HTML とその他 — 短めのキャッシュ + 基本セキュリティヘッダー
 /medical/*
   Cache-Control: public, max-age=0, must-revalidate

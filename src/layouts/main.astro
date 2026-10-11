@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css"
 import { AppShell } from "@/components/app-shell"
+import GoogleAdsense from "@/components/google-adsense.astro"
 import GoogleAnalytics from "@/components/google-analytics.astro"
 import Meta, { type Props as MetaProps } from "@/components/meta.astro"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -49,6 +50,7 @@ const {
     />
     <ClientRouter fallback="swap" />
     <GoogleAnalytics />
+    <GoogleAdsense />
     <script is:inline>
       (() => {
         // src/lib/ui-contracts.ts の THEME_STORAGE_KEY と一致させること

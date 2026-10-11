@@ -5,6 +5,8 @@ import { ArrowLeftIcon } from "lucide-react"
 
 import { LinkCard } from "@/components/link-card"
 import { buttonVariants } from "@/components/ui/button"
+import ExamCtaCard from "@/components/exam-cta-card.astro"
+import InArticleAd from "@/components/in-article-ad.astro"
 import KeyPoint from "@/components/key-point.astro"
 import Layout from "@/layouts/main.astro"
 import { articlesHref } from "@/lib/article-paths"
@@ -87,9 +89,37 @@ const formattedUpdated =
       <h1 class="text-2xl font-semibold tracking-tight">{title}</h1>
       <p class="text-sm leading-relaxed text-muted-foreground">{description}</p>
     </header>
-    <div class="article-md">
-      <Content components={{ KeyPoint }} />
+    <div data-article-body>
+      <div class="article-md" data-article-md>
+        <Content components={{ KeyPoint }} />
+      </div>
+      <div class="my-8 grid gap-4" data-article-mid-slot>
+        <ExamCtaCard />
+        <InArticleAd />
+      </div>
     </div>
+    <script is:inline data-astro-rerun>
+      ;(function () {
+        var body = document.querySelector("[data-article-body]")
+        if (!body) return
+        var md = body.querySelector("[data-article-md]")
+        var slot = body.querySelector("[data-article-mid-slot]")
+        if (!md || !slot) return
+        var heading = md.querySelector("h2")
+        if (!heading) return
+
+        var rest = document.createElement("div")
+        rest.className = md.className
+        var node = heading
+        while (node) {
+          var next = node.nextSibling
+          rest.appendChild(node)
+          node = next
+        }
+        md.after(slot)
+        slot.after(rest)
+      })()
+    </script>
 
     {
       faq.length > 0 ? (

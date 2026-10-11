@@ -1,0 +1,24 @@
+---
+import { ADSENSE_CLIENT_ID, ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense"
+
+const enabled = import.meta.env.PROD && Boolean(ADSENSE_CLIENT_ID)
+---
+
+<aside class="ad-in-article w-full" aria-label="広告" data-in-article-ad>
+  {
+    enabled ? (
+      <ins
+        class="adsbygoogle"
+        style="display:block; text-align:center;"
+        data-ad-layout="in-article"
+        data-ad-format="fluid"
+        data-ad-client={ADSENSE_CLIENT_ID}
+        data-ad-slot={ADSENSE_IN_ARTICLE_SLOT}
+      />
+    ) : (
+      <div class="grid min-h-24 place-items-center rounded-md border border-dashed text-xs text-muted-foreground">
+        広告
+      </div>
+    )
+  }
+</aside>

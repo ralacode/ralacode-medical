@@ -1,0 +1,42 @@
+---
+import { ADSENSE_CLIENT_ID } from "@/lib/adsense"
+
+interface Props {
+  /** AdSense 管理画面の広告ユニット ID */
+  slot: string
+  format?: "auto" | "rectangle" | "horizontal" | "vertical" | "fluid"
+  fullWidthResponsive?: boolean
+  class?: string
+}
+
+const {
+  slot,
+  format = "auto",
+  fullWidthResponsive = true,
+  class: className,
+} = Astro.props
+
+const enabled = import.meta.env.PROD && Boolean(ADSENSE_CLIENT_ID)
+---
+
+<aside
+  class:list={["ad-unit w-full overflow-hidden", className]}
+  aria-label="広告"
+>
+  {
+    enabled ? (
+      <ins
+        class="adsbygoogle"
+        style="display:block"
+        data-ad-client={ADSENSE_CLIENT_ID}
+        data-ad-slot={slot}
+        data-ad-format={format}
+        data-full-width-responsive={fullWidthResponsive ? "true" : "false"}
+      />
+    ) : (
+      <div class="grid min-h-24 place-items-center rounded-md border border-dashed text-xs text-muted-foreground">
+        広告
+      </div>
+    )
+  }
+</aside>

@@ -1,0 +1,28 @@
+---
+import { ArrowRightIcon } from "lucide-react"
+
+import { buttonVariants } from "@/components/ui/button"
+import { freeExamYearCount } from "@/lib/exam-visibility"
+import { examsHref } from "@/lib/questions"
+import { cn } from "@/lib/utils"
+---
+
+<aside
+  class="grid gap-3 rounded-xl border border-border bg-card p-4"
+  aria-label="国家試験対策"
+>
+  <div class="text-sm leading-relaxed text-muted-foreground">
+    このサイトでは、診療放射線技師国家試験対策問題を {freeExamYearCount} 年分無料で演習することができます。
+  </div>
+  <div class="flex justify-end">
+    <a
+      class={cn(buttonVariants({ variant: "default" }), "w-fit")}
+      href={examsHref()}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      対策問題を解く
+      <ArrowRightIcon data-icon="inline-end" />
+    </a>
+  </div>
+</aside>

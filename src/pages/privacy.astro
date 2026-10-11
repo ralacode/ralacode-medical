@@ -5,14 +5,14 @@ import { siteMeta } from "@/lib/constants"
 
 <Layout
   title="プライバシー"
-  description={`${siteMeta.siteTitle} のアクセス解析と、端末内に保存する学習記録の扱いです。`}
+  description={`${siteMeta.siteTitle} のアクセス解析、広告、端末内に保存する学習記録の扱いです。`}
   headerLabel="プライバシー"
 >
   <div class="mx-auto grid max-w-2xl gap-8">
     <header class="grid gap-3">
       <h1 class="text-2xl font-semibold tracking-tight">プライバシー</h1>
       <p class="text-sm leading-relaxed text-muted-foreground">
-        このサイトの利用状況の調べ方と、学習記録の保存先です。
+        このサイトの利用状況の調べ方、広告の出し方、学習記録の保存先です。
       </p>
     </header>
 
@@ -43,6 +43,33 @@ import { siteMeta } from "@/lib/constants"
           target="_blank"
           rel="noopener noreferrer"
           data-astro-reload>Google Analytics 利用規約</a
+        >にあります。
+      </p>
+    </section>
+
+    <section class="grid gap-3">
+      <h2 class="text-lg font-semibold tracking-tight">広告</h2>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        サイトの運営費に充てるため、Google AdSense
+        を使って広告を表示します。広告の配信は Google
+        が行い、閲覧中のページや Cookie
+        の情報をもとに、興味に近い広告が出ることがあります。
+      </p>
+      <p class="text-sm leading-relaxed text-muted-foreground">
+        氏名や連絡先、解答の正誤、学習記録は広告のために送りません。広告の設定は
+        <a
+          class="underline underline-offset-2"
+          href="https://adssettings.google.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-astro-reload>Google の広告設定</a
+        >から変更できます。詳しい説明は
+        <a
+          class="underline underline-offset-2"
+          href="https://policies.google.com/technologies/ads"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-astro-reload>Google の広告に関するポリシー</a
         >にあります。
       </p>
     </section>

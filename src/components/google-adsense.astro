@@ -1,0 +1,40 @@
+---
+import { ADSENSE_CLIENT_ID, ADSENSE_PRODUCTION_HOST } from "@/lib/adsense"
+
+const enabled = import.meta.env.PROD && Boolean(ADSENSE_CLIENT_ID)
+---
+
+{
+  enabled ? (
+    <>
+      <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
+      <script
+        is:inline
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6190730534637732"
+        crossorigin="anonymous"
+      />
+      <script
+        is:inline
+        define:vars={{ productionHost: ADSENSE_PRODUCTION_HOST }}
+      >
+        ;(function () {
+          if (location.hostname !== productionHost) return
+          if (window.__ralacodeAdsense) return
+          window.__ralacodeAdsense = true
+
+          document.addEventListener("astro:page-load", function () {
+            var slots = document.querySelectorAll(
+              "ins.adsbygoogle:not([data-adsbygoogle-status])"
+            )
+            for (var i = 0; i < slots.length; i++) {
+              try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({})
+              } catch (e) {}
+            }
+          })
+        })()
+      </script>
+    </>
+  ) : null
+}
