@@ -1,0 +1,47 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 1,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 1,
+    "answer": 4
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": [
+    "hoshasen-kagaku"
+  ],
+  "stem": "フッ素（F）と同じ族（ハロゲン）に属する元素はどれか。",
+  "choices": [
+    {
+      "text": "ケイ素（Si）",
+      "explanation": "**誤り**です。ケイ素は**第14族**（炭素族）で、半導体や石英の主成分です。フッ素と同じ縦の列ではありません。"
+    },
+    {
+      "text": "臭素（Br）",
+      "explanation": "臭素はフッ素・塩素・ヨウ素と同じ**第17族（ハロゲン）**です。最外殻電子が7個で、1個受け取って安定になろうとする点が共通です。**正解**です。"
+    },
+    {
+      "text": "カルシウム（Ca）",
+      "explanation": "**誤り**です。カルシウムは**第2族（アルカリ土類金属）**です。骨や造影剤の話題では出ますが、ハロゲンではありません。"
+    },
+    {
+      "text": "ヘリウム（He）",
+      "explanation": "**誤り**です。ヘリウムは**第18族（貴ガス）**で、最外殻が閉殻です。ハロゲンとは隣の族になります。"
+    },
+    {
+      "text": "硫黄（S）",
+      "explanation": "**誤り**です。硫黄は酸素と同じ**第16族（カルコゲン）**です。ハロゲンのひとつ手前の族です。"
+    }
+  ],
+  "answer": 2,
+  "terms": [
+    "halogen"
+  ],
+  "sourceExplanation": "この問は、**フッ素と同族の元素**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=5\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 5 ページ</a>）。\n\n- **1 番** … 炭素族の元素 → **誤り**（**第14族**）。\n- **2 番** … 酸素族の元素 → **誤り**（**第16族**）。\n- **3 番** … 窒素族の元素 → **誤り**（**第15族**）。\n- **4 番** … 塩素 → **正解**。フッ素と同じ**第17族（ハロゲン）**。\n- **5 番** … 貴ガスの元素 → **誤り**（**第18族**）。\n- **覚え方** … ハロゲンは **F・Cl・Br・I**（アスタチンを含む第17族）。",
+  "draft": false
+}
