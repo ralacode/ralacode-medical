@@ -119,12 +119,12 @@ pnpm lint:questions
 
 MRI・超音波・眼底カメラなどは改正前の「診療画像機器学」寄りでも、その科目は削られているので **診療画像検査学**（`shinryo-gazo-kensa`）に置く。X 線管・撮影装置・FPD など機器そのものは **エックス線撮影機器学**（`xray-kiki`）。年次マニフェストも同じ方針で割当済み。
 
-**第76回（2024年2月15日）** は改正施行（令和6年4月1日）前なので、公式の科目立ては改正前の 14 科目。サイトの ID は改正後 11 科目だけなので、マニフェストでは次のように寄せる。
+**第75回（2023年2月16日）と第76回（2024年2月15日）** は改正施行（令和6年4月1日）前なので、公式の科目立ては改正前の 14 科目。サイトの ID は改正後 11 科目だけなので、マニフェストでは次のように寄せる。
 
 - 放射化学 → `rikogaku-hoshasen` + `studyTopics: ["hoshasen-kagaku"]`
 - 放射線生物学 / 物理学 / 医用工学 / 放射線計測学 → 同じく `rikogaku-hoshasen` + 対応タグ
 - 診療画像機器学 → 中身で `xray-kiki` または `shinryo-gazo-kensa`
-- **医療安全管理学**（`iryo-anzen`）のスロットは無い（改正後の新設）。医療安全の用語が出ても 76 回は `hoshasen-anzen` 側に置く。
+- **医療安全管理学**（`iryo-anzen`）のスロットは無い（改正後の新設）。医療安全の用語が出ても 75・76 回は `hoshasen-anzen` 側に置く。
 
 ### 3. 類似問題を書く
 
@@ -259,7 +259,7 @@ JSON を置いたあと、**ユーザーに渡す前に必ず** §7-1 と §7-3 
 | `mapsTo.answer` | **公式の正答**（1始まり。複数は配列 `[4, 5]`）。**採点除外で公式正答がない問では省略** |
 | `mapsTo.scoringExcluded` | `true` のとき採点除外（公式正答なし）。UI では「採点除外（公式正答なし）」と表示 |
 | `subject` | `exam-subjects.ts` の ID（令和6年施行の11科目） |
-| `studyTopics` | 省略可（省略時 `[]`）。`exam-subjects.ts` の学習タグ ID 配列。理工学・放射線科学を細分化するとき使う（`hoshasen-seibutsugaku` / `hoshasen-butsurigaku` / `hoshasen-kagaku` / `iyo-kogaku` / `hoshasen-keisoku`）。第76回の放射化学スロットは `["hoshasen-kagaku"]` |
+| `studyTopics` | 省略可（省略時 `[]`）。`exam-subjects.ts` の学習タグ ID 配列。理工学・放射線科学を細分化するとき使う（`hoshasen-seibutsugaku` / `hoshasen-butsurigaku` / `hoshasen-kagaku` / `iyo-kogaku` / `hoshasen-keisoku`）。第75回・第76回の放射化学スロットは `["hoshasen-kagaku"]` |
 | `stem` | 類似問題の問題文（オリジナル） |
 | `stemGrid` | 省略可。画素値などの **2 次元整数配列**（各行の長さは同一）。問題文直下に表表示 |
 | `choices` | 長さ 5。`text` 必須。`explanation` は Markdown、省略時は空文字 |
@@ -326,7 +326,6 @@ JSON を置いたあと、**ユーザーに渡す前に必ず** §7-1 と §7-3 
 **平易さ（高校生でもわかるくらい）**
 
 - 専門用語は残してよいが、**先に平易な言い換え**を添える。
-- **例え話を1つ**入れる（食品の保存、浴槽の排水口、并联の出口など）。1肢に例えを詰め込みすぎない。
 - 略語だけで終わらせない。初出は「抗酸化剤（ラジカルスカベンジャ）」のように補う。
 
 **どの肢に書くか**
