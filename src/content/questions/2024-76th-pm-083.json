@@ -1,0 +1,43 @@
+{
+  "year": 2024,
+  "exam": 76,
+  "session": "pm",
+  "number": 83,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2024,
+    "exam": 76,
+    "session": "pm",
+    "number": 83,
+    "answer": 5
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": [
+    "hoshasen-keisoku"
+  ],
+  "stem": "単色の光子線について、物質の線減弱係数 μ が 0.231 cm⁻¹ のとき、半価層［cm］はどれか。ただし ln 2 ＝ 0.693 とする。",
+  "choices": [
+    {
+      "text": "4.3"
+    },
+    {
+      "text": "13"
+    },
+    {
+      "text": "3.0",
+      "explanation": "透過率 1/2 なので e^{−μx} ＝ 1/2 です。両辺の対数から **x ＝ ln 2 / μ ＝ −ln(0.5) / μ**。0.693 / 0.231 ＝ **3.0 cm** です。カーテンを何枚重ねると光が半分になるか、という厚みです。1/μ（平均自由行程 4.3 cm）や μ×ln 2 と取り違えないことがポイントです。"
+    },
+    {
+      "text": "0.16"
+    },
+    {
+      "text": "2.2"
+    }
+  ],
+  "answer": 3,
+  "terms": [
+    "half-value-layer"
+  ],
+  "sourceExplanation": "この問は、線減弱係数 μ から**半価層**を求める式です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=36\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 36 ページ</a>）。公式は式選択、類似は同じ式に数値を入れています。\n\n- 狭束・単色なら I ＝ I₀ e^{−μx}。半価層では I/I₀ ＝ 1/2 なので **x_{1/2} ＝ ln 2 / μ ＝ −ln(0.5)·μ⁻¹**。\n- **公式正答** … **5 番**（−ln(0.5) に μ の逆数を掛ける形）。\n- **落とし穴** … ln(0.5) の符号を落とす、μ を掛けて逆数にしない、μ² にする、1/μ（平均自由行程）を半価層と見る。\n- **類似問題** … μ ＝ 0.231 cm⁻¹、ln 2 ＝ 0.693 → 0.693 / 0.231 ＝ **3.0 cm**。\n- **覚え方** … 半価層は **0.693 / μ**。平均自由行程 1/μ より短い。",
+  "draft": false
+}
