@@ -1,0 +1,47 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 81,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 81,
+    "answer": 3
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": [
+    "hoshasen-keisoku"
+  ],
+  "stem": "荷電粒子の**質量阻止能**の SI 単位はどれか。",
+  "choices": [
+    {
+      "text": "C·kg⁻¹",
+      "explanation": "**誤り**です。C·kg⁻¹ は**照射線量**の単位です。空気 1 kg あたり何クーロンのイオンができたか、という量で、粒子が単位質量あたりに失うエネルギーではありません。"
+    },
+    {
+      "text": "J·m⁻¹",
+      "explanation": "**誤り**です。J·m⁻¹ は密度で割る前の**線阻止能**（単位長さあたりのエネルギー損失）です。質量阻止能にするには、これを密度［kg·m⁻³］で割ります。"
+    },
+    {
+      "text": "m²·kg⁻¹",
+      "explanation": "**誤り**です。m²·kg⁻¹ は**質量減弱係数**（μ／ρ）の単位です。光子が物質を通り抜ける確率を質量あたりに直した量で、荷電粒子のエネルギー損失ではありません。"
+    },
+    {
+      "text": "J·kg⁻¹",
+      "explanation": "**誤り**です。J·kg⁻¹ は**吸収線量やカーマ**（Gy）の単位です。単位質量に残ったエネルギーであり、「進みながら失うエネルギーを密度で割った量」ではありません。"
+    },
+    {
+      "text": "J·m²·kg⁻¹",
+      "explanation": "質量阻止能は線阻止能 (dE／dx) を密度 ρ で割った量です。(J／m) ÷ (kg／m³) ＝ **J·m²·kg⁻¹**（慣用単位では MeV·cm²·g⁻¹）。布 1 g あたり何ジュール削られるか、というイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [
+    "mass-stopping-power"
+  ],
+  "sourceExplanation": "この問は、**質量阻止能の単位**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=36\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 36 ページ</a>）。定義は (1／ρ)·(dE／dx) なので、SI 単位は **J·m²·kg⁻¹** です。線阻止能（J·m⁻¹）や質量減弱係数（m²·kg⁻¹）、エネルギーそのもの（J）と取り違えないことが要点です。\n\n- **1 番** … J → **誤り**（エネルギーそのもの）。\n- **2 番** … J·m⁻¹ → **誤り**（**線阻止能**）。\n- **3 番** … J·m²·kg⁻¹ → **正解**（質量阻止能）。\n- **4 番** … m⁻¹ → **誤り**（**線減弱係数**）。\n- **5 番** … m²·kg⁻¹ → **誤り**（**質量減弱係数**）。\n- **覚え方** … 質量阻止能＝**線阻止能／密度** → **J·m²·kg⁻¹**。μ／ρ の m²·kg⁻¹ と並べて覚える。",
+  "draft": false
+}
