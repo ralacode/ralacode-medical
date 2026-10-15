@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 30,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 30,
+    "answer": 1
+  },
+  "subject": "kakui-gaku",
+  "stem": "病気がなくても、腎臓に生理的な集まりが見られる放射性医薬品はどれか。",
+  "choices": [
+    {
+      "text": "⁹⁹ᵐTc-スズコロイド",
+      "explanation": "**誤り**です。コロイドは肝臓・脾臓・骨髄の食細胞に捕まります。腎臓が主な集まり場所ではありません。"
+    },
+    {
+      "text": "¹⁸F-FDG",
+      "explanation": "FDG は尿へ出るので、健常でも**腎臓と膀胱**に強い集まりが見えます。糖を見る検査でも、尿路は生理的に明るく写ります。**正解**です。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-MAA",
+      "explanation": "**誤り**です。MAA は肺の毛細血管に留まります。腎臓に集まるのは、右左シャントなど特別なときです。"
+    },
+    {
+      "text": "¹³¹I-アドステロール",
+      "explanation": "**誤り**です。副腎皮質を見る薬で、主に副腎と肝・腸管へ行きます。腎臓が生理的な主集積ではありません。"
+    },
+    {
+      "text": "¹²³I-MIBG",
+      "explanation": "**誤り**です。MIBG は心臓や副腎髄質、唾液腺などに集まります。腎臓が生理的な主集積ではありません。"
+    }
+  ],
+  "answer": 2,
+  "terms": ["f-18-fdg", "physiological-uptake"],
+  "sourceExplanation": "この問は、**生理的に腎集積する放射性医薬品**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=16\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 16 ページ</a>）。\n\n- **1 番** … ¹⁸F-FDG → **正解**（尿中排泄で腎・膀胱が描出される）。\n- **2 番** … 肺血流用 MAA → **誤り**（主集積は肺）。\n- **3 番** … 肝胆道用 PMT → **誤り**（主集積は肝・胆管）。\n- **4 番** … ¹²³I-MIBG → **誤り**（心・副腎髄質など）。\n- **5 番** … 副腎皮質用アドステロール → **誤り**（副腎皮質）。\n- **覚え方** … **FDG＝尿へ出るので腎が明るい**。腎専用薬（DMSA など）と混同しない。",
+  "draft": false
+}
