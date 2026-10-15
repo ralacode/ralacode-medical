@@ -1,0 +1,38 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 46,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 46,
+    "answer": 3
+  },
+  "subject": "iryo-gazo-joho",
+  "stem": "1 画素の一辺が **125 μm** の FPD で撮影した胸部 X 線画像のデータ量［MB］に最も近いのはどれか。ただし、有効視野は **35 cm × 35 cm**、階調数は **16 bit** とし、ヘッダは含めない。",
+  "choices": [
+    {
+      "text": "8"
+    },
+    {
+      "text": "31"
+    },
+    {
+      "text": "125"
+    },
+    {
+      "text": "16",
+      "explanation": "一辺の画素数は 35 cm ÷ 0.0125 cm ＝ **2,800**。画素データ量は 2,800×2,800×(16÷8)＝**15,680,000 byte** で、10⁶ 換算なら約 **15.7 MB**、2²⁰ 換算でも約 15.0 MB なので、最も近いのは **16** です。16 bit を 1 byte のまま計算すると約 8 MB になるので、bit と byte の取り違えに注意します。"
+    },
+    {
+      "text": "4"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、FPD 胸部画像の**画素データ量**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=22\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 22 ページ</a>）。公式は画素ピッチ・有効視野・階調 bit 数から 1 枚分の容量を見積もらせる計算でした。本サイトの類似問題は数値を変えています。\n\n- 一辺の画素数＝**視野の長さ ÷ 画素ピッチ**（単位を揃える）。\n- データ量［byte］＝**画素数 ×（階調 bit 数÷8）**。16 bit は **2 byte**。求めた byte を 10⁶ または 2²⁰ で割ると MB です。\n- **公式正答**は **3 番**です。\n- **落とし穴** … 16 bit を 1 byte のまま計算する、bit 数を割らずに MB へ換算する、cm と μm の桁を落とす。",
+  "draft": false
+}
