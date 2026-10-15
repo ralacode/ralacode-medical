@@ -111,19 +111,30 @@ export async function loadExamPdf(absolutePath: string): Promise<PDFDocumentProx
 
 /** 問題番号行: 「31 画像に…」「2 1.5 T MRI…」の半角スペース区切り。選択肢「1．」（全角ピリオド）は除外 */
 const QUESTION_HEADING_RE = /^([1-9]\d{0,2}) (?=\S)/
+/** 表紙のマーク欄「1 2 3 4 5」。見出し番号の残りが数字だけなら問ではない */
+const MARK_SHEET_REST_RE = /^[\d\s]+$/
 /** 選択肢 1 の行。見出し候補の直後にこれがあるものだけを問番号とみなす（表紙・注意書きの「2 …」を除外） */
 const FIRST_CHOICE_RE = /^1[．.]/
 /** 肢が図だけの問は「1．」がテキストに出ない。定型の問い文があれば見出しとみなす */
 const QUESTION_PROMPT_RE = /正しいのはどれか|誤っているのはどれか|2\s*つ選べ/
+/** 表紙・注意の解答例。ここを問1と先に確定すると、本文の問1（通常 5 ページ）を取りこぼす */
+const INSTRUCTION_COVER_RE = /指示があるまで開かない|（例\s*1\s*）|\(例\s*1\s*\)/
 /** フッターは 1 テキスト項目（例: "DKIX-06-前H-5"）。連結後だと隣のページ番号と癒着するので項目単位で見る */
 const FOOTER_ITEM_RE = /([前後]H-\d+)$/
 
+function isInstructionCover(lines: string[]) {
+  return INSTRUCTION_COVER_RE.test(lines.join("\n"))
+}
+
 /** ページ内の問番号候補（緩い判定。表の数字や折り返し行も拾うので assignQuestionPages で絞る） */
-function detectQuestionCandidates(lines: string[]) {
+export function detectQuestionCandidates(lines: string[]) {
+  if (isInstructionCover(lines)) return []
   const numbers = new Set<number>()
   lines.forEach((line, index) => {
     const match = line.match(QUESTION_HEADING_RE)
     if (!match) return
+    const rest = line.slice(match[0].length).trim()
+    if (rest !== "" && MARK_SHEET_REST_RE.test(rest)) return
     const following = lines.slice(index, index + 13)
     if (
       following.some(
