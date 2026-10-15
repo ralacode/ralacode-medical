@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 89,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 89,
+    "answer": 2
+  },
+  "subject": "xray-gijutsu",
+  "stem": "CT の線量指標 **CTDIvol** の単位として正しいのはどれか。",
+  "choices": [
+    {
+      "text": "mGy·cm",
+      "explanation": "**誤り**です。**mGy·cm** は **DLP**（線量長積）の単位です。CTDIvol に撮影範囲の長さを掛けた積算値です。"
+    },
+    {
+      "text": "mSv",
+      "explanation": "**誤り**です。**mSv** は**実効線量**の単位です。CTDIvol から換算係数を掛けて求めます。CTDIvol そのものではありません。"
+    },
+    {
+      "text": "HU",
+      "explanation": "**誤り**です。**HU**（ハンスフィールド単位）は CT 値です。線量の単位ではありません。"
+    },
+    {
+      "text": "mGy",
+      "explanation": "**CTDIvol** は、ヘリカル撮影などを体積平均した**吸収線量の指標**で、単位は **mGy** です。スライスあたりの線量の強さ、というイメージです。**正解**です。"
+    },
+    {
+      "text": "Gy·cm²",
+      "explanation": "**誤り**です。**Gy·cm²** は透視や一般撮影の**面積線量（DAP）**の単位です。CT の CTDIvol ではありません。"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、**CTDIvol の単位**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=40\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 40 ページ</a>）。図表はありません。\n\n- **1 番** … cm → **誤り**（長さ。線量ではない）。\n- **2 番** … **mGy** → **正解**。\n- **3 番** … mSv → **誤り**（実効線量）。\n- **4 番** … mGy·cm → **誤り**（**DLP**）。\n- **5 番** … mGy/cm → **誤り**（長さで割った量ではない）。\n- **覚え方** … **CTDIvol＝mGy**／**DLP＝mGy·cm**／実効線量＝**mSv**。",
+  "draft": false
+}
