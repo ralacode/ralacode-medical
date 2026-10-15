@@ -1,0 +1,39 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 76,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 76,
+    "answer": 2
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": ["iyo-kogaku"],
+  "stem": "高さ **8.0 mA**、幅 **5.0 ms** の矩形パルス電流が等間隔で繰り返す。平均値が **4.0 mA** のとき、繰り返し周波数［Hz］はどれか。",
+  "choices": [
+    {
+      "text": "200"
+    },
+    {
+      "text": "50"
+    },
+    {
+      "text": "20"
+    },
+    {
+      "text": "40"
+    },
+    {
+      "text": "100",
+      "explanation": "平均値は **Iavg ＝ Ip × τ × f**（波高×幅×周波数）です。f ＝ Iavg / (Ip × τ) ＝ 4.0×10⁻³ / (8.0×10⁻³ × 5.0×10⁻³) ＝ **100 Hz**。幅 5.0 ms のあいだだけ 8.0 mA が流れ、平均が半分の 4.0 mA なので、周期は幅の 2 倍（10 ms）、というイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、矩形パルス電流の**平均値から繰り返し周波数**を求める問題です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=34\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 34 ページ</a>）。公式は波形図付きです。本サイトの類似問題は図を載せられないため、波高と幅を文章で与え、数値を変えています。\n\n- **公式正答** … **2 番**。図の波高とパルス幅、問題文の平均値を **Iavg ＝ Ip × τ × f** に代入した値。\n- **式** … **f ＝ Iavg / (Ip × τ)**。τ はパルスが乗っている時間（周期ではない）。\n- **類似問題** … Ip ＝ 8.0 mA、τ ＝ 5.0 ms、Iavg ＝ 4.0 mA → **100 Hz**。\n- **落とし穴** … 幅を周期と読む（1/τ）、ms の 10⁻³ を落とす、平均値と波高を取り違える。\n- **覚え方** … 平均値は「高さ×デューティ」。デューティ ＝ τ × f。",
+  "draft": false
+}
