@@ -344,7 +344,7 @@ export function examYearPreparingSeoTitle(year: number) {
 }
 
 export function examYearPreparingSeoDescription(year: number) {
-  return `${year}年の類似問題は準備中です。直近2年分を公開しています。`
+  return `${year}年の類似問題は準備中です。`
 }
 
 export function questionSeoTitle(

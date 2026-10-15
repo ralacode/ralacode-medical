@@ -10,7 +10,7 @@ export async function getCatalogQuestions() {
 
 export async function getPublishedQuestions() {
   return (await getCatalogQuestions()).filter((entry) =>
-    canRevealExamYear(entry.data.year)
+    canRevealExamYear(entry.data.year, [entry.data.year])
   )
 }
 

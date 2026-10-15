@@ -23,10 +23,11 @@ import {
 } from "@/lib/questions"
 
 const catalog = await getCatalogQuestions()
+const questionYears = catalog.map((question) => question.data.year)
 const listedQuestions = catalog
-  .filter((question) => canRevealExamYear(question.data.year))
+  .filter((question) => canRevealExamYear(question.data.year, questionYears))
   .map((question) => question.data)
-const catalogYears = catalogExamYears(catalog.map((question) => question.data.year))
+const catalogYears = catalogExamYears(questionYears)
 const listedGroups = groupQuestions(listedQuestions)
 const listedByYear = new Map(listedGroups.map((group) => [group.year, group]))
 const yearCards: {
@@ -37,7 +38,7 @@ const yearCards: {
   sessionCounts: string
 }[] = []
 for (const year of catalogYears) {
-  const preparing = isExamYearPreparing(year)
+  const preparing = isExamYearPreparing(year, questionYears)
   const group = listedByYear.get(year)
   const exam = group?.exam ?? examYearData(year)?.exam
   if (exam == null) continue

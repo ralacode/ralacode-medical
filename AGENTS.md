@@ -26,7 +26,7 @@
 - 用語解説記事: `.cursor/rules/glossary-article-authoring.mdc` → `docs/glossary-article-authoring.md`
 - 試験科目の分類: `docs/exam-subjects-amendment-2023.md`、科目 ID は `src/lib/exam-subjects.ts`（理工学の学習タグに放射化学 `hoshasen-kagaku` を含む。第75回・第76回は改正前科目をこの ID に寄せる）
 - **公式の問題文・選択肢・別冊画像をリポジトリ・PR 本文・チャットに転載しない。** `exams/` と `exams/_render/` は gitignore。`public/` に置かない。
-- **本番で問題本文を出すのは直近 2 年**（`src/lib/exam-visibility.ts`）。それより前の年は準備中。開発サーバ（`pnpm dev`）では全年の中身を出す。問の `draft` は未完成フラグであり、年次の公開範囲ではない。
+- **類似問題は公開年をすべて無料で出す**（`src/lib/exam-visibility.ts` の `publishedExamYears`）。直近 N 年だけ、という制限はない。年を公開リストに足すのは、**200 問揃い、ユーザーが公開を指示したときだけ**。自動では足さない。未掲載の年（2023 年など）は準備中。開発サーバでは、未公開年でもその年の問があれば中身を出して作成確認できる。問の `draft` は未完成フラグであり、年次の公開可否ではない。
 - **レイアウト・CSS・既存コンポーネントは、明示的に依頼されたときだけ触る。**
 - CI は `.github/workflows/ci.yml`。類似問題の PR 本文は `.github/PULL_REQUEST_TEMPLATE/exam.md`、記事・基盤は `.github/pull_request_template.md`。
 

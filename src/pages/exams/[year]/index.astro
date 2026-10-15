@@ -44,7 +44,10 @@ export async function getStaticPaths() {
 }
 
 const { year, questions } = Astro.props
-const preparing = isExamYearPreparing(year)
+const preparing = isExamYearPreparing(
+  year,
+  questions.map((question) => question.data.year)
+)
 const [group] = groupQuestions(questions.map((question) => question.data))
 const exam = examYearExamNumber(year, group?.exam)
 const title = preparing

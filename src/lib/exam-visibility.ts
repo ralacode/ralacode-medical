@@ -1,30 +1,29 @@
 import { examYearData, examYears } from "@/lib/exam-data"
 
-/** 本番で問題本文を出す年の数（新しい西暦から）。有料認証は後から canRevealExamYear に足す。 */
-export const freeExamYearCount = 2
+/**
+ * 本番で問題本文を出す年。
+ * 200 問揃い、公開の指示があった年だけ足す。自動では足さない。
+ */
+export const publishedExamYears = [2026, 2025, 2024] as const
 
 export function catalogExamYears(questionYears: readonly number[] = []): number[] {
   return [...new Set([...examYears, ...questionYears])].sort((a, b) => b - a)
 }
 
-export function freeExamYears(questionYears: readonly number[] = []): number[] {
-  return catalogExamYears(questionYears).slice(0, freeExamYearCount)
+export function isPublishedExamYear(year: number) {
+  return (publishedExamYears as readonly number[]).includes(year)
 }
 
-export function isFreeExamYear(
-  year: number,
-  questionYears: readonly number[] = []
-): boolean {
-  return freeExamYears(questionYears).includes(year)
-}
-
-/** 問題本文・科目横断の一覧を出してよいか。開発サーバでは全年。本番は直近 2 年。 */
+/**
+ * 問題本文・科目横断の一覧を出してよいか。
+ * 公開年は全年。未公開年は開発サーバで、その年の問があるときだけ中身を出す。
+ */
 export function canRevealExamYear(
   year: number,
   questionYears: readonly number[] = []
 ): boolean {
-  if (import.meta.env.DEV) return true
-  return isFreeExamYear(year, questionYears)
+  if (isPublishedExamYear(year)) return true
+  return import.meta.env.DEV && questionYears.includes(year)
 }
 
 export function isExamYearPreparing(

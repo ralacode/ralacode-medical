@@ -19,6 +19,7 @@ alwaysApply: true
 - **基本的なレイアウトと CSS は変更しない。** 問題追加では `src/content/questions/*.json` 以外を触らない（ページ表・マニフェストが必要なら PR 本文に書いて止める）。
 - 試験科目を考えるときは `docs/exam-subjects-amendment-2023.md` を参考にする。実装の科目 ID は `src/lib/exam-subjects.ts`。スロットの科目は `src/data/exam-manifests/{year}.json` に合わせる。
 - 演習画面は単一正解のみ。公式が「2つ選べ」でも類似は一文択一。
+- **公開年の類似問題はすべて無料。** 年を `publishedExamYears` に足すのは、200 問揃い、ユーザーが公開を指示したときだけ。未掲載の年は準備中。
 - **過去問解説（`sourceExplanation`）** … 公式 1〜5 番それぞれに**正解／誤りと理由**を書く（知識問題は省略不可）。番号は公式の肢番号。詳細は手順書の「過去問解説（sourceExplanation）の書き方」。**2026 年**の既存問は形式を祖父化（`pnpm lint:questions`）。
 - **作成後の必須検証** … JSON 完成後、手順書 **§7-1**（公式スロット）と **§7-3**（PDF ページ）。別タブ確認（旧 §7-2）は `lint:questions` が `target="_blank"` を見るので、ブラウザは不要。加えて **`pnpm lint:questions`** と **`pnpm verify:exam-pages`**（Cloud / CI は `--strict`）。不一致なら作り直し。
 - 参考リンクを足したら **`pnpm exam:external-links`** で台帳を再生成する。PR 本文は `.github/PULL_REQUEST_TEMPLATE/exam.md`。

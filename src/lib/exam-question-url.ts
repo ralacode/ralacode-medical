@@ -26,7 +26,7 @@ export function isPrivateStudyUrl(urlOrPath: string) {
   return /\/exams\/(?:review|session|stats)\/?$/.test(toPathname(urlOrPath))
 }
 
-/** 本番で準備中の年次ハブ。sitemap に出さない。 */
+/** 未公開の年次ハブ。sitemap に出さない。 */
 export function isPreparingExamYearUrl(urlOrPath: string) {
   const match = toPathname(urlOrPath).match(EXAM_YEAR_HUB_PATH)
   if (!match) return false

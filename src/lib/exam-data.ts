@@ -25,7 +25,8 @@ export function isExamPdfKind(value: string): value is ExamPdfKind {
 /**
  * 年次ごとの試験データ。新しい年を追加するときは、このオブジェクトに 1 エントリ足す
  * （URL は厚労省の公式ページから、ページ範囲・別冊ページは pnpm exam:pdf-text --toc の結果から埋める）。
- * 本番で問題本文を出すのは新しい西暦から 2 年（`exam-visibility.ts`）。それより前の年は準備中。
+ * 本文を出す年は `exam-visibility.ts` の `publishedExamYears`。
+ * 200 問揃い、公開指示があった年だけ足す。未掲載の年は準備中。
  *
  * - pdfs: 厚労省の公式 PDF URL（問題・別冊・正答表）
  * - pageRanges: 問題 PDF 内の「問番号 → PDF ページ（1-indexed）」の範囲表

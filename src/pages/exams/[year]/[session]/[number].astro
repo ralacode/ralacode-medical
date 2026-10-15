@@ -121,7 +121,7 @@ const stemLabelIds =
   stemGrid || stemTable
     ? "question-stem question-stem-grid"
     : "question-stem"
-const preparing = isExamYearPreparing(year)
+const preparing = isExamYearPreparing(year, [year])
 const termLinks = preparing ? [] : await getArticlesByTermIds(terms)
 const answer = singleAnswer(question.data.answer)
 const heading = questionHeading(exam, session, number)
