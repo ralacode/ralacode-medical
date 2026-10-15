@@ -1,0 +1,47 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 69,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 69,
+    "answer": 3
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": [
+    "hoshasen-seibutsugaku"
+  ],
+  "stem": "診断や外部照射で使う X 線と、トラックに沿ったエネルギー付与の濃さ（LET）が同程度とみなせるのはどれか。",
+  "choices": [
+    {
+      "text": "速中性子",
+      "explanation": "**誤り**です。速中性子は反跳陽子などを介して電離が密になり、**高 LET** として扱います。X 線（低 LET）と同程度ではありません。"
+    },
+    {
+      "text": "鉄イオン線",
+      "explanation": "**誤り**です。鉄のような重いイオンは電荷が大きく、単位長さあたりの付与が非常に大きい**高 LET** です。"
+    },
+    {
+      "text": "α 線",
+      "explanation": "**誤り**です。α 線（ヘリウム核）はおよそ **100 keV/μm** 前後の高 LET です。霧雨ではなく雹（ひょう）が並んで落ちるイメージです。"
+    },
+    {
+      "text": "アルゴンイオン線",
+      "explanation": "**誤り**です。アルゴンも重荷電粒子で、炭素線以上にトラックが濃い**高 LET** です。X 線と同程度ではありません。"
+    },
+    {
+      "text": "陽子線",
+      "explanation": "陽子線は入口付近の LET が X 線・電子線と同じ**低 LET**（およそ 0.5 keV/μm 前後）です。ブラッグピークでも炭素線や α 線ほど高くならず、RBE も約 1.1 と教えます。薄い霧雨が X 線と同じ種類、というイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [
+    "let"
+  ],
+  "sourceExplanation": "この問は、**X 線と同程度の LET** です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=30\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 30 ページ</a>）。\n\n- **1 番** … **α 線** → **誤り**（高 LET。ヘリウム核）。\n- **2 番** … **炭素線** → **誤り**（重荷電粒子。高 LET）。\n- **3 番** … **陽子線** → **正解**（低 LET。X 線・電子線と同程度として分類する）。\n- **4 番** … **中性子線** → **誤り**（高 LET。RBE が大きい）。\n- **5 番** … **ネオン線** → **誤り**（炭素より重いイオン。高 LET）。\n- **覚え方** … **低 LET＝X・γ・電子・陽子**／**高 LET＝中性子・α・炭素・ネオンなど重イオン**。",
+  "draft": false
+}
