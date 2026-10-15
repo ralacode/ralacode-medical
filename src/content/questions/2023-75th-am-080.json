@@ -1,0 +1,43 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 80,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 80,
+    "answer": 3
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": [
+    "hoshasen-keisoku"
+  ],
+  "stem": "放射性試料を 5 分間測定して 2500 カウントを得た。バックグラウンドだけを 1 分間測定したところ 100 カウントであった。この試料の**正味の計数率**［cpm］と、その**標準偏差**［cpm］に最も近いのはどれか。",
+  "choices": [
+    {
+      "text": "500 ± 10"
+    },
+    {
+      "text": "400 ± 10"
+    },
+    {
+      "text": "400 ± 20"
+    },
+    {
+      "text": "500 ± 22"
+    },
+    {
+      "text": "400 ± 14",
+      "explanation": "試料の計数率 n_s ＝ 2500／5 ＝ **500 cpm**、バックグラウンド n_b ＝ 100／1 ＝ **100 cpm**。正味は 500 − 100 ＝ **400 cpm**。標準偏差は σ ＝ √(N_s／t_s² ＋ N_b／t_b²) ＝ √(2500／25 ＋ 100／1) ＝ √(100＋100) ＝ √200 ≒ **14.1**。よって **400 ± 14**。試料だけの √N／t ＝ 50／5 ＝ 10 ではバックグラウンドのばらつきが抜けます。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [
+    "counting-statistics"
+  ],
+  "sourceExplanation": "この問は、試料とバックグラウンドの測定時間・カウントから**正味計数率とその標準偏差**を求める計算です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=36\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 36 ページ</a>）。\n\n正味計数率 n ＝ N_s／t_s − N_b／t_b。標準偏差 σ ＝ √(N_s／t_s² ＋ N_b／t_b²)。公式スロットでは試料 2 分・400 カウント、バックグラウンド 1 分・100 カウントなので、n ＝ 200 − 100 ＝ **100 cpm**、σ ＝ √(400／4 ＋ 100／1) ＝ √200 ≒ **14** です。**公式正答は 3 番**。バックグラウンドを引かない計数率や、σ に試料側だけを使う取り方が落とし穴です。\n\n- **覚え方** … 正味＝**差**、誤差は **時間の 2 乗で割ったカウントを足して平方根**。",
+  "draft": false
+}
