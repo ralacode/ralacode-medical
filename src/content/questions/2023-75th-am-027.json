@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 27,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 27,
+    "answer": 2
+  },
+  "subject": "kakui-gaku",
+  "stem": "静脈に入れた直後、口の中で苦味や金属のようなにおいを感じやすい放射性医薬品はどれか。",
+  "choices": [
+    {
+      "text": "⁹⁹ᵐTc-DMSA",
+      "explanation": "**誤り**です。DMSA は腎臓の皮質に集まる薬です。入れた直後の苦味・金属臭は、この薬の定番の訴えではありません。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-MAA",
+      "explanation": "**誤り**です。MAA は肺の細い血管に留まる薬です。味やにおいの訴えは、心筋血流用テクネチウム製剤ほど知られていません。"
+    },
+    {
+      "text": "⁹⁹ᵐTc-テトロホスミン",
+      "explanation": "心筋の血流を見るテクネチウム製剤です。入れた直後に**苦味や金属味**が出ることがあります。同じ系統の MIBI でも同様です。口の中にコインを置いたような感じ、と説明されることがあります。**正解**です。"
+    },
+    {
+      "text": "⁶⁷Ga-クエン酸",
+      "explanation": "**誤り**です。ガリウムは炎症や腫瘍の検査に使います。投与直後の苦味・金属臭は、この薬の代表的な訴えではありません。"
+    },
+    {
+      "text": "¹²³I-IMP",
+      "explanation": "**誤り**です。IMP は脳の血流を見る薬です。苦味・金属臭で有名なのは、心筋血流用のテクネチウム製剤です。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["radiopharmaceutical-adverse-effect", "tc-99m-tetrofosmin"],
+  "sourceExplanation": "この問は、投与後に**苦味・金属臭**が出やすい放射性医薬品です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=15\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 15 ページ</a>）。\n\n- **1 番** … 骨用リン酸化合物 → **誤り**（苦味の定番ではない）。\n- **2 番** … 心筋血流用テクネチウム製剤（MIBI） → **正解**（テトロホスミンも同様）。\n- **3 番** … 骨・梗塞用ピロリン酸 → **誤り**。\n- **4 番** … 副腎皮質用ヨードコレステロール → **誤り**（紅潮などが知られる）。\n- **5 番** … タリウム塩 → **誤り**。\n- **覚え方** … **苦味・金属臭＝MIBI／テトロホスミン**。",
+  "draft": false
+}

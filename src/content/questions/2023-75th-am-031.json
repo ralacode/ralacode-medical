@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 31,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 31,
+    "answer": 4
+  },
+  "subject": "kakui-gaku",
+  "stem": "対象とする疾患と、検査に使う放射性医薬品の組合せで正しいのはどれか。",
+  "choices": [
+    {
+      "text": "神経芽腫 ―― ¹³¹I-アドステロール",
+      "explanation": "**誤り**です。神経芽腫を見るのは **MIBG** です。アドステロールは副腎皮質用で、鍵穴が違います。"
+    },
+    {
+      "text": "再生不良性貧血 ―― ⁹⁹ᵐTc-HSA-D",
+      "explanation": "**誤り**です。再生不良性貧血で骨髄を見るのは、インジウム塩やコロイドなどです。HSA-D は**血液プール**を見る薬です。"
+    },
+    {
+      "text": "橋本病 ―― ¹²³I-BMIPP",
+      "explanation": "**誤り**です。橋本病は甲状腺の病気で、見るならヨウ素や過テクネチウム酸です。BMIPP は心筋の**脂肪酸代謝**用です。"
+    },
+    {
+      "text": "副甲状腺癌 ―― Na¹³¹I",
+      "explanation": "**誤り**です。ヨウ化ナトリウムが集まるのは**甲状腺**です。副甲状腺の病変を見る定番は MIBI です。"
+    },
+    {
+      "text": "副甲状腺腺腫 ―― ⁹⁹ᵐTc-MIBI",
+      "explanation": "MIBI は副甲状腺の腺腫に集まりやすく、残りの甲状腺との差で場所を探します。隠れたスイッチを探す検査、というイメージです。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": ["tc-99m-mibi", "parathyroid-scintigraphy"],
+  "sourceExplanation": "この問は、**疾患と放射性医薬品の組合せ**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=17\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 17 ページ</a>）。\n\n- **1 番** … 橋本病と BMIPP → **誤り**（BMIPP は心筋脂肪酸。甲状腺はヨウ素など）。\n- **2 番** … 神経芽腫とアドステロール → **誤り**（神経芽腫は **MIBG**。アドステロールは副腎皮質）。\n- **3 番** … 副甲状腺癌と Na¹³¹I → **誤り**（NaI は甲状腺。副甲状腺は MIBI）。\n- **4 番** … 副甲状腺腺腫と ⁹⁹ᵐTc-MIBI → **正解**。\n- **5 番** … 再生不良性貧血と HSA-D → **誤り**（HSA-D は血液プール。骨髄はインジウム塩など）。\n- **覚え方** … **腺腫＝MIBI**／神経芽腫＝MIBG／アドステロール＝皮質／NaI＝甲状腺。",
+  "draft": false
+}
