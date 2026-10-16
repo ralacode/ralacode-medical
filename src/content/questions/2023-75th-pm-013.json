@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "pm",
+  "number": 13,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "pm",
+    "number": 13,
+    "answer": 5
+  },
+  "subject": "xray-kiki",
+  "stem": "骨密度測定の**方法と、標準的な測定部位**の組合せで正しいのはどれか。",
+  "choices": [
+    {
+      "text": "定量的 CT（QCT）法 … 踵骨",
+      "explanation": "**誤り**です。QCT は腰椎の横断像から**体積骨密度**を出します。踵骨を超音波や末梢装置で測る話と混同しやすいです。"
+    },
+    {
+      "text": "二重エネルギー X 線吸収測定（DXA）法 … 第2中手骨",
+      "explanation": "**誤り**です。DXA の代表部位は**腰椎**と**大腿骨近位**です。第2中手骨は MD／DIP／RA など、手の X 線写真で測る方法の部位です。"
+    },
+    {
+      "text": "定量的超音波（QUS）法 … 腰椎",
+      "explanation": "**誤り**です。QUS は超音波を当てる方法で、**踵骨**などが中心です。腰椎は DXA や QCT の領域です。"
+    },
+    {
+      "text": "ミクロデンシトメトリー（MD）法 … 第2中手骨",
+      "explanation": "MD は手の X 線写真で、第2中手骨の濃さをアルミニウム階段などと比べます。指の骨をものさしにする、というイメージです。**正解**です。"
+    },
+    {
+      "text": "単一エネルギー X 線吸収測定（SXA）法 … 頸椎",
+      "explanation": "**誤り**です。SXA は **橈骨**など前腕の末梢骨が中心です。頸椎を標準部位にはしません。"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、**骨密度測定法と測定部位**の組合せです（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=9\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 9 ページ</a>）。\n\n- **1 番** … DXA 法と中手骨 → **誤り**（DXA は**腰椎・大腿骨近位**。中手骨は MD／DIP／RA）。\n- **2 番** … MD 法と頸椎 → **誤り**（MD は**第2中手骨**）。\n- **3 番** … QCT 法と踵骨 → **誤り**（QCT は**腰椎**の体積密度。踵骨は QUS 側）。\n- **4 番** … QUS 法と腰椎 → **誤り**（QUS は**踵骨**など）。\n- **5 番** … SXA 法と橈骨 → **正解**（前腕の末梢骨）。\n- **覚え方** … **SXA＝橈骨**／**DXA＝腰＋股**／**QCT＝腰椎 CT**／**QUS＝踵**／**MD＝第2中手骨**。",
+  "draft": false
+}
