@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "pm",
+  "number": 7,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "pm",
+    "number": 7,
+    "answer": [1, 2]
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "X 線 CT の診断参考レベル（DRL）について、正しいのはどれか。",
+  "choices": [
+    {
+      "text": "DLP は、一般撮影の入射表面線量と同じ量である。",
+      "explanation": "**誤り**です。**DLP**（dose length product）は、CTDIvol にスキャン長を掛けた **mGy·cm** の積算指標です。一般撮影の入射表面線量（**ESD**）とは別物です。公式では DLP も CT の DRL 指標ですが、本問では中身を取り違えた誤り文にしています。"
+    },
+    {
+      "text": "ESD は、ヘリカル CT の体積あたり線量を表す DRL 指標である。",
+      "explanation": "**誤り**です。**ESD**（入射表面線量）は、おもに一般撮影の DRL で使う量です。ヘリカル CT の体積あたり線量は **CTDIvol**（単位 mGy）です。"
+    },
+    {
+      "text": "CTDIvol は、CT の DRL に用いる体積あたりの線量指標である。",
+      "explanation": "**CTDIvol** は、スライスを体積平均した吸収線量の目安で、単位は **mGy** です。日本の CT の DRL では、この値と DLP を指標にします。スライス 1 枚あたりの濃さ、というイメージです。**正解**です。"
+    },
+    {
+      "text": "SAR は、CT 検査の被ばく線量の積算値である。",
+      "explanation": "**誤り**です。**SAR**（比吸収率）は、MRI で体に吸収される高周波の熱の指標です。単位は W/kg で、CT の線量とも DRL とも別物です。"
+    },
+    {
+      "text": "実効線量は、装置コンソールが必ず表示する CT の DRL 指標である。",
+      "explanation": "**誤り**です。実効線量（**ED**、単位 mSv）は、組織加重を掛けて見積もる量です。CT の DRL には使わず、装置が必ず出す指標でもありません。コンソールに出るのはおもに CTDIvol と DLP です。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**X 線 CT の DRL に用いる指標**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=7\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 7 ページ</a>）。公式は**2つ選べ**で、正答は **1 番**と **2 番**でした。類似問題は単一正解にし、公式のもう一つの正答（DLP）は一般撮影の入射表面線量と取り違える**誤り文**にしています。\n\n- **1 番** … **CTDIvol** → **正解**（体積あたり線量。単位 mGy）。\n- **2 番** … **DLP** → **正解**（スキャン長を掛けた積算。単位 mGy·cm）。\n- **3 番** … **ED**（実効線量）→ **誤り**（DRL 指標ではない。単位 mSv）。\n- **4 番** … **ESD**（入射表面線量）→ **誤り**（一般撮影側。CT の DRL ではない）。\n- **5 番** … **SAR** → **誤り**（MRI の高周波加熱。CT ではない）。\n- **覚え方** … CT の DRL＝**CTDIvol（mGy）＋ DLP（mGy·cm）**／ESD＝一般撮影／SAR＝MRI。",
+  "draft": false
+}
