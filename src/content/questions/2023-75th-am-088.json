@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 88,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 88,
+    "answer": 4
+  },
+  "subject": "xray-gijutsu",
+  "stem": "頸部単純 CT の横断像で、環椎（第 1 頸椎）の**前弓の直後**、左右の側塊のあいだの**正中に円形の骨**として見える構造はどれか。",
+  "choices": [
+    {
+      "text": "棘突起",
+      "explanation": "**誤り**です。棘突起は椎弓の後ろ側の突起です。環椎はこの高さでは後弓になり、矢印の位置（前弓の直後の正中）ではありません。"
+    },
+    {
+      "text": "乳様突起",
+      "explanation": "**誤り**です。乳様突起は側頭骨の突起で、耳の後ろにあります。環椎の輪の中の正中円形骨ではありません。"
+    },
+    {
+      "text": "歯突起",
+      "explanation": "軸椎（第 2 頸椎）の**歯突起**は、環椎の前弓のすぐ後ろ、左右の側塊のあいだに円く見えます。環軸関節の中心です。**正解**です。"
+    },
+    {
+      "text": "横突起",
+      "explanation": "**誤り**です。横突起（環椎では側塊の外側）は左右に翼のように張り出します。正中の円形骨ではありません。"
+    },
+    {
+      "text": "筋突起",
+      "explanation": "**誤り**です。筋突起は下顎骨の突起で、この断面では前方外側にあります。椎骨の中心ではありません。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**環軸レベル頸部 CT** の骨同定です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=39\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 39 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_02.pdf#page=12\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.8・12 ページ</a>）。本サイトの類似問題は図を載せられないため、環椎前弓の直後・正中の円形骨として文章化しています。\n\n- **別冊所見** … 頸部横断 CT。環椎の輪の中、前弓の直後の正中円形骨に矢印＝**軸椎の歯突起**。\n- **1 番** … 横突起 → **誤り**（左右の側塊外側）。\n- **2 番** … 棘突起 → **誤り**（後方。この高さの環椎は後弓）。\n- **3 番** … 筋突起 → **誤り**（下顎骨、前方外側）。\n- **4 番** … **歯突起** → **正解**。\n- **5 番** … 乳様突起 → **誤り**（側頭骨、外側）。\n- **覚え方** … 環椎の輪の**まん中の円い骨**＝歯突起（軸椎）。",
+  "draft": false
+}

@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 86,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 86,
+    "answer": 2
+  },
+  "subject": "xray-gijutsu",
+  "stem": "胸部正面像で、左上縦隔の突出（いわゆる**左第 1 弓**）として認められる構造はどれか。",
+  "choices": [
+    {
+      "text": "上大静脈",
+      "explanation": "**誤り**です。上大静脈は**右第 1 弓**（右上縦隔）です。左上縦隔の突出ではありません。"
+    },
+    {
+      "text": "主肺動脈",
+      "explanation": "**誤り**です。主肺動脈（肺動脈幹）は**左第 2 弓**です。第 1 弓のひとつ下です。"
+    },
+    {
+      "text": "左心房",
+      "explanation": "**誤り**です。左心房（左心耳）は**左第 3 弓**で、普段は目立たないことが多いです。"
+    },
+    {
+      "text": "下行大動脈",
+      "explanation": "**誤り**です。下行大動脈は左傍脊椎を縦に走ります。左上縦隔の丸い突出（大動脈ノブ）ではありません。"
+    },
+    {
+      "text": "大動脈弓",
+      "explanation": "胸部正面の**左第 1 弓**は、大動脈弓が左上縦隔に突き出す影（大動脈ノブ）です。**正解**です。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**胸部正面像のラベルと解剖名**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=38\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 38 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_02.pdf#page=10\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.6・10 ページ</a>）。本サイトの類似問題は図を載せられないため、**左第 1 弓**の構造に絞っています。\n\n- **別冊所見** … 立位胸部正面。上縦隔正中・左上縦隔・左肺門・右中肺野・左横隔膜外側にラベル。\n- **1 番** … 上縦隔正中＝食道 → **誤り**（気管内腔）。\n- **2 番** … **左上縦隔の突出＝大動脈弓** → **正解**（左第 1 弓）。\n- **3 番** … 左肺門＝左肺静脈 → **誤り**（左肺動脈が主体）。\n- **4 番** … 右中肺野＝大葉間裂 → **誤り**（葉間裂の線ではない位置）。\n- **5 番** … 左横隔膜外側＝心横隔膜角 → **誤り**（**肋横隔膜角**）。\n- **覚え方** … 左第 1 弓＝**大動脈弓**／第 2 弓＝肺動脈／右第 1 弓＝上大静脈。",
+  "draft": false
+}

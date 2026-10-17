@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 90,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 90,
+    "answer": 4
+  },
+  "subject": "xray-gijutsu",
+  "stem": "焦点—検出器間距離を **SID**、焦点—被写体間距離を **SOD** とする。幾何学的**拡大率**として正しいのはどれか。",
+  "choices": [
+    {
+      "text": "SOD / SID",
+      "explanation": "**誤り**です。これは拡大率の**逆数**（縮小側）です。像は被写体より大きく写るので、SID/SOD が 1 より大きくなります。"
+    },
+    {
+      "text": "SID − SOD",
+      "explanation": "**誤り**です。これは被写体—検出器間距離（OID）そのもので、比ではありません。拡大率は距離の**比**です。"
+    },
+    {
+      "text": "SID / SOD",
+      "explanation": "拡大率 **M ＝ SID / SOD** です。焦点から検出器までの距離を、焦点から被写体までの距離で割ります。影絵がスクリーンに近づくほど大きくなる、と同じ関係です。**正解**です。"
+    },
+    {
+      "text": "1 ＋ SID / SOD",
+      "explanation": "**誤り**です。正しい式は SID/SOD そのものです。1 を足すと拡大率を過大に見積ります。"
+    },
+    {
+      "text": "（SID − SOD）/ SID",
+      "explanation": "**誤り**です。OID/SID は別の比で、拡大率そのものではありません。拡大率は **SID/SOD**（または 1 ＋ OID/SOD）です。"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、**幾何学的拡大率の式**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=40\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 40 ページ</a>）。公式は焦点—被写体距離を a、被写体—検出器距離を b と置いていました。類似問題は SID と SOD で同じ関係を問うています。\n\n- **1 番** … a/b → **誤り**（逆比）。\n- **2 番** … b/a → **誤り**（OID/SOD だけで、1 が足りない）。\n- **3 番** … 1 ＋ a/b → **誤り**（a と b が逆）。\n- **4 番** … **1 ＋ b/a** → **正解**（＝ SID/SOD ＝ (a＋b)/a）。\n- **5 番** … 1/a ＋ 1/b → **誤り**。\n- **覚え方** … 拡大率は **SID/SOD**。被写体が検出器から離れる（b が大きい）と拡大する。",
+  "draft": false
+}

@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "am",
+  "number": 87,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "am",
+    "number": 87,
+    "answer": 5
+  },
+  "subject": "xray-gijutsu",
+  "stem": "立位の胸部 X 線撮影で、**第 1 斜位**として正しい体位はどれか。",
+  "choices": [
+    {
+      "text": "受像面に背部をつけ、顔を管球側へ向けた正面（前後方向）。",
+      "explanation": "**誤り**です。これは**前後方向（AP）**の正面です。斜位ではありません。"
+    },
+    {
+      "text": "受像面に右前胸を近づけた斜位（右前斜位）。",
+      "explanation": "胸部では**第 1 斜位＝右前斜位（RAO）**です。右の前胸を受像面に近づけます。**正解**です。"
+    },
+    {
+      "text": "受像面に左前胸を近づけた斜位（左前斜位）。",
+      "explanation": "**誤り**です。左前斜位（LAO）は**第 2 斜位**です。第 1 斜位ではありません。"
+    },
+    {
+      "text": "受像面に右側面をつけた側面位。",
+      "explanation": "**誤り**です。これは**側面**です。斜位（体を 45 度前後ひねる）ではありません。"
+    },
+    {
+      "text": "受像面に腹側をつけ、背を管球側へ向けた正面（後前方向）。",
+      "explanation": "**誤り**です。これは通常の胸部**後前方向（PA）**正面です。斜位ではありません。"
+    }
+  ],
+  "answer": 2,
+  "terms": [],
+  "sourceExplanation": "この問は、立位撮影の**体位写真から第 1 斜位を選ぶ**問題です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=39\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 39 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_02.pdf#page=11\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.7・11 ページ</a>）。本サイトの類似問題は図を載せられないため、体位を文章で書いています。\n\n- **別冊所見** … 立位ブッキー。正面の後前・前後、側面、左右の斜位が並ぶ。\n- **1 番** … 後前の正面 → **誤り**（PA。第 1 斜位ではない）。\n- **2 番** … 前後の正面 → **誤り**（AP）。\n- **3 番** … 側面 → **誤り**。\n- **4 番** … 左前斜位側 → **誤り**（**第 2 斜位**）。\n- **5 番** … **右前斜位（第 1 斜位）** → **正解**。\n- **覚え方** … 胸部の**第 1 斜位＝右前斜位（RAO）**／第 2 斜位＝左前斜位（LAO）。",
+  "draft": false
+}
