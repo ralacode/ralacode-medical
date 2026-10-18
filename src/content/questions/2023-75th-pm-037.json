@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "pm",
+  "number": 37,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "pm",
+    "number": 37,
+    "answer": 3
+  },
+  "subject": "hoshasen-chiryo",
+  "stem": "肺癌に前後対向 2 門で照射し、アイソセンタへ 50 Gy を処方した。等線量曲線で、アイソセンタと同じ高さの照射野外縁付近の点が **90％線上**にあった。この点の吸収線量に最も近いのはどれか。",
+  "choices": [
+    {
+      "text": "40 Gy",
+      "explanation": "**誤り**です。40 Gy は処方 50 Gy の **80％**です。90％線上ならもっと高い値になります。"
+    },
+    {
+      "text": "50 Gy",
+      "explanation": "**誤り**です。50 Gy はアイソセンタの **100％**です。90％線上の点は、それより低い線量です。"
+    },
+    {
+      "text": "55 Gy",
+      "explanation": "**誤り**です。55 Gy は処方 50 Gy の **110％**で、ホットスポット側です。90％線上ではありません。"
+    },
+    {
+      "text": "45 Gy",
+      "explanation": "等線量 90％の点の線量は、処方 × 0.90 です。50 × 0.90 ＝ **45 Gy**。前後対向 2 門では、アイソセンタ周辺の高線量域の外縁が 90％線になることがよくあります。**正解**です。"
+    },
+    {
+      "text": "35 Gy",
+      "explanation": "**誤り**です。35 Gy は処方 50 Gy の **70％**です。照射野の外縁よりさらに外側の低い線量帯です。"
+    }
+  ],
+  "answer": 4,
+  "terms": ["isodose"],
+  "sourceExplanation": "この問は、**前後対向 2 門の線量分布**の読み取りです（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=18\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 18 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_02.pdf#page=12\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.8・12 ページ</a>）。本サイトの類似問題は図を載せられないため、等線量％と処方線量から点線量を求める形に文章化しています。数値は公式と変えています。\n\n- **別冊所見** … 胸部横断の等線量図。前後対向 2 門の長方形に近い高線量域。アイソセンタは 100％。指示点は高線量域の外側縁、およそ **90％線**上。処方 60 Gy なら 60 × 0.90 ＝ 54 Gy で、最も近い選択肢は 55 Gy。\n- **1 番** … 45 Gy → **誤り**（60 Gy の 75％相当。90％線より低い）。\n- **2 番** … 50 Gy → **誤り**（およそ 83％）。\n- **3 番** … 55 Gy → **正解**（90％線 ≈ 54 Gy に最も近い）。\n- **4 番** … 58 Gy → **誤り**（およそ 97％。指示点より内側）。\n- **5 番** … 66 Gy → **誤り**（110％。ホットスポット側）。\n- **覚え方** … 点線量 ＝ **処方 × 等線量％**。90％線なら処方の 9 割。",
+  "draft": false
+}
