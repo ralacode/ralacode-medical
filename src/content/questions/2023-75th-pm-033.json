@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "pm",
+  "number": 33,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "pm",
+    "number": 33,
+    "answer": 4
+  },
+  "subject": "kakui-gaku",
+  "stem": "核医学画像のフィルタ処理で正しいのはどれか。",
+  "choices": [
+    {
+      "text": "Butterworth フィルタは、高周波だけを通すハイパスフィルタである。",
+      "explanation": "**誤り**です。Butterworth はカットオフ周波数より上を落とす**ローパス**（平滑化）です。ハイパスと覚えると逆です。"
+    },
+    {
+      "text": "周波数空間でのフィルタ処理は、実空間の重畳積分そのものである。",
+      "explanation": "**誤り**です。周波数空間ではスペクトルにフィルタを**掛け算**します。重畳積分（コンボリューション）は実空間側の話です。"
+    },
+    {
+      "text": "ramp フィルタは、単純逆投影で出る 1/r ボケを打ち消す。",
+      "explanation": "逆投影だけだと点が星のようににじむ（1/r ボケ）ので、周波数空間でランプ状に高周波を足して輪郭を戻します。ぼやけた影にシャープな型を重ねる、に近い補正です。**正解**です。"
+    },
+    {
+      "text": "Gaussian フィルタは、輪郭を鋭くするエッジ強調フィルタである。",
+      "explanation": "**誤り**です。Gaussian は周りを平均して平滑化するフィルタです。輪郭強調は LoG や微分系の話です。"
+    },
+    {
+      "text": "Wiener フィルタの決め手は、OSEM の反復回数とサブセット数である。",
+      "explanation": "**誤り**です。反復回数とサブセット数は**逐次近似再構成**のパラメータです。Wiener は信号と雑音のパワースペクトルで形が決まります。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["nuclear-medicine-filter"],
+  "sourceExplanation": "この問は、**核医学画像のフィルタ処理**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=17\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 17 ページ</a>）。\n\n- **1 番** … Gaussian で輪郭が強調される → **誤り**（平滑化）。\n- **2 番** … Butterworth はハイパスフィルタ → **誤り**（ローパス）。\n- **3 番** … 周波数空間の処理は重畳積分 → **誤り**（周波数空間は掛け算。重畳は実空間）。\n- **4 番** … ramp フィルタで逆投影のボケが除かれる → **正解**。\n- **5 番** … Wiener のパラメータは反復回数とサブセット数 → **誤り**（それは OSEM）。\n- **覚え方** … **ramp＝逆投影の 1/r 補正**／Butterworth・Gaussian＝滑らか／周波数＝掛け算。",
+  "draft": false
+}
