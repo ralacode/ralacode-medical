@@ -39,3 +39,31 @@ test("表紙に候補が無いと本文ページの問1を採用する", () => {
   assert.equal(assigned.get(2), 5)
   assert.equal(assigned.get(3), 5)
 })
+
+test("3桁の問番号が 1 と 00 に分かれても問100にする", () => {
+  const body = [
+    "99 次の記述で正しいのはどれか。",
+    "1．塩素",
+    "00 次の記述で正しいのはどれか。",
+    "1．炭素",
+    "1",
+  ]
+  assert.deepEqual(detectQuestionCandidates(body), [99, 100])
+})
+
+test("孤立した 1 が無くても 00 見出しは問100にする", () => {
+  const body = [
+    "00 次の記述で正しいのはどれか。",
+    "1．炭素",
+  ]
+  assert.deepEqual(detectQuestionCandidates(body), [100])
+})
+
+test("末尾の孤立した 1 だけでは問番号にしない", () => {
+  const body = [
+    "99 次の記述で正しいのはどれか。",
+    "1．塩素",
+    "1",
+  ]
+  assert.deepEqual(detectQuestionCandidates(body), [99])
+})
