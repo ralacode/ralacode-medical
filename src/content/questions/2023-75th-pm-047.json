@@ -1,0 +1,38 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "pm",
+  "number": 47,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "pm",
+    "number": 47,
+    "answer": 2
+  },
+  "subject": "iryo-gazo-joho",
+  "stem": "16 進数の **5B** を 2 進数で表したのはどれか。",
+  "choices": [
+    {
+      "text": "0101 1101"
+    },
+    {
+      "text": "0110 1011"
+    },
+    {
+      "text": "0100 1011"
+    },
+    {
+      "text": "0101 1010"
+    },
+    {
+      "text": "0101 1011",
+      "explanation": "16 進の 1 桁は 2 進 4 bit です。**5**＝0101、**B**＝11＝1011 なので、並べると **0101 1011** です。10 進に直す検算は 5×16＋11＝**91**、2 進 0101 1011＝64＋16＋8＋2＋1＝**91** で一致します。"
+    }
+  ],
+  "answer": 5,
+  "terms": [],
+  "sourceExplanation": "この問は、**16 進数を 2 進数へ直す**計算です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=22\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 22 ページ</a>）。公式と同じく、各桁を 4 bit に展開します。本サイトの類似問題は数値を変えています。\n\n- 16 進 1 桁＝**2 進 4 bit**。0〜9 はそのまま、A＝10、B＝11、C＝12、D＝13、E＝14、F＝15 です。\n- **公式正答**は **2 番**です。\n- **落とし穴** … 隣の桁（±1）の 4 bit を選ぶ、10 進のまま並べる、上位桁と下位桁を入れ替える。",
+  "draft": false
+}

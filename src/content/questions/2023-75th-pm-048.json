@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "pm",
+  "number": 48,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "pm",
+    "number": 48,
+    "answer": 3
+  },
+  "subject": "iryo-gazo-joho",
+  "stem": "DICOM 規格について、正しいのはどれか。",
+  "choices": [
+    {
+      "text": "規格名は Digital Output Control of Imaging Machines の略である。",
+      "explanation": "**誤り**です。DICOM は **Digital Imaging and Communications in Medicine** の略です。画像と通信の両方を扱う規格名です。"
+    },
+    {
+      "text": "患者氏名などの付帯情報は、画素データと同一オブジェクトに含められない。",
+      "explanation": "**誤り**です。DICOM オブジェクトは、画素だけでなく患者名・検査番号などの**属性（タグ）**を同じ情報単位に載せます。封筒に宛名と写真を一緒に入れる、という形です。"
+    },
+    {
+      "text": "対象モダリティは単純 X 線撮影に限られる。",
+      "explanation": "**誤り**です。CT、MRI、超音波、核医学など、多くのモダリティを扱います。単純 X 線専用の規格ではありません。"
+    },
+    {
+      "text": "製造者は装置ごとに適合性宣言書（conformance statement）を添付する。",
+      "explanation": "どの SOP クラスを実装し、何ができて何ができないかを書いた**適合性宣言書**を、装置に添付します。取扱説明書の「対応機能一覧」に相当します。**正解**です。"
+    },
+    {
+      "text": "院内の画像通信では、DICOM に代わり必ず HL7 だけで画素を送る。",
+      "explanation": "**誤り**です。画素や検査画像のやり取りの主軸は **DICOM** です。HL7 はオーダや患者属性など、テキスト寄りの連携に使われることが多く、画素送信の代替規格ではありません。"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、**DICOM 規格**の範囲と添付文書です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=23\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 23 ページ</a>）。\n\n- **1 番** … 圧縮画像は扱えない → **誤り**（JPEG 等の圧縮転送を規定している）。\n- **2 番** … 通信手順は定めない → **誤り**（ネットワーク通信も規格の一部）。\n- **3 番** … 適合性宣言書を装置に添付する → **正解**（実装範囲を宣言する文書）。\n- **4 番** … ファイル先頭から画素が並ぶ → **誤り**（メタ情報・ヘッダが先で、画素は後段）。\n- **5 番** … 線量情報の略称とする → **誤り**（**Digital Imaging and Communications in Medicine**）。\n- **覚え方** … DICOM＝**画像＋通信**／添付は**適合性宣言書**／先頭はヘッダ／圧縮も可。",
+  "draft": false
+}
