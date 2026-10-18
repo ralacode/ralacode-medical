@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "pm",
+  "number": 22,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "pm",
+    "number": 22,
+    "answer": 3
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "頭部 MRI 横断像で、脳室は低信号のまま、皮質の輪郭がにじみ、**位相エンコード方向へ縞状のゴースト**が画像全体に重なっている。局所の信号抜けや脂肪・水境界の黒線、視野の端から反対側へはみ出す解剖はない。認められるアーチファクトはどれか。",
+  "choices": [
+    {
+      "text": "化学シフト",
+      "explanation": "**誤り**です。化学シフトは脂肪と水の周波数差で、境界が周波数方向にずれたり黒線が出たりします。画像全体の縞状ゴーストではありません。詳しくは <a href=\"/medical/articles/phase-frequency-encoding/\" target=\"_blank\" rel=\"noopener noreferrer\">MRI の位相・周波数エンコードとは</a> をご覧ください。"
+    },
+    {
+      "text": "マジックアングル",
+      "explanation": "**誤り**です。マジックアングルは腱などが静磁場と約 55° をなすときの**高信号**です。頭部横断の縞状ゴーストではありません。"
+    },
+    {
+      "text": "折り返し（エイリアシング）",
+      "explanation": "**誤り**です。折り返しは FOV の外の構造が反対側の端へはみ出す所見です。脳全体に縞が重なるパターンではありません。"
+    },
+    {
+      "text": "磁化率アーチファクト",
+      "explanation": "**誤り**です。磁化率は副鼻腔や金属の周りで**局所の歪み・信号抜け**を起こします。位相方向へ規則正しく並ぶゴーストではありません。"
+    },
+    {
+      "text": "モーションアーチファクト",
+      "explanation": "**正解**です。体動や拍動で、位相エンコード方向にゴーストやブレが出ます。長時間露光の写真で動く人が残像になる、というイメージです。本像は局所の歪みではなく、画像全体の縞です。"
+    }
+  ],
+  "answer": 5,
+  "terms": ["phase-frequency-encoding"],
+  "sourceExplanation": "この問は、MR 像に見える**アーチファクトの同定**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=13\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 13 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_02.pdf#page=11\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.7・11 ページ</a>）。本サイトの類似問題は図を載せられないため、**位相方向の縞状ゴースト**として文章化しています。\n\n- **別冊所見** … 頭部横断。皮質輪郭のブレと、位相エンコード方向へ重なる縞状のゴースト（体動）。\n- **1 番** … **磁化率** → **誤り**（局所の歪み・抜け）。\n- **2 番** … **折り返し** → **誤り**（FOV 外が反対側へ）。\n- **3 番** … **モーション** → **正解**。\n- **4 番** … **ケミカルシフト** → **誤り**（脂肪・水境界のずれ・黒線）。\n- **5 番** … **マジックアングル** → **誤り**（腱などの角度依存の高信号。頭部像の主座ではない）。\n- **覚え方** … 画像全体の縞・ゴースト＝**モーション**（位相方向）。端だけのはみ出し＝折り返し。",
+  "draft": false
+}

@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "pm",
+  "number": 15,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "pm",
+    "number": 15,
+    "answer": 3
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "頭部 MRI の横断像で、**脳室と脳溝の脳脊髄液は低信号**、灰白質は白質より高信号に描出されている。このコントラストに合う撮像法はどれか。",
+  "choices": [
+    {
+      "text": "プロトン密度強調像",
+      "explanation": "**誤り**です。プロトン密度強調は長い TR・短い TE で、CSF は中〜高信号になりやすいです。脳室が暗い所見と合いません。詳しくは <a href=\"/medical/articles/proton-density/\" target=\"_blank\" rel=\"noopener noreferrer\">プロトン密度強調とは</a> をご覧ください。"
+    },
+    {
+      "text": "T1 強調像",
+      "explanation": "**誤り**です。T1 強調でも CSF は暗いですが、**白質の方が灰白質より高信号**になりやすいです。本問は灰白質の方が明るいので、T1 ではありません。"
+    },
+    {
+      "text": "拡散強調像",
+      "explanation": "**誤り**です。拡散強調は水分子の動きを見ます。通常の灰白質・白質コントラストや、溝まで含めた CSF 抑制の見え方は FLAIR の特徴です。詳しくは <a href=\"/medical/articles/dwi/\" target=\"_blank\" rel=\"noopener noreferrer\">MRI の拡散強調とは</a> をご覧ください。"
+    },
+    {
+      "text": "T2 強調像",
+      "explanation": "**誤り**です。T2 強調では CSF は**高信号（明るい）**です。脳室と溝が暗い、という所見とは逆です。"
+    },
+    {
+      "text": "FLAIR 像",
+      "explanation": "**正解**です。FLAIR は CSF の信号を抑えた T2 風画像です。脳室・溝は暗く、灰白質は白質より明るく見えます。水彩から水だけ色を消す、というイメージです。詳しくは <a href=\"/medical/articles/flair/\" target=\"_blank\" rel=\"noopener noreferrer\">MRI の FLAIR とは</a> をご覧ください。"
+    }
+  ],
+  "answer": 5,
+  "terms": ["flair", "dwi", "proton-density"],
+  "sourceExplanation": "この問は、頭部 MR 横断像の**撮像法の同定**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=10\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 10 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_02.pdf#page=6\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.2・6 ページ</a>）。本サイトの類似問題は図を載せられないため、**CSF 低信号＋灰白質＞白質**として文章化しています。\n\n- **別冊所見** … 頭部横断。脳室・脳溝の CSF は低信号。灰白質は白質より高信号（水抑制の T2 風）。\n- **1 番** … **T1 強調** → **誤り**（CSF は暗いが、白質＞灰白質になりやすい）。\n- **2 番** … **T2 強調** → **誤り**（CSF は**高信号**）。\n- **3 番** … **FLAIR** → **正解**（CSF を落とした T2 風）。\n- **4 番** … **拡散強調** → **誤り**（拡散コントラスト。本像の主座ではない）。\n- **5 番** … **プロトン密度強調** → **誤り**（CSF は中〜高信号になりやすい）。\n- **覚え方** … **脳室が暗い T2 風＝FLAIR**／T2 は脳室が白い／T1 は白質が明るい。",
+  "draft": false
+}
