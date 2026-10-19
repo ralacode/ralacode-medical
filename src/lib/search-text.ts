@@ -13,7 +13,7 @@ function splitSearchQuery(query: string) {
 }
 
 function stripChoiceMarkup(value: string) {
-  return value.replace(/\*\*/g, "").replace(/__/g, "")
+  return value.replace(/<[^>]+>/g, "").replace(/\*\*/g, "").replace(/__/g, "")
 }
 
 function displayChoiceText(value: string) {

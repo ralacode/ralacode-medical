@@ -16,7 +16,11 @@ import {
   officialExamBookletPdfLink,
   officialExamPdfLink,
 } from "@/lib/exam-data"
-import { renderEmphasisHtml, renderQuizMarkdown } from "@/lib/markdown"
+import {
+  renderEmphasisHtml,
+  renderQuizMarkdown,
+  stripHtmlTags,
+} from "@/lib/markdown"
 import { subjectLabel } from "@/lib/exam-subjects"
 import {
   browseCategoryHref,
@@ -132,7 +136,8 @@ const description = preparing
   ? examYearPreparingSeoDescription(year)
   : questionSeoDescription(exam, session, number)
 const quizChoices = choices.map((choice) => ({
-  text: choice.text,
+  text: stripHtmlTags(choice.text),
+  textHtml: renderEmphasisHtml(choice.text),
   explanationHtml: choice.explanation.trim()
     ? renderQuizMarkdown(choice.explanation)
     : "",

@@ -162,11 +162,6 @@ function lintGate(file: QuestionFile, failures: Failure[]) {
           `肢 ${index + 1} の text にリンクがあります。記事リンクは explanation に書いてください`
         )
       }
-      if (/<\/?(?:sub|sup)\b/i.test(choice.text)) {
-        fail(
-          `肢 ${index + 1} の text は HTML にならないので、下付き・上付きは Unicode で書いてください`
-        )
-      }
     }
   }
 
