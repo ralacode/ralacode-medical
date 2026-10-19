@@ -1,0 +1,42 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "pm",
+  "number": 30,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "pm",
+    "number": 30,
+    "answer": 5
+  },
+  "subject": "kakui-gaku",
+  "stem": "早期の Alzheimer 型認知症の脳血流 SPECT で、血流が落ちやすい部位はどれか。",
+  "choices": [
+    {
+      "text": "後頭葉",
+      "explanation": "**誤り**です。後頭葉の低下は **Lewy 小体型認知症**で目立ちます。Alzheimer 型では比較的保たれやすく、鑑別の手がかりになります。"
+    },
+    {
+      "text": "視床",
+      "explanation": "**誤り**です。視床の低下は早期 Alzheimer 型の定番部位ではありません。血管性やほかの病態で論じることが多いです。"
+    },
+    {
+      "text": "後部帯状回",
+      "explanation": "早期 Alzheimer 型では、内側の**後部帯状回**（と楔前部）の低下が早い段階から出やすいです。頭の後ろ側の内側がまず静かになる、と覚えるとよいです。**正解**です。"
+    },
+    {
+      "text": "基底核",
+      "explanation": "**誤り**です。線条体などの基底核は、Parkinson 病や進行性核上性麻痺などの核医学で別の見方をします。早期 Alzheimer 型の定番低下部位ではありません。"
+    },
+    {
+      "text": "前頭葉",
+      "explanation": "**誤り**です。前頭葉の目立つ低下は、前頭側頭型認知症や進行期で論じます。早期 Alzheimer 型の最初の目印は後部帯状回側です。"
+    }
+  ],
+  "answer": 3,
+  "terms": ["brain-perfusion-spect"],
+  "sourceExplanation": "この問は、**早期 Alzheimer 型認知症の脳血流 SPECT** で低下しやすい部位です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=16\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 16 ページ</a>）。\n\n- **1 番** … 視床 → **誤り**。\n- **2 番** … 基底核 → **誤り**。\n- **3 番** … 後頭葉 → **誤り**（Lewy 小体型で目立つ。Alzheimer 型では保たれやすい）。\n- **4 番** … 前頭葉 → **誤り**（早期の主座ではない）。\n- **5 番** … 後部帯状回 → **正解**（楔前部・側頭頭頂葉も早期から低下しやすい）。\n- **覚え方** … 早期 AD＝**後部帯状回**／後頭葉低下は DLB を疑う。",
+  "draft": false
+}
