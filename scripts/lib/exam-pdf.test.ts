@@ -1,10 +1,6 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
-import {
-  assignQuestionPages,
-  detectQuestionCandidates,
-  joinSplitQuestion100,
-} from "./exam-pdf.ts"
+import { assignQuestionPages, detectQuestionCandidates } from "./exam-pdf.ts"
 
 test("表紙の解答例とマーク欄は問1にしない", () => {
   const cover = [
@@ -32,36 +28,6 @@ test("本文の問1見出しは残す", () => {
     "2．炭素",
   ]
   assert.deepEqual(detectQuestionCandidates(body), [1])
-})
-
-test("問100の百の位が読み順の末尾でも見出し行にする", () => {
-  const items = [
-    { str: "00", transform: [1, 0, 0, 1, 115, 525] },
-    { str: " ", transform: [1, 0, 0, 1, 125, 525] },
-    { str: "次の記述で正しいのはどれか。", transform: [1, 0, 0, 1, 135, 525] },
-    { str: "1", transform: [1, 0, 0, 1, 110, 525] },
-  ]
-  joinSplitQuestion100(items)
-  assert.equal(items[0]!.str, "100")
-  assert.equal(items[3]!.str, "")
-  assert.deepEqual(
-    detectQuestionCandidates([
-      "100 次の記述で正しいのはどれか。",
-      "1．肢",
-      "2．肢",
-    ]),
-    [100]
-  )
-})
-
-test("離れた 1 と 00 は問100に結合しない", () => {
-  const items = [
-    { str: "1", transform: [1, 0, 0, 1, 10, 100] },
-    { str: "00", transform: [1, 0, 0, 1, 400, 200] },
-  ]
-  joinSplitQuestion100(items)
-  assert.equal(items[0]!.str, "1")
-  assert.equal(items[1]!.str, "00")
 })
 
 test("表紙に候補が無いと本文ページの問1を採用する", () => {

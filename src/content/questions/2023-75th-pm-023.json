@@ -1,0 +1,38 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "pm",
+  "number": 23,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "pm",
+    "number": 23,
+    "answer": 2
+  },
+  "subject": "shinryo-gazo-kensa",
+  "stem": "3.0 T MRI で高速スピンエコー法、TR 2,500 ms、TE 100 ms、加算回数 2 回、FOV 32 cm、マトリクスサイズ 256 × 256 の撮影を行った。ピクセルサイズ［mm］に最も近いのはどれか。",
+  "choices": [
+    {
+      "text": "0.13"
+    },
+    {
+      "text": "0.50"
+    },
+    {
+      "text": "1.3",
+      "explanation": "ピクセルサイズは **FOV ÷ マトリクス数** です。32 cm ＝ 320 mm、320 ÷ 256 ＝ **1.25 mm** で、最も近いのは 1.3 です。静磁場強度・TR・TE・加算回数はこの式に入りません。"
+    },
+    {
+      "text": "2.5"
+    },
+    {
+      "text": "13"
+    }
+  ],
+  "answer": 3,
+  "terms": [],
+  "sourceExplanation": "この問は、MRI の**ピクセルサイズ**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=14\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 14 ページ</a>）。式は同じで、数値は変えています。\n\n- ピクセルサイズ ＝ **FOV / マトリクス数**。単位を mm にそろえる。\n- 公式正答は **2 番**。FOV とマトリクスだけを使い、1.5 T・TR・TE・加算回数は使わない。\n- 落とし穴は、cm のまま割って 0.1 台を選ぶこと、マトリクスを半分にして約 2 倍の値を選ぶことです。\n- **覚え方** … 画素の一辺＝**視野の長さ ÷ マス目の数**。磁場の強さや TR/TE は別の話。",
+  "draft": false
+}

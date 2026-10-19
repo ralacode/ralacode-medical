@@ -126,31 +126,6 @@ function isInstructionCover(lines: string[]) {
   return INSTRUCTION_COVER_RE.test(lines.join("\n"))
 }
 
-type PositionedText = {
-  str: string
-  transform: number[]
-}
-
-/**
- * 問100の百の位「1」だけが、同じ行の「00」より後の読み順になる PDF がある
- * （2023年午前の最終問）。左隣の「1」を「00」へ結合しないと見出しが「00 …」になり、
- * 問番号として検出できない。
- */
-export function joinSplitQuestion100(items: PositionedText[]) {
-  for (const rest of items) {
-    if (rest.str !== "00") continue
-    const hundreds = items.find((item) => {
-      if (item.str !== "1") return false
-      const sameLine = Math.abs(item.transform[5]! - rest.transform[5]!) <= 1
-      const justLeft = rest.transform[4]! - item.transform[4]!
-      return sameLine && justLeft > 0 && justLeft <= 12
-    })
-    if (!hundreds) continue
-    rest.str = "100"
-    hundreds.str = ""
-  }
-}
-
 /**
  * pdfjs が 3 桁の問番号「100」を、左にはみ出した「1」と「00 …」に分けることがある。
  * 描画順では「00」が先、「1」がページ末に来る。同一ページの孤立した「1」を先頭に戻す。
@@ -240,9 +215,8 @@ export async function readExamPdfPage(page: PDFPageProxy): Promise<ExamPdfPageTe
   const content = await page.getTextContent()
   let readable = ""
   let footerLabel: string | undefined
-  const textItems = content.items.flatMap((item) => ("str" in item ? [item] : []))
-  joinSplitQuestion100(textItems)
-  for (const item of textItems) {
+  for (const item of content.items) {
+    if (!("str" in item)) continue
     readable += item.str
     if (item.hasEOL) readable += "\n"
     footerLabel ??= item.str.trim().match(FOOTER_ITEM_RE)?.[1]
