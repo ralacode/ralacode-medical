@@ -31,6 +31,7 @@ import { cn } from "@/lib/utils"
 
 type Choice = {
   text: string
+  textHtml: string
   explanationHtml: string
 }
 
@@ -567,7 +568,7 @@ export function QuestionQuiz({
                   <span className="mr-2 font-medium tabular-nums">
                     {number}.
                   </span>
-                  {choice.text}
+                  <span dangerouslySetInnerHTML={{ __html: choice.textHtml }} />
                 </span>
               </div>
               {submitted && choice.explanationHtml ? (

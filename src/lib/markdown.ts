@@ -7,6 +7,11 @@ export function renderEmphasisHtml(source: string) {
   return applyEmphasisToHtml(source)
 }
 
+/** aria-label や検索用。属性なしの <sub> / <sup> を外す */
+export function stripHtmlTags(source: string) {
+  return source.replace(/<[^>]+>/g, "")
+}
+
 export function renderMarkdown(source: string): string {
   return marked.parse(applyEmphasisToHtml(source), {
     async: false,

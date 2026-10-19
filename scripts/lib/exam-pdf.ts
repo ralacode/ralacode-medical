@@ -109,8 +109,8 @@ export async function loadExamPdf(absolutePath: string): Promise<PDFDocumentProx
   }).promise
 }
 
-/** 問題番号行: 「31 画像に…」「2 1.5 T MRI…」の半角スペース区切り。選択肢「1．」（全角ピリオド）は除外 */
-const QUESTION_HEADING_RE = /^([1-9]\d{0,2}) (?=\S)/
+/** 問題番号行: 「31 画像に…」「2 1.5 T MRI…」の半角スペース区切り。選択肢「1．」（全角ピリオド）は除外。分割された 100 は「00」のまま残ることがある */
+const QUESTION_HEADING_RE = /^([1-9]\d{0,2}|00) (?=\S)/
 /** 表紙のマーク欄「1 2 3 4 5」。見出し番号の残りが数字だけなら問ではない */
 const MARK_SHEET_REST_RE = /^[\d\s]+$/
 /** 選択肢 1 の行。見出し候補の直後にこれがあるものだけを問番号とみなす（表紙・注意書きの「2 …」を除外） */
@@ -126,22 +126,74 @@ function isInstructionCover(lines: string[]) {
   return INSTRUCTION_COVER_RE.test(lines.join("\n"))
 }
 
+type PositionedText = {
+  str: string
+  transform: number[]
+}
+
+/**
+ * 問100の百の位「1」だけが、同じ行の「00」より後の読み順になる PDF がある
+ * （2023年午前の最終問）。左隣の「1」を「00」へ結合しないと見出しが「00 …」になり、
+ * 問番号として検出できない。
+ */
+export function joinSplitQuestion100(items: PositionedText[]) {
+  for (const rest of items) {
+    if (rest.str !== "00") continue
+    const hundreds = items.find((item) => {
+      if (item.str !== "1") return false
+      const sameLine = Math.abs(item.transform[5]! - rest.transform[5]!) <= 1
+      const justLeft = rest.transform[4]! - item.transform[4]!
+      return sameLine && justLeft > 0 && justLeft <= 12
+    })
+    if (!hundreds) continue
+    rest.str = "100"
+    hundreds.str = ""
+  }
+}
+
+/**
+ * pdfjs が 3 桁の問番号「100」を、左にはみ出した「1」と「00 …」に分けることがある。
+ * 描画順では「00」が先、「1」がページ末に来る。同一ページの孤立した「1」を先頭に戻す。
+ */
+export function rejoinSplitQuestionHeading(lines: string[]) {
+  const leftoverIndexes: number[] = []
+  const headingIndexes: number[] = []
+  lines.forEach((line, index) => {
+    if (line === "1") leftoverIndexes.push(index)
+    else if (/^00 (?=\S)/.test(line)) headingIndexes.push(index)
+  })
+  if (leftoverIndexes.length !== 1 || headingIndexes.length !== 1) return lines
+
+  const leftoverIndex = leftoverIndexes[0]!
+  const headingIndex = headingIndexes[0]!
+  const next = lines.filter((_, index) => index !== leftoverIndex)
+  const adjustedHeadingIndex =
+    leftoverIndex < headingIndex ? headingIndex - 1 : headingIndex
+  next[adjustedHeadingIndex] = `1${next[adjustedHeadingIndex]!}`
+  return next
+}
+
+function headingNumber(raw: string) {
+  return raw === "00" ? 100 : Number(raw)
+}
+
 /** ページ内の問番号候補（緩い判定。表の数字や折り返し行も拾うので assignQuestionPages で絞る） */
 export function detectQuestionCandidates(lines: string[]) {
-  if (isInstructionCover(lines)) return []
+  const normalized = rejoinSplitQuestionHeading(lines)
+  if (isInstructionCover(normalized)) return []
   const numbers = new Set<number>()
-  lines.forEach((line, index) => {
+  normalized.forEach((line, index) => {
     const match = line.match(QUESTION_HEADING_RE)
     if (!match) return
     const rest = line.slice(match[0].length).trim()
     if (rest !== "" && MARK_SHEET_REST_RE.test(rest)) return
-    const following = lines.slice(index, index + 13)
+    const following = normalized.slice(index, index + 13)
     if (
       following.some(
         (next) => FIRST_CHOICE_RE.test(next) || QUESTION_PROMPT_RE.test(next)
       )
     ) {
-      numbers.add(Number(match[1]))
+      numbers.add(headingNumber(match[1]!))
     }
   })
   return [...numbers].sort((a, b) => a - b)
@@ -188,17 +240,20 @@ export async function readExamPdfPage(page: PDFPageProxy): Promise<ExamPdfPageTe
   const content = await page.getTextContent()
   let readable = ""
   let footerLabel: string | undefined
-  for (const item of content.items) {
-    if (!("str" in item)) continue
+  const textItems = content.items.flatMap((item) => ("str" in item ? [item] : []))
+  joinSplitQuestion100(textItems)
+  for (const item of textItems) {
     readable += item.str
     if (item.hasEOL) readable += "\n"
     footerLabel ??= item.str.trim().match(FOOTER_ITEM_RE)?.[1]
   }
   readable = readable.trim()
-  const lines = readable.split("\n").map((line) => line.trim())
+  const lines = rejoinSplitQuestionHeading(
+    readable.split("\n").map((line) => line.trim())
+  )
   return {
     pageNumber: page.pageNumber,
-    readable,
+    readable: lines.join("\n"),
     footerLabel,
     questionCandidates: detectQuestionCandidates(lines),
   }

@@ -242,7 +242,7 @@ function answerNote(
   markedWeak: boolean,
   incorrect: boolean
 ) {
-  const text = choiceTexts[selected - 1]
+  const text = choiceTexts[selected - 1]?.replace(/<[^>]+>/g, "")
   const answer = text
     ? `あなたの回答 ${selected}. ${text}`
     : `あなたの回答 ${selected}`
