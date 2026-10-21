@@ -21,56 +21,13 @@
 
 ## リポジトリの決まり
 
-- 類似問題の作成: `.cursor/rules/exam-question-authoring.mdc` → `docs/exam-question-authoring.md`
-- Cloud 用の科目プロンプト生成（ローカル）: `.cursor/rules/cloud-subject-prompt.mdc` → `docs/cloud-subject-prompt.md`
-- 用語解説記事: `.cursor/rules/glossary-article-authoring.mdc` → `docs/glossary-article-authoring.md`
+- 類似問題の作成を頼まれたら、作業の最初に `docs/exam-question-authoring.md` を読み、その手順と禁止事項に従う。
+- Cloud に貼る指示文だけを頼まれたら、JSON は作らず、最初に `docs/cloud-subject-prompt.md` を読む。
+- 用語解説記事の作成・編集を頼まれたら、作業の最初に `docs/glossary-article-authoring.md` を読む。
+- YouTube ショート（動画、台本、テロップ、登場人物、音声、タイトル・説明・サムネイル・タグ）を頼まれたら、作業の最初に `docs/youtube-short-production.md` を読む。テーマ・尺・公開順は `docs/content-strategy-youtube-seo.md` の §5。
+- Cursor の Cloud Agent（Cursor Cloud / Background Agent）向けの追加手順は `.cursor/rules/cursor-cloud.mdc` にある。適用されるのは、そのエージェントとして起動されたセッションだけ。Claude Code と、Cursor のローカル対話には適用しない。
 - 試験科目の分類: `docs/exam-subjects-amendment-2023.md`、科目 ID は `src/lib/exam-subjects.ts`（理工学の学習タグに放射化学 `hoshasen-kagaku` を含む。第75回・第76回は改正前科目をこの ID に寄せる）
 - **公式の問題文・選択肢・別冊画像をリポジトリ・PR 本文・チャットに転載しない。** `exams/` と `exams/_render/` は gitignore。`public/` に置かない。
 - **類似問題は公開年をすべて無料で出す**（`src/lib/exam-visibility.ts` の `publishedExamYears`）。直近 N 年だけ、という制限はない。年を公開リストに足すのは、**200 問揃い、ユーザーが公開を指示したときだけ**。自動では足さない。未掲載の年（2023 年など）は準備中。開発サーバでは、未公開年でもその年の問があれば中身を出して作成確認できる。問の `draft` は未完成フラグであり、年次の公開可否ではない。
 - **レイアウト・CSS・既存コンポーネントは、明示的に依頼されたときだけ触る。**
 - CI は `.github/workflows/ci.yml`。類似問題の PR 本文は `.github/PULL_REQUEST_TEMPLATE/exam.md`、記事・基盤は `.github/pull_request_template.md`。
-
-## Cursor Cloud specific instructions
-
-Cloud Agent（Cursor Cloud / Background Agent）として起動されたときの追加ルール。ローカルの対話セッションには適用しない。
-
-### 環境
-
-- `.cursor/environment.json` の `install` / `start` で `pnpm exam:fetch-pdfs` が走る。`exams/{year}/` に公式 PDF が無ければ、作業前に自分で `pnpm exam:fetch-pdfs --year {year}` を実行する。
-- PDF は `pnpm exam:pdf-text`（テキスト）と `pnpm exam:pdf-render`（画像）で読む。ブラウザや外部ビューアは使わない。
-- 描画した PNG・抽出したテキストをコミットしない（`exams/` 配下は gitignore）。
-
-### ブランチ・コミット・PR
-
-- 割り当てられた作業ブランチで作業する。ブランチが指定されていなければ `q/{year}-{exam}th/{subject-id}`（類似問題）または `article/{term-id}`（用語記事）で切る。
-- **`main` へ直接 push しない。**
-- Cloud では、コミット → push → PR 作成までが作業範囲。手順書の「コミット・push は依頼されたときだけ」はローカル対話向けであり、Cloud では PR を開くことがタスク完了の条件。
-- 1 PR = 1 科目（または 1 記事）。問題作成の PR で触るのは `src/content/questions/*.json` だけ。ページ表・PDF URL（`src/lib/exam-data.ts`）やマニフェスト（`src/data/exam-manifests/{year}.json`）の変更が必要になったら、勝手に直さず PR 本文に書いて止める。参考リンクを足したら `pnpm exam:external-links` で台帳を再生成してよい。
-- 類似の `choices` は公式と同じ順にしない（並べ替えて `answer` を合わせる。画面シャッフルに頼らない）。記事リンクは肢の `text` ではなく `explanation` に書く。
-
-### PR を開く前に必ず実行
-
-```bash
-pnpm build
-pnpm lint:questions
-pnpm verify:exam-pages --strict
-pnpm exam:external-links --check
-pnpm lint
-```
-
-すべて成功していること。失敗したら直してから PR を開く。GitHub Actions の `CI` も同じ検査を回す。
-
-### PR 本文に書くこと
-
-- **類似問題**は `.github/PULL_REQUEST_TEMPLATE/exam.md` に従う。記事・基盤は `.github/pull_request_template.md`。
-- 問ごとに 1 行: `AM 問13 ＝ 論点、PDF N ページ、公式正答 n`（手順書 §7「検証の記録」）。
-- 知識問題は問ごとに **5 肢の真偽表**（類似問題の各肢が、問題文の問い方の下で正しいか誤りか、理由 1 行）。正解がちょうど 1 肢であることをここで示す。番号は類似 JSON の並び（公式の 1〜5 番ではない）。
-- 類似の `choices` 並びが公式と異なること（`shuffleChoices: false` は例外）。
-- 実行した検査コマンドと結果。
-- 判断に迷った点・手順書に無かったケース。
-- 公式の問題文・選択肢・別冊画像・`exam:pdf-text` の出力は PR 本文に貼らない。
-
-### レビューコメントへの対応
-
-- レビューコメントで修正を求められたら、同じブランチに追加コミットで直す（force-push しない）。
-- 「作り直し」と言われた問は、`sourceExplanation` だけ直して済ませず、手順書 §7-1 から再実行する。

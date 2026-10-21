@@ -12,7 +12,7 @@
 2. **基本的なレイアウトと CSS は変更しない。** 問題追加の作業では、見た目・余白・コンポーネント構造・`global.css`・既存の React/Astro のマークアップを触らない。**科目ごとの問題追加では `src/content/questions/*.json` だけを触る。** ページ表・マニフェストが足りなければ JSON 以外を直さず、PR 本文に書いて止める。参考リンクを足したときだけ `pnpm exam:external-links` で台帳を再生成してよい。
 3. **公式 PDF を git に入れない。** ローカル原本は `exams/`（gitignore）。解説カードからのリンクは厚生労働省の公式 URL を使う。
 4. **試験科目について考えるときは `docs/exam-subjects-amendment-2023.md` を参考にする。** 改正前後の科目名と、削られた科目・新設科目の判断に使う。画面に出す ID は `src/lib/exam-subjects.ts`。
-5. **コミット・push は、ユーザーが依頼したときだけ。** ただし **Cloud Agent** として割り当てブランチで作業するときは、コミット → push → PR 作成までが作業範囲（`AGENTS.md` の「Cursor Cloud specific instructions」）。どちらの場合も `main` へ直接 push しない。
+5. **コミット・push は、ユーザーが依頼したときだけ。** ただし **Cursor の Cloud Agent**（Cursor Cloud / Background Agent）として割り当てブランチで作業するときは、コミット → push → PR 作成までが作業範囲（`.cursor/rules/cursor-cloud.mdc`）。Claude Code はこの例外に当たらない。どちらの場合も `main` へ直接 push しない。
 
 `exams/` は gitignore。`docs/` も原則 gitignore で、手順書・科目改正メモ・**Cloud 科目プロンプト生成**（`cloud-subject-prompt.md`）・**外部リンク台帳**（`external-links.md`）だけリポジトリに含める。公式 PDF は入れない。
 
@@ -65,7 +65,7 @@ exams/2026/2026-78th-pm.pdf
 exams/2026/2026-78th-pm-supplement.pdf
 ```
 
-読み方（すべてリポジトリ内のスクリプト。Cloud Agent でも同じ）:
+読み方（すべてリポジトリ内のスクリプト。ローカルでも Cursor の Cloud Agent でも同じ）:
 
 ```bash
 pnpm exam:pdf-text 2026 am --toc            # 各 PDF ページに載っている問番号の一覧

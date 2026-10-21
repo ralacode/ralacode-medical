@@ -35,3 +35,7 @@ movies/
 # local national exam PDFs and rendered pages (not for the repo)
 /exams/
 /.tmp-pdf-render/
+
+# Claude Code personal overrides
+CLAUDE.local.md
+.claude/settings.local.json
