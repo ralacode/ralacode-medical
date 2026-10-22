@@ -36,7 +36,7 @@
     }
   ],
   "answer": 5,
-  "terms": ["flair", "dwi", "proton-density"],
+  "terms": ["flair", "dwi", "proton-density", "t1-t2-weighted"],
   "sourceExplanation": "この問は、頭部 MR 横断像の**撮像法の同定**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=10\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 10 ページ</a>、<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_02.pdf#page=6\" target=\"_blank\" rel=\"noopener noreferrer\">別冊 No.2・6 ページ</a>）。本サイトの類似問題は図を載せられないため、**CSF 低信号＋灰白質＞白質**として文章化しています。\n\n- **別冊所見** … 頭部横断。脳室・脳溝の CSF は低信号。灰白質は白質より高信号（水抑制の T2 風）。\n- **1 番** … **T1 強調** → **誤り**（CSF は暗いが、白質＞灰白質になりやすい）。\n- **2 番** … **T2 強調** → **誤り**（CSF は**高信号**）。\n- **3 番** … **FLAIR** → **正解**（CSF を落とした T2 風）。\n- **4 番** … **拡散強調** → **誤り**（拡散コントラスト。本像の主座ではない）。\n- **5 番** … **プロトン密度強調** → **誤り**（CSF は中〜高信号になりやすい）。\n- **覚え方** … **脳室が暗い T2 風＝FLAIR**／T2 は脳室が白い／T1 は白質が明るい。",
   "draft": false
 }

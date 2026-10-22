@@ -36,7 +36,7 @@
     }
   ],
   "answer": 3,
-  "terms": [],
+  "terms": ["t1-t2-weighted"],
   "sourceExplanation": "この問は、**SE 法頭部像（短い TR・短い TE）で高信号になる構造**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=10\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 10 ページ</a>）。条件は T1 強調です。\n\n- **1 番** … **基底核** → **誤り**（中等度）。\n- **2 番** … **側脳室** → **誤り**（CSF は T1 で低信号）。\n- **3 番** … **下垂体前葉** → **誤り**（やや高いが脂肪より低い）。\n- **4 番** … **眼窩内脂肪** → **正解**（T1 強調で最も高い）。\n- **5 番** … **頭蓋骨皮質** → **誤り**（プロトン少なく低信号）。\n- **覚え方** … 短い TR・短い TE＝**T1**／明るい順の目安＝**脂肪 ≫ 前葉 ＞ 灰白質 ≫ CSF・骨**。",
   "draft": false
 }
