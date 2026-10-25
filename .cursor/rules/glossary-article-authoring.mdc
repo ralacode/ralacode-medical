@@ -10,7 +10,8 @@ alwaysApply: true
 要点:
 
 - 保存先は `src/content/articles/{term-id}.mdx`。ファイル名は問題 JSON の `terms` と同じ ID（例: `k-space`）。
-- **title / description / FAQ / 冒頭の「とは」** まで SEO 対策を徹底する。完成例は `src/content/articles/k-space.mdx`。
+- **title / description / FAQ** は「とは」で始め、SEO 対策を徹底する。完成例は `src/content/articles/k-space.mdx`。
+- **本文の文体**は `src/content/articles/t1-t2-weighted.mdx` の「縦磁化」から「T2 とは」まで。読者のつまずきをかぎ括弧の箇条書きで始め、「とは」の長文定義では始めない。1文1事実。続きは `<br />`、話題の切れ目は空行。定義は平たい言葉を先に、用語名はあと。例えば、で具体物、だから、で見え方を言い切る。です・ます。手順書の「本文の文体」に従う。
 - **国試向け**であることは差別化として残す。特定の回次・問番号（「2026年午前問9の要点」など）を title / description / 冒頭に書かない。記事は用語解説であり、1問の解説ページではない。
 - FAQ は **frontmatter の `faq` のみ**。本文に同内容を重複しない。
 - 問題とのリンクは `terms` で自動。記事追加だけなら MDX（と必要時のみ `terms` の追記）で足りる。問題ページの「関連する用語」は別タブ、記事ページの「関連する問題」は同じタブ。
