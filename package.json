@@ -20,7 +20,8 @@
     "exam:external-links": "tsx scripts/extract-external-links.ts",
     "exam:fetch-pdfs": "tsx scripts/fetch-exam-pdfs.ts",
     "exam:pdf-text": "tsx scripts/extract-exam-pdf-text.ts",
-    "exam:pdf-render": "tsx scripts/render-exam-pdf-page.ts"
+    "exam:pdf-render": "tsx scripts/render-exam-pdf-page.ts",
+    "analytics:report": "tsx scripts/ga4-report.ts"
   },
   "packageManager": "pnpm@11.13.1",
   "dependencies": {
@@ -54,6 +55,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.7",
     "globals": "^17.12.0",
+    "google-auth-library": "^11.3.1",
     "pdfjs-dist": "^6.3.289",
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^1.1.0",

@@ -1,0 +1,18 @@
+---
+description: PV・アクセス解析・Google Analytics の数字を見るとき
+alwaysApply: false
+---
+
+# GA4 の数字
+
+ユーザーが PV、アクセス数、よく読まれている記事や問題を聞いたら、`pnpm analytics:report` を実行する。公式の問題文・選択肢は出さない。
+
+```bash
+pnpm analytics:report
+pnpm analytics:report --days 7
+pnpm analytics:report --days 28 --limit 40
+pnpm analytics:report --start 2026-10-01 --end 2026-10-25
+pnpm analytics:report --path /articles/
+```
+
+認証は `~/.config/gcp/` のサービスアカウント JSON、または `GOOGLE_APPLICATION_CREDENTIALS`。鍵はリポジトリに置かない。チャットに JSON 鍵を貼らない。Cloud / CI ではこのコマンドを回さない。
