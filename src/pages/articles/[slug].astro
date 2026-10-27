@@ -91,7 +91,7 @@ const formattedUpdated =
     </header>
     <div data-article-body>
       <div class="article-md" data-article-md>
-        <Content components={{ KeyPoint, InArticleAd }} />
+        <Content components={{ KeyPoint }} />
       </div>
       <div class="my-8 grid gap-4" data-article-mid-slot>
         <ExamCtaCard />
@@ -118,6 +118,47 @@ const formattedUpdated =
         }
         md.after(slot)
         slot.after(rest)
+
+        var adSource = slot.querySelector("[data-in-article-ad]")
+        if (!adSource) return
+
+        function previousHasAd(el) {
+          var prev = el.previousElementSibling
+          if (!prev) return false
+          if (prev.hasAttribute("data-in-article-ad")) return true
+          if (prev.hasAttribute("data-article-h2-ad")) return true
+          return Boolean(prev.querySelector("[data-in-article-ad]"))
+        }
+
+        function resetIns(root) {
+          var ins = root.querySelector("ins.adsbygoogle")
+          if (!ins) return null
+          ins.removeAttribute("data-adsbygoogle-status")
+          ins.removeAttribute("data-ad-status")
+          ins.innerHTML = ""
+          ins.setAttribute("style", "display:block; text-align:center;")
+          return ins
+        }
+
+        var headings = rest.querySelectorAll("h2")
+        for (var i = 1; i < headings.length; i++) {
+          var h2 = headings[i]
+          if (previousHasAd(h2)) continue
+
+          var wrap = document.createElement("div")
+          wrap.className = "my-8"
+          wrap.setAttribute("data-article-h2-ad", "")
+          var clone = adSource.cloneNode(true)
+          var ins = resetIns(clone)
+          wrap.appendChild(clone)
+          h2.parentNode.insertBefore(wrap, h2)
+
+          if (ins) {
+            try {
+              ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+            } catch (e) {}
+          }
+        }
       })()
     </script>
 
