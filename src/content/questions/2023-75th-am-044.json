@@ -36,7 +36,7 @@
     }
   ],
   "answer": 3,
-  "terms": ["hyperfractionation"],
+  "terms": ["hyperfractionation", "fractionated-irradiation"],
   "sourceExplanation": "この問は、**多分割照射（過分割照射）**と通常分割の比較です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=21\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 21 ページ</a>）。\n\n- **1 番** … **1 回線量が多い** → **誤り**（過分割は 1 回が**小さい**。多いのは寡分割）。\n- **2 番** … **総線量が等しい** → **誤り**（腫瘍線量を積み増す設計が多い。等しいとは限らない）。\n- **3 番** … **全治療期間が短い** → **誤り**（短いのは加速照射。過分割の全体期間は通常分割に近い）。\n- **4 番** … **1 日の照射回数が等しい** → **誤り**（過分割は 1 日複数回）。\n- **5 番** … **晩期有害事象が抑えられる** → **正解**（1 回線量が小さく、晩期反応組織を守れる）。\n- **覚え方** … 過分割＝**小線量×1 日複数回** → **晩期が軽い**。期間短縮は加速、1 回が大きいのは寡分割。",
   "draft": false
 }
