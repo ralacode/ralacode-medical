@@ -36,7 +36,7 @@
     }
   ],
   "answer": 2,
-  "terms": [],
+  "terms": ["fractionated-irradiation"],
   "sourceExplanation": "この問は、**加速過分割照射が標準の腫瘍**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=13\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 13 ページ</a>）。\n\n- **1 番** … **食道癌** → **誤り**（通常分割の化学放射線が基本）。\n- **2 番** … **膵癌** → **誤り**。\n- **3 番** … **髄膜腫** → **誤り**（増殖が遅く、通常分割・定位が中心）。\n- **4 番** … **肝細胞癌** → **誤り**（定位・粒子線などが中心）。\n- **5 番** … **小細胞肺癌** → **正解**（限局型で**加速過分割**が標準のひとつ）。\n- **覚え方** … 加速過分割＝**増えが速い腫瘍**／代表は**限局型小細胞肺癌**。",
   "draft": false
 }

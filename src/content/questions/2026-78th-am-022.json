@@ -36,7 +36,7 @@
     }
   ],
   "answer": 1,
-  "terms": ["hyperfractionation", "radiosensitizer"],
+  "terms": ["hyperfractionation", "radiosensitizer", "fractionated-irradiation"],
   "sourceExplanation": "この問は、**治療効果の向上**（増感・分割法・定位照射）です。\n\n- **加速過分割** … **増殖が速い**腫瘍（小細胞肺癌、頭頸部扁平上皮癌など）向け。1 日複数回の小線量で再増殖を抑える。\n- **寡分割** … α/β比が低い・**増殖が遅い**腫瘍（前立腺癌、乳癌など）向け。ここを取り違えない。\n- **温熱・シスプラチン** … **放射線増感**。\n- **治療期間の延長** … 再増殖で成績悪化のリスク。\n- **定位照射** … 通常分割より**高い局所効果**が期待できる。",
   "draft": false
 }

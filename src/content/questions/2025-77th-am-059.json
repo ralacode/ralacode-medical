@@ -35,7 +35,7 @@
     }
   ],
   "answer": 4,
-  "terms": [],
+  "terms": ["fractionated-irradiation"],
   "sourceExplanation": "この問は、**分割照射と細胞生存率**（LQ モデルと全治療期間）です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=25\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 25 ページ</a>）。同じ総線量でも、1 回線量が小さく、照射間隔・全期間が長いほど生存率は上がります。\n\n記号は **n**＝分割回数、**d**＝1 回線量、**nd**＝総線量。**BED ＝ nd（1 ＋ d／(α/β)）**。公式スロットは総線量 **12 Gy**、α/β ＝ 10 Gy なので、**BED ＝ 12 ×（1 ＋ d／10）** です。\n\n- **1 Gy/回** … 1 ＋ 1／10 ＝ 1.1 → BED ＝ 12 × 1.1 ＝ **13.2 Gy₁₀**\n- **2 Gy/回** … 1 ＋ 2／10 ＝ 1.2 → BED ＝ 12 × 1.2 ＝ **14.4 Gy₁₀**\n\nBED が小さいほど生き残りやすい。同じ 1 Gy/回なら、**週あたり回数が少なく期間が長い**条件で回復・再増殖が大きい。\n\n- 公式正答は **1 番**（1 回線量が小さく、全期間が最も長い分割）。\n- 類似問題は総線量を **20 Gy** に変え、同じ式で週 4 回 5 週間を正解とした。",
   "draft": false
 }
