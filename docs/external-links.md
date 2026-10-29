@@ -29,6 +29,7 @@
 | https://pharma-navi.bayer.jp/xofigo/basic-docs | ゾーフィゴ | `src/content/questions/2026-78th-pm-039.json` | reference | 2026-09-08 |
 | https://pins.japic.or.jp/pdf/newPINS/00005843.pdf | アドステロール−I131 注射液 添付文書（2022 年 3 月改訂 第 2 版、JAPIC） | `src/content/articles/adrenal-cortex-scintigraphy.mdx` | reference | — |
 | https://www.gehealthcare.com/ja-jp/event-and-news/news-and-initiatives/2020/press14 | マグネビスト（ガドペンテートメグルミン）— GE HealthCare に関する参考情報 | `src/content/articles/gadolinium.mdx` | reference | 2026-09-08 |
+| https://www.jastro.or.jp/medicalpersonnel/guideline/2016/01general_remarks.pdf | 参考：日本放射線腫瘍学会 2016 年 4 月版 総論 | `src/content/articles/fractionated-irradiation.mdx` | reference | — |
 | https://www.jastro.or.jp/medicalpersonnel/guideline/2016/04chest.pdf | 参考：日本放射線腫瘍学会 2016 年 4 月版 胸部がん治療ガイドライン | `src/content/articles/fractionated-irradiation.mdx` | reference | — |
 | https://www.jstage.jst.go.jp/article/endocrine/92/Suppl.September/92_1/_pdf/-char/ja | 日本内分泌学会「わが国の原発性アルドステロン症の診療に関するコンセンサス・ステートメント」 | `src/content/articles/adrenal-cortex-scintigraphy.mdx` | reference | — |
 | https://www.kegg.jp/medicus-bin/japic_med?japic_code=00005843 | アドステロール−I131 注射液（KEGG MEDICUS、上記添付文書の HTML） | `src/content/articles/adrenal-cortex-scintigraphy.mdx` | reference | — |
