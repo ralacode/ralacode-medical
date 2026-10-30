@@ -21,7 +21,9 @@
     "exam:fetch-pdfs": "tsx scripts/fetch-exam-pdfs.ts",
     "exam:pdf-text": "tsx scripts/extract-exam-pdf-text.ts",
     "exam:pdf-render": "tsx scripts/render-exam-pdf-page.ts",
-    "analytics:report": "tsx scripts/ga4-report.ts"
+    "analytics:report": "tsx scripts/ga4-report.ts",
+    "adsense:auth": "tsx scripts/adsense-auth.ts",
+    "adsense:report": "tsx scripts/adsense-report.ts"
   },
   "packageManager": "pnpm@11.13.1",
   "dependencies": {

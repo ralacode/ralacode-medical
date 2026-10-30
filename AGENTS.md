@@ -19,6 +19,8 @@
 | `pnpm exam:pdf-text <year> <kind> [--pages 5-7 \| --question 13 \| --toc]` | 公式 PDF のテキストを閲覧。`kind` は `am` / `pm` / `am-supplement` / `pm-supplement` / `answers` |
 | `pnpm exam:pdf-render <year> <kind> --pages N` | ページを PNG に描画（別冊の画像確認用）。出力は `exams/_render/` |
 | `pnpm analytics:report [--days 28] [--path /articles/]` | 公開サイトの GA4 PV を出す。鍵は `~/.config/gcp/`（リポジトリに置かない）。Cloud / CI では使わない |
+| `pnpm adsense:auth [--email ADDRESS]` | AdSense 閲覧用の OAuth を一度通す。トークンは `~/.config/gcp/`（リポジトリに置かない） |
+| `pnpm adsense:report [--days 28] [--path /articles/]` | 公開サイトの AdSense 収益・クリック・ページ別を出す。Cloud / CI では使わない |
 
 ## リポジトリの決まり
 

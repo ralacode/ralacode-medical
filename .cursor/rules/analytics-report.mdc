@@ -1,18 +1,22 @@
 ---
-description: PV・アクセス解析・Google Analytics の数字を見るとき
+description: PV・アクセス解析・Google Analytics・AdSense の数字を見るとき
 alwaysApply: false
 ---
 
-# GA4 の数字
+# GA4 と AdSense の数字
 
-ユーザーが PV、アクセス数、よく読まれている記事や問題を聞いたら、`pnpm analytics:report` を実行する。公式の問題文・選択肢は出さない。
+ユーザーが PV、アクセス数、よく読まれている記事や問題を聞いたら、`pnpm analytics:report` を実行する。収益、クリック、RPM、広告のページ別を聞いたら、`pnpm adsense:report` を実行する。公式の問題文・選択肢は出さない。
 
 ```bash
 pnpm analytics:report
 pnpm analytics:report --days 7
-pnpm analytics:report --days 28 --limit 40
-pnpm analytics:report --start 2026-10-01 --end 2026-10-25
 pnpm analytics:report --path /articles/
+
+pnpm adsense:auth
+pnpm adsense:auth --email adsense-owner@example.com
+pnpm adsense:report
+pnpm adsense:report --days 7
+pnpm adsense:report --path /articles/
 ```
 
-認証は `~/.config/gcp/` のサービスアカウント JSON、または `GOOGLE_APPLICATION_CREDENTIALS`。鍵はリポジトリに置かない。チャットに JSON 鍵を貼らない。Cloud / CI ではこのコマンドを回さない。
+認証ファイルは `~/.config/gcp/`。鍵も OAuth トークンもリポジトリに置かない。チャットに JSON を貼らない。Cloud / CI ではこれらのコマンドを回さない。AdSense はサービスアカウント非対応なので、期限切れなら `pnpm adsense:auth` をユーザーに実行してもらう。
