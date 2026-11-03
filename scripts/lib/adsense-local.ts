@@ -117,7 +117,8 @@ export async function adsenseAccessToken(): Promise<string> {
           "AdSense のログインの有効期限が切れています。",
           "pnpm adsense:auth をもう一度実行してください。",
           "OAuth 同意画面が「テスト」のままだと、トークンは 7 日で切れます。「本番」にすると長持ちします。",
-        ].join("\n")
+        ].join("\n"),
+        { cause: error }
       )
     }
     throw error
