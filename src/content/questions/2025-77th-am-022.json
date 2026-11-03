@@ -36,7 +36,7 @@
     }
   ],
   "answer": 5,
-  "terms": ["ptv", "itv", "bnct"],
+  "terms": ["ptv", "itv", "bnct", "target-volume"],
   "sourceExplanation": "この問は、**放射線治療の体積定義・線量計算・BNCT**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=13\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 13 ページ</a>）。公式は**誤っている記述**を選ぶ形式でした。\n\n- **1 番** … セットアップマージンは **PTV に含まれる** → **誤り**（記述は正しいが本問の正答ではない）。\n- **2 番** … **ITV＝CTV＋内的マージン** → **誤り**（記述は正しい）。\n- **3 番** … **畳み込み法**は非電子平衡を考慮 → **誤り**（記述は正しい）。\n- **4 番** … BNCT の **⁷Li・⁴He の飛程が 2～3 mm** → **正解**（実際は**数 µm**で、誤った記述）。\n- **5 番** … **ウェッジ角度**の定義 → **誤り**（記述は正しい）。\n- **覚え方** … BNCT の飛程＝**細胞サイズ（µm）**／PTV＝ITV＋**セットアップマージン**。",
   "draft": false
 }

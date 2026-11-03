@@ -36,7 +36,7 @@
     }
   ],
   "answer": 2,
-  "terms": ["ptv"],
+  "terms": ["ptv", "target-volume"],
   "sourceExplanation": "この問は、**放射線治療の体積とマージン**、および装置の扱いです（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf#page=15\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 15 ページ</a>）。公式は **2 つ選べ**で、正答は **1 番**と **3 番**でした。本類似問題は**PTV と CTV の大小**に絞り、採用しなかった正答肢は誤った内容に書き換えています。\n\n- **1 番** … **PTV は CTV より大きい** → **正解**。\n- **2 番** … **PTV とリスク臓器は重ならない** → **誤り**（重なり得る）。\n- **3 番** … **平坦化フィルタを除くと線量率が上がる** → **正解**（公式。類似では線量率が変わらない、と書き換えている）。\n- **4 番** … 計画 CT の FOV を腫瘍に絞る → **誤り**（体輪郭まで含める）。\n- **5 番** … ブロードビーム法でコリメータ不要 → **誤り**（患者コリメータが必要）。\n- **覚え方** … **PTV＞CTV**／FFF＝**線量率↑**／計画 CT は**体輪郭まで**。",
   "draft": false
 }
