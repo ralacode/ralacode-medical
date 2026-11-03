@@ -36,7 +36,7 @@
     }
   ],
   "answer": 4,
-  "terms": ["ptv"],
+  "terms": ["ptv", "target-volume"],
   "sourceExplanation": "この問は、**基準点線量処方**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=20\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 20 ページ</a>）。\n\n- **1 番** … **D95％処方**を行う → **誤り**（それは体積線量処方）。\n- **2 番** … **PTV 内の線量を代表する** → **正解**（基準点＝代表点）。\n- **3 番** … **DVH の線量体積指標を用いる** → **誤り**（体積処方の側）。\n- **4 番** … **処方点はビーム軸外にも設定する** → **誤り**（原則は**軸上**の代表点）。\n- **5 番** … **PTV 内の不均一が大きいときに有用** → **誤り**（不均一が大きいときは体積処方向き）。\n- **覚え方** … 基準点＝**PTV を代表する 1 点（軸上）**／D95・DVH＝体積処方。",
   "draft": false
 }

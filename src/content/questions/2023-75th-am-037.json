@@ -36,7 +36,7 @@
     }
   ],
   "answer": 4,
-  "terms": ["ptv", "gtv", "ctv"],
+  "terms": ["ptv", "gtv", "ctv", "target-volume"],
   "sourceExplanation": "この問は、**臨床標的体積（CTV）**の定義です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf#page=19\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 19 ページ</a>）。\n\n- **1 番** … 肉眼で確認できる腫瘍体積 → **誤り**（それは **GTV**）。\n- **2 番** … あらゆる変動・不確かさをマージンとして足した体積 → **誤り**（それは **PTV**）。\n- **3 番** … 予期せぬ高線量域を避けるための体積 → **誤り**（最適化用の仮想体積であり CTV ではない）。\n- **4 番** … 計画・処方に強く影響しうる正常組織 → **誤り**（**OAR**）。\n- **5 番** … 画像で捉えられないが臨床的に進展が疑われる部分を含む体積 → **正解**（**CTV**＝GTV＋亜臨床的進展）。\n- **覚え方** … GTV＝**今見える**／CTV＝**見えなくても拡がりそう**／PTV＝**動きと位置ずれの余白**。",
   "draft": false
 }
