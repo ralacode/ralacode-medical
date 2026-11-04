@@ -29,7 +29,6 @@
 - Cloud に貼る指示文だけを頼まれたら、JSON は作らず、最初に `docs/cloud-subject-prompt.md` を読む。
 - 用語解説記事の作成・編集を頼まれたら、作業の最初に `docs/glossary-article-authoring.md` を読み、SEO（title / description / FAQ / キーワード）・本文の文体・国試の範囲・話し言葉の検品まで全部適用して MDX を書く。「『放射線治療　標的体積』をテーマに記事を作成して」のようなテーマだけの一文も、同じ用語解説記事の作成である。ユーザーが「方針だけ」「実装しない」と言ったときだけ、ファイルは作らない。
 - YouTube ショート（動画、台本、テロップ、登場人物、音声、タイトル・説明・サムネイル・タグ）を頼まれたら、作業の最初に `docs/youtube-short-production.md` を読む。テーマ・尺・公開順は `docs/content-strategy-youtube-seo.md` の §5。
-- **定期実行（Claude Code の Routine）:** 自動で回すのは用語記事だけ。手順は `docs/routine-article-theme.md`（GitHub Issue のテーマを 1 回 1 本。テーマが無い日は候補の Issue を立てるだけ）。類似問題は定期実行しない。Routine の指示文はこのファイルを Read させるだけにし、手順はファイル側に書く。
 - Cursor の Cloud Agent（Cursor Cloud / Background Agent）向けの追加手順は `.cursor/rules/cursor-cloud.mdc` にある。適用されるのは、そのエージェントとして起動されたセッションだけ。Claude Code のローカルと、Cursor のローカル対話には適用しない。
 - Claude Code のクラウド（`CLAUDE_CODE_REMOTE=true`）が用語記事を作成・編集したときは、追加の指示を待たず PR まで送る。手順は `.claude/rules/glossary-article-authoring.md`。`gh pr create` は使わず REST で開く。Claude Code のローカルは、ユーザーが頼んだときだけコミット・push・PR する。
 - 試験科目の分類: `docs/exam-subjects-amendment-2023.md`、科目 ID は `src/lib/exam-subjects.ts`（理工学の学習タグに放射化学 `hoshasen-kagaku` を含む。第75回・第76回は改正前科目をこの ID に寄せる）

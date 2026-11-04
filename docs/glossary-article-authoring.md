@@ -16,7 +16,6 @@
    - **Cursor の Cloud Agent**（Cursor Cloud / Background Agent）は `.cursor/rules/cursor-cloud.mdc` に従う。
    - **Claude Code のクラウド**（環境変数 `CLAUDE_CODE_REMOTE` が `true`）は、用語記事を作成・編集したとき同じ完了条件にする。ブランチが無ければ `article/{term-id}`。クラウドの GitHub プロキシは GraphQL を拒むので、`gh pr create` は使わない。`git push -u origin HEAD` のあと、`gh api repos/{owner}/{repo}/pulls` に `title`、`head`、`base`（`main`）、`body` を渡す。force-push しない。PR の前に `pnpm build` と `pnpm lint` を通す。参考リンクを足したら `pnpm exam:external-links` で台帳を再生成する。
    - **Claude Code のローカル**は、この例外に当たらない。
-   - 定期実行（Routine）は `docs/routine-article-theme.md` に従い、GitHub Issue（ラベル `article-theme`）のテーマを 1 日 1 本書く。
 
 ---
 
@@ -90,7 +89,7 @@ faq:
 
 おおまかな流れ:
 
-記事は、学生の疑問に答えるために書く。用語が問題に出てきただけで、学生が調べたくなることは少ない。問題を解いていて「A と B の違いは？」「どういう関係？」と迷ったときに読みたくなる。テーマに疑問が添えてあれば（Issue の「学生の疑問」など）、冒頭・見出し・まとめ・FAQ をその疑問に答える順に組む。
+記事は、学生の疑問に答えるために書く。用語が問題に出てきただけで、学生が調べたくなることは少ない。問題を解いていて「A と B の違いは？」「どういう関係？」と迷ったときに読みたくなる。テーマに疑問が添えてあれば（「A と B の違いは？」など）、冒頭・見出し・まとめ・FAQ をその疑問に答える順に組む。
 
 1. **冒頭** … 読者が講義でつまずく疑問から入る。定義の長文では始めない。回次・問番号は書かない
 2. **見出し（H2）** … 用語をひとつずつ。意味、具体例、画像での見え方
