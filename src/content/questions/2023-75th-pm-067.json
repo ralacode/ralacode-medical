@@ -1,0 +1,45 @@
+{
+  "year": 2023,
+  "exam": 75,
+  "session": "pm",
+  "number": 67,
+  "origin": "analog",
+  "mapsTo": {
+    "year": 2023,
+    "exam": 75,
+    "session": "pm",
+    "number": 67,
+    "answer": 5
+  },
+  "subject": "rikogaku-hoshasen",
+  "studyTopics": [
+    "hoshasen-seibutsugaku"
+  ],
+  "stem": "増殖中の細胞に低 LET の X 線を 1 回照射したとき、生存率が最も下がる細胞周期の時期はどれか。",
+  "choices": [
+    {
+      "text": "S 期後半",
+      "explanation": "**誤り**です。S 期の後半は DNA の複製が終わり、修復が効きやすい時期です。周期のなかでは放射線に**最も強く**、生存率は下がりにくいです。"
+    },
+    {
+      "text": "G0 期",
+      "explanation": "**誤り**です。G0 期は分裂を休んでいる時期で、感受性は**低い**です。眠っている工場は、稼働中のラインより被害の出方が違います。"
+    },
+    {
+      "text": "G1 期の中頃",
+      "explanation": "**誤り**です。G1 期の感受性は中程度で、染色体が分かれる M 期より**低い**です。"
+    },
+    {
+      "text": "M 期",
+      "explanation": "M 期は染色体が凝縮し、傷を直す時間がほとんどありません。低 LET の X 線では、周期のなかで生存率が**最も下がる**時期です。引越しの最中に棚が倒れると、片付けが間に合わない、というイメージです。**正解**です。"
+    },
+    {
+      "text": "S 期前半",
+      "explanation": "**誤り**です。S 期の前半は後半より弱いですが、M 期ほどではありません。最も死にやすい時期は M 期です。"
+    }
+  ],
+  "answer": 4,
+  "terms": [],
+  "sourceExplanation": "この問は、**細胞周期で最も感受性が高い時期**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=29\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 29 ページ</a>）。\n\n- **1 番** … G0 期 → **誤り**（休止期。感受性は低い）。\n- **2 番** … G1 初期 → **誤り**（M 期より低い）。\n- **3 番** … S 期後半 → **誤り**（周期のなかで**最も抵抗性**が高い）。\n- **4 番** … G2 初期 → **誤り**（G2 後期から M 期ほど高くない）。\n- **5 番** … **M 期** → **正解**（染色体が凝縮し、修復が間に合わない）。\n- **覚え方** … **最も弱い＝M 期**（次いで G2）／**最も強い＝S 期後半**。",
+  "draft": false
+}
