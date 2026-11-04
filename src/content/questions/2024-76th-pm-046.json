@@ -36,7 +36,7 @@
     }
   ],
   "answer": 2,
-  "terms": [],
+  "terms": ["dicom"],
   "sourceExplanation": "この問は、医療情報に関する用語の**記載が正しいか**を扱います（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf#page=22\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 22 ページ</a>）。\n\n- **1 番** … IHE を業務ワークフローの標準規格とする → **誤り**。IHE は既存規格（DICOM・HL7）を組み合わせる連携の枠組みであり、それらに代わる標準規格そのものではない。\n- **2 番** … MWM を検査実施情報の RIS 伝送とする → **誤り**。MWM はワークリストを装置へ渡す。実施情報の返送は MPPS。\n- **3 番** … SSL を画像の外部保存用統合プロトコルとする → **誤り**。SSL は通信の暗号化。\n- **4 番** … ICD-10 をコード化した検査プロトコルとする → **誤り**。ICD-10 は疾病分類。\n- **5 番** … RDSR を線量情報の構造化レポートとする → **正解**。\n- **覚え方** … **RDSR＝線量の構造化レポート**／MWM＝オーダを装置へ／MPPS＝実施を返す／IHE＝つなぎ方／ICD＝病名。",
   "draft": false
 }

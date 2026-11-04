@@ -36,7 +36,7 @@
     }
   ],
   "answer": 5,
-  "terms": [],
+  "terms": ["dicom"],
   "sourceExplanation": "この問は、**病院情報システムのデータの流れ**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=17\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 17 ページ</a>）。\n\n- **1 番** … **画像情報は RIS に送信** → **誤り**（画像は**PACS**）。\n- **2 番** … **X 線オーダに撮影部位** → **正解**。\n- **3 番** … **診察記録はオーダリングシステム** → **誤り**（**電子カルテ**）。\n- **4 番** … **材料・薬剤は医事会計で発注** → **誤り**（**材料管理**など）。\n- **5 番** … **実施情報はオーダリング→RIS** → **誤り**（**モダリティ→RIS/PACS** 方向）。\n- **覚え方** … **オーダ（部位付き）→RIS→装置**／**画像→PACS**／**カルテ→EMR**／**実施報告←装置**。",
   "draft": false
 }
