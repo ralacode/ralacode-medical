@@ -13,6 +13,7 @@
 | `pnpm lint` / `pnpm typecheck` | ESLint / `astro check` |
 | `pnpm lint:questions` | 問題 JSON のゲート検査（ファイル名 / `mapsTo` / 科目がマニフェストと一致。2026 年は形式を祖父化） |
 | `pnpm verify:exam-pages` | 公式 PDF ページ表と `sourceExplanation` のリンク照合。Cloud / CI では `--strict`（PDF 未取得を失敗にする） |
+| `pnpm exam:next-chunk [--all] [--skip KEY,...]` | 類似問題の作業リスト。JSON が無いスロットを塊にして、次の 1 塊（問番号・科目・ブランチ案）を出す |
 | `pnpm exam:manifest --year 2026` | 既存 JSON からスロット台帳 `src/data/exam-manifests/{year}.json` を逆生成 |
 | `pnpm exam:external-links` | 参考リンク台帳 `docs/external-links.md` をコンテンツから再生成 |
 | `pnpm exam:fetch-pdfs` | 厚労省の公式 PDF を `exams/{year}/` にダウンロード（既存はスキップ） |
@@ -28,6 +29,7 @@
 - Cloud に貼る指示文だけを頼まれたら、JSON は作らず、最初に `docs/cloud-subject-prompt.md` を読む。
 - 用語解説記事の作成・編集を頼まれたら、作業の最初に `docs/glossary-article-authoring.md` を読み、SEO（title / description / FAQ / キーワード）・本文の文体・国試の範囲・話し言葉の検品まで全部適用して MDX を書く。「『放射線治療　標的体積』をテーマに記事を作成して」のようなテーマだけの一文も、同じ用語解説記事の作成である。ユーザーが「方針だけ」「実装しない」と言ったときだけ、ファイルは作らない。
 - YouTube ショート（動画、台本、テロップ、登場人物、音声、タイトル・説明・サムネイル・タグ）を頼まれたら、作業の最初に `docs/youtube-short-production.md` を読む。テーマ・尺・公開順は `docs/content-strategy-youtube-seo.md` の §5。
+- **定期実行（Claude Code の Routine）:** 類似問題は `docs/routine-question-chunk.md`（1 回 1 塊、Draft PR）、用語記事は `docs/routine-article-theme.md`（GitHub Issue のテーマを 1 回 1 本。テーマが無い日は候補の Issue を立てるだけ）。Routine の指示文はこのどちらかを Read させるだけにし、手順はファイル側に書く。
 - Cursor の Cloud Agent（Cursor Cloud / Background Agent）向けの追加手順は `.cursor/rules/cursor-cloud.mdc` にある。適用されるのは、そのエージェントとして起動されたセッションだけ。Claude Code のローカルと、Cursor のローカル対話には適用しない。
 - Claude Code のクラウド（`CLAUDE_CODE_REMOTE=true`）が用語記事を作成・編集したときは、追加の指示を待たず PR まで送る。手順は `.claude/rules/glossary-article-authoring.md`。`gh pr create` は使わず REST で開く。Claude Code のローカルは、ユーザーが頼んだときだけコミット・push・PR する。
 - 試験科目の分類: `docs/exam-subjects-amendment-2023.md`、科目 ID は `src/lib/exam-subjects.ts`（理工学の学習タグに放射化学 `hoshasen-kagaku` を含む。第75回・第76回は改正前科目をこの ID に寄せる）
