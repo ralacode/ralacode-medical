@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Cursor Cloud の追加手順
 
-このルールは、Cursor の Cloud Agent（Cursor Cloud / Background Agent）として起動されたセッションにだけ適用する。Cursor のローカル対話には適用しない。Claude Code には適用しない。Claude Code がこのファイルを読んでも、コミット・push・PR を作業の完了条件にしない。
+このルールは、Cursor の Cloud Agent（Cursor Cloud / Background Agent）として起動されたセッションにだけ適用する。Cursor のローカル対話と、Claude Code のローカルには適用しない。Claude Code のクラウドが用語記事を書いたときの PR は `.claude/rules/glossary-article-authoring.md` に従い、このファイルの検査一覧はそのまま課さない。
 
 ## 環境
 
@@ -17,7 +17,7 @@ alwaysApply: true
 
 - 割り当てられた作業ブランチで作業する。ブランチが指定されていなければ `q/{year}-{exam}th/{subject-id}`（類似問題）または `article/{term-id}`（用語記事）で切る。
 - **`main` へ直接 push しない。**
-- Cloud では、コミット → push → PR 作成までが作業範囲。手順書の「コミット・push は依頼されたときだけ」はローカル対話と Claude Code 向けであり、Cursor の Cloud Agent では PR を開くことがタスク完了の条件。
+- Cloud では、コミット → push → PR 作成までが作業範囲。手順書の「コミット・push は依頼されたときだけ」は、Cursor のローカル対話と Claude Code のローカル向けである。Cursor の Cloud Agent では PR を開くことがタスク完了の条件。Claude Code のクラウドが用語記事を書いたときの PR は `.claude/rules/glossary-article-authoring.md` に従う。
 - 1 PR = 1 科目（または 1 記事）。問題作成の PR で触るのは `src/content/questions/*.json` だけ。ページ表・PDF URL（`src/lib/exam-data.ts`）やマニフェスト（`src/data/exam-manifests/{year}.json`）の変更が必要になったら、勝手に直さず PR 本文に書いて止める。参考リンクを足したら `pnpm exam:external-links` で台帳を再生成してよい。
 - 類似の `choices` は公式と同じ順にしない（並べ替えて `answer` を合わせる。画面シャッフルに頼らない）。記事リンクは肢の `text` ではなく `explanation` に書く。
 
