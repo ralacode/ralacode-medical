@@ -36,7 +36,7 @@
     }
   ],
   "answer": 3,
-  "terms": [],
+  "terms": ["machine-learning"],
   "sourceExplanation": "この問は、**多クラス分類モデルの評価指標**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf#page=17\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 17 ページ</a>）。\n\n- **1 番** … **F 値** → **誤り**（分類評価指標）。\n- **2 番** … **再現率** → **誤り**（分類評価指標）。\n- **3 番** … **正解率** → **誤り**（分類評価指標）。\n- **4 番** … **適合率** → **誤り**（分類評価指標）。\n- **5 番** … **比例尺度** → **正解**（**測定尺度**の名称であり、分類性能指標ではない）。\n- **覚え方** … 分類の定番＝**適合率・再現率・F 値・正解率**／**比例尺度**は統計の尺度区分。",
   "draft": false
 }
