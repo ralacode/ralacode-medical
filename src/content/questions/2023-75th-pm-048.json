@@ -36,7 +36,7 @@
     }
   ],
   "answer": 4,
-  "terms": [],
+  "terms": ["dicom"],
   "sourceExplanation": "この問は、**DICOM 規格**の範囲と添付文書です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf#page=23\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 23 ページ</a>）。\n\n- **1 番** … 圧縮画像は扱えない → **誤り**（JPEG 等の圧縮転送を規定している）。\n- **2 番** … 通信手順は定めない → **誤り**（ネットワーク通信も規格の一部）。\n- **3 番** … 適合性宣言書を装置に添付する → **正解**（実装範囲を宣言する文書）。\n- **4 番** … ファイル先頭から画素が並ぶ → **誤り**（メタ情報・ヘッダが先で、画素は後段）。\n- **5 番** … 線量情報の略称とする → **誤り**（**Digital Imaging and Communications in Medicine**）。\n- **覚え方** … DICOM＝**画像＋通信**／添付は**適合性宣言書**／先頭はヘッダ／圧縮も可。",
   "draft": false
 }

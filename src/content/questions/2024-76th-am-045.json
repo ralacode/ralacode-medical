@@ -36,7 +36,7 @@
     }
   ],
   "answer": 3,
-  "terms": [],
+  "terms": ["dicom"],
   "sourceExplanation": "この問は、**DICOM 規格が扱う範囲**です（<a href=\"https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf#page=21\" target=\"_blank\" rel=\"noopener noreferrer\">公式 PDF 21 ページ</a>）。\n\n- **1 番** … 疾病分類コード → **正解**（WHO の病名分類であり、DICOM の構成要素ではない）。\n- **2 番** … サービスクラスの仕様 → **誤り**（DICOM が定めるサービス側の規格）。\n- **3 番** … 情報オブジェクトの定義 → **誤り**（IOD など、DICOM が定めるデータ側の規格）。\n- **4 番** … 転送時の符号化（トランスファーシンタックス） → **誤り**（圧縮やバイト順など、DICOM が定める）。\n- **5 番** … 適合性を宣言する文書 → **誤り**（コンフォーマンスステートメント。実装がどの SOP 等に対応するかを示す DICOM 文書）。\n- **覚え方** … DICOM＝**オブジェクト・サービス・転送・適合宣言**／**病名分類は別規格**。",
   "draft": false
 }
